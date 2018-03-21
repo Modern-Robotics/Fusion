@@ -1,0 +1,428 @@
+<!-- app/components/settings/settings.htm -->
+
+<div class="f-content-container">
+    
+    <md-tabs md-border-bottom md-stretch-tabs="always" class="f-settings-tabs">
+        
+        <md-tab label="Wireless">
+            <div class="f-settings-tab">
+                <div class="f-settings-wireless-container">
+                    <div class="f-settings-wireless-settings">
+                        <div class="f-settings-panel-header">
+                            <div class="w3-bar">
+                                <div class="w3-bar-item">Wi-Fi Settings</div>
+                                <button class="w3-bar-item w3-button w3-red w3-card-4 w3-right" ng-click="restoreWifiSettings()">Default</button>
+                                <button class="w3-bar-item w3-button w3-teal w3-card-4 w3-right w3-margin-right" ng-click="changeWifiSettings()" ng-disabled="DisableWirelessSettingChange">Apply Changes</button>
+                            </div>
+                        </div>
+                        <div class="f-settings-panel-body">
+                            <label>SSID</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <input type="text" class="form-control" placeholder="SSID" ng-model="wirelessSettings.SSID" ng-change="wirelessSettingChange()">
+                            </div>
+                            <br>
+                            <label>Passkey</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <input class="form-control" placeholder="Passkey" ng-model="wirelessSettings.Password">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="f-settings-wireless-connections">
+                        <div class="f-settings-panel-header">
+                            <div class="w3-bar">
+                                <div class="w3-bar-item">Wireless Networks</div>
+                                <button class="w3-bar-item w3-button w3-teal w3-card-4 w3-right" ng-click="refreshWirelessConnections()"><i class="fa fa-search" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                        <div class="f-settings-panel-body" id="accordion" style="overflow:hidden;overflow-y:scroll;">
+                            <div ng-repeat="connection in availableWifiConnections" class="panel panel-info">
+                                <div class="panel-heading" ng-class="styleUsedConnection(connection)">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#{{fixWirelessLinks(connection)}}" style="color:inherit;text-decoration:inherit;">
+                                        <h4 class="panel-title">
+                                            {{connection.ssid}}
+                                            <i class="fa pull-right" aria-hidden="true" ng-class="styleOpenConnection(connection)"></i>
+                                        </h4>
+                                    </a>
+                                </div>
+                                <div id="{{fixWirelessLinks(connection)}}" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="w3-bar">
+                                            <button class="w3-bar-item w3-blue w3-card-4 w3-margin-left" ng-click="connectToNetwork(connection)">Connect</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </md-tab>
+
+        <md-tab label="Software">
+            <div class="f-settings-tab">
+                <div class="f-settings-software-container">
+                    <div class="f-settings-software-header">
+                        <div class="w3-bar">
+                            <div class="w3-bar-item">Fusion Software Management</div>
+<!--                            <button ng-click="restoreFusion()" class="w3-bar-item w3-button w3-red w3-card-4 w3-right" ng-disabled="allowRestore()">Restore</button>-->
+                            <button ng-click="updateFusion()" class="w3-bar-item w3-button w3-blue w3-card-4 w3-right" ng-disabled="allowUpdate()">Update</button>
+                        </div>
+                    </div>
+                    <textarea id="update-console" placeholder="Terminal..." readonly="true" class="f-settings-software-body w3-dark-grey" ng-model="updateConsole"></textarea>
+                </div>
+            </div>
+        </md-tab>
+
+        <md-tab label="Users">
+            <div class="f-settings-tab">
+                <div class="w3-responsive" style="height:100%;">                    
+                    <table class="w3-table-all w3-hoverable">                        
+                        <thead>
+                            <tr class="w3-dark-grey">
+                                <th>Username</th>
+                                <th>First</th>
+                                <th>Last</th>
+                                <th>Email</th>
+                                <th>Group</th>
+                                <th><button class="w3-bar-item w3-button w3-green w3-right w3-card-4" data-toggle="modal" data-target="#createUserModal">Add New</button></th>
+                            </tr>
+                        </thead>
+                        <tr ng-repeat="user in fusionUserList">
+                            <th>{{user.username}}</th>
+                            <th>{{user.firstname}}</th>
+                            <th>{{user.lastname}}</th>
+                            <th>{{user.email}}</th>
+                            <th>{{user.usergroup}}</th>
+                            <th>
+                                <button class="btn btn-sm btn-danger pull-right w3-card-4" ng-click="userDelete(ev, user.username)">Delete</button>
+                                <button class="btn btn-sm btn-info pull-right w3-margin-right w3-card-4" data-toggle="modal" data-target="#editUserModal" ng-click="readyForEdit(user.username)">Edit</button>
+                            </th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </md-tab>
+
+        <md-tab label="Misc" ng-disabled="true"></md-tab>
+
+    </md-tabs>
+
+</div>
+
+
+<!-- Connect to network dialog -->
+<div style="visibility: hidden">
+    <div class="md-dialog-container" id="settingsConnectNetworkDialog">
+        <md-dialog>
+            <md-dialog-content layout-padding>
+                <div layout-gt-xs="row">
+                    <h3 class="md-title">Enter passkey for SSID.</h3>
+                </div>
+                <div layout-gt-xs="row">                    
+                    <md-input-container flex-gt-xs>
+                        <label>Passkey</label>
+                        <input id="selectedWirelessConnectionPasswordInput" type="password" ng-model="SelectedWirelessConnectionPassword">
+                    </md-input-container>
+                </div>
+            </md-dialog-content>
+            <md-dialog-actions>
+                <md-switch class="md-primary" ng-click="togglePasswordShowing()">View Passkey</md-switch>
+                <md-button class="md-primary" ng-click="closeDialog()">Cancel</md-button>
+                <md-button class="md-primary" ng-click="connectToNetworkPassword()">Ok!</md-button>
+            </md-dialog-actions>
+        </md-dialog>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="createUserModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Create User</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+
+                    <div class="col-sm-6">
+
+                        <div class="panel panel-info w3-card-4">
+                            <div class="panel-heading">Required Fields</div>
+                            <div class="panel-body">
+
+                                <div clas="form-group">
+                                    <label>Username *</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                        <input type="text" class="form-control" ng-model="newUser.UserName" required/>
+                                    </div>
+                                    <br>
+                                </div>
+
+                                <div clas="form-group">
+                                    <label>Password *</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-key" aria-hidden="true"></i></span>
+                                        <input type="password" class="form-control" ng-model="newUser.Password" required/>
+                                    </div>
+                                    <br>
+                                </div>
+
+                                <div clas="form-group">
+                                    <label>Confirm Password *</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-key" aria-hidden="true"></i></span>
+                                        <input type="password" class="form-control" ng-model="newUser.Password2" required/>
+                                    </div>
+                                    <br>
+                                </div>
+
+                                <div clas="form-group">
+                                    <label>User Group *</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-users" aria-hidden="true"></i></span>
+                                        <select name="usergroup" class="form-control" ng-model="newUser.UserGroup" ng-options="x for x in userGroups" required></select>
+                                    </div>
+                                    <br>
+                                </div>
+
+                                <div clas="form-group">
+                                    <label>Security Question *</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-question" aria-hidden="true"></i></span>
+                                        <select name="cars" class="form-control" ng-model="newUser.SecurityQuestion" ng-options="x for x in securityQuestions" required></select>
+                                    </div>
+                                    <br>
+                                </div>
+
+                                <div clas="form-group">
+                                    <label>Security Answer *</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-lock" aria-hidden="true"></i></span>
+                                        <input type="text" class="form-control" ng-model="newUser.SecurityAnswer" required/>
+                                    </div>
+                                    <br>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-sm-6">
+
+                        <div class="panel panel-default w3-card-4">
+                            <div class="panel-heading">Optional Fields</div>
+                            <div class="panel-body">
+
+                                <div clas="form-group">
+                                    <label>Email</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
+                                        <input type="email" class="form-control" ng-model="newUser.Email" />
+                                    </div>
+                                    <br>
+                                </div>
+
+                                <div clas="form-group">
+                                    <label>First Name</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-address-card-o" aria-hidden="true"></i></span>
+                                        <input type="text" class="form-control" ng-model="newUser.FirstName" />
+                                    </div>
+                                    <br>
+                                </div>
+
+                                <div clas="form-group">
+                                    <label>Last Name</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-address-card-o" aria-hidden="true"></i></span>
+                                        <input type="text" class="form-control" ng-model="newUser.LastName" />
+                                    </div>
+                                    <br>
+                                </div>
+
+                                <div clas="form-group">
+                                    <label>Language</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-language" aria-hidden="true"></i></span>
+                                        <select name="langages" class="form-control" ng-model="newUser.Language" ng-options="x for x in languages"></select>
+                                    </div>
+                                    <br>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button class="btn btn-primary" ng-click="createUser()">Create</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="editUserModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Edit User</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+
+                    <div class="col-sm-6">
+
+                        <div class="panel panel-info w3-card-4">
+                            <div class="panel-heading">User Fields</div>
+                            <div class="panel-body">
+
+                                <div clas="form-group">
+                                    <label>Username</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                        <input type="text" class="form-control" ng-model="editData.username" ng-disabled="disableField()" />
+                                    </div>
+                                    <br>
+                                </div>
+
+                                <div clas="form-group">
+                                    <label>Email</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
+                                        <input type="email" class="form-control" ng-model="editData.email" />
+                                    </div>
+                                    <br>
+                                </div>
+
+                                <div clas="form-group">
+                                    <label>First Name</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-address-card-o" aria-hidden="true"></i></span>
+                                        <input type="text" class="form-control" ng-model="editData.firstname" />
+                                    </div>
+                                    <br>
+                                </div>
+
+                                <div clas="form-group">
+                                    <label>Last Name</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-address-card-o" aria-hidden="true"></i></span>
+                                        <input type="text" class="form-control" ng-model="editData.lastname" />
+                                    </div>
+                                    <br>
+                                </div>
+
+                                <div clas="form-group">
+                                    <label>Language</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-language" aria-hidden="true"></i></span>
+                                        <select name="langages" class="form-control" ng-model="editData.language" ng-options="x for x in languages"></select>
+                                    </div>
+                                    <br>
+                                </div>
+
+                                <div clas="form-group">
+                                    <label>User Group</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-users" aria-hidden="true"></i></span>
+                                        <select name="usergroup" class="form-control" ng-model="editData.usergroup" ng-options="x for x in userGroups"></select>
+                                    </div>
+                                    <br>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-sm-6">
+
+                        <div class="panel panel-default w3-card-4">
+                            <div class="panel-heading">Security Fields</div>
+                            <div class="panel-body">
+
+                                <div clas="form-group">
+                                    <label>New Password</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-key" aria-hidden="true"></i></span>
+                                        <input type="password" class="form-control" ng-model="NewPassword1" />
+                                    </div>
+                                    <br>
+                                </div>
+
+                                <div clas="form-group">
+                                    <label>Confirm New Password</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-key" aria-hidden="true"></i></span>
+                                        <input type="password" class="form-control" ng-model="NewPassword2" />
+                                    </div>
+                                    <br>
+                                </div>
+
+                                <div clas="form-group">
+                                    <label>New Security Question</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-question" aria-hidden="true"></i></span>
+                                        <select name="cars" class="form-control" ng-model="NewSecurityQuestion" ng-options="x for x in securityQuestions"></select>
+                                    </div>
+                                    <br>
+                                </div>
+
+                                <div clas="form-group">
+                                    <label>New Security Answer</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-lock" aria-hidden="true"></i></span>
+                                        <input type="text" class="form-control" ng-model="NewSecurityAnswer" />
+                                    </div>
+                                    <br>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button class="btn btn-primary" ng-click="userEdit()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="deleteUserModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Delete User - {{selectedUser}}?</h4>
+            </div>
+            <div class="modal-body open-editor-modal-body">
+                <p>This action cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="deleteUser()">Delete</button>
+            </div>
+        </div>
+
+    </div>
+</div>

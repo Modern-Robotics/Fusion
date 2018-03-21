@@ -1,0 +1,16 @@
+<!-- app/shared/header/header.htm -->
+
+
+<div class="w3-bar w3-large w3-black f-app-header" ng-controller="headerCtrl">
+
+    <button class="w3-bar-item w3-button" ng-click="openSidebar()" ng-show="userLoggedIn()">&#9776;</button>
+    <div class="w3-bar-item">Fusion</div>
+    <div class="w3-bar-item w3-button" ui-sref="login" ng-show="showLoginHeaderButton()">Login</div>
+    <div class="w3-bar-item w3-text-blue" ng-bind="appData.CurrentPageTitle"></div>
+    <div class="w3-bar-item w3-text-blue" ng-bind="appData.SubTitle"></div>
+    <div class="w3-bar-item w3-button w3-right" ng-click="showBatteryDetails(ev)"><i class="fa" ng-class="getBatteryLevelClass()" aria-hidden="true"></i></div>
+    <div class="w3-bar-item w3-button w3-right" ng-click="showProgramDetails(ev)"><i class="fa fa-play" ng-class="getProgramRunningClass()" aria-hidden="true"></i></div>
+    <div class="w3-bar-item w3-button w3-right" ng-click="showInternetDetails(ev)"><i class="fa" ng-class="getInternetAccessClass()" aria-hidden="true"></i></div>
+    <div class="w3-bar-item w3-button w3-right" ng-click="showWifiDetails(ev)"><i class="fa" ng-class="getWifiConnectedClass()" aria-hidden="true"></i></div>
+
+</div>

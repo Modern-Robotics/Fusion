@@ -1,0 +1,41 @@
+<!-- Login.htm -->
+
+<div id="loginContainer" class="login-container w3-margin-top ">
+    
+    <div class="login-area">
+    
+        <img src="/assets/img/login/MRI_logo_color.png" class="login-logo">
+
+        <form name="Loginform" role="form" ng-submit="login()">
+
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <input name="UserName" type="text" placeholder="Username" class="form-control" ng-model="UserName" required autofocus/>
+            </div>
+
+            <br>
+
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                <input name="Password" type="password" placeholder="Password" class="form-control" ng-model="Password" required/>
+                <span class="input-group-addon" ng-click="showPasswordToggle()"><i ng-class="stylePasswordToggle()" aria-hidden="true" title="Show/Hide Password"></i></span>
+            </div>
+
+            <div class="form-actions" style="margin-top:30px;">
+                <div class="btn-group btn-group-justified">
+                    <div class="btn-group">
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </div>                    
+                    <a ui-sref="register" class="btn btn-default">Register</a>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+    
+    <button class="btn btn-link pull-left" ng-click="guestLogin()"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Guest Login</button>
+    
+    <a ui-sref="recover" class="btn btn-link pull-right">Forgot your password?</a>
+    
+</div>

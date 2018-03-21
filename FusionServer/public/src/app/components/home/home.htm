@@ -1,0 +1,138 @@
+<!-- app/components/home/home.htm -->
+
+<div class="f-content-container">
+
+    <div class="f-home-header">
+        <img src="/assets/img/logos/Fusion%20Logo.jpg" class="f-home-header-img">
+        <p class="w3-right">By Modern Robotics Inc.</p>
+    </div>
+
+    <div class="f-home-body w3-light-gray">
+
+        <div class="f-home-flex">
+
+            <div class="f-home-body-content"  ng-class="HomePageShortCutDisabled('build')">
+                <md-card md-theme="{{ showDarkTheme ? 'dark-blue' : 'default' }}" md-theme-watch>
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-headline">Build</span>
+                            <span class="md-subhead">Instructions for buliding the robot.</span>
+                        </md-card-title-text>
+                        <md-card-title-media>
+                            <div class="md-media-sm">
+                                <img src="/assets/img/home/nuts and screws.png">
+                            </div>
+                        </md-card-title-media>
+                    </md-card-title>
+                    <md-card-actions layout="row" layout-align="end center">
+                        <md-button class="md-primary md-raised" ng-click="LinkClicked('assets/docs/fusion/ext_docs/Fusion Building Instructions.pdf', '_blank')">Read</md-button>
+                    </md-card-actions>
+                </md-card>
+            </div>
+
+            <div class="f-home-body-content"  ng-class="HomePageShortCutDisabled('blockly')">
+                <md-card md-theme="{{ showDarkTheme ? 'dark-blue' : 'default' }}" md-theme-watch>
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-headline">Blockly</span>
+                            <span class="md-subhead">Block based programming language.</span>
+                        </md-card-title-text>
+                        <md-card-title-media>
+                            <div class="md-media-sm">
+                                <img src="/assets/img/home/ProgramBlocklyDrive.PNG">
+                            </div>
+                        </md-card-title-media>
+                    </md-card-title>
+                    <md-card-actions layout="row" layout-align="end center">
+                        <md-button class="md-accent md-raised"  ng-click="Launch('blockly')">Launch</md-button>
+                        <md-button class="md-primary md-raised"  ng-click="LinkClicked('assets/docs/fusion/Blockly_Topic/', '_blank')">Read</md-button>
+                    </md-card-actions>
+                </md-card>
+            </div>
+
+            <div class="f-home-body-content"  ng-class="HomePageShortCutDisabled('editor')">
+                <md-card md-theme="{{ showDarkTheme ? 'dark-blue' : 'default' }}" md-theme-watch>
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-headline">Editor</span>
+                            <span class="md-subhead">Simple python environment.</span>
+                        </md-card-title-text>
+                        <md-card-title-media>
+                            <div class="md-media-sm">
+                                <img src="/assets/img/home/ProgramPythonDrive.PNG">
+                            </div>
+                        </md-card-title-media>
+                    </md-card-title>
+                    <md-card-actions layout="row" layout-align="end center">
+                        <md-button class="md-accent md-raised" ng-click="Launch('editor')">Launch</md-button>
+                        <md-button class="md-primary md-raised" ng-click="LinkClicked('assets/docs/fusion/Editor_Topic/', '_blank')">Read</md-button>
+                    </md-card-actions>
+                </md-card>
+            </div>
+
+        </div>
+
+        <div class="f-home-flex">
+
+            <div class="f-home-body-content"  ng-class="HomePageShortCutDisabled('docs')">
+                <md-card md-theme="{{ showDarkTheme ? 'dark-blue' : 'default' }}" md-theme-watch>
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-headline">Docs</span>
+                            <span class="md-subhead">Full Fusion documentation.</span>
+                        </md-card-title-text>
+                        <md-card-title-media>
+                            <div class="md-media-sm">
+                                <img src="/assets/img/home/magnifier-311216_960_720.png">
+                            </div>
+                        </md-card-title-media>
+                    </md-card-title>
+                    <md-card-actions layout="row" layout-align="end center">
+                        <md-button class="md-primary md-raised" ng-click="LinkClicked('assets/docs/fusion/', '_blank')">Read</md-button>
+                    </md-card-actions>
+                </md-card>
+            </div>
+
+            <div class="f-home-body-content" ng-class="HomePageShortCutDisabled('server')">
+                <md-card md-theme="{{ showDarkTheme ? 'dark-blue' : 'default' }}" md-theme-watch>
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-headline">Server</span>
+                            <span class="md-subhead">Connect your Fusion to a server.</span>
+                        </md-card-title-text>
+                        <md-card-title-media>
+                            <div class="md-media-sm">
+                                <img src="/assets/img/home/centralized_doted.png">
+                            </div>
+                        </md-card-title-media>
+                    </md-card-title>
+                    <md-card-actions layout="row" layout-align="end center">
+                        <md-button class="md-accent md-raised" ng-click="LinkClicked('/Settings', '_self')">Launch</md-button>
+                    </md-card-actions>
+                </md-card>
+            </div>
+
+            <div class="f-home-body-content"  ng-class="HomePageShortCutDisabled('settings')">
+                <md-card md-theme="{{ showDarkTheme ? 'dark-blue' : 'default' }}" md-theme-watch>
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-headline">Settings</span>
+                            <span class="md-subhead">Change your Fusion's settings.</span>
+                        </md-card-title-text>
+                        <md-card-title-media>
+                            <div class="md-media-sm">
+                                <img src="/assets/img/home/setting-sliders.png">
+                            </div>
+                        </md-card-title-media>
+                    </md-card-title>
+                    <md-card-actions layout="row" layout-align="end center">
+                        <md-button class="md-accent md-raised" ng-click="Launch('settings')">Launch</md-button>
+                    </md-card-actions>
+                </md-card>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

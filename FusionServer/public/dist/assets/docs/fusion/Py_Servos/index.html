@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="http://modernroboticsinc.com/Py_Servos/">
+		<link rel="shortcut icon" href="../img/favicon.png">
+        <!-- <link rel="shortcut icon" href="../img/favicon.ico"> -->
+
+	<title>Servos - Fusion Documentation</title>
+
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/highlight.css">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="..">Fusion Documentation</a>
+        </div>
+		
+			<!-- <a class="navbar-brand" href=".."><img src="./img/MRI_Fusion1.png" /></a> -->
+        <!-- </div> -->
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        Search Fusion Docs
+                    </a>
+                </li>
+                <!--  -->
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            
+                <!-- <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#fusion-servos">Fusion Servos</a></li>
+        
+            <li><a href="#servoenableservo-state-extended">servoEnable(servo, state, extended)</a></li>
+        
+            <li><a href="#servotargetservo-target">servoTarget(servo, target)</a></li>
+        
+            <li><a href="#if-any-problems-arise">If any problems arise</a></li>
+        
+    
+    </ul>
+</div></div> -->
+                <div class="col-md-9" role="main">
+
+<h1 id="fusion-servos"><strong>Fusion Servos</strong></h1>
+<hr />
+<blockquote>
+<p>Using the <a href="../Py_Driver/">Fusion Driver Class</a>, this section outlines the Fusion servos and their functions. </p>
+<p><a href="../Int_Servos/">Servo Visual Programming Blocks</a></p>
+<p><strong>List of available functions:</strong>  </p>
+<ul>
+<li><a href="./#servoenableservo-state-extended"><strong>servoEnable(<em>servo</em>, <em>state</em>, <em>extended</em>)</strong></a></li>
+<li><a href="./#servotargetservo-target"><strong>servoTarget(<em>servo</em>, <em>target</em>)</strong></a></li>
+</ul>
+<h2 id="servoenableservo-state-extended"><strong>servoEnable(<em>servo</em>, <em>state</em>, <em>extended</em>)</strong></h2>
+<blockquote>
+<h3 id="definition">Definition</h3>
+<blockquote>
+<p>Enable or disable the Pulse Width Modulation (PWM) of the selected port. </p>
+</blockquote>
+<h3 id="parameters">Parameters</h3>
+<blockquote>
+<p><strong><em>servo</em></strong> : S0 - S3<br />
+<strong><em>state</em></strong> : int (0 or 1)<br />
+<strong><em>extended</em></strong> : bool (True / Flase)  </p>
+<ul>
+<li>Extends the servo range by modifying the limits of the PWM signal.  </li>
+<li><strong>False</strong> = 750µs - 2250µs (<strong>Default</strong>)  </li>
+<li><strong>True</strong> = 500µs - 2500µs</li>
+<li>Be careful as Modern Robotics is not responsible for damaged servos due to exceeding mechanical limits.</li>
+</ul>
+</blockquote>
+<h3 id="returns">Returns</h3>
+<blockquote>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="example">Example</h3>
+<blockquote>
+<pre><code>import Fusion
+f = Fusion.driver()
+f.servoEnable(f.S0, 1)
+f.servoEnable(f.S1, 1, True)
+f.servoEnable(f.S2+f.S3, 1)
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="servotargetservo-target"><strong>servoTarget(<em>servo</em>, <em>target</em>)</strong></h2>
+<blockquote>
+<h3 id="definition_1">Definition</h3>
+<blockquote>
+<p>Sets the target position of the servo on the selected port.</p>
+</blockquote>
+<h3 id="parameters_1">Parameters</h3>
+<blockquote>
+<p><strong><em>servo</em></strong> : S0 - S3<br />
+<strong><em>target</em></strong> : int (0 - 255) (<strong>Default</strong> 128 when enabled) </p>
+</blockquote>
+<h3 id="returns_1">Returns</h3>
+<blockquote>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="example_1">Example</h3>
+<blockquote>
+<pre><code>import Fusion
+f = Fusion.driver()
+f.servoTarget(f.S0, 10)
+f.servoTarget(f.S1, 245)
+f.servoTarget(f.S2+f.S3, 128)
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="if-any-problems-arise">If any problems arise</h2>
+<blockquote>
+<p>Contact Modern Robotics, Inc. at <a href="mailto:support@modernroboticsinc.com">support@modernroboticsinc.com</a> with a detailed description of the steps you have taken and observations you have made.</p>
+<p><strong>Email Subject</strong>: Fusion Python Servos</p>
+</blockquote>
+</blockquote></div>
+            
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+			<p>Copyright © 2017 Modern Robotics, Inc.<p> 
+        </footer>
+
+        <script src="../js/jquery-1.10.2.min.js"></script>
+        <script src="../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../js/highlight.pack.js"></script>
+        <script>var base_url = '..';</script>
+        <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
+        <script src="../js/base.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Search Fusion Docs</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            Enter in a keyword to start your search
+                        </p>
+                        <form role="form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search Fusion..." id="mkdocs-search-query">
+                            </div>
+                        </form>
+                        <div id="mkdocs-search-results"></div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

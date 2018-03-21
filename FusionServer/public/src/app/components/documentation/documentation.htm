@@ -1,0 +1,72 @@
+<!-- app/components/documentation/documentation.htm -->
+
+<div class="f-content-container">
+
+    <md-tabs md-border-bottom md-stretch-tabs="always" class="f-documentation-tabs">
+
+        <md-tab label="Blockly" class="f-documentation-tab">
+            <md-grid-list md-cols="5" md-gutter="15px" md-row-height="2:2">
+                <md-grid-tile class="w3-light-blue w3-card-4 f-documentation-content-container" ng-repeat="module in blocklyModules" ng-click="openDocumentation(module.Link)">
+                    <md-grid-tile-header>
+                        <h3>{{module.Name}}</h3>
+                    </md-grid-tile-header>
+                    <div class="f-documentation-content">
+                        <img src="{{module.Image}}">
+                    </div>
+                    <md-grid-tile-footer>
+                        <h3>{{module.Description}}</h3>
+                    </md-grid-tile-footer>
+                </md-grid-tile>
+            </md-grid-list>
+        </md-tab>
+
+        <md-tab label="Editor">
+            <md-grid-list md-cols="5" md-gutter="15px" md-row-height="2:2">
+                <md-grid-tile class="w3-light-blue w3-card-4 f-documentation-content-container" ng-repeat="module in editorModules" ng-click="openDocumentation(module.Link)">
+                    <md-grid-tile-header>
+                        <h3>{{module.Name}}</h3>
+                    </md-grid-tile-header>
+                    <div class="f-documentation-content">
+                        <img src="{{module.Image}}">
+                    </div>
+                    <md-grid-tile-footer>
+                        <h3>{{module.Description}}</h3>
+                    </md-grid-tile-footer>
+                </md-grid-tile>
+            </md-grid-list>
+        </md-tab>
+
+        <md-tab label="Python">
+            <md-grid-list md-cols="5" md-gutter="15px" md-row-height="2:2">
+                <md-grid-tile class="w3-light-blue w3-card-4 f-documentation-content-container" ng-repeat="module in pythonModules" ng-click="openDocumentation(module.Link)">
+                    <md-grid-tile-header>
+                        <h3>{{module.Name}}</h3>
+                    </md-grid-tile-header>
+                    <div class="f-documentation-content">
+                        <img src="{{module.Image}}">
+                    </div>
+                    <md-grid-tile-footer>
+                        <h3>{{module.Description}}</h3>
+                    </md-grid-tile-footer>
+                </md-grid-tile>
+            </md-grid-list>
+        </md-tab>
+
+        <md-tab label="Settings">
+            <md-grid-list md-cols="5" md-gutter="15px" md-row-height="2:2">
+                <md-grid-tile class="w3-light-blue w3-card-4 f-documentation-content-container" ng-repeat="module in settingsModules" ng-click="openDocumentation(module.Link)">
+                    <md-grid-tile-header>
+                        <h3>{{module.Name}}</h3>
+                    </md-grid-tile-header>
+                    <div class="f-documentation-content">
+                        <img src="{{module.Image}}">
+                    </div>
+                    <md-grid-tile-footer>
+                        <h3>{{module.Description}}</h3>
+                    </md-grid-tile-footer>
+                </md-grid-tile>
+            </md-grid-list>
+        </md-tab>
+    </md-tabs>
+
+</div>

@@ -1,0 +1,34 @@
+<!-- app/components/user/recover/recover.htm -->
+
+<div id="recoveryContainer" class="login-container w3-margin-top">
+
+    <div class="login-area">
+
+        <img src="/assets/img/login/MRI_logo_color.png" class="login-logo">
+
+        <form>
+            <label>Please enter your username</label>
+            <div class="input-group w3-margin-top">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <input name="UserName" type="text" placeholder="Username" class="form-control" ng-model="SecurityUsername" required autofocus/>
+            </div>
+
+            <br>
+
+            <div class="btn-group btn-group-justified w3-margin-top">
+
+                <div class="btn-group">
+                    <button class="btn btn-primary" ng-click="getUserSecurityQuestion(ev)">Search</button>
+                </div>
+
+                <div class="btn-group">
+                    <button ui-sref="login" class="btn btn-default">Cancel</button>
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>

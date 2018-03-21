@@ -1,0 +1,81 @@
+<!-- app/shared/sidebar/sidebar.htm -->
+
+<div ng-controller="sidebarCtrl" class="w3-top">
+
+    <div id="fusionSidebar" class="w3-sidebar w3-bar-block w3-animate-left" style="display:none;">
+
+        <img src="/assets/img/logos/Fusion%20Logo.jpg" class="f-sidebar-logo">
+
+        <div class="w3-light-gray">
+
+            <button ui-sref="account" class="w3-button" style="width:75%;text-align:left;" ng-bind="displayUserName()" ng-disabled="!userLoggedIn()" ng-click="closeSidebar()">Username</button>
+
+            <span><button class="w3-button w3-right" style="width: 25%;" ng-click="showFusionPowerOptions(ev)"><i class="fa fa-power-off" aria-hidden="true"></i></button></span>
+
+        </div>
+
+        <button ui-sref="home" class="w3-bar-item w3-button" ng-click="closeSidebar()">Home
+            <i class="fa fa-home w3-right" aria-hidden="true"></i>
+        </button>
+
+        <button ui-sref="blockly" class="w3-bar-item w3-button" ng-click="closeSidebar()">Blockly
+            <i class="fa fa-th-large w3-right" aria-hidden="true"></i>
+        </button>
+
+        <button class="w3-bar-item w3-button" ng-click="takeToDocs()">Documentation
+            <i class="fa fa-book w3-right" aria-hidden="true"></i>
+        </button>
+
+        <button ui-sref="editor" class="w3-bar-item w3-button" ng-click="closeSidebar()">Editor
+            <i class="fa fa-code w3-right" aria-hidden="true"></i>
+        </button>
+
+        <button ui-sref="vnc" class="w3-bar-item w3-button" ng-click="closeSidebar()">VNC
+            <i class="fa fa-desktop w3-right" aria-hidden="true"></i>
+        </button>
+
+        <button ui-sref="settings" class="w3-bar-item w3-button" ng-click="closeSidebar()">Settings
+            <i class="fa fa-cogs w3-right" aria-hidden="true"></i>
+        </button>
+        
+        <button class="w3-bar-item w3-button" ng-click="takeToAbout()">About
+            <i class="fa fa-info-circle w3-right" aria-hidden="true"></i>
+        </button>
+
+        <button class="w3-bar-item w3-button w3-bottom" ng-bind="socketData.VersionNumber" style="width:200px;" ng-click="showReleaseNotes(ev)">Release Notes</button>
+
+    </div>
+
+    <div id="fusionOverlay" class="w3-overlay w3-animate-opacity" ng-click="closeSidebar()" style="cursor:pointer;"></div>
+
+
+    <div style="visibility: hidden">
+        <div class="md-dialog-container" id="releaseNotesDialog">
+            <md-dialog>
+                <pre ng-bind="releaseNotes"></pre>
+            </md-dialog>
+        </div>
+    </div>
+
+
+    <div style="visibility: hidden">
+        <div class="md-dialog-container" id="powerOffOptionsDialog">
+            <md-dialog>
+                <md-dialog-content class="w3-padding">
+
+                    <h4 class="md-title">Options</h4>
+
+                    <div class="w3-bar-block">
+
+                        <button class="w3-bar-item w3-button w3-large" ng-click="logout()">Logout<i class="fa fa-sign-out w3-right" aria-hidden="true"></i></button>
+                        <button class="w3-bar-item w3-button w3-large" ng-click="powerOff()">Power Off<i class="fa fa-power-off w3-right" aria-hidden="true"></i></button>
+                        <button class="w3-bar-item w3-button w3-large" ng-click="restart()">Restart<i class="fa fa-refresh w3-right" aria-hidden="true"></i></button>
+
+                    </div>
+
+                </md-dialog-content>
+            </md-dialog>
+        </div>
+    </div>
+
+</div>

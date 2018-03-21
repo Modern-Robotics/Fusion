@@ -1,0 +1,47 @@
+<!-- public/index.html -->
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <base href="/dist">
+    
+    <title>Fusion Interface</title>
+
+    <meta name="author" content="Hector Hernandez">
+    <meta name="description" content="Fusion Controller Interface brought to you by Modern Robotics Inc.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/libs/bootstrap/dist/css/bootstrap.min.css?v=5057f321f0dc85cd8da94a0c5f67a8f4">
+    <link rel="stylesheet" href="assets/libs/font-awesome/css/font-awesome.min.css?v=a0e784c4ca94c271b0338dfb02055be6">
+    <link rel="stylesheet" href="style.css?v=9eafc0281510e78230310e57a7131502">
+    <!-- CSS -->
+    
+    <!-- JS -->
+    <script src="ref.js?v=6cfb29b02e5656a35e1803ba4f788e72"></script>
+    <script src="assets/libs/ace-builds/src-min-noconflict/ace.js?v=5e3604597fd9e324229bf8a8e87113cb"></script>
+    <script src="assets/libs/ace-builds/src-min-noconflict/ext-language_tools.js?v=e85baa47a73af10c74b86df5da110798"></script>
+    <script src="assets/libs/ace-builds/src-min-noconflict/ext-settings_menu.js?v=1ca338fc2e22191df83da45b901c1962"></script>    
+    <!-- JS -->    
+    
+    <!-- Angular custom -->
+    <script src="ang.js?v=45064a66cb2fc4316b55de9c71067844"></script>
+    <!-- Angular custom -->
+
+</head>
+
+<body ng-app="fusionApp" class="f-app" ng-controller="socketCtrl">
+
+    <!-- Injects Header view -->
+    <div ng-include="'app/shared/header/header.htm'"></div>
+
+    <!-- Injects Sidebar view -->
+    <div ng-include="'app/shared/sidebar/sidebar.htm'"></div>
+
+    <!-- Page Content -->    
+    <div ui-view class="f-app-body"></div>
+
+</body>
+
+</html>

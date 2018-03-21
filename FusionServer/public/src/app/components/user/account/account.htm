@@ -1,0 +1,132 @@
+<!-- Account.htm -->
+
+<div style="max-width:800px;margin-left:auto;margin-right:auto" class="w3-margin-top">
+
+    <form name="form" role="form" ng-submit="updateAccount()" class="w3-container w3-white w3-padding w3-card-4">
+
+        <div class="row">
+
+            <div class="col-sm-6">
+
+                <div class="panel panel-info w3-card-4">
+                    <div class="panel-heading">User Fields</div>
+                    <div class="panel-body">
+
+                        <div clas="form-group">
+                            <label>Username</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" ng-model="user.username" ng-disabled="disableField()"/>
+                            </div>
+                            <br>
+                        </div>
+
+                        <div clas="form-group">
+                            <label>Email</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
+                                <input type="email" class="form-control" ng-model="user.email" />
+                            </div>
+                            <br>
+                        </div>
+
+                        <div clas="form-group">
+                            <label>First Name</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-address-card-o" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" ng-model="user.firstname" />
+                            </div>
+                            <br>
+                        </div>
+
+                        <div clas="form-group">
+                            <label>Last Name</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-address-card-o" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" ng-model="user.lastname" />
+                            </div>
+                            <br>
+                        </div>
+
+                        <div clas="form-group">
+                            <label>Language</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-language" aria-hidden="true"></i></span>
+                                <select name="langages" class="form-control" ng-model="user.language" ng-options="x for x in languages"></select>
+                            </div>
+                            <br>
+                        </div>
+
+                        <div clas="form-group">
+                            <label>User Group</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-users" aria-hidden="true"></i></span>
+                                <select name="usergroup" class="form-control" ng-model="user.usergroup" ng-options="x for x in userGroups" ng-disabled="disableField()"></select>
+                            </div>
+                            <br>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-sm-6">
+
+                <div class="panel panel-default w3-card-4">
+                    <div class="panel-heading">Security Fields</div>
+                    <div class="panel-body">
+
+                        <div clas="form-group">
+                            <label>New Password</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-key" aria-hidden="true"></i></span>
+                                <input type="password" class="form-control" ng-model="NewPassword1"/>
+                            </div>
+                            <br>
+                        </div>
+
+                        <div clas="form-group">
+                            <label>Confirm New Password</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-key" aria-hidden="true"></i></span>
+                                <input type="password" class="form-control" ng-model="NewPassword2"/>
+                            </div>
+                            <br>
+                        </div>
+
+                        <div clas="form-group">
+                            <label>New Security Question</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-question" aria-hidden="true"></i></span>
+                                <select name="cars" class="form-control" ng-model="NewSecurityQuestion" ng-options="x for x in securityQuestions"></select>
+                            </div>
+                            <br>
+                        </div>
+
+                        <div clas="form-group">
+                            <label>New Security Answer</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-lock" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" ng-model="NewSecurityAnswer"/>
+                            </div>
+                            <br>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="btn-group btn-group-justified w3-card-4">
+            <a class="btn btn-default" ng-click="returnToPrevious()">Cancel</a>
+            <div class="btn-group">
+                <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+        </div>
+
+    </form>
+
+</div>
