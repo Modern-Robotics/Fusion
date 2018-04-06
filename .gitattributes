@@ -1,0 +1,6 @@
+* binary
+*.js diff
+*.htm diff
+*.html diff
+*.css diff
+*.txt diff

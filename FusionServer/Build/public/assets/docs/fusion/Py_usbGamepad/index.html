@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Zac Zegarelli">
+        <link rel="canonical" href="http://modernroboticsinc.com/Py_usbGamepad/">
+		<link rel="shortcut icon" href="../img/favicon.png">
+        <!-- <link rel="shortcut icon" href="../img/favicon.ico"> -->
+
+	<title>USB Gamepad - Fusion Documentation</title>
+
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/highlight.css">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+
+            <!-- Main title -->
+            <!--<a class="navbar-brand" href="..">Fusion Documentation</a>-->
+            <a class="navbar-brand" href=".."><img src="../img/Fusion.png" height="30"></a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <img src="../img/SearchFusion.png" height="16">
+                    </a>
+                </li>
+                <!--  -->
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            
+                <!-- <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#usb-gamepad">USB Gamepad</a></li>
+        
+            <li><a href="#fusionusbgamepadpad_num">Fusion.usbGamepad(pad_num)</a></li>
+        
+            <li><a href="#readaxisaxis-inv">readAxis(axis, inv)</a></li>
+        
+            <li><a href="#readaxisfloataxis-inv">readAxisFloat(axis, inv)</a></li>
+        
+            <li><a href="#mixerx_axis-y_axis-x_inv-y_inv">mixer(x_axis, y_axis, x_inv, y_inv)</a></li>
+        
+            <li><a href="#readbuttonbutton">readButton(button)</a></li>
+        
+            <li><a href="#readhathat">readHat(hat)</a></li>
+        
+            <li><a href="#if-any-problems-arise">If any problems arise</a></li>
+        
+            <li><a href="#usb-gamepads">USB Gamepads</a></li>
+        
+            <li><a href="#logitech-f310-gamepad">Logitech F310 Gamepad</a></li>
+        
+            <li><a href="#xbox-360-game-controller">Xbox 360 Game Controller</a></li>
+        
+    
+    </ul>
+</div></div> -->
+                <div class="col-md-9" role="main">
+
+<h1 id="usb-gamepad"><strong>USB Gamepad</strong></h1>
+<hr />
+<p>This library allows you to connect a wired or wireless USB gamepad to the Fusion for control.</p>
+<blockquote>
+<p><a href="../Blk_usbGamepad/">USB Gamepad Visual Programming Blocks</a></p>
+<p><a href="./#usb-gamepads"><strong>USB Gamepad Button Mapping</strong></a></p>
+</blockquote>
+<p><strong>List of available functions:</strong>  </p>
+<ul>
+<li><a href="./#fusionusbgamepadpad_num"><strong>Fusion.usbGamepad(<em>pad_num</em>)</strong></a></li>
+<li><a href="./#readaxisaxis-inv"><strong>readAxis(<em>axis</em>, <em>inv</em>)</strong></a></li>
+<li><a href="./#readaxisfloataxis-inv"><strong>readAxisFloat(<em>axis</em>, <em>inv</em>)</strong></a></li>
+<li><a href="./#mixerx_axis-y_axis-x_inv-y_inv"><strong>mixer(<em>x_axis</em>, <em>y_axis</em>, <em>x_inv</em>, <em>y_inv</em>)</strong></a></li>
+<li><a href="./#readbuttonbutton"><strong>readButton(<em>button</em>)</strong></a></li>
+<li><a href="./#readhathat"><strong>readHat(<em>hat</em>)</strong></a></li>
+</ul>
+<h2 id="fusionusbgamepadpad_num"><strong>Fusion.usbGamepad(<em>pad_num</em>)</strong></h2>
+<blockquote>
+<h3 id="definition">Definition</h3>
+<blockquote>
+<p>This class contains the necessary drivers for the USB Gamepad and must be called at the beginning of the program before using any other class functions. The first USB Gamepad connected to the Fusion has a <em>pad_num</em> equal to 0. Every additional USB Gamepad connected after increases the <em>pad_num</em> by 1.</p>
+</blockquote>
+<h3 id="parameters">Parameters</h3>
+<blockquote>
+<p><strong><em>pad_num</em></strong> : Which USB Gamepad to connect to (Default 0)</p>
+</blockquote>
+<h3 id="returns">Returns</h3>
+<blockquote>
+<p><strong>USB Gamepad Object</strong></p>
+</blockquote>
+<h3 id="example">Example</h3>
+<blockquote>
+<pre><code>import Fusion
+# First Controller Connected (Default)
+usbg0 = Fusion.usbGamepad()
+# Second Controller Connected
+usbg1 = Fusion.usbGamepad(1)
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="readaxisaxis-inv"><strong>readAxis(<em>axis</em>, <em>inv</em>)</strong></h2>
+<blockquote>
+<h3 id="definition_1">Definition</h3>
+<blockquote>
+<p>Read the selected axis from the USB Gamepad as an integer. The available number of axes is dependent on the USB Gamepad. Refer to the diagrams for availability. </p>
+</blockquote>
+<p><img alt="" src="../img/usbGamepad/joystick.png" /></p>
+<h3 id="parameters_1">Parameters</h3>
+<blockquote>
+<p><strong><em>axis</em></strong> : The number for which axis you want to read from.<br />
+<strong><em>inv</em></strong> : Flip the positive/negative values of the axis.</p>
+</blockquote>
+<h3 id="returns_1">Returns</h3>
+<blockquote>
+<p><strong><em>value</em></strong> : int (-100 - 100)</p>
+</blockquote>
+<h3 id="example_1">Example</h3>
+<blockquote>
+<pre><code>import Fusion
+usbg = Fusion.usbGamepad()
+print usbg.readAxis(0)
+print usbg.readAxis(3)
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="readaxisfloataxis-inv"><strong>readAxisFloat(<em>axis</em>, <em>inv</em>)</strong></h2>
+<blockquote>
+<h3 id="definition_2">Definition</h3>
+<blockquote>
+<p>Read the selected axis from the USB Gamepad as a floating point number. The available number of axes is dependent on the USB Gamepad. Refer to the diagrams for availability. </p>
+</blockquote>
+<h3 id="parameters_2">Parameters</h3>
+<blockquote>
+<p><strong><em>axis</em></strong> : The number for which axis you want to read from.<br />
+<strong><em>inv</em></strong> : Flip the positive/negative values of the axis.</p>
+</blockquote>
+<h3 id="returns_2">Returns</h3>
+<blockquote>
+<p><strong><em>value</em></strong> : int (-1.00 - 1.00)</p>
+</blockquote>
+<h3 id="example_2">Example</h3>
+<blockquote>
+<pre><code>import Fusion
+usbg = Fusion.usbGamepad()
+print usbg.readAxisFloat(0)
+print usbg.readAxisFloat(3)
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="mixerx_axis-y_axis-x_inv-y_inv"><strong>mixer(<em>x_axis</em>, <em>y_axis</em>, <em>x_inv</em>, <em>y_inv</em>)</strong></h2>
+<blockquote>
+<h3 id="definition_3">Definition</h3>
+<blockquote>
+<p>Combines 2 joystick values to create a proportional tank drive. The <em>X-Axis</em> is the joystick value for turning left or right. The <em>Y-Axis</em> is the joystick value for driving forward and backward. The <em>X-Invert</em> and <em>Y-Invert</em> can flip the value of a joystick between positive and negative. Therefore if the robot drives or turns in the opposite direction of the joystick, invert the appropriate axis.<br />
+Axis Mixer returns (M0, M1) where M0 and M1 range from -100 to 100.</p>
+</blockquote>
+<h3 id="parameters_3">Parameters</h3>
+<blockquote>
+<p><strong><em>x_axis</em></strong> : The number for which axis you want to read from for the X-Axis(turn).<br />
+<strong><em>y_axis</em></strong> : The number for which axis you want to read from for the Y-Axis(drive).  <br />
+<strong><em>x_inv</em></strong> : Inverts the x_axis values. (Default <strong>False</strong>)<br />
+<strong><em>y_inv</em></strong> : Inverts the y_axis values. (Default <strong>False</strong>)  </p>
+</blockquote>
+<h3 id="returns_3">Returns</h3>
+<blockquote>
+<p><strong><em>value</em></strong> : tuple (X, Y) where X/Y = -100 to 100</p>
+</blockquote>
+<h3 id="example_3">Example</h3>
+<blockquote>
+<pre><code>import Fusion
+usbg = Fusion.usbGamepad()
+motorpower = usbg.mixer(0,1)
+print motorpower    # (-50,100)
+print motorpower[0] # -50
+print motorpower[1] # 100
+</code></pre>
+<p>or</p>
+<pre><code>import Fusion
+f = Fusion.driver()
+usbg = Fusion.usbGamepad()
+while True:
+    (left, right) = usbg.mixer(0,1,False,True)
+    f.motorSpeed(f.M0, right)
+    f.motorSpeed(f.M1, left)
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="readbuttonbutton"><strong>readButton(<em>button</em>)</strong></h2>
+<blockquote>
+<h3 id="definition_4">Definition</h3>
+<blockquote>
+<p>Read the selected button from the USB Gamepad. The available number of buttons is dependent on the USB Gamepad. Refer to the diagrams for availability. </p>
+</blockquote>
+<h3 id="parameters_4">Parameters</h3>
+<blockquote>
+<p><strong><em>button</em></strong> : The number for which button you want to read from.</p>
+</blockquote>
+<h3 id="returns_4">Returns</h3>
+<blockquote>
+<p><strong><em>value</em></strong> : int (0 or 1)</p>
+</blockquote>
+<h3 id="example_4">Example</h3>
+<blockquote>
+<pre><code>import Fusion
+usbg = Fusion.usbGamepad()
+print usbg.readButton(0)
+print usbg.readButton(3)
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="readhathat"><strong>readHat(<em>hat</em>)</strong></h2>
+<blockquote>
+<h3 id="definition_5">Definition</h3>
+<blockquote>
+<p>Read the hat of the USB Gamepad. The hat may also be called the directional pad (D-pad). The hat can return a possibility of 9 possible combinations of values.</p>
+</blockquote>
+<p><img alt="" src="../img/usbGamepad/Hat.png" /></p>
+<h3 id="parameters_5">Parameters</h3>
+<blockquote>
+<p><strong><em>hat</em></strong> : The number for which hat you want to read from. Most USB Gamepads only have 1 physical hat, therefore this parameter can be left blank which will default to 0.</p>
+</blockquote>
+<h3 id="returns_5">Returns</h3>
+<blockquote>
+<p><strong><em>value</em></strong> : tuple (X, Y) where X/Y = -1, 0, 1</p>
+</blockquote>
+<h3 id="example_5">Example</h3>
+<blockquote>
+<pre><code>import Fusion
+usbg = Fusion.usbGamepad()
+hat = usbg.mixer(0,1)
+print hat       # (-1,1)
+print hat[0]    # -1
+print hat[1]    # 1
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="if-any-problems-arise"><strong>If any problems arise</strong></h2>
+<blockquote>
+<p>Contact Modern Robotics, Inc. at <a href="mailto:support@modernroboticsinc.com">support@modernroboticsinc.com</a> with a detailed description of the steps you have taken and observations you have made.</p>
+<p><strong>Email Subject</strong>: Fusion Python USB Gamepad
+<br />
+<br />
+<br />
+<br />
+<br /></p>
+</blockquote>
+<h2 id="usb-gamepads"><strong>USB Gamepads</strong></h2>
+<hr />
+<h2 id="logitech-f310-gamepad"><strong>Logitech F310 Gamepad</strong></h2>
+<p><img alt="" src="../img/usbGamepad/gamepad_logitech.png" /></p>
+<h2 id="xbox-360-game-controller"><strong>Xbox 360 Game Controller</strong></h2>
+<p><img alt="" src="../img/usbGamepad/gamepad_xbox.png" /></p></div>
+            
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+			<table style="width:100%">
+			<td style="width:33.3%;background-color:transparent;"><p align="left"><img src="../img/MyBot_logo.png" height="50"></p></td>
+			<td style="width:33.3%;background-color:transparent;"><p align="center">Copyright © 2018 Modern Robotics, Inc.</p></td> 
+			<td style="width:33.3%;background-color:transparent;"><p align="right"><img src="../img/PoweredFusion.PNG" height="50"></p></td>
+			</table>
+        </footer>
+
+        <script src="../js/jquery-1.10.2.min.js"></script>
+        <script src="../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../js/highlight.pack.js"></script>
+        <script>var base_url = '..';</script>
+        <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
+        <script src="../js/base.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Search Fusion Docs</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            Enter in a keyword to start your search
+                        </p>
+                        <form role="form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search Fusion..." id="mkdocs-search-query">
+                            </div>
+                        </form>
+                        <div id="mkdocs-search-results"></div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

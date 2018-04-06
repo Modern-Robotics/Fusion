@@ -1,0 +1,11 @@
+filesystem/
+.vscode/
+config/.serverConfig
+package-lock.json
+.crash/
+spec/
+
+fusion.info
+diagnostics/**/*.pyc
+documentation/fusion/*
+documentation/site/*

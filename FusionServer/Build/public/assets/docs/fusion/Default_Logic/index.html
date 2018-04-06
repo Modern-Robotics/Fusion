@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Zac Zegarelli">
+        <link rel="canonical" href="http://modernroboticsinc.com/Default_Logic/">
+		<link rel="shortcut icon" href="../img/favicon.png">
+        <!-- <link rel="shortcut icon" href="../img/favicon.ico"> -->
+
+	<title>Logic - Fusion Documentation</title>
+
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/highlight.css">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+
+            <!-- Main title -->
+            <!--<a class="navbar-brand" href="..">Fusion Documentation</a>-->
+            <a class="navbar-brand" href=".."><img src="../img/Fusion.png" height="30"></a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <img src="../img/SearchFusion.png" height="16">
+                    </a>
+                </li>
+                <!--  -->
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            
+                <!-- <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#logic-conditionals-and-comparisons">Logic Conditionals and Comparisons</a></li>
+        
+            <li><a href="#if-blocks">If blocks</a></li>
+        
+            <li><a href="#if-else-blocks">If-Else blocks</a></li>
+        
+            <li><a href="#if-else-if-blocks">If-Else-If blocks</a></li>
+        
+            <li><a href="#if-else-if-else-blocks">If-Else-If-Else blocks</a></li>
+        
+            <li><a href="#block-modification">Block Modification</a></li>
+        
+            <li><a href="#boolean">Boolean</a></li>
+        
+            <li><a href="#values">Values</a></li>
+        
+            <li><a href="#comparisons">Comparisons</a></li>
+        
+            <li><a href="#logical-operations">Logical Operations</a></li>
+        
+            <li><a href="#not">Not</a></li>
+        
+            <li><a href="#if-any-problems-arise">If any problems arise</a></li>
+        
+    
+    </ul>
+</div></div> -->
+                <div class="col-md-9" role="main">
+
+<h1 id="logic-conditionals-and-comparisons"><strong>Logic Conditionals and Comparisons</strong></h1>
+<hr />
+<p>Conditional statements are central to computer programming.  They make it possible to express statements like:</p>
+<ul>
+<li>If there is a path to the left, turn left.</li>
+<li>If score = 100, print "Well done!".</li>
+</ul>
+<p>See <a href="https://en.wikipedia.org/wiki/Conditional_(programming)">additional information about conditional statements</a>.</p>
+<h2 id="if-blocks"><strong>If blocks</strong></h2>
+<blockquote>
+<p>The simplest conditional statement is an <strong>if</strong> block, as shown:</p>
+<p><img alt="" src="../img/blocks/if-if.png" /></p>
+<p>When run, this will compare the value of the variable <strong>x</strong> to 100.  If it is larger, "What a big number!" will be printed.  Otherwise, nothing happens.</p>
+</blockquote>
+<h2 id="if-else-blocks"><strong>If-Else blocks</strong></h2>
+<blockquote>
+<p>It is also possible to specify that something should happen if the condition is <em>not</em> true, as shown in this example:</p>
+<p><img alt="" src="../img/blocks/if-else.png" /></p>
+<p>As with the previous block, "What a big number!" will be printed if <strong>x</strong> &gt; 100; otherwise, "That's not very big." will be printed.</p>
+<p>An <strong>if</strong> block may have zero or one <strong>else</strong> sections but not more than one.</p>
+</blockquote>
+<h2 id="if-else-if-blocks"><strong>If-Else-If blocks</strong></h2>
+<blockquote>
+<p>It is also possible to test multiple conditions with a single <strong>if</strong> block by adding <strong>else if</strong> clauses:</p>
+<p><img alt="" src="../img/blocks/if-else-if.png" /></p>
+<p>The block first checks if <strong>x</strong> &gt; 100, printing "What a big number!" if it is.  If it is not, it goes on to check if <strong>x</strong> = 42.  If so, it prints "That's my lucky number."  Otherwise, nothing happens.</p>
+<p>An <strong>if</strong> block may have any number of <strong>else if</strong> sections.  Conditions are evaluated top to bottom until one is satisfied, or until no more conditions are left.
+</p>
+</blockquote>
+<h2 id="if-else-if-else-blocks"><strong>If-Else-If-Else blocks</strong></h2>
+<blockquote>
+<p>As shown here, <strong>if</strong> blocks may have both <strong>else if</strong> and <strong>else</strong> sections:</p>
+<p><img alt="" src="../img/blocks/if-else-if-else.png" /></p>
+<p>The <strong>else</strong> section guarantees that some action is performed, even if none of the prior conditions are true.</p>
+<p>An <strong>else</strong> section may occur after any number of <strong>else if</strong> sections, including zero.</p>
+</blockquote>
+<h2 id="block-modification"><strong>Block Modification</strong></h2>
+<blockquote>
+<p>Only the plain <strong>if</strong> block appears in the toolbox:</p>
+<p><img alt="" src="../img/blocks/if.png" /></p>
+<p>To add <strong>else if</strong> and <strong>else</strong> clauses, the user needs to click on the gear icon, which opens a new window:</p>
+<p><img alt="" src="../img/blocks/if-open.png" /></p>
+<p>The user can then drag <strong>else if</strong> and <strong>else</strong> clauses into the <strong>if</strong> block, as well as reordering and removing them.  When finished, the user should click on the minus sign, which closes the window, as shown here:</p>
+<p><img alt="" src="../img/blocks/if-modify.gif" /></p>
+<p>Note that the shapes of the blocks allows any number of <strong>else if</strong> subblocks to be added but only up to one <strong>else</strong> block.</p>
+</blockquote>
+<h2 id="boolean"><strong>Boolean</strong></h2>
+<blockquote>
+<p><a href="https://en.wikipedia.org/wiki/Boolean_algebra">Boolean algebra</a> is a mathematical system that has two values:</p>
+<ul>
+<li><strong>true</strong></li>
+<li><strong>false</strong></li>
+</ul>
+<p>Boolean values (also called <em>conditions</em>) are used in these control block, which contain examples:</p>
+<ul>
+<li><a href="./">conditional blocks</a></li>
+<li><a href="../Default_Loops/">repeat blocks</a></li>
+</ul>
+<p>One of the many examples from those pages is:</p>
+<p><img alt="" src="../img/blocks/if-else.png" /></p>
+<p>If the value of the variable <strong>x</strong> is greater than 100, the condition is <strong>true</strong>, and the text "What a big number!" is printed.  If the value of <strong>x</strong> is not greater than 100, the condition is <strong>false</strong>, and "That's not very big." is printed.</p>
+<p>Boolean values can also be stored in variables and passed to procedures, the same as number, text, and list values.</p>
+<p>If a block expects a Boolean value as an input, it usually interprets an absent input as <strong>false</strong>.  An example is provided below.  Non-Boolean values cannot be directly plugged in where Boolean values are expected, although it is possible (but inadvisable) to store a non-Boolean value in a variable, then plug that into the input.  Neither of these practices are recommended, and their behaviour could change in future versions of Blockly.</p>
+</blockquote>
+<h2 id="values"><strong>Values</strong></h2>
+<blockquote>
+<p>A single block, with a dropdown specifying either <strong>true</strong> or <strong>false</strong>, can be used to get a boolean value:</p>
+<p><img alt="" src="../img/blocks/logic-true-false.png" /></p>
+</blockquote>
+<h2 id="comparisons"><strong>Comparisons</strong></h2>
+<blockquote>
+<p>There are six comparison operators.  Each takes two inputs (normally numbers) and returns true or false depending on how the inputs compare with each other.</p>
+<p><img alt="" src="../img/blocks/logic-compare.png" /></p>
+<p>The six operators are: equals, not equals, less than, less than or equal, greater than, greater than or equal.</p>
+</blockquote>
+<h2 id="logical-operations"><strong>Logical Operations</strong></h2>
+<blockquote>
+<p>The <strong>and</strong> block will return <strong>true</strong> only if both of its two inputs are also true.</p>
+<p><img alt="" src="../img/blocks/logic-and.png" /></p>
+<p>The <strong>or</strong> block will return <strong>true</strong> if either of its two inputs are true.</p>
+<p><img alt="" src="../img/blocks/logic-or.png" /></p>
+</blockquote>
+<h2 id="not"><strong>Not</strong></h2>
+<blockquote>
+<p>The <strong>not</strong> block converts its Boolean input into its opposite.  For example, the result of:</p>
+<p><img alt="" src="../img/blocks/logic-not-true.png" /></p>
+<p>is false.</p>
+<p>As mentioned above, if no input is provided, a value of <strong>true</strong> is assumed, so the following block produces the value <strong>false</strong>:</p>
+<p><img alt="" src="../img/blocks/logic-not.png" /></p>
+<p>Leaving an input empty is not recommended, however.</p>
+</blockquote>
+<h2 id="if-any-problems-arise"><strong>If any problems arise</strong></h2>
+<blockquote>
+<p>Contact Modern Robotics, Inc. at <a href="mailto:support@modernroboticsinc.com">support@modernroboticsinc.com</a> with a detailed description of the steps you have taken and observations you have made.</p>
+<p><strong>Email Subject</strong>: Blockly Logic</p>
+</blockquote></div>
+            
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+			<table style="width:100%">
+			<td style="width:33.3%;background-color:transparent;"><p align="left"><img src="../img/MyBot_logo.png" height="50"></p></td>
+			<td style="width:33.3%;background-color:transparent;"><p align="center">Copyright © 2018 Modern Robotics, Inc.</p></td> 
+			<td style="width:33.3%;background-color:transparent;"><p align="right"><img src="../img/PoweredFusion.PNG" height="50"></p></td>
+			</table>
+        </footer>
+
+        <script src="../js/jquery-1.10.2.min.js"></script>
+        <script src="../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../js/highlight.pack.js"></script>
+        <script>var base_url = '..';</script>
+        <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
+        <script src="../js/base.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Search Fusion Docs</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            Enter in a keyword to start your search
+                        </p>
+                        <form role="form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search Fusion..." id="mkdocs-search-query">
+                            </div>
+                        </form>
+                        <div id="mkdocs-search-results"></div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>
