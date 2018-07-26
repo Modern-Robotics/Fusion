@@ -1,8 +1,6 @@
 filesystem/
 .vscode/
 config/.serverConfig
-node_modules/
-Build/
 package-lock.json
 .crash/
 spec/
