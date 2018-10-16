@@ -1,0 +1,3 @@
+16-Oct-2018 <jwa>
+Version 1.0.5 Release
+Includes Core Device Support, Data Logging, and File Manager
