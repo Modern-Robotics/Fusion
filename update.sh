@@ -1,8 +1,30 @@
 #!/bin/bash
+#===============================================================================
+# update.sh - FusionOS Update Script
+#-------------------------------------------------------------------------------
+# Revision History
+# 29-Oct-2018 <jwa> - Added kernel version check to prevent cross platform
+#	updates
+#
+#===============================================================================
 
 # -------------------------------------------------------------------
 # Default argument values
 MAIN_DIR=/usr/Fusion
+
+#--------------------------------------------------------------------
+# Check for kernel build
+sudo cat /etc/os-release | grep "jessie"
+if [[ $? != 0 ]]; then
+	echo "/n/n/nFusionOS UPDATE ERROR - Base version incompatible with update/n/n"
+	echo "We are sorry, the kernel version currently installed on this Fusion cannot"
+	echo "be updated using this service.  Please contact Modern Robotics Technical"
+	echo "Support via email to support@modernroboticsinc.com for assistance in"
+	echo "manually updating your Fusion to the latest kernel."
+	echo ""
+	echo "Thank you."
+	exit 255
+fi
 
 # -------------------------------------------------------------------
 # Update the repositories
