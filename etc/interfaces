@@ -1,0 +1,25 @@
+#==============================================================================
+# Fusion /etc/default/interfaces File
+#
+# Revision History:
+# 	19-Nov-18 <jwa> - Added 172.16.0.1 to dns-nameservers for wlan1
+#
+#==============================================================================
+
+source-directory /etc/network/interfaces.d
+
+iface eth0 inet manual
+    dns-nameservers 8.8.8.8 8.8.8.4
+iface lo inet loopback
+
+allow-hotplug wlan0  
+iface wlan0 inet static  
+    address 192.168.50.1
+    netmask 255.255.255.0
+    network 192.168.50.0
+    broadcast 192.168.50.255
+    
+allow-hotplug wlan1
+iface wlan1 inet manual
+    dns-nameservers 172.16.0.1 8.8.8.8 8.8.8.4
+    wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
