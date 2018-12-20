@@ -1,0 +1,17 @@
+* binary
+
+*.js diff merge=text
+
+*.htm diff merge=text
+
+*.html diff merge=text
+
+*.css diff merge=text
+
+*.txt diff merge=text
+
+*.json diff merge=text
+
+*.py diff merge=text
+
+*.so diff merge=text
