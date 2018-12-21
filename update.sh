@@ -127,7 +127,7 @@ fi
 #--------------------------------------------------------------------
 # Start the update/install process
 #
-if [[ ${INSTALL} eq 0 ]] ; then
+if [[ ${RUN_INSTALL} -eq 0 ]] ; then
     echo "$atBRT$fgGRN"
     echo ">>>=============================================================="
     echo ">>>   BEGINNING UPDATE TO ${FOS_VERSION}"
@@ -225,7 +225,7 @@ sudo ntpd -q -g
 
 if [[ ${RUN_INSTALL} -eq 1 ]] ; then
     # This is an install so we need to clone the upstream repo to the local directory...
-    sudo clone https://www.github.com/Modern-Robotics/Fusion.git ${MAIN_DIR}
+    sudo git clone https://www.github.com/Modern-Robotics/Fusion.git ${MAIN_DIR}
     if [[ $? != 0 ]] ; then exit 3; fi
     cd ${MAIN_DIR}
     if [[ $? != 0 ]] ; then exit 3; fi
