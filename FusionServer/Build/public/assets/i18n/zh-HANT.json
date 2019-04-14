@@ -1,0 +1,59 @@
+{
+  "LANGUAGE": "Chinese (Traditional)",
+  "SIDEBAR": {
+    "HOME": "家",
+    "BLOCKLY": "封鎖",
+    "EDITOR": "編輯",
+    "DOCUMENTATION": "文檔",
+    "FILE_MANAGER": "文件管理器",
+    "VNC": "VNC",
+    "DIAGNOSTIC_TOOL": "診斷工具",
+    "SETTINGS": "設置",
+    "ABOUT": "關於"
+  },
+  "LOGIN": {
+    "TITLE": "",
+    "USERNAME": "用戶名",
+    "PASSWORD": "密碼",
+    "SHOW_PASSWORD": "顯示密碼",
+    "REGISTER": "寄存器",
+    "LOGIN": "登錄",
+    "GUEST_LOGIN": "訪客登錄",
+    "FORGOT_PASSWORD": "忘記密碼了嗎"
+  },
+  "REGISTER": {
+    "TITLE": "新用户",
+    "REQUIRED_TITLE": "必填字段",
+    "OPTIONAL_TITLE": "可选字段",
+    "USERNAME": "用户名",
+    "PASSWORD": "密码",
+    "PASSWORD_CONFIRM": "确认密码",
+    "USER_GROUP": "用户组",
+    "SECURITY_QUESTION": "安全问题",
+    "SECURITY_ANSWER": "安全答案",
+    "EMAIL": "电子邮件",
+    "FIRST_NAME": "名字",
+    "LAST_NAME": "姓氏",
+    "LANGUAGE": "语言",
+    "CANCEL": "取消",
+    "CREATE": "创造"
+  },
+  "HOME": {
+    "READ_BUTTON": "讀",
+    "LAUNCH_BUTTON": "發射",
+    "BUILD_HEADLINE": "構建",
+    "BUILD_DESCRIPTION": "構建MyBot工具包的說明。",
+    "BLOCKLY_HEADLINE": "封鎖",
+    "BLOCKLY_DESCRIPTION": "“基於塊的編程語言。",
+    "EDITOR_HEADLINE": "編輯",
+    "EDITOR_DESCRIPTION": "簡單的python編程環境。",
+    "DOCUMENTATION_HEADLINE": "Fusion文檔",
+    "DOCUMENTATION_DESCRIPTION": "完整的Fusion文檔和參考資料。",
+    "DATA_LOGGER_HEADLINE": "數據記錄",
+    "DATA_LOGGER_DESCRIPTION": "使用傳感器收集和記錄數據。",
+    "SETTINGS_HEADLINE": "設置",
+    "SETTINGS_DESCRIPTION": "更改Fusion的設置。",
+    "SERVER_HEADLINE": "服務器",
+    "SERVER_DESCRIPTION": "將您的Fusion連接到服務器。"
+  }
+}
