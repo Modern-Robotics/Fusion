@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Zac Zegarelli">
+        <link rel="canonical" href="http://modernroboticsinc.com/Blk_Sound_Generator/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Sound Generator (45-2016) - Fusion Documentation</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../js/jquery-1.10.2.min.js"></script>
+        <script src="../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../js/highlight.pack.js"></script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="..">Fusion Documentation</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../Blk_Light_Sensor/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../Blk_IR_Seeker_V3/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#sound-generator-45-2016">Sound Generator (45-2016)</a></li>
+            <li><a href="#set-sound-blocking">Set Sound (Blocking)</a></li>
+            <li><a href="#set-sound">Set Sound</a></li>
+            <li><a href="#if-any-problems-arise">If any problems arise</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="sound-generator-45-2016"><strong>Sound Generator (45-2016)</strong></h1>
+<hr />
+<p>The Sound Generator can generate a sound based on volume, pitch and duration. This sensor also can overwrite settings during a tone to change the pitch, volume, or extend the duration of the tone.</p>
+<ul>
+<li>Connect via <strong>I2C</strong> port.</li>
+</ul>
+<blockquote>
+<p><a href="../Py_Sound_Generator/">Sound Generator Python Library Information</a></p>
+</blockquote>
+<p><strong>List of available blocks:</strong>  </p>
+<ul>
+<li><a href="./#set-sound-blocking"><strong>Set Sound (Blocking)</strong></a></li>
+<li><a href="./#set-sound"><strong>Set Sound</strong></a></li>
+</ul>
+<p><img alt="" src="../img/Sensor_Diagrams/Sound.png" /></p>
+<h2 id="set-sound-blocking"><strong>Set Sound (Blocking)</strong></h2>
+<blockquote>
+<p>Generate a tone based on <strong>Volume</strong>, <strong>Pitch</strong>, <strong>Duration</strong> of tone and <strong>Pause</strong> after the tone. Play a sound for a set duration, then wait for a specified amount of time before continuing on to the next block in the program.</p>
+<ul>
+<li><strong>Volume</strong> - How loud or quiet a sound is. (<em>Low</em>, <em>Medium</em>, <em>High</em>, <em>Max</em>)</li>
+<li><strong>Pitch</strong> - The frequency at which the tone is played ranges from <strong>1 Hz</strong> - <strong>5000 Hz</strong>.</li>
+<li><strong>Duration</strong> - The length of the tone ranges from <strong>0.1 sec</strong> - <strong>65.5 sec</strong>.</li>
+<li><strong>Pause</strong> - The length of time from the end of the current tone until the next block is executed.</li>
+</ul>
+<h3 id="block">Block:</h3>
+<p><img src="../img/Intermediate_Blocks/Sound_Generator/SetSoundBlocking.PNG" width="250"></p>
+<h3 id="code-produced">Code Produced:</h3>
+<blockquote>
+<p>Setup:</p>
+<blockquote>
+<pre><code>sound = Fusion.sound(f)
+</code></pre>
+</blockquote>
+<p>Code:</p>
+<blockquote>
+<pre><code>sound.setSoundBlocking(1, 440, 1000, 500)
+</code></pre>
+</blockquote>
+</blockquote>
+<h3 id="example">Example:</h3>
+<p><img src="../img/Intermediate_Blocks/Sound_Generator/SetSoundBlocking_Example.PNG" width="250"></p>
+<blockquote>
+<p>Code:</p>
+<blockquote>
+<pre><code>import Fusion
+f = Fusion.driver()
+sound = Fusion.sound(f)
+sound.setSoundBlocking(2, 1500, 1500, 1000)
+sound.setSoundBlocking(0, 3250, 3000, 1500)
+</code></pre>
+</blockquote>
+</blockquote>
+</blockquote>
+<h2 id="set-sound"><strong>Set Sound</strong></h2>
+<blockquote>
+<p>Generate a tone based on <strong>Volume</strong>, <strong>Pitch</strong> and <strong>Duration</strong> of tone. Play a sound for a set duration and continue on to the next block in the program.</p>
+<ul>
+<li><strong>Volume</strong> - How loud or quiet a sound is. (<em>Low</em>, <em>Medium</em>, <em>High</em>, <em>Max</em>)</li>
+<li><strong>Pitch</strong> - The frequency at which the tone is played ranges from <strong>1 Hz</strong> - <strong>5000 Hz</strong>.</li>
+<li><strong>Duration</strong> - The length of the tone ranges from <strong>0.1 sec</strong> - <strong>2.55 sec</strong>.</li>
+</ul>
+<h3 id="block_1">Block:</h3>
+<p><img src="../img/Intermediate_Blocks/Sound_Generator/SetSound.PNG" width="250"></p>
+<h3 id="code-produced_1">Code Produced:</h3>
+<blockquote>
+<p>Setup:</p>
+<blockquote>
+<pre><code>sound = Fusion.sound(f)
+</code></pre>
+</blockquote>
+<p>Code:</p>
+<blockquote>
+<pre><code>sound.setSound(3, 1500, 2550);
+</code></pre>
+</blockquote>
+</blockquote>
+<h3 id="example_1">Example:</h3>
+<p><img src="../img/Intermediate_Blocks/Sound_Generator/SetSound_Example.PNG" width="250"></p>
+<blockquote>
+<p>Imports:</p>
+<blockquote>
+<pre><code>import Fusion
+import time
+f = Fusion.driver()
+sound = Fusion.sound(f)
+sound.setSound(3, 2000, 1000)
+time.sleep(1)
+sound.setSound(0, 2500, 1750)
+</code></pre>
+</blockquote>
+</blockquote>
+</blockquote>
+<h2 id="if-any-problems-arise"><strong>If any problems arise</strong></h2>
+<blockquote>
+<p>Contact Modern Robotics, Inc. at <a href="mailto:support@modernroboticsinc.com">support@modernroboticsinc.com</a> with a detailed description of the steps you have taken and observations you have made.</p>
+<p><strong>Email Subject</strong>: Fusion Blockly Sound Generator</p>
+</blockquote></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '..';</script>
+        <script src="../js/base.js"></script>
+        <script src="../search/require.js"></script>
+        <script src="../search/search.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&larr;</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&rarr;</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </body>
+</html>
