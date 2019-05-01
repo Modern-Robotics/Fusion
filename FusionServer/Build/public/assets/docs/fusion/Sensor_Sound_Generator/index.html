@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Zac Zegarelli">
+        <link rel="canonical" href="http://modernroboticsinc.com/Sensor_Sound_Generator/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Sound Generator (45-2016) - Fusion Documentation</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../js/jquery-1.10.2.min.js"></script>
+        <script src="../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../js/highlight.pack.js"></script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="..">Fusion Documentation</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../Sensor_IR_Locator_360/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../Sensor_IR_Seeker_V3/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#sound-generator-45-2016">Sound Generator (45-2016)</a></li>
+            <li><a href="#sound-level">Sound Level</a></li>
+            <li><a href="#pitch">Pitch</a></li>
+            <li><a href="#duration">Duration</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="sound-generator-45-2016"><strong>Sound Generator (45-2016)</strong></h1>
+<hr />
+<p>The Sound Generator can generate a sound based on volume, pitch and duration. This sensor also can overwrite settings during a tone to change the pitch, volume, or extend the duration of the tone.</p>
+<blockquote>
+<p><strong>Sensor Type</strong> : Four Wire I2C<br />
+<strong>Default I2C Address</strong> : 0x34<br />
+<strong>Sensor ID Code</strong> : 0x53<br />
+<strong>Dimensions</strong> : 32mm x 32mm x 19mm<br />
+<strong>Mounting Holes</strong> : 24mm x 24mm<br />
+<strong>Power</strong> : 5V DC, 22mA Max<br />
+<strong>Signal Logic Levels</strong> : Logic 0 - 0V, Logic 1 - 5V<br />
+<strong>I2C Bus Speed</strong> : 100kHz max<br />
+<strong>I2C Address Change Option</strong> : Yes (Even Number 0x10 - 0xEE)  </p>
+<p><a href="../Blk_Sound_Generator/">Sound Generator Visual Programming Blocks</a><br />
+<a href="../Py_Sound_Generator/">Sound Generator Python Library Information</a>  </p>
+</blockquote>
+<p><img alt="" src="../img/Sensor_Diagrams/Sound.png" /></p>
+<table style="width:50%" align="center" border="2">
+    <tr><th><p align="center">Register</p></th><th><p align="center">Function</p></th></tr>
+    <tr><td><p align="center">0x00</p></td><td><p align="left">Sensor Firmware Revision</p></td></tr>
+    <tr><td><p align="center">0x01</p></td><td><p align="left">Manufacturer Code</p></td></tr>
+    <tr><td><p align="center">0x02</p></td><td><p align="left">Sensor ID Code</p></td></tr>
+    <tr><td><p align="center">0x03</p></td><td><p align="left">Not Used</p></td></tr>
+    <tr><td><p align="center">0x04</p></td><td><p align="left">Sound level</p></td></tr>
+    <tr><td><p align="center">0x05/0x06</p></td><td><p align="left">Pitch (lsb/msb)</p></td></tr>
+    <tr><td><p align="center">0x07</p></td><td><p align="left">Duration</p></td></tr>
+</table>
+
+<p>The order if the 4 control bytes, Sound Level, Pitch (lsb), Pitch (msb) and Duration are arranged such that a signal 4 byte write can be used to initiate a tone.</p>
+<h2 id="sound-level"><strong>Sound Level</strong></h2>
+<blockquote>
+<p>Controls the amplitude of the output signal from 0 to 3 where 0 is the quietest and 3 is the loudest.</p>
+</blockquote>
+<h2 id="pitch"><strong>Pitch</strong></h2>
+<blockquote>
+<p>Consisting of 2 bytes to make a word, the Pitch controls the frequency of the output in increments of 1Hz. The frequencies range from 1Hz to 65kHz, although operation over 5kHz is not recommended and may damage the device. The speaker resonates at about 2kHz, so the speaker will sound much louder at this frequency.</p>
+</blockquote>
+<h2 id="duration"><strong>Duration</strong></h2>
+<blockquote>
+<p>This controls the duration of the tone in increments of 10 msec. The duration of the tone can range from 10 msec – 2.55 sec. The duration of the tone begins a countdown and will stop when the counter reaches 0. The duration may be updated at anytime to extend the length of a tone past 2.55 sec.</p>
+</blockquote></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '..';</script>
+        <script src="../js/base.js"></script>
+        <script src="../search/require.js"></script>
+        <script src="../search/search.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&larr;</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&rarr;</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </body>
+</html>
