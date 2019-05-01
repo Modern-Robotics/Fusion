@@ -106,7 +106,7 @@ if [[ ${FRT_BRANCH} ]] ; then
     VERBOSE=1
     vecho "Updating to ${FRT_BRANCH}"
 else 
-	if [[ $# eq 1 ]] ; then
+	if [[ $# -eq 1 ]] ; then
 		FRT_BRANCH=${1}
 		VERBOSE=1
 		vecho "Updating to ${FRT_BRANCH}"
