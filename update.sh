@@ -3,13 +3,16 @@
 # update.sh - FusionOS Update Script - from Version 1.0.0 and above
 #-------------------------------------------------------------------------------
 # Revision History
-# 30-Apr-2019 <jwa>	- Assorted adjustments to improve the install/update process
-# 18-Apr-2019 <jwa> - Updated to correct the Update from/to messages and to 
+# 30-Apr-2019 <jwa> - Assorted adjustments to improve the install/update process;
+#                     Added a command line argument to allow the branch to be
+#                     passed to the script; bypass setting preservation when
+#                     running in installation mode.
+# 18-Apr-2019 <jwa> - Updated to correct the Update from/to messages and to
 #                     manipulate the right files
 # 13-Apr-2019 <jwa> - Updated to support the new customization files and the
-#					  WiFi Port detect and assign feature.
+#                     WiFi Port detect and assign feature.
 # 11-Apr-2019 <jwa> - Modifications to support automatic detection of networking
-#					  Ports and looking for Classroom Server WiFi Signal
+#                     Ports and looking for Classroom Server WiFi Signal
 # 20-Dec-2018 <jwa> - Enhanced updater to work as an installer if the target
 #                     directory is not present.
 # 13-Dec-2018 <jwa> - Added check for environment variable to request update
@@ -22,7 +25,6 @@
 # 30-Oct-2018 <jwa> - Updated progress outputs
 # 29-Oct-2018 <jwa> - Added kernel version check to prevent cross platform
 #                     updates
-#
 #
 #===============================================================================
 
@@ -49,15 +51,15 @@ atHID=$ESC[8m   ;   fgNEU=$ESC[39m   ;   bgNEU=$ESC[49m
 # Control Flag Settings
 #==============================================================================
 
-FOS_DEBUG=0                 # =1 Skips steps during updater testing process
-VERBOSE=0                   # =1 Outputs additional progress and status info
+FOS_DEBUG=1                 # =1 Skips steps during updater testing process
+VERBOSE=1                   # =1 Outputs additional progress and status info
 
 #------------------------------------------------------------------------------
 # Local variables of importance:
-MAIN_DIR="/usr/Fusion"		# Sets the location of the code 
+MAIN_DIR="/usr/Fusion"      # Sets the location of the code
 
-RUN_INSTALL=0				# 0=update, if no ${MAIN_DIR}, we set to 1
-							# 1=install
+RUN_INSTALL=0               # 0=update, if no ${MAIN_DIR}, we set to 1
+                            # 1=install
 
 
 #==============================================================================
@@ -97,20 +99,20 @@ echo "${atNEU}${fgNEU}"
 
 #-------------------------------------------------------------------------------
 # Check for the RunTime environment variable FRT_BRANCH or a command line
-# argument. If either is present and non-null, use it to drive the update 
-# (NOTE: FRT_BRANCH must be set and exported from the command prompt to be 
+# argument. If either is present and non-null, use it to drive the update
+# (NOTE: FRT_BRANCH must be set and exported from the command prompt to be
 # available to this script.)
 #
 echo "Checking for the FRT_BRANCH variable: ${FRT_BRANCH}"
 if [[ ${FRT_BRANCH} ]] ; then
     VERBOSE=1
     vecho "Updating to ${FRT_BRANCH}"
-else 
-	if [[ $# -eq 1 ]] ; then
-		FRT_BRANCH=${1}
-		VERBOSE=1
-		vecho "Updating to ${FRT_BRANCH}"
-	fi
+else
+    if [[ $# -eq 1 ]] ; then
+        FRT_BRANCH=${1}
+        VERBOSE=1
+        vecho "Argument passed, Updating to ${FRT_BRANCH}"
+    fi
 fi
 
 vecho " "
@@ -122,19 +124,19 @@ vecho "<<<Verbose is Active>>>"
 # get the old version information.
 #
 if [[ !(-d ${MAIN_DIR}) ]] ; then
-	# Target does not exist, we must be doing an install
+    # Target does not exist, we must be doing an install
     RUN_INSTALL=1
-	FOS_OLDVER="Not Installed"
+    FOS_OLDVER="Not Installed"
     echo "Target Directory not found; running in installer mode..."
-else	
-	# Target exists, we are doing an update;  find the old version info
-	if [[ !(-f ${MAIN_DIR}/version.txt) ]]; then
-		# No version file, this is a real old version
-		FOS_OLDVER="unknown"
-	else
-		# Version file exists - use it
-		FOS_OLDVER=`cat /usr/Fusion/version.txt`
-	fi
+else
+    # Target exists, we are doing an update;  find the old version info
+    if [[ !(-f ${MAIN_DIR}/version.txt) ]]; then
+        # No version file, this is a really old version
+        FOS_OLDVER="unknown"
+    else
+        # Version file exists - use it
+        FOS_OLDVER=`cat /usr/Fusion/version.txt`
+    fi
 fi
 
 
@@ -142,10 +144,10 @@ fi
 # Get the new version info straight from the distribution server
 #
 if [[ ${FRT_BRANCH} ]] ; then
-	FOS_NEWVER=`sudo curl --silent --show-error https://raw.githubusercontent.com/Modern-Robotics/Fusion/${FRT_BRANCH}/version.txt`
+    FOS_NEWVER=`sudo curl --silent --show-error https://raw.githubusercontent.com/Modern-Robotics/Fusion/${FRT_BRANCH}/version.txt`
 else
-	LAST_TAG=`sudo git ls-remote --tags https://www.github.com/Modern-Robotics/Fusion.git | sudo tail -1 | cut -f1`
-	FOS_NEWVER=`sudo curl --silent --show-error https://raw.githubusercontent.com/Modern-Robotics/Fusion/${LAST_TAG}/version.txt`
+    LAST_TAG=`sudo git ls-remote --tags https://www.github.com/Modern-Robotics/Fusion.git | sudo tail -1 | cut -f1`
+    FOS_NEWVER=`sudo curl --silent --show-error https://raw.githubusercontent.com/Modern-Robotics/Fusion/${LAST_TAG}/version.txt`
 fi
 
 
@@ -180,7 +182,7 @@ if [[ ${RUN_INSTALL} -eq 0 ]] ; then
     echo "$atBRT$fgGRN"
     echo ">>>=============================================================="
     echo ">>>   BEGINNING UPDATE FROM ${FOS_OLDVER}"
-	echo ">>>                      TO ${FOS_NEWVER}"
+    echo ">>>                      TO ${FOS_NEWVER}"
     echo ">>>=============================================================="
     echo
     echo ">>> This update process will take several minutes during which your screen may blank"
@@ -193,7 +195,7 @@ else
     echo "$atBRT$fgGRN"
     echo ">>>=============================================================="
     echo ">>>   BEGINNING INSTALLATION OF FUSIONSERVER RUNTIME PACKAGE"
-	echo ">>>   Version = ${FOS_NEWVER}"
+    echo ">>>   Version = ${FOS_NEWVER}"
     echo ">>>=============================================================="
     echo
     echo ">>> This install  process will take several minutes during which your screen may blank. "
@@ -205,58 +207,61 @@ fi
 
 
 #--------------------------------------------------------------------
+# If we are not running an install,
 # Preserve the user's SSID, PassPhrase, and filesystem
+# Otherwise, skip this section
 #
-echo
-echo ">>> Saving user settings, programs and files..."
-if [[ -d ${MAIN_DIR}/etc/config-wap ]] ; then
-	# This unit is restructured for dynamic wireless asset assignments 
-	USER_SSID=`sudo cat ${MAIN_DIR}/etc/config-wap/hostapd.conf__npp.sh | grep -i "^ssid=" | cut -f2 -d'='`
-	USER_PASSKEY=`sudo cat ${MAIN_DIR}/etc/config-wap/hostapd.conf__npp.sh | grep -i "^wpa_passphrase=" | cut -f2 -d'='`
-	USER_BOOTFLAG=`sudo cat ${MAIN_DIR}/etc/config-wap/hostapd.conf__npp.sh | grep -i "BootFlag=" | cut -f2 -d'='`
-	USER_SSIDSETFLAG=`sudo cat ${MAIN_DIR}/etc/config-wap/hostapd.conf__npp.sh | grep -i "^# SSIDSET_FLAG=" | cut -f2 -d'='`
-	USER_CHANNEL=`sudo cat ${MAIN_DIR}/etc/config-wap/hostapd.conf__npp.sh | grep -i "^channel=" | cut -f2 -d'='`
-else
-	# This unit is NOT restructured for dynamic wireless asset assignments 
-	USER_SSID=`sudo cat /etc/hostapd/hostapd.conf | grep -i "^ssid=" | cut -f2 -d'='`
-	USER_PASSKEY=`sudo cat /etc/hostapd/hostapd.conf | grep -i "^wpa_passphrase=" | cut -f2 -d'='`
-	USER_BOOTFLAG=`sudo cat /etc/hostapd/hostapd.conf | grep -i "BootFlag=" | cut -f2 -d'='`
-	USER_SSIDSETFLAG=`sudo cat /etc/hostapd/hostapd.conf | grep -i "^# SSIDSET_FLAG=" | cut -f2 -d'='`
-	USER_CHANNEL=`sudo cat /etc/hostapd/hostapd.conf | grep -i "^channel=" | cut -f2 -d'='`
-fi
-	
-
-#--------------------------------------------------------------------
-# If the SSIDSETFLAG is empty, try to set it using the BOOTFLAG
-#
-if [[ -z ${USER_SSIDSETFLAG}  ]] ; then
-    if [[ ${USER_BOOTFLAG} == "True" ]] ; then
-        USER_SSIDSETFLAG=True
+if [[ ${RUN_INSTALL} -eq 0 ]] ; then
+    echo
+    echo ">>> Saving user settings, programs and files..."
+    if [[ -d ${MAIN_DIR}/etc/config-wap ]] ; then
+        # This unit is restructured for dynamic wireless asset assignments
+        USER_SSID=`sudo cat ${MAIN_DIR}/etc/config-wap/hostapd.conf__npp.sh | grep -i "^ssid=" | cut -f2 -d'='`
+        USER_PASSKEY=`sudo cat ${MAIN_DIR}/etc/config-wap/hostapd.conf__npp.sh | grep -i "^wpa_passphrase=" | cut -f2 -d'='`
+        USER_BOOTFLAG=`sudo cat ${MAIN_DIR}/etc/config-wap/hostapd.conf__npp.sh | grep -i "BootFlag=" | cut -f2 -d'='`
+        USER_SSIDSETFLAG=`sudo cat ${MAIN_DIR}/etc/config-wap/hostapd.conf__npp.sh | grep -i "^# SSIDSET_FLAG=" | cut -f2 -d'='`
+        USER_CHANNEL=`sudo cat ${MAIN_DIR}/etc/config-wap/hostapd.conf__npp.sh | grep -i "^channel=" | cut -f2 -d'='`
     else
-        USER_SSIDSETFLAG=False
+        # This unit is NOT restructured for dynamic wireless asset assignments
+        USER_SSID=`sudo cat /etc/hostapd/hostapd.conf | grep -i "^ssid=" | cut -f2 -d'='`
+        USER_PASSKEY=`sudo cat /etc/hostapd/hostapd.conf | grep -i "^wpa_passphrase=" | cut -f2 -d'='`
+        USER_BOOTFLAG=`sudo cat /etc/hostapd/hostapd.conf | grep -i "BootFlag=" | cut -f2 -d'='`
+        USER_SSIDSETFLAG=`sudo cat /etc/hostapd/hostapd.conf | grep -i "^# SSIDSET_FLAG=" | cut -f2 -d'='`
+        USER_CHANNEL=`sudo cat /etc/hostapd/hostapd.conf | grep -i "^channel=" | cut -f2 -d'='`
+    fi
+
+
+    #--------------------------------------------------------------------
+    # If the SSIDSETFLAG is empty, try to set it using the BOOTFLAG
+    #
+    if [[ -z ${USER_SSIDSETFLAG}  ]] ; then
+        if [[ ${USER_BOOTFLAG} == "True" ]] ; then
+            USER_SSIDSETFLAG=True
+        else
+            USER_SSIDSETFLAG=False
+        fi
+    fi
+
+    vecho ">>>User WiFi Setings:"
+    vecho "   SSID = ${USER_SSID} / Passkey = ${USER_PASSKEY}"
+    vecho "   Bootflag = ${USER_BOOTFLAG} / SSID SetFlag = ${USER_SSIDSETFLAG}"
+    vecho "   WiFi Channel = ${USER_CHANNEL}"
+    vecho
+
+
+    # The user filesystem space was up one level in the original releases but was moved down
+    # to the Build directory.  This moves the file system from the old location to temporarily
+    # save it.  After the update is complete, it will be moved to the proper resting place.
+    #
+    # The once properly placed, the filesystem is ignored by the update process and does not
+    # require preservation during update.
+    #
+    if [ -d "${MAIN_DIR}/FusionServer/app/filesystem" ] ; then
+        # The filesystem folder does exist... move it for safe keeping
+        echo ">>> Saving user files..."
+        sudo mv ${MAIN_DIR}/FusionServer/app/filesystem /root/savedfilesystem
     fi
 fi
-
-vecho ">>>User WiFi Setings:"
-vecho "   SSID = ${USER_SSID} / Passkey = ${USER_PASSKEY}"
-vecho "   Bootflag = ${USER_BOOTFLAG} / SSID SetFlag = ${USER_SSIDSETFLAG}"
-vecho "   WiFi Channel = ${USER_CHANNEL}"
-vecho
-
-
-# The user filesystem space was up one level in the original releases but was moved down
-# to the Build directory.  This moves the file system from the old location to temporarily
-# save it.  After the update is complete, it will be moved to the proper resting place.
-#
-# The once properly placed, the filesystem is ignored by the update process and does not
-# require preservation during update.
-#
-if [ -d "${MAIN_DIR}/FusionServer/app/filesystem" ] ; then
-    # The filesystem folder does exist... move it for safe keeping
-    echo ">>> Saving user files..."
-    sudo mv ${MAIN_DIR}/FusionServer/app/filesystem /root/savedfilesystem
-fi
-
 echo
 
 
@@ -587,8 +592,8 @@ echo ">>> The System will now power down <<<"
 echo
 
 if [[ ${FOS_DEBUG} != 1 ]] ; then
-    echo "<<<  S H U T D O W N  >>>"
-	sleep 5
+    echo "<<<  S H U T I N G   D O W N  >>>"
+    sleep 5
     sudo shutdown now -P
 fi
 
