@@ -771,7 +771,11 @@ echo
 echo ">>> The System will now power down <<<"
 echo
 
-if [[ ${RUN_INSTALL} == 0 ]]; then
+#===============================================================================
+# If we are doing an install (presumibly as part of the FusionOS Build process,
+# don't shutdown, just exit.
+#
+if [[ ${RUN_INSTALL} == 1 ]]; then
     echo
     echo
     echo
@@ -783,6 +787,10 @@ if [[ ${RUN_INSTALL} == 0 ]]; then
     exit 0
 fi
 
+
+#===============================================================================
+# If we running in debug mode, don't shutdown.
+#
 if [[ ${FOS_DEBUG} != 1 ]] ; then
     echo "<<<  S H U T I N G   D O W N  >>>"
     sleep 5
