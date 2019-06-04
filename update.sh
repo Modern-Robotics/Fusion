@@ -3,7 +3,7 @@
 # update.sh - FusionOS Update Script - from Version 1.0.0 and above
 #-------------------------------------------------------------------------------
 # Revision History
-# 03-Jun-2019 <jwa> - Modified to perform full installation and configuration on
+# 04-Jun-2019 <jwa> - Modified to perform full installation and configuration on
 #                     bare metal so it can replace the distroinstall.sh script
 #                     in MakeJessie/stage5
 # 30-Apr-2019 <jwa> - Assorted adjustments to improve the install/update process;
@@ -326,15 +326,12 @@ if [[ ${RUN_INSTALL} -eq 1 ]] ; then
         n 9.10.1 #n stable which node
     fi
 
-
     #===============================================================================
     # <jwa> 03-Jun-2019 - I believe that the new rc.local takes care of this...
-    # Copy and prepare various system config files from FusionOS Repository
+    #    -> Copy and prepare various system config files from FusionOS Repository
     #
     #  echo "$atBRT$fgBLU---< Setting SSID via Python Script >---$atRST$fgNEU"
     #  python /usr/Fusion/etc/ssid_set.py
-
-
 
     #===============================================================================
     # Install various tools used by the FusionOS
@@ -371,7 +368,6 @@ else
     # c) Update the local master
     sudo git fetch -f -q
     if [[ $? != 0 ]] ; then exit 5 ; fi
-fi
 
     # d) Update the runtime image
     #    Check for the RunTime environment variable.
@@ -382,6 +378,7 @@ fi
         sudo git checkout -f -q $(sudo git rev-list --tags --max-count=1)
         if [[ $? != 0 ]] ; then exit 5 ; fi
     fi
+fi
 
 
 #-------------------------------------------------------------------------------
@@ -404,6 +401,7 @@ else
     sudo echo "enable_uart=1" | sudo tee -a /boot/config.txt
     vecho "UART now enabled"
 fi
+
 if [[ $? != 0 ]] ; then
     echo "ERROR configuring UART, aborting"
     exit 6
@@ -447,6 +445,7 @@ else
     sudo echo "dtparam=i2c_arm=on" | sudo tee -a /boot/config.txt
     vecho "I2C now enabled"
 fi
+
 if [[ $? != 0 ]] ; then
     echo "ERROR configuring I2C, aborting"
     exit 7
@@ -471,6 +470,7 @@ else
     sudo echo "avoid_warnings=1" | sudo tee -a /boot/config.txt
     vecho "Warnings now disabled"
 fi
+
 if [[ $? != 0 ]] ; then
     echo "ERROR configuring warnings, aborting"
     exit 8
@@ -480,6 +480,9 @@ fi
 # -----------------------------------------------
 # Update /etc/modules file with kernel for i2c-dev
 #
+vecho
+vecho "$atBRT$fgGRN===[ Checking I2C-DEV Kernel Module ]==========$atRST$fgNEU"
+
 if grep -q "#i2c-dev" /etc/modules
 then
     sudo sed -i "/#i2c-dev/c\i2c-dev" /etc/modules
@@ -516,6 +519,7 @@ else
     sudo echo "i2c-bcm2708" | sudo tee -a /etc/modules
     vecho "i2c-bcm2708 added and enabled"
 fi
+
 if [[ $? != 0 ]] ; then
     echo "ERROR configuring bcm-2708, aborting"
     exit 10
@@ -696,6 +700,7 @@ if [[ ${RUN_INSTALL} != 1 ]] ; then
         # There is an old version filesystem folder... move it back
         echo ">>>  Restoring old user files"
         sudo mv /root/savedfilesystem ${MAIN_DIR}/FusionServer/Build/app/filesystem
+	fi
 
 else
     # Since this is an install, and possibly the first one, let's make sure all the
