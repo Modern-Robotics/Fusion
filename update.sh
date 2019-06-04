@@ -3,6 +3,9 @@
 # update.sh - FusionOS Update Script - from Version 1.0.0 and above
 #-------------------------------------------------------------------------------
 # Revision History
+# 03-Jun-2019 <jwa> - Modified to perform full installation and configuration on
+#                     bare metal so it can replace the distroinstall.sh script
+#                     in MakeJessie/stage5
 # 30-Apr-2019 <jwa> - Assorted adjustments to improve the install/update process;
 #                     Added a command line argument to allow the branch to be
 #                     passed to the script; bypass setting preservation when
@@ -26,6 +29,15 @@
 # 29-Oct-2018 <jwa> - Added kernel version check to prevent cross platform
 #                     updates
 #
+#-------------------------------------------------------------------------------
+# Usage: update.sh <Fusion_BranchName>
+#     where: <Fusion_BranchName is the optional name of a Fusion Branch to
+#            install of update to.  Note that going DOWN in versions is not
+#            recommended.
+#
+#     If the ${MAIN_DIR} does not exist, the program switches to install-mode
+#     automatically.  The automatic shutdown at the end of the install-mode
+#     cycle is suppressed for the benefit of MakeJessie.
 #===============================================================================
 
 
@@ -56,6 +68,9 @@ VERBOSE=0                   # =1 Outputs additional progress and status info
 
 #------------------------------------------------------------------------------
 # Local variables of importance:
+REPO_ADDRESS="http://www.github.com/Modern-Robotics/Fusion.git"
+CMDLINE="/boot/cmdline.txt"
+
 MAIN_DIR="/usr/Fusion"      # Sets the location of the code
 
 RUN_INSTALL=0               # 0=update, if no ${MAIN_DIR}, we set to 1
@@ -296,6 +311,48 @@ if [[ ${RUN_INSTALL} -eq 1 ]] ; then
     cd ${MAIN_DIR}
     if [[ $? != 0 ]] ; then exit 3; fi
 
+
+    #===============================================================================
+    # <jwa> 03-Jun-2019 - Check to see if it is installed and install the
+    # correct version of npm and run time environment as required
+    #
+    echo
+    echo "$atBRT$fgGRN+++[ Installing npm version 9.10.1 ]+++++$atRST$fgNEU"
+
+    echo `npm version` | grep "9.10.1" >/dev/null
+    if [[ $? -ne 0 ]]; then
+        npm cache clean -f
+        npm install -g n
+        n 9.10.1 #n stable which node
+    fi
+
+
+    #===============================================================================
+    # <jwa> 03-Jun-2019 - I believe that the new rc.local takes care of this...
+    # Copy and prepare various system config files from FusionOS Repository
+    #
+    #  echo "$atBRT$fgBLU---< Setting SSID via Python Script >---$atRST$fgNEU"
+    #  python /usr/Fusion/etc/ssid_set.py
+
+
+
+    #===============================================================================
+    # Install various tools used by the FusionOS
+    #
+    echo
+    echo "$atBRT$fgGRN+++[ Installing Tools ]+++++$atRST$fgNEU"
+    echo "$atBRT$fgGRN---< npm install forever >---$atRST$fgNEU"
+    npm install forever -g
+
+    # echo "$atBRT$fgGRN---< pip install imutils >---$atRST$fgNEU"
+    # pip install imutils
+    #
+    # echo "$atBRT$fgGRN---< pip install numpy >---$atRST$fgNEU"
+    # pip install numpy
+    #
+    # echo "$atBRT$fgGRN---< pip install --upgrade numpy >---$atRST$fgNEU"
+    # pip install --upgrade numpy
+
 else
     # This is an update, make sure the MAIN_DIR exists and start the update
     if [[ -d ${MAIN_DIR} ]] ; then
@@ -333,6 +390,8 @@ fi
 # -----------------------------------------------
 # Set /boot/config.txt to enable uart
 #
+vecho "$atBRT$fgGRN===[ Checking UART ]==========$atRST$fgNEU"
+
 if grep -q "#enable_uart=1" /boot/config.txt
 then
     sudo sed -i "/#enable_uart=1/c\enable_uart=1" /boot/config.txt
@@ -345,12 +404,37 @@ else
     sudo echo "enable_uart=1" | sudo tee -a /boot/config.txt
     vecho "UART now enabled"
 fi
-if [[ $? != 0 ]] ; then exit 6 ; fi
+if [[ $? != 0 ]] ; then
+    echo "ERROR configuring UART, aborting"
+    exit 6
+fi
+
+#===============================================================================
+# <jwa> 03-Jun-2019
+# If this is an install, Set uart parameters
+#
+vecho
+vecho "$atBRT$fgGRN===[ Setting UART Parameters ]==========$atRST$fgNEU"
+
+if grep -q "console=ttyAMA0" $CMDLINE ; then
+    if [ -e /proc/device-tree/aliases/serial0 ]; then
+        sed -i $CMDLINE -e "s/console=ttyAMA0/console=serial0/"
+    fi
+elif ! grep -q "console=ttyAMA0" $CMDLINE && ! grep -q "console=serial0" $CMDLINE ; then
+    if [ -e /proc/device-tree/aliases/serial0 ]; then
+        sed -i $CMDLINE -e "s/root=/console=serial0,115200 root=/"
+    else
+        sed -i $CMDLINE -e "s/root=/console=ttyAMA0,115200 root=/"
+    fi
+fi
 
 
 # -----------------------------------------------
 # Set /boot/config.txt to enable i2c
 #
+vecho
+vecho "$atBRT$fgGRN===[ Checking I2C Interface ]==========$atRST$fgNEU"
+
 if grep -q "#dtparam=i2c_arm=on" /boot/config.txt
 then
     sudo sed -i "/#dtparam=i2c_arm=on/c\dtparam=i2c_arm=on" /boot/config.txt
@@ -363,12 +447,18 @@ else
     sudo echo "dtparam=i2c_arm=on" | sudo tee -a /boot/config.txt
     vecho "I2C now enabled"
 fi
-if [[ $? != 0 ]] ; then exit 7 ; fi
+if [[ $? != 0 ]] ; then
+    echo "ERROR configuring I2C, aborting"
+    exit 7
+fi
 
 
 # -----------------------------------------------
 # Set /boot/config.txt to avoid warnings
 #
+vecho
+vecho "$atBRT$fgGRN===[ Checking Boot Warning Messages ]==========$atRST$fgNEU"
+
 if grep -q "#avoid_warnings=1" /boot/config.txt
 then
     sudo sed -i "/#avoid_warnings=1/c\avoid_warnings=1" /boot/config.txt
@@ -381,7 +471,10 @@ else
     sudo echo "avoid_warnings=1" | sudo tee -a /boot/config.txt
     vecho "Warnings now disabled"
 fi
-if [[ $? != 0 ]] ; then exit 8 ; fi
+if [[ $? != 0 ]] ; then
+    echo "ERROR configuring warnings, aborting"
+    exit 8
+fi
 
 
 # -----------------------------------------------
@@ -399,11 +492,18 @@ else
     sudo echo "i2c-dev" | sudo tee -a /etc/modules
     vecho "i2c-dev added and enabled"
 fi
-if [[ $? != 0 ]] ; then exit 9 ; fi
+if [[ $? != 0 ]] ; then
+    echo "ERROR configuring i2c-dev, aborting"
+    exit 9
+fi
+
 
 # -----------------------------------------------
 # Update /etc/modules file with kernel for i2c-bcm2708
 #
+vecho
+vecho "$atBRT$fgGRN===[ Checking I2C-BCM2708 Kernel Module ]==========$atRST$fgNEU"
+
 if grep -q "#i2c-bcm2708" /etc/modules
 then
     sudo sed -i "/#i2c-bcm2708/c\i2c-bcm2708" /etc/modules
@@ -416,7 +516,26 @@ else
     sudo echo "i2c-bcm2708" | sudo tee -a /etc/modules
     vecho "i2c-bcm2708 added and enabled"
 fi
-if [[ $? != 0 ]] ; then exit 10 ; fi
+if [[ $? != 0 ]] ; then
+    echo "ERROR configuring bcm-2708, aborting"
+    exit 10
+fi
+
+#===============================================================================
+# Update blacklist to turn off bluetooth
+#
+vecho
+vecho "$atBRT$fgGRN===[ Updating Blacklist ]==========$atRST$fgNEU"
+
+if ! grep -q "blacklist btbcm" /etc/modprobe.d/raspi-blacklist.conf
+then
+    echo "blacklist btbcm" | tee -a /etc/modprobe.d/raspi-blacklist.conf
+fi
+
+if ! grep -q "blacklist hci_uart" /etc/modprobe.d/raspi-blacklist.conf
+then
+    echo "blacklist hci_uart" | tee -a /etc/modprobe.d/raspi-blacklist.conf
+fi
 
 
 #==========================================================================================
@@ -443,9 +562,17 @@ sudo ln -s --force /usr/include/linux/videodev2.h /usr/include/linux/videodev.h
 # -------------------------------------------------------------------
 # Uninstall Fusion library, remi and other runtime packages
 #
-sudo pip uninstall Fusion -y
-sudo pip uninstall remi -y
-sudo pip uninstall pylibftdi -y
+vecho
+vecho "$atBRT$fgGRN+++[ Installing Fusion Interface Libraries & Packages ]+++++$atRST$fgNEU"
+vecho "$atBRT$fgBLU---< pip uninstall Fusion >---$atRST$fgNEU"
+pip uninstall Fusion -y
+
+vecho "$atBRT$fgBLU---< pip uninstall remi >---$atRST$fgNEU"
+pip uninstall remi -y
+
+vecho "$atBRT$fgBLU---< pip uninstall pylibftdi >---$atRST$fgNEU"
+pip uninstall pylibftdi -y
+
 #if [[ $? != 0 ]] ; then exit 22 ; fi
 
 
@@ -549,35 +676,83 @@ fi
 
 
 #--------------------------------------------------------------------
-# Restore user settings and files
+# If this is not an install, restore user settings and files
 #
-# This line didn't work:
-# sudo sed -i -e "/${SED_MATCH}/c"${SED_REPLACE}${USER_SSIDSETFLAG}"" ${MAIN_DIR}/etc/config-wap/hostapd.conf__npp.sh
-# ...so, since sed doesn't like # in its command's we'll make a couple of variables to use instead:
-#
-SED_MATCH="^# SSIDSET_FLAG="
-SED_REPLACE="# SSIDSET_FLAG="
-echo
-echo ">>> Restoring user settings, programs and files..."
 
-sudo sed -i -e "/^ssid=/c"ssid=${USER_SSID}"" ${MAIN_DIR}/etc/config-wap/hostapd.conf__npp.sh
-sudo sed -i -e "/^wpa_passphrase=/c"wpa_passphrase=${USER_PASSKEY}"" ${MAIN_DIR}/etc/config-wap/hostapd.conf__npp.sh
-sudo sed -i -e "/$SED_MATCH/c$SED_REPLACE$USER_SSIDSETFLAG" ${MAIN_DIR}/etc/config-wap/hostapd.conf__npp.sh
-sudo sed -i -e "/^channel=/c"channel=${USER_CHANNEL}"" ${MAIN_DIR}/etc/config-wap/hostapd.conf__npp.sh
+if [[ ${RUN_INSTALL} != 1 ]] ; then
+    SED_MATCH="^# SSIDSET_FLAG="
+    SED_REPLACE="# SSIDSET_FLAG="
+    echo
+    echo ">>> Restoring user settings, programs and files..."
+
+    sudo sed -i -e "/^ssid=/c"ssid=${USER_SSID}"" ${MAIN_DIR}/etc/config-wap/hostapd.conf__npp.sh
+    sudo sed -i -e "/^wpa_passphrase=/c"wpa_passphrase=${USER_PASSKEY}"" ${MAIN_DIR}/etc/config-wap/hostapd.conf__npp.sh
+    sudo sed -i -e "/$SED_MATCH/c$SED_REPLACE$USER_SSIDSETFLAG" ${MAIN_DIR}/etc/config-wap/hostapd.conf__npp.sh
+    sudo sed -i -e "/^channel=/c"channel=${USER_CHANNEL}"" ${MAIN_DIR}/etc/config-wap/hostapd.conf__npp.sh
+
+    # Restore the old-style user filesystem to the proper resting place.
+    #
+    if [[ -d /root/savedfilesystem ]] ; then
+        # There is an old version filesystem folder... move it back
+        echo ">>>  Restoring old user files"
+        sudo mv /root/savedfilesystem ${MAIN_DIR}/FusionServer/Build/app/filesystem
+
+else
+    # Since this is an install, and possibly the first one, let's make sure all the
+    # Services are setup...
+    #===============================================================================
+    # Enable services
+    #
+    echo
+    echo "$atBRT$fgGRN===[ Enabling Services ]=====$atRST$fgNEU"
+    echo
+    echo "$atBRT$fgBLU---< Processing ssh >---$atRST$fgNEU"
+    update-rc.d ssh enable
+    service ssh stop
+
+    echo
+    echo "$atBRT$fgBLU---< Processing mongodb >---$atRST$fgNEU"
+    update-rc.d mongodb enable
+    service mongodb stop
+
+    echo
+    echo "$atBRT$fgBLU---< Processing hostapd >---$atRST$fgNEU"
+    update-rc.d hostapd enable
+    service hostapd stop
+
+    echo
+    echo "$atBRT$fgBLU---< Processing dnsmasq >---$atRST$fgNEU"
+
+    #
+    # The next step over-writes the stage's etc/resolv.conf file which makes it
+    #   lose DNS capabilities.  Rather than have that happen, we'll save the current
+    #   file and then restore it after the step.  It's a sorta brute-force solution,
+    #   but it should do for now...
+    cp /etc/resolv.conf /etc/resolv.save
+    update-rc.d dnsmasq enable
+    service dnsmasq stop
+    rm /etc/resolv.conf
+    mv /etc/resolv.save /etc/resolv.conf
+        echo
+        echo "Checking DNS"
+        cat /etc/resolv.conf
+        echo
+
+    echo "$atBRT$fgBLU---< Processing vncserver-x11 daemon >---$atRST$fgNEU"
+    systemctl enable vncserver-x11-serviced.service
+    systemctl stop vncserver-x11-serviced.service
 
 
-
-
-# Restore the old-style user filesystem to the proper resting place.
-#
-if [[ -d /root/savedfilesystem ]] ; then
-    # There is an old version filesystem folder... move it back
-    echo ">>>  Restoring old user files"
-    sudo mv /root/savedfilesystem ${MAIN_DIR}/FusionServer/Build/app/filesystem
+    #===============================================================================
+    # Create symbolic link for videodev.h used by mjpg-streamer
+    #
+    vecho
+    vecho "$atBRT$fgGRN===[ Creating Symbolic Links to Header Files ]=====$atRST$fgNEU"
+    ln -s /usr/include/linux/videodev2.h /usr/include/linux/videodev.h
 fi
 
-echo
 
+echo
 echo ">>> Running Final Clean-up..."
 sudo rm -rf /root/filesystem
 echo "..."
@@ -590,6 +765,18 @@ echo ">>>======================================"
 echo
 echo ">>> The System will now power down <<<"
 echo
+
+if [[ ${RUN_INSTALL} == 0 ]]; then
+    echo
+    echo
+    echo
+    vecho "$atBRT$fgCYN***** DistroInstaller Finished *****$atRST$fgNEU"
+    echo
+
+    echo "<<< I n s t a l l   p r o c e s s   c o m p l e t e >>>"
+    sleep 3
+    exit 0
+fi
 
 if [[ ${FOS_DEBUG} != 1 ]] ; then
     echo "<<<  S H U T I N G   D O W N  >>>"

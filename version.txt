@@ -1,2 +1,1 @@
-FusionRT v1.3.2a RC1 Build-01 (Semia)
-(Modified - <jwa> 04-Jun-2019)
+FusionRT v1.3.2b RC1 Build-01
