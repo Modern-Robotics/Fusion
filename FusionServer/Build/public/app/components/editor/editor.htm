@@ -1,0 +1,15 @@
+<div flex layout="row"><div class="fusion-editor-sidebar" resizable r-directions="['right']" r-flex="true"><h3 translate="EDITOR.WORKING_FILES_TITLE"></h3><div class="fusion-editor-workingfiles-container" flex><div class="fusion-editor-workingfile" layout="row" ng-class="isSelectedFile(file)" ng-repeat="file in WorkingFiles" ng-click="SelectWorkingFile(file)"><div flex="5">{{displaySaveSymbol(file.NeedsSaving)}}</div><div flex ng-class="isExampleFile(file)">{{file.Name}}</div><div flex="5" ng-click="CloseFile(file)"><i class="fas fa-times" aria-hidden="true"></i></div></div></div></div><div id="editor-workspace" layout="column" flex><div class="fusion-editor-ide-container" resizable r-directions="['bottom']" r-height="initialEditorHeight()" r-flex="true" layout="column"><div ng-include="'/api/editor/toolbar'"></div><div flex id="aceEditor" ui-ace="{
+                                 useWrapMode : true,
+                                 showGutter: true,
+                                 theme:'chrome',
+                                 mode: 'python',
+                                 firstLineNumber: 1,
+                                 onLoad: aceLoaded,
+                                 onChange: aceChanged,
+                                 require: ['ace/ext/language_tools'],
+                                 advanced: {
+                                     enableSnippets: true,
+                                     enableBasicAutocompletion: true,
+                                     enableLiveAutocompletion: true
+                                     }
+                                 }" ng-model="SelectedFile.Code"></div></div><div flex layout="column"><div class="fusion-editor-console-header" layout="row" md-whiteframe="1"><div class="md-title" md-truncate flex translate="EDITOR.DEBUG_CONSOLE_TITLE"></div><md-button class="md-icon-button" ng-click="ClearOutputConsole()"><i class="far fa-trash-alt"></i></md-button></div><textarea flex id="output-console" placeholder="{{ 'EDITOR.DEBUG_CONSOLE_PLACEHOLDER' | translate }}" readonly="true" class="fusion-editor-output" ng-bind="outputConsole" ng-click="selectInputField()"></textarea><div class="fusion-editor-console-input" layout="row"><span class="fusion-editor-console-caret"><i class="fas fa-caret-right fa-lg"></i></span> <input flex type="text" class="fusion-editor-input" ng-model="consoleInput" ng-keypress="transmitInput($event)"></div></div></div></div><div style="display:none;visibility: hidden"><div class="md-dialog-container" id="editorOpenFileDialog"><md-dialog><md-dialog-content class="md-padding"><h4 translate="EDITOR.OPEN_FILE_DIALOG.TITLE"></h4><md-list flex><md-list-item ng-repeat="file in FilesAvailableForOpen" ng-click="OpenEditorFile(file)"><div class="md-list-item-text" layout="column"><p>{{ file }}</p></div></md-list-item></md-list></md-dialog-content></md-dialog></div></div><div hide-gt-xs><div style="margin-left:auto;margin-right:auto;background-color:white;border:2px solid black;text-align:center;" layout-padding><h3 translate="EDITOR.COMING_SOON_DIALOG.TITLE"></h3><p translate="EDITOR.COMING_SOON_DIALOG.CONTENT"></p></div></div>
