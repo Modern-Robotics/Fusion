@@ -317,7 +317,7 @@ sudo ntpd -q -g
 
 if [[ ${RUN_INSTALL} -eq 1 ]] ; then
     # This is an install so we need to clone the upstream repo to the local directory...
-    sudo git clone https://www.github.com/Modern-Robotics/Fusion.git/master ${MAIN_DIR}
+    sudo git clone https://www.github.com/Modern-Robotics/Fusion.git ${MAIN_DIR}
     if [[ $? != 0 ]] ; then exit 3; fi
     cd ${MAIN_DIR}
     if [[ $? != 0 ]] ; then exit 3; fi
