@@ -3,6 +3,12 @@
 
 ----
 
+Fusion Server version v1.3.1a RC1, 15 July 2019
+--------------------------------------------------
+This version corrects a number of minor errors including export of Blockly Programs to the user's computer.
+
+
+
 Fusion Server version v1.3.2 RC1, 06 May 2019
 --------------------------------------------------
 This version adds several new and enhanced features, multiple bug fixes, and features new branding as Modern Robotics and MyBot Educational Robotics join the Mimio/Boxlight Family.
