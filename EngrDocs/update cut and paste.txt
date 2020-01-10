@@ -1,0 +1,5 @@
+sudo su
+cd /usr
+curl --silent --show-error https://raw.githubusercontent.com/Modern-Robotics/Fusion/FRT-v1.3.2aRC1b01/update.sh > fos-upd.sh
+chmod +x fos-upd.sh
+./fos-upd.sh FRT-v1.3.2aRC1b01

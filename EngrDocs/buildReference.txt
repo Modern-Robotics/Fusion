@@ -1,0 +1,86 @@
+# -----------------------------------------------------------------------------
+# Dependencies and installs 
+
+Documentation:
+    apt-get install mkdocs
+
+Fusion:
+
+CoreControl:
+
+VirtualGamepad:
+    apt-get update 
+    apt-get install --fix-missing
+    apt-get install libjpeg8-dev imagemagick libv4l-dev -y
+    ln -s /usr/include/linux/videodev2.h /usr/include/linux/videodev.h
+
+Diagnostics / Logging:
+    apt-get install python-dev 
+    pip install remi (Located in Fusion/lib) 
+
+# -----------------------------------------------------------------------------
+# Bringing source to /usr for development 
+cd /usr 
+rm -r Fusion 
+git clone http://github.com/Modern-Robotics/Fusion-dev Fusion 
+cd Fusion/FusionServer/Src 
+npm install --unsafe-perm
+nano /etc/rc.local 
+    - Change path from ...FusionServer/Build to FusionServer/Src
+reboot
+    
+# -----------------------------------------------------------------------------
+# Build procedure for documentation      
+    - refer to build reference in documentation folder
+    
+# -----------------------------------------------------------------------------
+# Build procedure for FusionServer 
+    cd /usr/Fusion/FusionServer/Src
+    npm install --unsafe-perm
+    npm install --global gulp
+    npm link gulp
+    gulp 
+    cd ../Build
+    npm install --production 
+    
+# -----------------------------------------------------------------------------
+# Build procedure for libs 
+    cd /usr/Fusion/lib/python
+    ./compile.sh
+    
+# -----------------------------------------------------------------------------
+# Build procedure for diagnostic utility  
+    cd /usr/Fusion/diagnostics
+    ./compile.sh
+
+    # Retain the following files and folders
+        remi/
+        psutil/
+        diagnosticGui.py
+        src.so
+        runRemi.sh 
+        
+# -----------------------------------------------------------------------------
+# Build procedure for logging utility  
+    cd /usr/Fusion/logging
+    ./compile.sh
+
+    # Retain the following files and folders
+        remi/
+        dataLogger.py
+        src.so
+        runRemi.sh 
+    
+# -----------------------------------------------------------------------------
+# Files to be removed when preparing a release candidate. (path ref /usr/Fusion/)
+    diagnostics/remi_package
+    diagnostics/README.md
+    diagnostics/rpi-benchmark.sh
+    docsrc
+    FusionServer/Src
+    lib/c++
+    lib/python
+    lib/README.md
+    lib/... # all .tar.gz except the most recent 
+    ref 
+    tools

@@ -1,0 +1,1 @@
+<xml xmlns="http://www.w3.org/1999/xhtml"><block type="fusion_start" id="rm},Hg5r!R|1VJsO3d0;" x="150" y="90"><next><block type="fusion_comment" id="|IuPml]7VGKITQBE86Ue"><field name="Statement">Print a list of connected Core Modules</field><next><block type="CoreControl_printDevices" id="T0$w`{z+^dz58[-]W7[U"></block></next></block></next></block></xml>
