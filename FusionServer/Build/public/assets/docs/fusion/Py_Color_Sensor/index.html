@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Zac Zegarelli">
+        <link rel="canonical" href="http://modernroboticsinc.com/Py_Color_Sensor/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Color Sensor (45-2018) - Fusion Documentation</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../js/jquery-1.10.2.min.js"></script>
+        <script src="../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../js/highlight.pack.js"></script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="..">Fusion Documentation</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../Py_IR_Seeker_V3/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../Py_Color_Beacon/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#color-sensor-45-2018">Color Sensor (45-2018)</a></li>
+            <li><a href="#fusioncolordriver-addr">Fusion.color(driver, addr)</a></li>
+            <li><a href="#colorsetupmode-rate">colorSetup(mode, rate)</a></li>
+            <li><a href="#getcolornumber">getColorNumber()</a></li>
+            <li><a href="#getrgbindex">getRGBIndex()</a></li>
+            <li><a href="#getcolorvalue">getColorValue()</a></li>
+            <li><a href="#getcolorindex">getColorIndex()</a></li>
+            <li><a href="#getcolorreading">getColorReading()</a></li>
+            <li><a href="#getcolornormalized">getColorNormalized()</a></li>
+            <li><a href="#blackbalance">blackBalance()</a></li>
+            <li><a href="#whitebalance">whiteBalance()</a></li>
+            <li><a href="#if-any-problems-arise">If any problems arise</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="color-sensor-45-2018"><strong>Color Sensor (45-2018)</strong></h1>
+<hr />
+<p>The Color Sensor is used to detect the color of an object or a visible light source. Along with raw and adjusted RGB values, the device can also return a color number corresponding to a the colors listed below in the documentation. Calibration steps must be taken as needed based on the environment and ambient lighting for the most accurate readings. Maximum detection distance of the color sensor is approximately 7cm and it is recommended that during active mode the device is placed at a slight angle to avoid white light reflecting from the LED. </p>
+<blockquote>
+<p><strong>Sensor Type</strong> : Four Wire I2C<br />
+<strong>Default I2C Address</strong> : 0x3C<br />
+<strong>Sensor ID Code</strong> : 0x67<br />
+<strong>Dimensions</strong> : 32mm x 32mm x 11mm<br />
+<strong>Mounting Holes</strong> : 24mm x 24mm<br />
+<strong>Power</strong> : 5V DC, 22mA Max<br />
+<strong>Signal Logic Levels</strong> : Logic 0 - 0V, Logic 1 - 5V<br />
+<strong>I2C Bus Speed</strong> : 100kHz max<br />
+<strong>I2C Address Change Option</strong> : Yes (Even Number 0x10 - 0xEE)<br />
+<a href="../Blk_Color_Sensor/">Color Sensor Visual Programming Blocks</a></p>
+</blockquote>
+<p><strong>List of available functions:</strong>  </p>
+<ul>
+<li><a href="./#fusioncolordriver-addr"><strong>Fusion.color(<em>driver</em>, <em>addr</em>)</strong></a></li>
+<li><a href="./#colorsetupmode-rate"><strong>colorSetup(<em>mode</em>, <em>rate</em>)</strong></a></li>
+<li><a href="./#getcolornumber"><strong>getColorNumber()</strong></a></li>
+<li><a href="./#getrgbindex"><strong>getRGBIndex()</strong></a></li>
+<li><a href="./#getcolorvalue"><strong>getColorValue())</strong></a></li>
+<li><a href="./#getcolorindex"><strong>getColorIndex())</strong></a></li>
+<li><a href="./#getcolorreading"><strong>getColorReading()</strong></a></li>
+<li><a href="./#getcolornormalized"><strong>getColorNormalized()</strong></a></li>
+<li><a href="./#blackbalance"><strong>blackBalance()</strong></a></li>
+<li><a href="./#whitebalance"><strong>whiteBalance()</strong></a></li>
+</ul>
+<p><img alt="" src="../img/Sensor_Diagrams/ColorSensor.png" /></p>
+<h2 id="fusioncolordriver-addr"><strong>Fusion.color(<em>driver</em>, <em>addr</em>)</strong></h2>
+<blockquote>
+<h3 id="definition">Definition</h3>
+<blockquote>
+<p>This class contains the necessary drivers for the Modern Robotics Color Sensor and must be called at the beginning of the program before using any other class functions. </p>
+</blockquote>
+<h3 id="parameters">Parameters</h3>
+<blockquote>
+<p><strong><em>driver</em></strong> : Main driver object so the class can call driver functions (<strong>f</strong>)<br />
+<strong><em>addr</em></strong> : Enter an I2C address in hexidecimal if different from default </p>
+</blockquote>
+<h3 id="returns">Returns</h3>
+<blockquote>
+<p><strong>Color Sensor Object</strong></p>
+</blockquote>
+<h3 id="example">Example</h3>
+<blockquote>
+<pre><code>import Fusion
+f = Fusion.driver()
+color1 = Fusion.color(f)
+color2 = Fusion.color(f, 0x40)
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="colorsetupmode-rate"><strong>colorSetup(<em>mode</em>, <em>rate</em>)</strong></h2>
+<blockquote>
+<h3 id="definition_1">Definition</h3>
+<blockquote>
+<p>This function sets the mode and rate at which the readings are taken. The mode can be either <strong>Active</strong> or <strong>Passive</strong>.<br />
+In <strong>Active</strong> mode, the white LED on the sensor is used to illuminate the surface that it is trying to detect. <strong>Active</strong> mode works best when the sensor is looking at an object at a slight angle so that the white light is not picked up by the sensor thus distorting the readings.<br />
+In <strong>Passive</strong> mode, the sensor takes readings without the use of the white LED. <strong>Passive</strong> mode works best for detecting colored light much like that produced by the <a href="../Py_Color_Beacon/">Color Beacon</a>. The rate sets the operational frequency of the sensor that can be either 50Hz or 60Hz. The purpose of this is to eliminate any flickering from ambient light.</p>
+<ul>
+<li><a href="../Py_Constants/">Constants</a></li>
+</ul>
+</blockquote>
+<h3 id="parameters_1">Parameters</h3>
+<blockquote>
+<p><strong><em>mode</em></strong> : ACTIVE or PASSIVE <br />
+<strong><em>rate</em></strong> : FIFTY_HZ or SIXTY_HZ</p>
+</blockquote>
+<h3 id="returns_1">Returns</h3>
+<blockquote>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="example_1">Example</h3>
+<blockquote>
+<pre><code>import Fusion
+f = Fusion.driver()
+color = Fusion.color(f)
+color.colorSetup(color.ACTIVE, color.FIFTY_HZ)
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="getcolornumber"><strong>getColorNumber()</strong></h2>
+<blockquote>
+<h3 id="definition_2">Definition</h3>
+<blockquote>
+<p>This function returns the color number that was read by the sensor. The color number corresponds to the color line below. Some materials or the angle of incidence may affect the results. Test the sensor in your environment thoroughly before applying it to a design.</p>
+<p><img alt="" src="../img/Sensor_Diagrams/ColorChart.png" /></p>
+</blockquote>
+<h3 id="parameters_2">Parameters</h3>
+<blockquote>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="returns_2">Returns</h3>
+<blockquote>
+<p><strong><em>Color Number</em></strong> : int (0 - 16)</p>
+</blockquote>
+<h3 id="example_2">Example</h3>
+<blockquote>
+<pre><code>import Fusion
+f = Fusion.driver()
+color = Fusion.color(f)
+print color.getColorNumber()
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="getrgbindex"><strong>getRGBIndex()</strong></h2>
+<blockquote>
+<h3 id="definition_3">Definition</h3>
+<blockquote>
+<p>This function gets the analog values of the three primary color channels with an intensity correction whereby 0xFF is the strongest signal.</p>
+</blockquote>
+<h3 id="parameters_3">Parameters</h3>
+<blockquote>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="returns_3">Returns</h3>
+<blockquote>
+<p><strong><em>RGB Index</em></strong> : int [red, green, blue]</p>
+</blockquote>
+<h3 id="example_3">Example</h3>
+<blockquote>
+<p>The following example returns an array of size <strong>3</strong> and stores it into the variables <strong>red</strong>, <strong>green</strong> and <strong>blue</strong>.</p>
+<pre><code>import Fusion
+f = Fusion.driver()
+color = Fusion.color(f)
+(red, green, blue) = color.getRGBIndex()
+print red
+</code></pre>
+<p>To collect a single value instead of the array, reference the index. This will print the <strong>red</strong> value.</p>
+<pre><code>import Fusion
+f = Fusion.driver()
+color = Fusion.color(f)
+print color.getRGBIndex()[0]
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="getcolorvalue"><strong>getColorValue()</strong></h2>
+<blockquote>
+<h3 id="definition_4">Definition</h3>
+<blockquote>
+<p>The color values are returned separately as red, green, blue and white. The color value is a measure of the current detection levels for each primary color.</p>
+</blockquote>
+<h3 id="parameters_4">Parameters</h3>
+<blockquote>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="returns_4">Returns</h3>
+<blockquote>
+<p><strong><em>Color Value</em></strong> : int [red, green, blue, white]</p>
+</blockquote>
+<h3 id="example_4">Example</h3>
+<blockquote>
+<p>The following example returns an array of size <strong>3</strong> and stores it into the variables <strong>red</strong>, <strong>green</strong>, <strong>blue</strong> and <strong>white</strong>.</p>
+<pre><code>import Fusion
+f = Fusion.driver()
+color = Fusion.color(f)
+(red, green, blue, white) = color.getColorValue()
+print red
+</code></pre>
+<p>To collect a single value instead of the array, reference the index. This will print the <strong>red</strong> value.</p>
+<pre><code>import Fusion
+f = Fusion.driver()
+color = Fusion.color(f)
+print color.getColorValue()[0]
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="getcolorindex"><strong>getColorIndex()</strong></h2>
+<blockquote>
+<h3 id="definition_5">Definition</h3>
+<blockquote>
+<p>The color index number is a single 6 bit number. Bits (5:4) encode the red signal level, bits (3:2) encode the green signal level and bits (1:0) encode the blue signal levels.</p>
+<table>
+<thead>
+<tr>
+<th align="center">D7</th>
+<th align="center">D6</th>
+<th align="center">D5</th>
+<th align="center">D4</th>
+<th align="center">D3</th>
+<th align="center">D2</th>
+<th align="center">D1</th>
+<th align="center">D0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">Red 1</td>
+<td align="center">Red 0</td>
+<td align="center">Green 1</td>
+<td align="center">Green 0</td>
+<td align="center">Blue 1</td>
+<td align="center">Blue 0</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Red</strong> = 0x30</li>
+<li><strong>Green</strong> = 0x0C</li>
+<li><strong>Blue</strong> = 0x03</li>
+</ul>
+</blockquote>
+<h3 id="parameters_5">Parameters</h3>
+<blockquote>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="returns_5">Returns</h3>
+<blockquote>
+<p><strong><em>Color Index</em></strong> : int (0 - 63)</p>
+</blockquote>
+<h3 id="example_5">Example</h3>
+<blockquote>
+<pre><code>import Fusion
+f = Fusion.driver()
+color = Fusion.color(f)
+print color.getColorIndex()
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="getcolorreading"><strong>getColorReading()</strong></h2>
+<blockquote>
+<h3 id="definition_6">Definition</h3>
+<blockquote>
+<p>This function gets the analog value of the color channels in a 16-bit format. Therefore there is much more detail in the reading as compared to the index reading.</p>
+</blockquote>
+<h3 id="parameters_6">Parameters</h3>
+<blockquote>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="returns_6">Returns</h3>
+<blockquote>
+<p><strong><em>Color Reading</em></strong> : int (0 - 65535)</p>
+</blockquote>
+<h3 id="example_6">Example</h3>
+<blockquote>
+<p>The following example returns an array of size <strong>3</strong> and stores it into the variables <strong>red</strong>, <strong>green</strong>, <strong>blue</strong> and <strong>white</strong>.</p>
+<pre><code>import Fusion
+f = Fusion.driver()
+color = Fusion.color(f)
+(red, green, blue, white) = color.getColorReading()
+print red
+</code></pre>
+<p>To collect a single value instead of the array, reference the index. This will print the <strong>red</strong> value.</p>
+<pre><code>import Fusion
+f = Fusion.driver()
+color = Fusion.color(f)
+print color.getColorReading()[0]
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="getcolornormalized"><strong>getColorNormalized()</strong></h2>
+<blockquote>
+<h3 id="definition_7">Definition</h3>
+<blockquote>
+<p>This function gets the analog value of the color channel adjusted by the calibration values.</p>
+</blockquote>
+<h3 id="parameters_7">Parameters</h3>
+<blockquote>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="returns_7">Returns</h3>
+<blockquote>
+<p><strong><em>Color Normalized</em></strong> : int [red, green, blue, white]</p>
+</blockquote>
+<h3 id="example_7">Example</h3>
+<blockquote>
+<p>The following example returns an array of size <strong>3</strong> and stores it into the variables <strong>red</strong>, <strong>green</strong>, <strong>blue</strong> and <strong>white</strong>.</p>
+<pre><code>import Fusion
+f = Fusion.driver()
+color = Fusion.color(f)
+(red, green, blue, white) = color.getColorNormalized()
+print red
+</code></pre>
+<p>To collect a single value instead of the array, reference the index. This will print the <strong>red</strong> value.</p>
+<pre><code>import Fusion
+f = Fusion.driver()
+color = Fusion.color(f)
+print color.getColorNormalized()[0]
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="blackbalance"><strong>blackBalance()</strong></h2>
+<blockquote>
+<h3 id="definition_8">Definition</h3>
+<blockquote>
+<p>This function gathers data and calculates an average value for each of the three color channels. To calibrate the black balance, point the sensor so that there is no object within 5 feet (1.5m) forward of the sensor. Calibration takes approximately 1.5 seconds. This function must be called before the <a href="#whitebalance">whiteBalance()</a> function because the white balance calculations are dependent on the black balance values.</p>
+</blockquote>
+<h3 id="parameters_8">Parameters</h3>
+<blockquote>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="returns_8">Returns</h3>
+<blockquote>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="example_8">Example</h3>
+<blockquote>
+<pre><code>import Fusion
+import time
+f = Fusion.driver()
+color = Fusion.color(f)
+color.blackBalance()
+time.sleep(2)
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="whitebalance"><strong>whiteBalance()</strong></h2>
+<blockquote>
+<h3 id="definition_9">Definition</h3>
+<blockquote>
+<p>This function gathers data and calculates and average value for each of the three color channels. Then the values are adjusted based on the readings from the <a href="#blackbalance">blackBalance()</a> function. When calibrating, hold the sensor no more than 2 inches (5cm) away from a white target. The target must be very white, using a white board or 3 layers of high quality copy paper. Calibration takes approximately 1.5 seconds.</p>
+</blockquote>
+<h3 id="parameters_9">Parameters</h3>
+<blockquote>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="returns_9">Returns</h3>
+<blockquote>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="example_9">Example</h3>
+<blockquote>
+<pre><code>import Fusion
+import time
+f = Fusion.driver()
+color = Fusion.color(f)
+color.blackBalance()
+time.sleep(2)
+color.whiteBalance()
+time.sleep(2)
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="if-any-problems-arise"><strong>If any problems arise</strong></h2>
+<blockquote>
+<p>Contact Modern Robotics, Inc. at <a href="mailto:support@modernroboticsinc.com">support@modernroboticsinc.com</a> with a detailed description of the steps you have taken and observations you have made.</p>
+<p><strong>Email Subject</strong>: Fusion Python Color Sensor</p>
+</blockquote></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '..';</script>
+        <script src="../js/base.js"></script>
+        <script src="../search/require.js"></script>
+        <script src="../search/search.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&larr;</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&rarr;</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </body>
+</html>
