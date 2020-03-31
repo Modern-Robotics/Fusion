@@ -1,0 +1,262 @@
+{
+  "LANGUAGE": "Chinese (Traditional)",
+  "HEADER": {
+    "LOGOUT": "登出",
+    "POWER_OFF": "關機",
+    "RESTART": "重新啟動"
+  },
+  "SIDEBAR": {
+      "HOME": "首頁",
+      "BLOCKLY": "圖形化編程",
+      "EDITOR": "文本編輯",
+      "DOCUMENTATION": "文件",
+      "FILE_MANAGER": "文件管理",
+      "VNC": "遠端網路遙控",
+      "DIAGNOSTIC_TOOL": "診斷工具",
+      "SETTINGS": "設定",
+      "ABOUT": "關於"
+  },
+  "FOOTER": {},
+  "LOGIN": {
+      "TITLE": "登入",
+      "USERNAME": "使用者名稱",
+      "PASSWORD": "密碼",
+      "SHOW_PASSWORD": "顯示密碼",
+      "REGISTER": "註冊",
+      "LOGIN": "登入",
+      "GUEST_LOGIN": "訪客登入",
+      "FORGOT_PASSWORD": "忘記密碼"
+  },
+  "RECOVER": {
+      "TITLE": "恢復帳號",
+      "USERNAME_LABEL": "使用者名稱",
+      "CANCEL_BUTTON": "取消",
+      "SEARCH_BUTTON": "搜索"
+  },
+  "REGISTER": {
+      "TITLE": "新的使用者",
+      "REQUIRED_TITLE": "必填選項",
+      "OPTIONAL_TITLE": "選填選項",
+      "USERNAME": "使用者名稱",
+      "PASSWORD": "密碼",
+      "PASSWORD_CONFIRM": "確認密碼",
+      "USER_GROUP": "使用者類別",
+      "SECURITY_QUESTION": "安全性問題",
+      "SECURITY_ANSWER": "安全性回答",
+      "EMAIL": "信箱",
+      "FIRST_NAME": "名字",
+      "LAST_NAME": "姓氏",
+      "LANGUAGE": "語言",
+      "CANCEL": "取消",
+      "CREATE": "建立"
+  },
+  "ACCOUNT": {
+      "TITLE": "使用者帳戶",
+      "USER_FIELDS_TITLE": "使用者字段",
+      "SECURITY_FIELDS_TITLE": "安全區域",
+      "USERNAME": "使用者名稱",
+      "EMAIL": "信箱",
+      "FIRST_NAME": "名字",
+      "LAST_NAME": "姓氏",
+      "LANGUAGE": "語言",
+      "USER_GROUP": "使用者類別",
+      "PASSWORD": "新密碼",
+      "PASSWORD_CONFIRM": "確認新密碼",
+      "SECURITY_QUESTION": "新安全性問題",
+      "SECURITY_ANSWER": "新安全性回答",
+      "CANCEL": "取消",
+      "UPDATE": "更新",
+      "MESSAGES": {
+          "MISMATCHED_PASSORDS": "密碼錯誤",
+          "NEW_PASSWORD_REQUEST": "請輸入新密碼"
+      }
+  },
+  "HOME": {
+      "TITLE": "首頁",
+      "READ_BUTTON": "資料",
+      "LAUNCH_BUTTON": "運行",
+      "BUILD_HEADLINE": "建立",
+      "BUILD_DESCRIPTION": "Mybot機器人建立指南",
+      "BLOCKLY_HEADLINE": "圖形化編程",
+      "BLOCKLY_DESCRIPTION": "圖形化模塊編程語言",
+      "EDITOR_HEADLINE": "編輯器",
+      "EDITOR_DESCRIPTION": "Python初級編程環境",
+      "DOCUMENTATION_HEADLINE": "Fusion文件",
+      "DOCUMENTATION_DESCRIPTION": "完整Fusion文件及參考資料",
+      "DATA_LOGGER_HEADLINE": "上傳數據",
+      "DATA_LOGGER_DESCRIPTION": "收集數據及上傳傳感器",
+      "SETTINGS_HEADLINE": "設定",
+      "SETTINGS_DESCRIPTION": "變更Fusion設定",
+      "SERVER_HEADLINE": "伺服器",
+      "SERVER_DESCRIPTION": "連接你的Fusion至伺服器"
+  },
+  "BLOCKLY": {
+      "TITLE": "圖形化編程",
+      "UNTITLED_FILE_NAME": "未命名",
+      "MENUBAR_FILE": "檔案",
+      "MENUBAR_FILE_NEW": "新的",
+      "MENUBAR_FILE_OPEN": "開啟",
+      "MENUBAR_FILE_CLOSE": "關閉",
+      "MENUBAR_FILE_SAVE": "儲存",
+      "MENUBAR_FILE_SAVE_AS": "儲存為",
+      "MENUBAR_FILE_DELETE": "刪除",
+      "MENUBAR_VIEW": "檢視",
+      "MENUBAR_VIEW_MODE": "模式",
+      "MENUBAR_VIEW_PROGRAM_OUTPUT": "顯示程式輸出",
+      "MENUBAR_VIEW_CODE_WINDOW": "顯示代碼視窗",
+      "MENUBAR_VIEW_MODE_BASIC": "培基語言",
+      "MENUBAR_VIEW_MODE_INTERMEDIATE": "高級",
+      "MENUBAR_MANAGE": "管理",
+      "MENUBAR_MANAGE_IMPORT": "輸入",
+      "MENUBAR_MANAGE_EXPORT": "輸出",
+      "MENUBAR_HELP": "幫助",
+      "MENUBAR_HELP_EXAMPLES": "範例",
+      "MENUBAR_HELP_DOCUMENTATION": "文件",
+      "TOOLBAR_NEW_FILE_TOOLTIP": "新檔案",
+      "TOOLBAR_OPEN_FILE_TOOLTIP": "開啟檔案",
+      "TOOLBAR_SAVE_FILE_TOOLTIP": "保存檔案",
+      "TOOLBAR_RUN_FILE_TOOLTIP": "運行程式",
+      "TOOLBAR_STOP_FILE_TOOLTIP": "停止程式",
+      "TOOLBAR_TOGGLE_OUTPUT": "切換程式輸出",
+      "TOOLBAR_SHOW_CODE": "切換代碼視窗",
+      "TOOLBAR_GAMEPAD_TOOLTIP": "開啟虛擬手把",
+      "TOOLBAR_OPEN_IN_EDITOR": "在編輯中開啟",
+      "DEBUG_CONSOLE_TITLE": "調試控制台",
+      "DEBUG_CONSOLE_PLACEHOLDER": "程式輸出"
+  },
+  "EDITOR": {
+      "TITLE": "編輯器",
+      "WORKING_FILES_TITLE": "工作檔案",
+      "UNTITLED_FILE_NAME": "未命名",
+      "MENUBAR_FILE": "檔案",
+      "MENUBAR_FILE_NEW": "新的",
+      "MENUBAR_FILE_OPEN": "開啟",
+      "MENUBAR_FILE_CLOSE": "關閉",
+      "MENUBAR_FILE_SAVE": "儲存",
+      "MENUBAR_FILE_SAVE_AS": "儲存為",
+      "MENUBAR_FILE_SAVE_ALL": "儲存全部",
+      "MENUBAR_FILE_DELETE": "刪除",
+      "MENUBAR_FILE_PRINT": "列印",
+      "MENUBAR_MANAGE": "管理",
+      "MENUBAR_MANAGE_IMPORT": "輸入",
+      "MENUBAR_MANAGE_EXPORT": "輸出",
+      "MENUBAR_HELP": "幫助",
+      "MENUBAR_HELP_EXAMPLES": "範例",
+      "MENUBAR_HELP_DOCUMENTATION": "文件",
+      "TOOLBAR_NEW_FILE_TOOLTIP": "新檔案",
+      "TOOLBAR_OPEN_FILE_TOOLTIP": "開啟檔案",
+      "TOOLBAR_SAVE_FILE_TOOLTIP": "儲存檔案",
+      "TOOLBAR_SAVE_FILES_TOOLTIP": "儲存所有檔案",
+      "TOOLBAR_RUN_FILE_TOOLTIP": "運行程式",
+      "TOOLBAR_STOP_FILE_TOOLTIP": "停止程式",
+      "TOOLBAR_GAMEPAD_TOOLTIP": "開啟虛擬手把",
+      "DEBUG_CONSOLE_TITLE": "調試控制台",
+      "DEBUG_CONSOLE_PLACEHOLDER": "程式輸出",
+      "OPEN_FILE_DIALOG": {
+          "TITLE": "選擇開啟檔案"
+      },
+      "COMING_SOON_DIALOG": {
+          "TITLE": "即將完成",
+          "CONTENT": "支援移動設備的編輯器即將完成"
+      },
+      "SAVE_AS_DIALOG": {
+          "TITLE": "你想為您的檔案命名為?",
+          "MISSING_FILE_NAME": "必須指定檔案名稱"
+      },
+      "UNTITLED_FILE": "未命名",
+      "FILE_ALREADY_OPEN": "檔案已開啟",
+      "SAVE_BEFORE_CLOSING_TITLE": "關閉前儲存?",
+      "DELETE_FILE_TITLE": "確定刪除此檔案?"
+  },
+  "DOCUMENTATION": {},
+  "FILE_MANAGER": {},
+  "VNC": {},
+  "DIAGNOSTIC_TOOL": {},
+  "SETTINGS": {
+      "TITLE": "設定",
+      "TAB_WIRELESS": "無線",
+      "TAB_SOFTWARE": "軟體",
+      "TAB_USERS": "使用者",
+      "TAB_MISC": "宏指令系統計算",
+      "ACCESS_POINT_SETTINGS": "接入點設定",
+      "APPLY_SSID_CHANGES_BUTTON": "應用變更",
+      "DEFAULT_SSID_BUTTON": "預設",
+      "SSID_LABEL": "SSID",
+      "PASSKEY_LABEL": "萬能鑰匙",
+      "WIRELESS_NETWORKS": "無線網路",
+      "FUSION_SOFTWARE_MANAGEMENT": "Fusion控制器軟體管理",
+      "TERMINAL_PLACEHOLDER": "終端…",
+      "UPDATE_BUTTON": "更新",
+      "USERS_USERNAME": "使用者名稱",
+      "USERS_FIRST_NAME": "名字",
+      "USERS_LAST_NAME": "姓氏",
+      "USERS_EMAIL": "信箱",
+      "USERS_GROUP": "使用者類別",
+      "USERS_ADD_NEW_BUTTON": "新建立",
+      "USERS_EDIT_BUTTON": "編輯",
+      "USERS_DELETE_BUTTON": "刪除",
+      "WIFI_PASSWORD_ERROR": {
+          "TITLE": "密碼錯誤",
+          "MESSAGE": "密碼須為8個字符以上"
+      },
+      "SSID_error": {
+          "TITLE": "SSID錯誤",
+          "MESSAGE": "SSID須為8個字符以上"
+      },
+      "SSID_CONFIRMATION": {
+          "TITLE": "確定變更?",
+          "CONTENT": "如果繼續，選擇接入新的網路"
+      },
+      "SSID_RESTORE_CONFIRMATION": {
+          "TITLE": "確定恢復接入點?",
+          "CONTENT": "如果繼續，需要接入新的網路"
+      },
+      "DISCONNECT_FROM_NETWORK": {
+          "TITLE": "確定中斷網路?"
+      },
+      "NETWORK_CONNECTION_DIALOG": {
+          "TITLE": "輸入網路連接的萬能鑰匙",
+          "PASSKEY": "萬能鑰匙",
+          "VIEW_PASSKEY": "檢視萬能鑰匙",
+          "CANCEL": "取消",
+          "OK": "OK"
+      },
+      "CREATE_NEW_USER": {
+          "TITLE": "建立新使用者",
+          "MISSING_USER": "必須填寫新使用者數據",
+          "MISSING_USERNAME": "必須填寫新使用者",
+          "MISSING_PASSWORD": "必須填寫密碼",
+          "PASSWORD_MISMATCH": "密碼錯誤",
+          "MISSING_GROUP": "必須選擇使用者類別",
+          "MISSING_SECURITY_QUESTION": "必須填寫安全性問題",
+          "MISSING_SECURITY_ANSWER": "必須填寫安全性回答"
+      },
+      "EDIT_USER": {
+          "TITLE": "編輯"
+      },
+      "DELETE_USER": {
+          "TITLE": "確定刪除?"
+      },
+      "UPDATE_FUSION": {
+          "TITLE": "確定更新Fusion軟體?",
+          "CONTENT": "Fusion軟體完成時自動更新"
+      }
+  },
+  "ABOUT": {},
+  "SERVER_MESSAGE": {},
+  "SECURITY_QUESTIONS": {
+      "QUESTION_1": "你最喜歡的演員，音樂家或藝術家名稱?",
+      "QUESTION_2": "你最喜歡的動物?",
+      "QUESTION_3": "你在哪座城市出生?",
+      "QUESTION_4": "你所就讀的高中?",
+      "QUESTION_5": "你最喜歡的電影是?"
+  },
+  "USER_GROUPS": {
+      "ADMIN": "Admin",
+      "USER": "User"
+  },
+  "DIALOG_BOX": {
+      "OK": "OK",
+      "CANCEL": "取消"
+  }
+}
