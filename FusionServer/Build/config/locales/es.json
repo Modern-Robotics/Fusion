@@ -1,0 +1,12 @@
+{
+	"LOGIN": {
+		"SUCCESS": "Inicio de sesión correcto",
+		"MULTIUSER_DENIED": "Otro usuario ya ha iniciado sesión",
+		"INVALID": "Usuario o contraseña invalido"
+	},
+	"REGISTER": {
+		"CREATED": "User created",
+		"CREATED_BUT_MAX_LOGIN_EXCEEDED": "User created but another user is already logged in",
+		"ALREADY_EXISTS": "Username already exists"
+	}
+}
