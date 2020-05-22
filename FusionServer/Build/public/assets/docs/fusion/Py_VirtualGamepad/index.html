@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Boxlight Robotics">
+        <link rel="canonical" href="http://modernroboticsinc.com/Py_VirtualGamepad/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Virtual Gamepad - Fusion Documentation Suite</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../js/jquery-1.10.2.min.js"></script>
+        <script src="../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../js/highlight.pack.js"></script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="..">Fusion Documentation Suite</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../Py_usbGamepad/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../Py_Compass/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#virtual-gamepad">Virtual Gamepad</a></li>
+            <li><a href="#virtualgamepadservice">VirtualGamepad.service()</a></li>
+            <li><a href="#virtualgamepadservicecam-resolution-fps-mode">VirtualGamepad.service(cam, resolution, fps, mode)</a></li>
+            <li><a href="#leftjoystickmixer-x_inv-y_inv">leftJoystick(mixer, x_inv, y_inv)</a></li>
+            <li><a href="#rightjoystickmixer-x_inv-y_inv">rightJoystick(mixer, x_inv, y_inv)</a></li>
+            <li><a href="#readbuttonbutton">readButton(button)</a></li>
+            <li><a href="#telemetryline-value">telemetry(line, value)</a></li>
+            <li><a href="#questions">Questions?</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="virtual-gamepad"><strong>Virtual Gamepad</strong></h1>
+<hr />
+<p>This library allows you to display and use a virtual gamepad right on your touch screen device to control the Fusion. The Virtual Gamepad comes with 2 joysticks and 4 buttons that are controlled using the functions below.<br />
+Once the code is written, start the python program and click the Virtual Gamepad button on the toolbar to open the window. The Virtual Gamepad window will open on the current IP address on port 5000 (Default: <strong>my.bot:5000</strong> or <em>192.168.50.1:5000</em>) in a new tab.</p>
+<blockquote>
+<p><a href="../Blk_VirtualGamepad/">Virtual Gamepad Visual Programming Blocks</a></p>
+</blockquote>
+<p><strong>List of available functions:</strong>  </p>
+<ul>
+<li><a href="./#virtualgamepadservice"><strong>VirtualGamepad.service()</strong></a></li>
+<li><a href="./#virtualgamepadservicecam-resolution-fps-mode"><strong>VirtualGamepad.service(<em>cam</em>, <em>resolution</em>, <em>fps</em>, <em>mode</em>)</strong></a></li>
+<li><a href="./#leftjoystickmixer-x_inv-y_inv"><strong>leftJoystick(<em>mixer</em>, <em>x_inv</em>, <em>y_inv</em>)</strong></a></li>
+<li><a href="./#rightjoystickmixer-x_inv-y_inv"><strong>rightJoystick(<em>mixer</em>, <em>x_inv</em>, <em>y_inv</em>)</strong></a></li>
+<li><a href="./#readbuttonbutton"><strong>readButton(<em>button</em>)</strong></a></li>
+<li><a href="./#telemetryline-value"><strong>telemetry(<em>line</em>, <em>value</em>)</strong></a></li>
+</ul>
+<p><img alt="" src="../img/VirtualGamepad/VirtualGamepad.png" /></p>
+<h2 id="virtualgamepadservice"><strong>VirtualGamepad.service()</strong></h2>
+<blockquote>
+<h3 id="definition">Definition</h3>
+<blockquote>
+<p>This class contains the necessary drivers for the Virtual Gamepad and must be called at the beginning of the program before using any other class functions. This call also starts the server for the Virtual Gamepad.</p>
+</blockquote>
+<h3 id="parameters">Parameters</h3>
+<blockquote>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="returns">Returns</h3>
+<blockquote>
+<p><strong>Virtual Gamepad Object</strong></p>
+</blockquote>
+<h3 id="example">Example</h3>
+<blockquote>
+<pre><code>import VirtualGamepad
+v = VirtualGamepad.service()
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="virtualgamepadservicecam-resolution-fps-mode"><strong>VirtualGamepad.service(<em>cam</em>, <em>resolution</em>, <em>fps</em>, <em>mode</em>)</strong></h2>
+<blockquote>
+<h3 id="definition_1">Definition</h3>
+<blockquote>
+<p>This class contains the necessary drivers for the Virtual Gamepad and must be called at the beginning of the program before using any other class functions. This call also starts the server for the Virtual Gamepad. Using this function with all the parameters will enable you to use a USB camera. Use the standard <a href="./#virtualgamepadservice">VirtualGamepad.service()</a> function if you do not have a camera attached.</p>
+</blockquote>
+<h3 id="parameters_1">Parameters</h3>
+<blockquote>
+<p><strong><em>cam</em></strong> : If set to <strong>True</strong> it will enable the use of a USB camera or PiCamera to live stream video back to the virtual gamepad background. A camera must be attached to the Fusion in order to use this block or an exception will occur when the drivers are initialized. Use <a href="./#virtualgamepadservice">VirtualGamepad.service()</a> if you do not have a camera attached.<br />
+<strong><em>resolution</em></strong> : The resolution parameter allows the user to change the default resolution of <em>(320x240)</em> to any defined value supported by their selected camera by entering <em>(width, height)</em>.<br />
+<strong><em>fps</em></strong> : Frames per second is the rate at which the live stream frames are displayed to screen. Default is <em>10</em>fps however can be increased depending on the camera abilities and WiFi connection strength.<br />
+<strong><em>mode</em></strong> : Mode refers to the type of camera that is connected to the device. The default mode is <em>'YUV'</em> however <em>'MJPG'</em> and <em>'PICAM'</em> are also supported. Certain cameras may work better on one mode than the other and the user should refer to the manufacturer documentation or support to determine what modes are supported. </p>
+</blockquote>
+<h3 id="returns_1">Returns</h3>
+<blockquote>
+<p><strong>Virtual Gamepad Object</strong></p>
+</blockquote>
+<h3 id="example_1">Example</h3>
+<blockquote>
+<pre><code># Use default values
+import VirtualGamepad
+v = VirtualGamepad.service(True)
+
+# Use custom values
+import VirtualGamepad
+v = VirtualGamepad.service(True, (800,600), 30, "MJPG")
+
+# Change a single parameter
+import VirtualGamepad
+v = VirtualGamepad.service(True, fps=60)
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="leftjoystickmixer-x_inv-y_inv"><strong>leftJoystick(<em>mixer</em>, <em>x_inv</em>, <em>y_inv</em>)</strong></h2>
+<blockquote>
+<h3 id="definition_2">Definition</h3>
+<blockquote>
+<p>Read the X-axis and Y-axis of the left joystick. The values range from -100 to 100 on each axis.</p>
+</blockquote>
+<h3 id="parameters_2">Parameters</h3>
+<blockquote>
+<p><strong><em>mixer</em></strong> : When set to <strong>True</strong> the mixer will combine the X and Y values to create a tank drive style of control. Default is set to <strong>False</strong>.<br />
+<strong><em>x_inv</em></strong> : Invert the X-Axis value. Default is set to <strong>False</strong>.<br />
+<strong><em>y_inv</em></strong> : Invert the Y-Axis value. Default is set to <strong>False</strong>.  </p>
+</blockquote>
+<h3 id="returns_2">Returns</h3>
+<blockquote>
+<p><strong><em>axis value</em></strong> : tuple (X-axis, Y-axis) where X-axis/Y-axis = -100 to 100</p>
+</blockquote>
+<h3 id="example_2">Example</h3>
+<blockquote>
+<pre><code>import VirtualGamepad
+v = VirtualGamepad.service()
+# Use Default Joystick
+left = v.leftJoystick()
+print left       # (100,0)
+print left[0]    # 100
+print left[1]    # 0
+# Use Mixer
+left = v.leftJoystick(True)
+# Change a single parameter
+left = v.leftJoystick(y_inv=True)
+# Change the Joystick
+left = v.leftJoystick(True, False, True)
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="rightjoystickmixer-x_inv-y_inv"><strong>rightJoystick(<em>mixer</em>, <em>x_inv</em>, <em>y_inv</em>)</strong></h2>
+<blockquote>
+<h3 id="definition_3">Definition</h3>
+<blockquote>
+<p>Read the X-axis and Y-axis of the right joystick. The values range from -100 to 100 on each axis.</p>
+</blockquote>
+<h3 id="parameters_3">Parameters</h3>
+<blockquote>
+<p><strong><em>mixer</em></strong> : When set to <strong>True</strong> the mixer will combine the X and Y values to create a tank drive style of control. Default is set to <strong>False</strong>.<br />
+<strong><em>x_inv</em></strong> : Invert the X-Axis value. Default is set to <strong>False</strong>.<br />
+<strong><em>y_inv</em></strong> : Invert the Y-Axis value. Default is set to <strong>False</strong>.  </p>
+</blockquote>
+<h3 id="returns_3">Returns</h3>
+<blockquote>
+<p><strong><em>axis value</em></strong> : tuple (X-axis, Y-axis) where X-axis/Y-axis = -100 to 100</p>
+</blockquote>
+<h3 id="example_3">Example</h3>
+<blockquote>
+<pre><code>import VirtualGamepad
+v = VirtualGamepad.service()
+# Use Default Joystick
+right = v.rightJoystick()
+print right       # (100,0)
+print right[0]    # 100
+print right[1]    # 0
+# Use Mixer
+right = v.rightJoystick(True)
+# Change a single parameter
+right = v.rightJoystick(y_inv=True)
+# Change the Joystick
+right = v.rightJoystick(True, False, True)
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="readbuttonbutton"><strong>readButton(<em>button</em>)</strong></h2>
+<blockquote>
+<h3 id="definition_4">Definition</h3>
+<blockquote>
+<p>Read a button from the Virtual Gamepad. There are 4 available buttons: </p>
+<ul>
+<li><strong>A</strong> = 0  </li>
+<li><strong>B</strong> = 1  </li>
+<li><strong>X</strong> = 2  </li>
+<li><strong>Y</strong> = 3  </li>
+</ul>
+</blockquote>
+<h3 id="parameters_4">Parameters</h3>
+<blockquote>
+<p><strong><em>button</em></strong> : The select button that you want to read from.</p>
+</blockquote>
+<h3 id="returns_4">Returns</h3>
+<blockquote>
+<p><strong><em>value</em></strong> : int (0 or 1)</p>
+</blockquote>
+<h3 id="example_4">Example</h3>
+<blockquote>
+<pre><code>import VirtualGamepad
+v = VirtualGamepad.service()
+A = v.readButton('A')
+A = v.readButton(0)
+X = v.readButton('X')
+X = v.readButton(2)
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="telemetryline-value"><strong>telemetry(<em>line</em>, <em>value</em>)</strong></h2>
+<blockquote>
+<h3 id="definition_5">Definition</h3>
+<blockquote>
+<p>Print valuable data to the Virtual Gamepad screen. This is very useful when wanting to read the return values from sensors or the Virtual Gamepad functions.</p>
+</blockquote>
+<h3 id="parameters_5">Parameters</h3>
+<blockquote>
+<p><strong><em>line</em></strong> : The line number the data should be printed on starting with 0.<br />
+<strong><em>value</em></strong> : The data that is printed to the line.</p>
+</blockquote>
+<h3 id="returns_5">Returns</h3>
+<blockquote>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="example_5">Example</h3>
+<blockquote>
+<pre><code>import VirtualGamepad
+v = VirtualGamepad.service()
+while True:
+    (left_x, left_y) = v.leftJoystick(True, y_inv=True)
+    (right_x, right_y) = v.leftJoystick(True, y_inv=True)
+    v.telemetry(0, "left_x value = " + str(left_x))
+    v.telemetry(1, "left_y value = " + str(left_y))
+    v.telemetry(2, "right_x value = " + str(right_x))
+    v.telemetry(3, "right_y value = " + str(right_y))
+    v.telemetry(4, "A value = " + str(v.readButton('A')))
+    v.telemetry(5, "B value = " + str(v.readButton('B')))
+    v.telemetry(6, "X value = " + str(v.readButton('X')))
+    v.telemetry(7, "Y value = " + str(v.readButton('Y')))
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="questions"><strong>Questions?</strong></h2>
+<blockquote>
+<p>Contact Boxlight Robotics at <a href="mailto:support@BoxlightRobotics.com">support@BoxlightRobotics.com</a> with a detailed description of the steps you have taken and observations you have made.</p>
+<p><strong>Email Subject</strong>: Fusion Python Virtual Gamepad</p>
+</blockquote></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '..';</script>
+        <script src="../js/base.js"></script>
+        <script src="../search/require.js"></script>
+        <script src="../search/search.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&larr;</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&rarr;</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </body>
+</html>
