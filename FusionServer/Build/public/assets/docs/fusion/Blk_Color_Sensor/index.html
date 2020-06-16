@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Boxlight Robotics">
+        <link rel="canonical" href="http://BoxlightRobotics.com/Blk_Color_Sensor/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Color Sensor (45-2018) - Fusion Documentation Suite</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../js/jquery-1.10.2.min.js"></script>
+        <script src="../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../js/highlight.pack.js"></script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="..">Fusion Documentation Suite</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../Blk_IR_Seeker_V3/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../Blk_Color_Beacon/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#color-sensor-45-2018">Color Sensor (45-2018)</a></li>
+            <li><a href="#set-mode">Set Mode</a></li>
+            <li><a href="#get-color-number">Get Color Number</a></li>
+            <li><a href="#get-rgb">Get RGB</a></li>
+            <li><a href="#questions">Questions?</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="color-sensor-45-2018"><strong>Color Sensor (45-2018)</strong></h1>
+<hr />
+<p>The Color Sensor is used to detect the color of an object or a visible light source. Along with raw and adjusted RGB values, the device can also return a color number corresponding to a the colors listed below in the documentation. Calibration steps must be taken as needed based on the environment and ambient lighting for the most accurate readings. Maximum detection distance of the color sensor is approximately 7cm and it is recommended that during active mode the device is placed at a slight angle to avoid white light reflecting from the LED. </p>
+<ul>
+<li>Connect via <strong>I2C</strong> port.</li>
+</ul>
+<blockquote>
+<p><a href="../Py_Color_Sensor/">Color Sensor Python Library Information</a>  </p>
+</blockquote>
+<p><strong>List of available blocks:</strong>  </p>
+<ul>
+<li><a href="./#set-mode"><strong>Set Mode</strong></a></li>
+<li><a href="./#get-color-number"><strong>Get Color Number</strong></a></li>
+<li><a href="./#get-rgb"><strong>Get RGB</strong></a></li>
+</ul>
+<p><img alt="" src="../img/Sensor_Diagrams/ColorSensor.png" /></p>
+<h2 id="set-mode"><strong>Set Mode</strong></h2>
+<blockquote>
+<p>Set the reading mode and frequency. Values are saved within the sensor memory, therefore this block only needs to be called when the mode needs to be changed.</p>
+<ul>
+<li>Mode:<ul>
+<li><strong>Active</strong> (Default)</li>
+<li><strong>Passive</strong></li>
+</ul>
+</li>
+<li>Frequency:<ul>
+<li><strong>60 Hz</strong> (Default)</li>
+<li><strong>50 Hz</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="block">Block:</h3>
+<p><img src="../img/Intermediate_Blocks/Color_Sensor/SetColorMode.PNG" width="400"></p>
+<h3 id="code-produced">Code Produced:</h3>
+<blockquote>
+<p>Setup:</p>
+<blockquote>
+<pre><code>colour = Fusion.color(f)
+</code></pre>
+</blockquote>
+<p>Code:</p>
+<blockquote>
+<pre><code>colour.colorSetup(colour.ACTIVE, colour.SIXTY_HZ)
+</code></pre>
+</blockquote>
+</blockquote>
+</blockquote>
+<h2 id="get-color-number"><strong>Get Color Number</strong></h2>
+<blockquote>
+<p>Returns a value representing a color based on the color chart below.</p>
+<p><img alt="" src="../img/Sensor_Diagrams/ColorChart.png" /></p>
+<h3 id="block_1">Block:</h3>
+<p><img src="../img/Intermediate_Blocks/Color_Sensor/GetColorNumber.PNG" width="200"></p>
+<h3 id="code-produced_1">Code Produced:</h3>
+<blockquote>
+<p>Setup:</p>
+<blockquote>
+<pre><code>colour = Fusion.color(f)
+</code></pre>
+</blockquote>
+<p>Code:</p>
+<blockquote>
+<pre><code>colour.getColorNumber()
+</code></pre>
+</blockquote>
+</blockquote>
+<h3 id="example">Example:</h3>
+<p><img src="../img/Intermediate_Blocks/Color_Sensor/GetColorNumber_Example.PNG" width="400"></p>
+<blockquote>
+<p>Code:</p>
+<blockquote>
+<pre><code>import Fusion
+f = Fusion.driver()
+my_color = None
+colour = Fusion.color(f)
+my_color = colour.getColorNumber()
+</code></pre>
+</blockquote>
+</blockquote>
+</blockquote>
+<h2 id="get-rgb"><strong>Get RGB</strong></h2>
+<blockquote>
+<p>Returns the <strong>Red</strong>, <strong>Green</strong> or <strong>Blue</strong> reading from the current object in front of the sensor.</p>
+<ul>
+<li>Can read the <strong>Red</strong>, <strong>Green</strong> or <strong>Blue</strong> value.</li>
+<li>The returned ranges from <strong>0</strong> to <strong>255</strong>.</li>
+</ul>
+<h3 id="block_2">Block:</h3>
+<p><img src="../img/Intermediate_Blocks/Color_Sensor/GetRGB.PNG" width="340"></p>
+<h3 id="code-produced_2">Code Produced:</h3>
+<blockquote>
+<p>Setup:</p>
+<blockquote>
+<pre><code>colour = Fusion.color(f)
+</code></pre>
+</blockquote>
+<p>Code:</p>
+<blockquote>
+<pre><code>colour.getRGBIndex()[0]
+</code></pre>
+</blockquote>
+</blockquote>
+<h3 id="example_1">Example:</h3>
+<p><img src="../img/Intermediate_Blocks/Color_Sensor/GetRGB_Example.PNG" width="450"></p>
+<blockquote>
+<p>Code:</p>
+<blockquote>
+<pre><code>import Fusion
+f = Fusion.driver()
+my_red = None
+my_green = None
+my_blue = None
+colour = Fusion.color(f)
+my_red = colour.getRGBIndex()[0]
+my_green = colour.getRGBIndex()[1]
+my_blue = colour.getRGBIndex()[2]
+</code></pre>
+</blockquote>
+</blockquote>
+</blockquote>
+<h2 id="questions"><strong>Questions?</strong></h2>
+<blockquote>
+<p>Contact Boxlight Robotics at <a href="mailto:support@BoxlightRobotics.com">support@BoxlightRobotics.com</a> with a detailed description of the steps you have taken and observations you have made.</p>
+<p><strong>Email Subject</strong>: Fusion Blockly Color Sensor</p>
+</blockquote></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '..';</script>
+        <script src="../js/base.js"></script>
+        <script src="../search/require.js"></script>
+        <script src="../search/search.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&larr;</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&rarr;</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </body>
+</html>

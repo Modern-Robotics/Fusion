@@ -1,0 +1,262 @@
+{
+  "LANGUAGE": "Chinese (Simplified)",
+  "HEADER": {
+    "LOGOUT": "退出",
+    "POWER_OFF": "关机",
+    "RESTART": "重启"
+  },
+  "SIDEBAR": {
+      "HOME": "首页",
+      "BLOCKLY": "图形化编程",
+      "EDITOR": "文本编辑器",
+      "DOCUMENTATION": "文件",
+      "FILE_MANAGER": "文件管理",
+      "VNC": "虚拟网络控制台",
+      "DIAGNOSTIC_TOOL": "诊断工具",
+      "SETTINGS": "设置",
+      "ABOUT": "关于"
+  },
+  "FOOTER": {},
+  "LOGIN": {
+      "TITLE": "登录",
+      "USERNAME": "用户名",
+      "PASSWORD": "密码",
+      "SHOW_PASSWORD": "显示密码",
+      "REGISTER": "注册",
+      "LOGIN": "登录",
+      "GUEST_LOGIN": "访客登录",
+      "FORGOT_PASSWORD": "忘记密码"
+  },
+  "RECOVER": {
+      "TITLE": "恢复帐号",
+      "USERNAME_LABEL": "用户名",
+      "CANCEL_BUTTON": "取消",
+      "SEARCH_BUTTON": "搜索"
+  },
+  "REGISTER": {
+      "TITLE": "新用户",
+      "REQUIRED_TITLE": "必填项目",
+      "OPTIONAL_TITLE": "选填项目",
+      "USERNAME": "用户名",
+      "PASSWORD": "密码",
+      "PASSWORD_CONFIRM": "密码确认",
+      "USER_GROUP": "用户类别",
+      "SECURITY_QUESTION": "安全问题",
+      "SECURITY_ANSWER": "安全问题答案",
+      "EMAIL": "邮箱",
+      "FIRST_NAME": "名字",
+      "LAST_NAME": "姓氏",
+      "LANGUAGE": "语言",
+      "CANCEL": "取消",
+      "CREATE": "创建"
+  },
+  "ACCOUNT": {
+      "TITLE": "用户帐号",
+      "USER_FIELDS_TITLE": "用户字段",
+      "SECURITY_FIELDS_TITLE": "安全区域",
+      "USERNAME": "用户名",
+      "EMAIL": "邮箱",
+      "FIRST_NAME": "名字",
+      "LAST_NAME": "姓氏",
+      "LANGUAGE": "语言",
+      "USER_GROUP": "用户类别",
+      "PASSWORD": "新密码",
+      "PASSWORD_CONFIRM": "确认新密码",
+      "SECURITY_QUESTION": "新安全问题",
+      "SECURITY_ANSWER": "新安全问题答案",
+      "CANCEL": "取消",
+      "UPDATE": "更新",
+      "MESSAGES": {
+          "MISMATCHED_PASSORDS": "密码错误",
+          "NEW_PASSWORD_REQUEST": "请输入新密码"
+      }
+  },
+  "HOME": {
+      "TITLE": "首页",
+      "READ_BUTTON": "资料",
+      "LAUNCH_BUTTON": "运行",
+      "BUILD_HEADLINE": "搭建",
+      "BUILD_DESCRIPTION": "Mybot机器人搭建指南",
+      "BLOCKLY_HEADLINE": "图形化编程",
+      "BLOCKLY_DESCRIPTION": "图形化模块编程语言",
+      "EDITOR_HEADLINE": "编辑器",
+      "EDITOR_DESCRIPTION": "Python简易编程环境",
+      "DOCUMENTATION_HEADLINE": "Fusion文件",
+      "DOCUMENTATION_DESCRIPTION": "完整的Fusion文件和参考资料",
+      "DATA_LOGGER_HEADLINE": "数据上传",
+      "DATA_LOGGER_DESCRIPTION": "数据收集及上传传感器",
+      "SETTINGS_HEADLINE": "设置",
+      "SETTINGS_DESCRIPTION": "更改Fusion设置",
+      "SERVER_HEADLINE": "服务器",
+      "SERVER_DESCRIPTION": "连接Fusion控制器至服务器"
+  },
+  "BLOCKLY": {
+      "TITLE": "图形化编程",
+      "UNTITLED_FILE_NAME": "未命名",
+      "MENUBAR_FILE": "文件",
+      "MENUBAR_FILE_NEW": "新的",
+      "MENUBAR_FILE_OPEN": "打开",
+      "MENUBAR_FILE_CLOSE": "关闭",
+      "MENUBAR_FILE_SAVE": "保存",
+      "MENUBAR_FILE_SAVE_AS": "保存为",
+      "MENUBAR_FILE_DELETE": "删除",
+      "MENUBAR_VIEW": "查看",
+      "MENUBAR_VIEW_MODE": "模式",
+      "MENUBAR_VIEW_PROGRAM_OUTPUT": "显示程序输出",
+      "MENUBAR_VIEW_CODE_WINDOW": "显示代码窗口",
+      "MENUBAR_VIEW_MODE_BASIC": "培基语言",
+      "MENUBAR_VIEW_MODE_INTERMEDIATE": "高级",
+      "MENUBAR_MANAGE": "管理",
+      "MENUBAR_MANAGE_IMPORT": "输入",
+      "MENUBAR_MANAGE_EXPORT": "输出",
+      "MENUBAR_HELP": "帮助",
+      "MENUBAR_HELP_EXAMPLES": "案例",
+      "MENUBAR_HELP_DOCUMENTATION": "文件",
+      "TOOLBAR_NEW_FILE_TOOLTIP": "新文件",
+      "TOOLBAR_OPEN_FILE_TOOLTIP": "打开文件",
+      "TOOLBAR_SAVE_FILE_TOOLTIP": "保存文件",
+      "TOOLBAR_RUN_FILE_TOOLTIP": "运行程序",
+      "TOOLBAR_STOP_FILE_TOOLTIP": "停止程序",
+      "TOOLBAR_TOGGLE_OUTPUT": "切换程序输出",
+      "TOOLBAR_SHOW_CODE": "切换代码窗口",
+      "TOOLBAR_GAMEPAD_TOOLTIP": "打开虚拟手柄",
+      "TOOLBAR_OPEN_IN_EDITOR": "编辑器中打开",
+      "DEBUG_CONSOLE_TITLE": "调试控制台",
+      "DEBUG_CONSOLE_PLACEHOLDER": "程序输出"
+  },
+  "EDITOR": {
+      "TITLE": "编辑器",
+      "WORKING_FILES_TITLE": "工作文件",
+      "UNTITLED_FILE_NAME": "未命名",
+      "MENUBAR_FILE": "文件",
+      "MENUBAR_FILE_NEW": "新的",
+      "MENUBAR_FILE_OPEN": "打开",
+      "MENUBAR_FILE_CLOSE": "关闭",
+      "MENUBAR_FILE_SAVE": "保存",
+      "MENUBAR_FILE_SAVE_AS": "保存为",
+      "MENUBAR_FILE_SAVE_ALL": "保存所有",
+      "MENUBAR_FILE_DELETE": "删除",
+      "MENUBAR_FILE_PRINT": "打印",
+      "MENUBAR_MANAGE": "管理",
+      "MENUBAR_MANAGE_IMPORT": "输入",
+      "MENUBAR_MANAGE_EXPORT": "输出",
+      "MENUBAR_HELP": "帮助",
+      "MENUBAR_HELP_EXAMPLES": "案例",
+      "MENUBAR_HELP_DOCUMENTATION": "文件",
+      "TOOLBAR_NEW_FILE_TOOLTIP": "新文件",
+      "TOOLBAR_OPEN_FILE_TOOLTIP": "打开文件",
+      "TOOLBAR_SAVE_FILE_TOOLTIP": "保存文件",
+      "TOOLBAR_SAVE_FILES_TOOLTIP": "保存所有文件",
+      "TOOLBAR_RUN_FILE_TOOLTIP": "运行程序",
+      "TOOLBAR_STOP_FILE_TOOLTIP": "停止程序",
+      "TOOLBAR_GAMEPAD_TOOLTIP": "打开虚拟手柄",
+      "DEBUG_CONSOLE_TITLE": "调试控制台",
+      "DEBUG_CONSOLE_PLACEHOLDER": "程序输出",
+      "OPEN_FILE_DIALOG": {
+          "TITLE": "选择文件打开"
+      },
+      "COMING_SOON_DIALOG": {
+          "TITLE": "即将完成",
+          "CONTENT": "支持移动设备的编辑器即将完成"
+      },
+      "SAVE_AS_DIALOG": {
+          "TITLE": "你想给您的文件命名什么？",
+          "MISSING_FILE_NAME": "必须指定文件名称"
+      },
+      "UNTITLED_FILE": "未命名的",
+      "FILE_ALREADY_OPEN": "文件夹已打开",
+      "SAVE_BEFORE_CLOSING_TITLE": "关闭前保存？",
+      "DELETE_FILE_TITLE": "是否确定删除此文件？"
+  },
+  "DOCUMENTATION": {},
+  "FILE_MANAGER": {},
+  "VNC": {},
+  "DIAGNOSTIC_TOOL": {},
+  "SETTINGS": {
+      "TITLE": "设置",
+      "TAB_WIRELESS": "无线",
+      "TAB_SOFTWARE": "软件",
+      "TAB_USERS": "用户",
+      "TAB_MISC": "宏指令系统计算",
+      "ACCESS_POINT_SETTINGS": "接入点设置",
+      "APPLY_SSID_CHANGES_BUTTON": "应用更改",
+      "DEFAULT_SSID_BUTTON": "默认",
+      "SSID_LABEL": "SSID",
+      "PASSKEY_LABEL": "万能钥匙",
+      "WIRELESS_NETWORKS": "无线网络",
+      "FUSION_SOFTWARE_MANAGEMENT": "Fusion控制器软件管理",
+      "TERMINAL_PLACEHOLDER": "终端…",
+      "UPDATE_BUTTON": "更新",
+      "USERS_USERNAME": "用户名",
+      "USERS_FIRST_NAME": "名字",
+      "USERS_LAST_NAME": "姓氏",
+      "USERS_EMAIL": "邮箱",
+      "USERS_GROUP": "用户类别",
+      "USERS_ADD_NEW_BUTTON": "新添加",
+      "USERS_EDIT_BUTTON": "编辑",
+      "USERS_DELETE_BUTTON": "删除",
+      "WIFI_PASSWORD_ERROR": {
+          "TITLE": "密码错误",
+          "MESSAGE": "密码须为8个字符以上"
+      },
+      "SSID_error": {
+          "TITLE": "SSID错误",
+          "MESSAGE": "SSID须为8个字符以上"
+      },
+      "SSID_CONFIRMATION": {
+          "TITLE": "是否确定更改？",
+          "CONTENT": "如果继续，需要接入新的网络"
+      },
+      "SSID_RESTORE_CONFIRMATION": {
+          "TITLE": "是否确定恢复接入点？",
+          "CONTENT": "如果继续，需要接入新的网络"
+      },
+      "DISCONNECT_FROM_NETWORK": {
+          "TITLE": "是否确定断开网络？"
+      },
+      "NETWORK_CONNECTION_DIALOG": {
+          "TITLE": "输入网络连接的万能钥匙",
+          "PASSKEY": "万能钥匙",
+          "VIEW_PASSKEY": "查看万能钥匙",
+          "CANCEL": "取消",
+          "OK": "OK"
+      },
+      "CREATE_NEW_USER": {
+          "TITLE": "创建新用户",
+          "MISSING_USER": "必须填写新用户数据",
+          "MISSING_USERNAME": "必须填写用户名",
+          "MISSING_PASSWORD": "必须填写密码",
+          "PASSWORD_MISMATCH": "密码错误",
+          "MISSING_GROUP": "必须选择用户类别",
+          "MISSING_SECURITY_QUESTION": "必须填写安全问题",
+          "MISSING_SECURITY_ANSWER": "必须填写安全问题的答案"
+      },
+      "EDIT_USER": {
+          "TITLE": "编辑"
+      },
+      "DELETE_USER": {
+          "TITLE": "是否确定删除？"
+      },
+      "UPDATE_FUSION": {
+          "TITLE": "是否确定更新Fusion软件？",
+          "CONTENT": "Fusion软件完成时自动更新"
+      }
+  },
+  "ABOUT": {},
+  "SERVER_MESSAGE": {},
+  "SECURITY_QUESTIONS": {
+      "QUESTION_1": "你最喜欢的演员，音乐家或艺术家是谁？",
+      "QUESTION_2": "你最喜欢的宠物的名字是什么？",
+      "QUESTION_3": "你在哪座城市出生？",
+      "QUESTION_4": "你高中就读哪所学校？",
+      "QUESTION_5": "你最喜欢的电影是什么？"
+  },
+  "USER_GROUPS": {
+      "ADMIN": "Admin",
+      "USER": "User"
+  },
+  "DIALOG_BOX": {
+      "OK": "OK",
+      "CANCEL": "取消"
+  }
+}
