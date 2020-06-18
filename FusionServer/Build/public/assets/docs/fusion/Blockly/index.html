@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Boxlight Robotics">
+        <link rel="canonical" href="http://BoxlightRobotics.com/Blockly/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Blockly - Fusion Documentation Suite</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../js/jquery-1.10.2.min.js"></script>
+        <script src="../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../js/highlight.pack.js"></script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="..">Fusion Documentation Suite</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../Program_Autostart/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../Editor/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#blockly-guide">Blockly Guide</a></li>
+            <li><a href="#create-a-new-program">Create a new program</a></li>
+            <li><a href="#open-an-existing-program">Open an existing program</a></li>
+            <li><a href="#writing-a-led-flashing-program-basic">Writing a LED flashing program (Basic)</a></li>
+            <li><a href="#writing-a-led-flashing-program-intermediate">Writing a LED flashing program (Intermediate)</a></li>
+            <li><a href="#questions">Questions?</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="blockly-guide"><strong>Blockly Guide</strong></h1>
+<hr />
+<p>Refer to the <a href="../Blockly_Topic/">Blockly Library Informtation</a> for available programming blocks.</p>
+<h2 id="create-a-new-program"><strong>Create a new program</strong></h2>
+<blockquote>
+<p>To create a new program from the Home screen, click the <strong>LAUNCH</strong> button in the Blockly box.</p>
+<p><img alt="" src="../img/Blockly/BlocklyHomePage.PNG" /></p>
+<p>A program will open that is listed at Untitled<strong>X</strong>.blk where <strong>X</strong> is an incrementing number. Click the save button to save the file with a new name. For our example we will name the file <em>myprog</em> which will result in a file being created call <em>myprog.blk</em>.<br />
+Every new program has a start block placed in the programming environment.</p>
+</blockquote>
+<h2 id="open-an-existing-program"><strong>Open an existing program</strong></h2>
+<blockquote>
+<p>To open an existing program, click the open file button and select the program you want to open. The program will open in the programming environment as it was the last time it was saved.</p>
+</blockquote>
+<h2 id="writing-a-led-flashing-program-basic"><strong>Writing a LED flashing program (Basic)</strong></h2>
+<blockquote>
+<p>First, make sure you are on the Basic Blockly screen by going to <em>View -&gt; Mode -&gt; Basic</em> in the toolbar. This example will show how to create a Blockly program to toggle the onboard yellow and blue LEDs. After opening a new program, the program environment contains just the <a href="../Basic_Fusion-Control/#start-block">Start Block</a>.  </p>
+<blockquote>
+<p><img src="../img/Blockly/Start.PNG" width="150"></p>
+</blockquote>
+<p><strong>1)</strong> Go to the <strong>Fusion Control</strong> toolbox and drag out the <a href="../Basic_Fusion-Control/#yellow-led-on">Yellow LED Block</a> and attach it to the start block like shown.</p>
+<blockquote>
+<p><img src="../img/Blockly/Basic_Step1.PNG" width="150"></p>
+</blockquote>
+<p><strong>2)</strong> Now we are going to add a delay so the yellow LED will stay on for 1 second before the next LED block. Go to the <strong>Fusion Control</strong> toolbox and drag out the <a href="../Basic_Fusion-Control/#wait">Wait Block</a>.</p>
+<blockquote>
+<p><img src="../img/Blockly/Basic_Step2.PNG" width="150"></p>
+</blockquote>
+<p><strong>3)</strong> Go to the <strong>Fusion Control</strong> toolbox and drag out the <a href="../Basic_Fusion-Control/#blue-led-on">Blue LED Block</a> and attach it to the wait block from the previous step. Now the yellow LED will turn on for 1 second and then switch to blue.</p>
+<blockquote>
+<p><img src="../img/Blockly/Basic_Step3.PNG" width="150"></p>
+</blockquote>
+<p><strong>4)</strong> Go to the <strong>Fusion Control</strong> toolbox and drag the <a href="../Basic_Fusion-Control/#wait">Wait Block</a> to the blue LED block. Now the yellow LED will turn on for 1 second, turn off and the blue LED will turn on for 1 second.</p>
+<blockquote>
+<p><img src="../img/Blockly/Basic_Step4.PNG" width="150"></p>
+</blockquote>
+<p><strong>5)</strong> In the toolbar at the top of the page, click "Run" to start running (also saves) the current program. You should observe the following:</p>
+<blockquote>
+<p><em>1.</em> Only the Yellow LED turns on for 1 second.<br />
+<em>2.</em> Only the Blue LED turns on for 1 second.<br />
+<em>3.</em> The program will end and both LEDs will be off.</p>
+<p><img alt="" src="../img/Blockly/Basic_Example.gif" /></p>
+<p><img alt="" src="../img/Blockly/Basic_LED.gif" /></p>
+</blockquote>
+</blockquote>
+<h2 id="writing-a-led-flashing-program-intermediate"><strong>Writing a LED flashing program (Intermediate)</strong></h2>
+<blockquote>
+<p>First, make sure you are on the Intermediate Blockly screen by going to <em>View -&gt; Mode -&gt; Intermediate</em> in the toolbar. This example will show how to create a Blockly program to continuously toggle the onboard yellow and blue LEDs. After opening a new program, the program environment contains just the <a href="../Int_Fusion-Control/#start-block">Start Block</a>.</p>
+<blockquote>
+<p><img src="../img/Blockly/Start.PNG" width="150"></p>
+</blockquote>
+<p><strong>1)</strong> Go to the <strong>Loops</strong> toolbox and drag out the <a href="../Default_Loops/#repeat">Repeat While True Block</a> </p>
+<blockquote>
+<p><img src="../img/Blockly/Int_Step1.PNG" width="200"></p>
+</blockquote>
+<p><strong>2)</strong> Go to the <strong>Fusion Control</strong> toolbox and drag out 2 of the <a href="../Int_Fusion-Control/#led">LED Blocks</a> and attach them inside the loop like shown. Change the lower block to <em>blue</em> and set it to <em>off</em>.</p>
+<blockquote>
+<p><img src="../img/Blockly/Int_Step2.PNG" width="200"></p>
+</blockquote>
+<p><strong>3)</strong> Go to the <strong>Time</strong> toolbox and drag out the <a href="../time/#wait-in-seconds">Wait <strong>X</strong> Seconds Block</a> and attach it under the LED blocks. Change the number in the center to the desired length of time for the yellow LED to stay on. For this example, we will leave the time at 1 second.</p>
+<blockquote>
+<p><img src="../img/Blockly/Int_Step3.PNG" width="200"></p>
+</blockquote>
+<p><strong>4)</strong> Go to the <strong>Fusion Control</strong> toolbox and drag out 2 more of the <a href="../Int_Fusion-Control/#led">LED Blocks</a> and attach them below the wait block. This time turn the yellow LED <em>off</em> and the blue LED <em>on</em>.</p>
+<blockquote>
+<p><img src="../img/Blockly/Int_Step4.PNG" width="200"></p>
+</blockquote>
+<p><strong>5)</strong> Go to the <strong>Time</strong> toolbox and drag out the <a href="../time/#wait-in-seconds">Wait <strong>X</strong> Seconds Block</a> and attach it under the LED blocks.</p>
+<blockquote>
+<p><img src="../img/Blockly/Int_Step5.PNG" width="200"></p>
+</blockquote>
+<p><strong>6)</strong> In the toolbar at the top of the page, click "Run" to start running (also saves) the current program. You should observe the following:</p>
+<blockquote>
+<p><em>1.</em> Only the Yellow LED turns on for 1 second.<br />
+<em>2.</em> Only the Blue LED turns on for 1 second.<br />
+<em>3.</em> The program will continually loop and flash the LEDs until "Stop" is selected in the toolbar.</p>
+<p><img alt="" src="../img/Blockly/Intermediate_Example.gif" /></p>
+<p><img alt="" src="../img/Blockly/Intermediate_LED.gif" /></p>
+</blockquote>
+</blockquote>
+<h2 id="questions"><strong>Questions?</strong></h2>
+<blockquote>
+<p>Contact Boxlight Robotics at <a href="mailto:support@BoxlightRobotics.com">support@BoxlightRobotics.com</a> with a detailed description of the steps you have taken and observations you have made.</p>
+<p><strong>Email Subject</strong>: Fusion Blockly Programming</p>
+</blockquote></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '..';</script>
+        <script src="../js/base.js"></script>
+        <script src="../search/require.js"></script>
+        <script src="../search/search.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&larr;</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&rarr;</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </body>
+</html>
