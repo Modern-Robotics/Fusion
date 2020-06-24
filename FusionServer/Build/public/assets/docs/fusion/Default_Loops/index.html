@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Boxlight Robotics">
+        <link rel="canonical" href="http://BoxlightRobotics.com/Default_Loops/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Loops - Fusion Documentation Suite</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../js/jquery-1.10.2.min.js"></script>
+        <script src="../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../js/highlight.pack.js"></script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="..">Fusion Documentation Suite</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../Default_Logic/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../Default_Text/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#blocks-for-loop-creation">Blocks for Loop Creation</a></li>
+            <li><a href="#repeat">Repeat</a></li>
+            <li><a href="#repeat-while">Repeat While</a></li>
+            <li><a href="#repeat-until">Repeat Until</a></li>
+            <li><a href="#count-with">Count With</a></li>
+            <li><a href="#for-each">For Each</a></li>
+        <li class="main "><a href="#loop-termination-blocks">Loop Termination Blocks</a></li>
+            <li><a href="#continue-with-next-iteration">Continue with next iteration</a></li>
+            <li><a href="#break-out-of-loop">Break out of loop</a></li>
+            <li><a href="#questions">Questions?</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="blocks-for-loop-creation"><strong>Blocks for Loop Creation</strong></h1>
+<hr />
+<p>The <strong>Control</strong> category holds blocks that control whether other blocks placed in their <strong>body</strong> are run.  (For example, in the below "repeat" block, the body contains the "print" block and its input.)  There are two types of control blocks: <a href="../Default_Logic/">If-Else</a> (described on their own page) and these, which control how many times the body is run and, in some cases, the value of a variable used within the body.  These structures are called <strong>loops</strong> since the body is repeated (possibly) multiple times, reminiscent of a rope containing loops.  Each pass through the loop is called an <strong>iteration</strong>.</p>
+<h2 id="repeat"><strong>Repeat</strong></h2>
+<blockquote>
+<p>The simplest "repeat" block runs the code in its body the specified number of times.  For example, the following block will print "Hello!" ten times.</p>
+<p><img alt="" src="../img/blocks/control-repeat.png" /></p>
+</blockquote>
+<h2 id="repeat-while"><strong>Repeat While</strong></h2>
+<blockquote>
+<p>Imagine a game in which a player rolls a die and adds up all of the values rolled as long as the total is less than 30.  The following blocks implement that game:</p>
+<ol>
+<li>A variable named <strong>total</strong> gets an initial value of 0.</li>
+<li>The loop begins with a check that <strong>total</strong> is less than 30.  If so, the blocks in the body are run.</li>
+<li>A random number in the range 1 to 6 is generated (simulating a die roll) and stored in a variable named <strong>roll</strong>.</li>
+<li>The number rolled is printed.</li>
+<li>The variable <strong>total</strong> gets increased by <strong>roll</strong>.</li>
+<li>The end of the loop having been reached, control goes back to step 2.</li>
+</ol>
+<p><img alt="" src="../img/blocks/control-repeat-while.png" /></p>
+<p>When the loop completes, any subsequent blocks (not shown) would be run.  In our example, the loop would end after some number of random numbers in the range 1 to 6 had been printed, and the variable <strong>total</strong> would hold the sum of these numbers, which would be guaranteed to be at least 30.</p>
+<p>For more information, see <a href="https://en.wikipedia.org/wiki/While_loop">while loop</a>.</p>
+</blockquote>
+<h2 id="repeat-until"><strong>Repeat Until</strong></h2>
+<blockquote>
+<p>"Repeat while" loops repeat their bodies <em>while</em> some condition is true.  Repeat-until loops are similar except that they repeat their bodies <em>until</em> some condition is true.  The following blocks are equivalent to the previous example because the loop contains until <strong>total</strong> is greater than or equal to 30.</p>
+<p><img alt="" src="../img/blocks/control-repeat-until.png" /></p>
+</blockquote>
+<h2 id="count-with"><strong>Count With</strong></h2>
+<blockquote>
+<p>The <strong>count with</strong> block (called a <a href="https://en.wikipedia.org/wiki/For_loop">for loop</a> in most programming languages) advances a variable from the first value to the second value by the increment amount (third value), running the body once for each value.  For example, the following program prints the numbers 1, 3, and 5.</p>
+<p><img alt="" src="../img/blocks/control-count-with.png" /></p>
+<p>As shown by the two following loops, each of which prints the numbers 5, 3, and 1, the first input may be larger than the second.  The behavior is the same whether the increment amount (third value) is positive or negative.</p>
+<p><img alt="" src="../img/blocks/control-for-each-down.png" /></p>
+</blockquote>
+<h2 id="for-each"><strong>For Each</strong></h2>
+<blockquote>
+<p>The <strong>for each</strong> block (see <a href="https://en.wikipedia.org/wiki/Foreach">Foreach</a>) is similar, except instead of giving the loop variable values in a numeric sequence, it uses the values from a list in turn.  The following program prints each element of the list: "alpha", "beta", "gamma".</p>
+<p><img alt="" src="../img/blocks/control-for-each.png" /></p>
+</blockquote>
+<h1 id="loop-termination-blocks"><strong>Loop Termination Blocks</strong></h1>
+<hr />
+<p>Most loops run until the terminating condition (in the case of  <strong>repeat</strong> blocks) is met or until all values have been taken by the loop variable (in the case of <strong>count with</strong> and <strong>for each</strong> loops).  Two rarely needed but occasionally useful blocks provide additional means for controlling loop behavior.  Although the below examples are for <strong>for each</strong> loops, they can be used with any type of loop.</p>
+<h2 id="continue-with-next-iteration"><strong>Continue with next iteration</strong></h2>
+<blockquote>
+<p>The <strong>continue with next iteration</strong> (called <a href="https://en.wikipedia.org/wiki/Control_flow#Continuation_with_next_iteration">continue</a> in most programming languages) causes the remaining code in the body to be skipped and for the next iteration (pass) of the loop to begin.</p>
+<p>The following program prints "alpha" on the first iteration of the loop.  On the second iteration, the <strong>continue with next iteration</strong> block is run, skipping the printing of "beta".  On the final iteration, "gamma" is printed.</p>
+<p><img alt="" src="../img/blocks/control-for-each-continue.png" /></p>
+</blockquote>
+<h2 id="break-out-of-loop"><strong>Break out of loop</strong></h2>
+<blockquote>
+<p>The <strong>break out of loop</strong> block provides <a href="https://en.wikipedia.org/wiki/Control_flow#Early_exit_from_loops">an early exit from a loop</a>.  The following program prints "alpha" on the first iteration and "breaks out" of the loop on the second iteration when the loop variable is equal to "beta".  The third item in the list is never reached.</p>
+<p><img alt="" src="../img/blocks/control-for-each-break.png" /></p>
+</blockquote>
+<h2 id="questions"><strong>Questions?</strong></h2>
+<blockquote>
+<p>Contact Boxlight Robotics at <a href="mailto:support@BoxlightRobotics.com">support@BoxlightRobotics.com</a> with a detailed description of the steps you have taken and observations you have made.</p>
+<p><strong>Email Subject</strong>: Blockly Loops</p>
+</blockquote></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '..';</script>
+        <script src="../js/base.js"></script>
+        <script src="../search/require.js"></script>
+        <script src="../search/search.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&larr;</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&rarr;</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </body>
+</html>
