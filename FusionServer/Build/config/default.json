@@ -1,0 +1,8 @@
+{
+    "Server": {
+        "Port": 8080
+    },
+    "Wifi_NIC": "wlan1",
+    "Wifi_WAP": "wlan0",
+    "Wire_NET": "eth0"
+}

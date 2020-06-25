@@ -1,0 +1,265 @@
+{
+    "LANGUAGE": "English",
+    "HEADER": {
+        "LOGOUT": "Logout",
+        "POWER_OFF": "Power off",
+        "RESTART": "Restart"
+    },
+    "SIDEBAR": {
+        "HOME": "Home",
+        "BLOCKLY": "Blockly",
+        "EDITOR": "Editor",
+        "DOCUMENTATION": "Documentation",
+        "FILE_MANAGER": "File Manager",
+        "VNC": "VNC",
+        "DIAGNOSTIC_TOOL": "Diagnostic Tool",
+        "SETTINGS": "Settings",
+        "ABOUT": "About"
+    },
+    "FOOTER": {},
+    "LOGIN": {
+        "TITLE": "Login",
+        "USERNAME": "Username",
+        "PASSWORD": "Password",
+        "SHOW_PASSWORD": "Show password",
+        "REGISTER": "Register",
+        "LOGIN": "Login",
+        "GUEST_LOGIN": "Guest Login",
+        "FORGOT_PASSWORD": "Forgot your password?"
+    },
+    "RECOVER": {
+        "TITLE": "Recover Account",
+        "USERNAME_LABEL": "Username",
+        "CANCEL_BUTTON": "Cancel",
+        "SEARCH_BUTTON": "Search"
+    },
+    "REGISTER": {
+        "TITLE": "New User",
+        "REQUIRED_TITLE": "Required Fields",
+        "OPTIONAL_TITLE": "Optional Fields",
+        "USERNAME": "Username",
+        "PASSWORD": "Password",
+        "PASSWORD_CONFIRM": "Confirm Password",
+        "USER_GROUP": "User Group",
+        "SECURITY_QUESTION": "Security Question",
+        "SECURITY_ANSWER": "Security Answer",
+        "EMAIL": "Email",
+        "FIRST_NAME": "First Name",
+        "LAST_NAME": "Last Name",
+        "LANGUAGE": "Language",
+        "CANCEL": "Cancel",
+        "CREATE": "Create",
+        "PASSWORD_MISMATCH": "Passwords do not match"
+    },
+    "ACCOUNT": {
+        "TITLE": "User Account",
+        "USER_FIELDS_TITLE": "User Fields",
+        "SECURITY_FIELDS_TITLE": "Security Fields",
+        "USERNAME": "Username",
+        "EMAIL": "Email",
+        "FIRST_NAME": "First Name",
+        "LAST_NAME": "Last Name",
+        "LANGUAGE": "Language",
+        "USER_GROUP": "User Group",
+        "PASSWORD": "New Password",
+        "PASSWORD_CONFIRM": "Confirm New Password",
+        "SECURITY_QUESTION": "New Security Question",
+        "SECURITY_ANSWER": "New Security Answer",
+        "CANCEL": "Cancel",
+        "UPDATE": "Update",
+        "MESSAGES": {
+            "MISMATCHED_PASSORDS": "Passwords do not match",
+            "NEW_PASSWORD_REQUEST": "Please enter a new password"
+        }
+    },
+    "HOME": {
+        "TITLE": "Home",
+        "READ_BUTTON": "Read",
+        "LAUNCH_BUTTON": "Launch",
+        "BUILD_HEADLINE": "Build",
+        "BUILD_DESCRIPTION": "Instructions for building a MyBot kit.",
+        "BLOCKLY_HEADLINE": "Blockly",
+        "BLOCKLY_DESCRIPTION": "Block based programming language.",
+        "EDITOR_HEADLINE": "Editor",
+        "EDITOR_DESCRIPTION": "Simple python programming environment.",
+        "DOCUMENTATION_HEADLINE": "Fusion Documentation",
+        "DOCUMENTATION_DESCRIPTION": "Full Fusion documentation and reference materials.",
+        "DATA_LOGGER_HEADLINE": "Data Logging",
+        "DATA_LOGGER_DESCRIPTION": "Collect and log data using sensors.",
+        "SETTINGS_HEADLINE": "Settings",
+        "SETTINGS_DESCRIPTION": "Change your Fusion's settings.",
+        "SERVER_HEADLINE": "Server",
+        "SERVER_DESCRIPTION": "Connect your Fusion to a server.",
+        "BLOCKLY_GAMES_HEADLINE": "Blockly Games",
+        "BLOCKLY_GAMES_DESCRIPTION": "A series of educational games that teach programming."
+    },
+    "BLOCKLY": {
+        "TITLE": "Blockly",
+        "UNTITLED_FILE_NAME": "Untitled",
+        "MENUBAR_FILE": "File",
+        "MENUBAR_FILE_NEW": "New",
+        "MENUBAR_FILE_OPEN": "Open",
+        "MENUBAR_FILE_CLOSE": "Close",
+        "MENUBAR_FILE_SAVE": "Save",
+        "MENUBAR_FILE_SAVE_AS": "Save As..",
+        "MENUBAR_FILE_DELETE": "Delete",
+        "MENUBAR_VIEW": "View",
+        "MENUBAR_VIEW_MODE": "Mode",
+        "MENUBAR_VIEW_PROGRAM_OUTPUT": "Show Program Output",
+        "MENUBAR_VIEW_CODE_WINDOW": "Show Code Window",
+        "MENUBAR_VIEW_MODE_BASIC": "Basic",
+        "MENUBAR_VIEW_MODE_INTERMEDIATE": "Intermediate",
+        "MENUBAR_MANAGE": "Manage",
+        "MENUBAR_MANAGE_IMPORT": "Import",
+        "MENUBAR_MANAGE_EXPORT": "Export",
+        "MENUBAR_HELP": "Help",
+        "MENUBAR_HELP_EXAMPLES": "Examples",
+        "MENUBAR_HELP_DOCUMENTATION": "Documentation",
+        "TOOLBAR_NEW_FILE_TOOLTIP": "New File",
+        "TOOLBAR_OPEN_FILE_TOOLTIP": "Open File",
+        "TOOLBAR_SAVE_FILE_TOOLTIP": "Save File",
+        "TOOLBAR_RUN_FILE_TOOLTIP": "Run Program",
+        "TOOLBAR_STOP_FILE_TOOLTIP": "Stop Program",
+        "TOOLBAR_TOGGLE_OUTPUT": "Toggle Program Output",
+        "TOOLBAR_SHOW_CODE": "Toggle Code Window",
+        "TOOLBAR_GAMEPAD_TOOLTIP": "Open Virtual Gamepad",
+        "TOOLBAR_OPEN_IN_EDITOR": "Open In Editor",
+        "DEBUG_CONSOLE_TITLE": "Debug Console",
+        "DEBUG_CONSOLE_PLACEHOLDER": "Program Output..."
+    },
+    "EDITOR": {
+        "TITLE": "Editor",
+        "WORKING_FILES_TITLE": "Working Files",
+        "UNTITLED_FILE_NAME": "Untitled",
+        "MENUBAR_FILE": "File",
+        "MENUBAR_FILE_NEW": "New",
+        "MENUBAR_FILE_OPEN": "Open",
+        "MENUBAR_FILE_CLOSE": "Close",
+        "MENUBAR_FILE_SAVE": "Save",
+        "MENUBAR_FILE_SAVE_AS": "Save As..",
+        "MENUBAR_FILE_SAVE_ALL": "Save All",
+        "MENUBAR_FILE_DELETE": "Delete",
+        "MENUBAR_FILE_PRINT": "Print",
+        "MENUBAR_MANAGE": "Manage",
+        "MENUBAR_MANAGE_IMPORT": "Import",
+        "MENUBAR_MANAGE_EXPORT": "Export",
+        "MENUBAR_HELP": "Help",
+        "MENUBAR_HELP_EXAMPLES": "Examples",
+        "MENUBAR_HELP_DOCUMENTATION": "Documentation",
+        "TOOLBAR_NEW_FILE_TOOLTIP": "New File",
+        "TOOLBAR_OPEN_FILE_TOOLTIP": "Open File",
+        "TOOLBAR_SAVE_FILE_TOOLTIP": "Save File",
+        "TOOLBAR_SAVE_FILES_TOOLTIP": "Save All Files",
+        "TOOLBAR_RUN_FILE_TOOLTIP": "Run Program",
+        "TOOLBAR_STOP_FILE_TOOLTIP": "Stop Program",
+        "TOOLBAR_GAMEPAD_TOOLTIP": "Open Virtual Gamepad",
+        "DEBUG_CONSOLE_TITLE": "Debug Console",
+        "DEBUG_CONSOLE_PLACEHOLDER": "Program Output...",
+        "OPEN_FILE_DIALOG": {
+            "TITLE": "Select File to Open"
+        },
+        "COMING_SOON_DIALOG": {
+            "TITLE": "Coming Soon",
+            "CONTENT": "Editor support for mobile devices coming soon"
+        },
+        "SAVE_AS_DIALOG": {
+            "TITLE": "What would you like to name your file?",
+            "MISSING_FILE_NAME": "Must specify file name"
+        },
+        "UNTITLED_FILE": "Untitled",
+        "FILE_ALREADY_OPEN": "File Already Open.",
+        "SAVE_BEFORE_CLOSING_TITLE": "Save before closing?",
+        "DELETE_FILE_TITLE": "Are you sure you want to delete this file?"
+    },
+    "DOCUMENTATION": {},
+    "FILE_MANAGER": {},
+    "VNC": {},
+    "DIAGNOSTIC_TOOL": {},
+    "SETTINGS": {
+        "TITLE": "Settings",
+        "TAB_WIRELESS": "Wireless",
+        "TAB_SOFTWARE": "Software",
+        "TAB_USERS": "Users",
+        "TAB_MISC": "Misc",
+        "ACCESS_POINT_SETTINGS": "Access Point Settings",
+        "APPLY_SSID_CHANGES_BUTTON": "Apply Changes",
+        "DEFAULT_SSID_BUTTON": "Default",
+        "SSID_LABEL": "SSID",
+        "PASSKEY_LABEL": "Passkey",
+        "WIRELESS_NETWORKS": "Wireless Networks",
+        "FUSION_SOFTWARE_MANAGEMENT": "Fusion Software Management",
+        "TERMINAL_PLACEHOLDER": "Terminal...",
+        "UPDATE_BUTTON": "Update",
+        "USERS_USERNAME": "Username",
+        "USERS_FIRST_NAME": "First",
+        "USERS_LAST_NAME": "Last",
+        "USERS_EMAIL": "Email",
+        "USERS_GROUP": "Group",
+        "USERS_ADD_NEW_BUTTON": "Add New",
+        "USERS_EDIT_BUTTON": "Edit",
+        "USERS_DELETE_BUTTON": "Delete",
+        "WIFI_PASSWORD_ERROR": {
+            "TITLE": "Password error",
+            "MESSAGE": "Password must be at least 8 characters"
+        },
+        "SSID_error": {
+            "TITLE": "SSID error",
+            "MESSAGE": "SSID must be at least 8 characters"
+        },
+        "SSID_CONFIRMATION": {
+            "TITLE": "Are you sure you want to make these changes?",
+            "CONTENT": "You will have to connect to the new network if you continue."
+        },
+        "SSID_RESTORE_CONFIRMATION": {
+            "TITLE": "Are you sure you want to restore your access point?",
+            "CONTENT": "You will have to connect to the new network if you continue."
+        },
+        "DISCONNECT_FROM_NETWORK": {
+            "TITLE": "Are you sure you want to disconnect from this network?"
+        },
+        "NETWORK_CONNECTION_DIALOG": {
+            "TITLE": "Enter passkey for network.",
+            "PASSKEY": "Passkey",
+            "VIEW_PASSKEY": "View Passkey",
+            "CANCEL": "Cancel",
+            "OK": "Ok"
+        },
+        "CREATE_NEW_USER": {
+            "TITLE": "Create New User",
+            "MISSING_USER": "Must fill in new user data",
+            "MISSING_USERNAME": "Must fill Username",
+            "MISSING_PASSWORD": "Must fill Password",
+            "PASSWORD_MISMATCH": "Passwords do not match",
+            "MISSING_GROUP": "Must fill User Group",
+            "MISSING_SECURITY_QUESTION": "Must fill Security Question",
+            "MISSING_SECURITY_ANSWER": "Must fill Security Answer"
+        },
+        "EDIT_USER": {
+            "TITLE": "Editing"
+        },
+        "DELETE_USER": {
+            "TITLE": "Are you sure you want to delete:"
+        },
+        "UPDATE_FUSION": {
+            "TITLE": "Are you sure you want to update this Fusion?",
+            "CONTENT": "The Fusion will auto restart when complete."
+        }
+    },
+    "ABOUT": {},
+    "SERVER_MESSAGE": {},
+    "SECURITY_QUESTIONS": {
+        "QUESTION_1": "Who is your favorite actor, musician, or artist?",
+        "QUESTION_2": "What is the name of your favorite pet?",
+        "QUESTION_3": "In what city were you born?",
+        "QUESTION_4": "What high school did you attend?",
+        "QUESTION_5": "What is your favorite movie?"
+    },
+    "USER_GROUPS": {
+        "ADMIN": "Admin",
+        "USER": "User"
+    },
+    "DIALOG_BOX": {
+        "OK": "Ok",
+        "CANCEL": "Cancel"
+    }
+}
