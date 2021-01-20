@@ -1,0 +1,258 @@
+{
+  "LANGUAGE": "Latviešu",
+  "HEADER": {
+    "LOGOUT": "Izrakstīties",
+    "POWER_OFF": "Izslēgt",
+    "RESTART": "Restartēt"
+  },
+  "SIDEBAR": {
+    "HOME": "Sākums",
+    "BLOCKLY": "Blockly",
+    "EDITOR": "Redaktors",
+    "DOCUMENTATION": "Dokumentācija",
+    "FILE_MANAGER": "Failu Pārvaldnieks",
+    "VNC": "VNC",
+    "DIAGNOSTIC_TOOL": "Diagnostikas Rīki",
+    "SETTINGS": "Iestatijumi",
+    "ABOUT": "Par"
+  },
+  "LOGIN": {
+    "TITLE": "Pieslēgties",
+    "USERNAME": "Lietotāja vārds",
+    "PASSWORD": "Parole",
+    "SHOW_PASSWORD": "Parādīt paroli",
+    "REGISTER": "Reģistrācija",
+    "LOGIN": "Pieslēgties",
+    "GUEST_LOGIN": "Pieslēgties kā viesim",
+    "FORGOT_PASSWORD": "Aizmirsāt paroli?"
+  },
+  "RECOVER": {
+    "TITLE": "Atjaunot kontu",
+    "USERNAME_LABEL": "Lietotāja vārds",
+    "CANCEL_BUTTON": "Atcelt",
+    "SEARCH_BUTTON": "Meklēt"
+  },
+  "REGISTER": {
+    "TITLE": "Jauns lietotājs",
+    "REQUIRED_TITLE": "Obligāti aizpildīt",
+    "OPTIONAL_TITLE": "Izvēles Lauki",
+    "USERNAME": "Lietotāja vārds",
+    "PASSWORD": "Parole",
+    "PASSWORD_CONFIRM": "Apstiprināt paroli",
+    "USER_GROUP": "Lietotāju grupa",
+    "SECURITY_QUESTION": "Drošības jautājums",
+    "SECURITY_ANSWER": "Drošības atbilde",
+    "EMAIL": "Epasts",
+    "FIRST_NAME": "Vārds",
+    "LAST_NAME": "Uzvārds",
+    "LANGUAGE": "Valoda",
+    "CANCEL": "Atcelt",
+    "CREATE": "Izveidot",
+    "PASSWORD_MISMATCH": "Paroles nesakrīt"
+  },
+  "ACCOUNT": {
+    "TITLE": "Lietotāja konts",
+    "USER_FIELDS_TITLE": "Lietotājam",
+    "SECURITY_FIELDS_TITLE": "Drošībai",
+    "USERNAME": "Lietotāja vārds",
+    "EMAIL": "Epasts",
+    "FIRST_NAME": "Vārds",
+    "LAST_NAME": "Uzvārds",
+    "LANGUAGE": "Valoda",
+    "USER_GROUP": "Lietotāju grupa",
+    "PASSWORD": "Jauna parole",
+    "PASSWORD_CONFIRM": "Apstiprināt paroli",
+    "SECURITY_QUESTION": "Jauns drošības jautājums",
+    "SECURITY_ANSWER": "Jauna drošības atbilde",
+    "CANCEL": "Atcelt",
+    "UPDATE": "Atjaunināt",
+    "MESSAGES": {
+      "MISMATCHED_PASSORDS": "Paroles nesakrīt",
+      "NEW_PASSWORD_REQUEST": "Ievadiet jaunu paroli"
+    }
+  },
+  "HOME": {
+    "TITLE": "Sākums",
+    "READ_BUTTON": "Nolasīt",
+    "LAUNCH_BUTTON": "Palaist",
+    "BUILD_HEADLINE": "Veidot",
+    "BUILD_DESCRIPTION": "Instrukcija MyBot komplekta sagatavošanai",
+    "BLOCKLY_HEADLINE": "Blockly",
+    "BLOCKLY_DESCRIPTION": "Blokveida programmēšanas valoda",
+    "EDITOR_HEADLINE": "Redaktors",
+    "EDITOR_DESCRIPTION": "Phyton programmēšanas vide",
+    "DOCUMENTATION_HEADLINE": "Fusion dokumentācija",
+    "DOCUMENTATION_DESCRIPTION": "Pilna Fusion dokumentācija un atsauces",
+    "DATA_LOGGER_HEADLINE": "Datu reģistrācija",
+    "DATA_LOGGER_DESCRIPTION": "Iegūštiet un reģistrējiet datus ar sensoriem",
+    "SETTINGS_HEADLINE": "Iestatijumi",
+    "SETTINGS_DESCRIPTION": "Mainiet Fusion iestatijumus",
+    "SERVER_HEADLINE": "Serveris",
+    "SERVER_DESCRIPTION": "Pievienojiet savu Fusion serverim",
+    "BLOCKLY_GAMES_HEADLINE": "Blockly  Spēles",
+    "BLOCKLY_GAMES_DESCRIPTION": "Izglītojošu spēļu sērija, kas māca programmēt"
+  },
+  "BLOCKLY": {
+    "TITLE": "Blockly",
+    "UNTITLED_FILE_NAME": "Nenosaukts",
+    "MENUBAR_FILE": "Fails",
+    "MENUBAR_FILE_NEW": "Jauns",
+    "MENUBAR_FILE_OPEN": "Atvērt",
+    "MENUBAR_FILE_CLOSE": "Aizvērt",
+    "MENUBAR_FILE_SAVE": "Saglabāt",
+    "MENUBAR_FILE_SAVE_AS": "Saglabāt kā",
+    "MENUBAR_FILE_DELETE": "Izdzēst",
+    "MENUBAR_VIEW": "Skatīt",
+    "MENUBAR_VIEW_MODE": "Režīms",
+    "MENUBAR_VIEW_PROGRAM_OUTPUT": "Parādīt Programmas izvadi",
+    "MENUBAR_VIEW_CODE_WINDOW": "Parādīt koda logu",
+    "MENUBAR_VIEW_MODE_BASIC": "Pamata",
+    "MENUBAR_VIEW_MODE_INTERMEDIATE": "Starpposma režīms",
+    "MENUBAR_MANAGE": "Pārvaldīt",
+    "MENUBAR_MANAGE_IMPORT": "Importēt",
+    "MENUBAR_MANAGE_EXPORT": "Eksportēt",
+    "MENUBAR_HELP": "Palīdzība",
+    "MENUBAR_HELP_EXAMPLES": "Piemēri",
+    "MENUBAR_HELP_DOCUMENTATION": "Dokumentācija",
+    "TOOLBAR_NEW_FILE_TOOLTIP": "Jauns fails",
+    "TOOLBAR_OPEN_FILE_TOOLTIP": "Atvērt failu",
+    "TOOLBAR_SAVE_FILE_TOOLTIP": "Saglabāt failu",
+    "TOOLBAR_RUN_FILE_TOOLTIP": "Palaist programmu",
+    "TOOLBAR_STOP_FILE_TOOLTIP": "Apturēt programmu",
+    "TOOLBAR_TOGGLE_OUTPUT": "Pārslēgt programmas izvadi",
+    "TOOLBAR_SHOW_CODE": "Pārslēgt koda logu",
+    "TOOLBAR_GAMEPAD_TOOLTIP": "Atvērt virtuālo pulti",
+    "TOOLBAR_OPEN_IN_EDITOR": "Atvērt redaktorā",
+    "DEBUG_CONSOLE_TITLE": "Atkļūdošanas konsole",
+    "DEBUG_CONSOLE_PLACEHOLDER": "Programmas izvade…"
+  },
+  "EDITOR": {
+    "TITLE": "Redaktors",
+    "WORKING_FILES_TITLE": "Darba faili",
+    "UNTITLED_FILE_NAME": "Nenosaukts",
+    "MENUBAR_FILE": "Fails",
+    "MENUBAR_FILE_NEW": "Jauns",
+    "MENUBAR_FILE_OPEN": "Atvērt",
+    "MENUBAR_FILE_CLOSE": "Aizvērt",
+    "MENUBAR_FILE_SAVE": "Saglabāt",
+    "MENUBAR_FILE_SAVE_AS": "Saglabāt kā",
+    "MENUBAR_FILE_SAVE_ALL": "Saglabāt visu",
+    "MENUBAR_FILE_DELETE": "Izdzēst",
+    "MENUBAR_FILE_PRINT": "Drukāt",
+    "MENUBAR_MANAGE": "Pārvaldīt",
+    "MENUBAR_MANAGE_IMPORT": "Importēt",
+    "MENUBAR_MANAGE_EXPORT": "Eksportēt",
+    "MENUBAR_HELP": "Palīdzība",
+    "MENUBAR_HELP_EXAMPLES": "Piemēri",
+    "MENUBAR_HELP_DOCUMENTATION": "Dokumentācija",
+    "TOOLBAR_NEW_FILE_TOOLTIP": "Jauns fails",
+    "TOOLBAR_OPEN_FILE_TOOLTIP": "Atvērt failu",
+    "TOOLBAR_SAVE_FILE_TOOLTIP": "Saglabāt failu",
+    "TOOLBAR_SAVE_FILES_TOOLTIP": "saglabāt visus failus",
+    "TOOLBAR_RUN_FILE_TOOLTIP": "Palaist programmu",
+    "TOOLBAR_STOP_FILE_TOOLTIP": "Apturēt programmu",
+    "TOOLBAR_GAMEPAD_TOOLTIP": "Atvērt virtuālo pulti",
+    "DEBUG_CONSOLE_TITLE": "Atkļūdošanas konsole",
+    "DEBUG_CONSOLE_PLACEHOLDER": "Programmas izvade…",
+    "OPEN_FILE_DIALOG": {
+      "TITLE": "Atlasīt failus ko atvērt"
+    },
+    "COMING_SOON_DIALOG": {
+      "TITLE": "Drīzumā",
+      "CONTENT": "Redaktora atbalsts mobilajām ierīcēm drīzumā"
+    },
+    "SAVE_AS_DIALOG": {
+      "TITLE": "Kā vēlaties nosaukt failu?",
+      "MISSING_FILE_NAME": "Jānorāda faila nosaukums"
+    },
+    "UNTITLED_FILE": "Nenosaukts",
+    "FILE_ALREADY_OPEN": "Fails jau ir atvērts",
+    "SAVE_BEFORE_CLOSING_TITLE": "Saglabāt pirms aizvēršanas?",
+    "DELETE_FILE_TITLE": "Vai tiešām vēlaties izdzēst šo failu?"
+  },
+  "SETTINGS": {
+    "TITLE": "Iestatijumi",
+    "TAB_WIRELESS": "Bezvadu",
+    "TAB_SOFTWARE": "Programmatūra",
+    "TAB_USERS": "Lietotāji",
+    "TAB_MISC": "Cits",
+    "ACCESS_POINT_SETTINGS": "Piekļuves punkta iestatijumi",
+    "APPLY_SSID_CHANGES_BUTTON": "Apstiprināt izmaiņas",
+    "DEFAULT_SSID_BUTTON": "Noklusējums",
+    "SSID_LABEL": "SSID",
+    "PASSKEY_LABEL": "Parole",
+    "WIRELESS_NETWORKS": "Bezvadu tīkli",
+    "FUSION_SOFTWARE_MANAGEMENT": "Fusion programmatūras menedžments",
+    "TERMINAL_PLACEHOLDER": "Termināls…",
+    "UPDATE_BUTTON": "Atjaunināt",
+    "USERS_USERNAME": "Lietotājvārds",
+    "USERS_FIRST_NAME": "Pirmais",
+    "USERS_LAST_NAME": "Pēdējais",
+    "USERS_EMAIL": "Epasts",
+    "USERS_GROUP": "Grupa",
+    "USERS_ADD_NEW_BUTTON": "Pievienot jaunu",
+    "USERS_EDIT_BUTTON": "Labot",
+    "USERS_DELETE_BUTTON": "Dzēst",
+    "WIFI_PASSWORD_ERROR": {
+      "TITLE": "Paroles kļūda",
+      "MESSAGE": "Parolei jābūt vismaz 8 simboliem"
+    },
+    "SSID_error": {
+      "TITLE": "SSID kļūda",
+      "MESSAGE": "SSID jābūt vismaz 8 simboliem"
+    },
+    "SSID_CONFIRMATION": {
+      "TITLE": "Vai vēlaties saglabāt izmaiņas?",
+      "CONTENT": "Jāpieslēdzas jaunam tīklam ja turpināsiet"
+    },
+    "SSID_RESTORE_CONFIRMATION": {
+      "TITLE": "Vai tiešām atjaunināt piekļuves punktu?",
+      "CONTENT": "Jāpieslēdzas tīklam ja turpināsiet"
+    },
+    "DISCONNECT_FROM_NETWORK": {
+      "TITLE": "Vai tiešām atslēgties no šī tīkla?"
+    },
+    "NETWORK_CONNECTION_DIALOG": {
+      "TITLE": "Levadiet tīkla paroli",
+      "PASSKEY": "Parole",
+      "VIEW_PASSKEY": "skatīt paroli",
+      "CANCEL": "Atcelt",
+      "OK": "Ok"
+    },
+    "CREATE_NEW_USER": {
+      "TITLE": "Izveidot jaunu lietotāju",
+      "MISSING_USER": "Jāievada jauni lietotāja dati",
+      "MISSING_USERNAME": "Jāievada lietotājvārds",
+      "MISSING_PASSWORD": "Jāievada parole",
+      "PASSWORD_MISMATCH": "Paroles nesakrīt",
+      "MISSING_GROUP": "Jāievada Lietotāju grupa",
+      "MISSING_SECURITY_QUESTION": "Jāatbild uz drošības jautājumu",
+      "MISSING_SECURITY_ANSWER": "Jāievada atbilde uz drošības jautājumu"
+    },
+    "EDIT_USER": {
+      "TITLE": "Rediģēšana"
+    },
+    "DELETE_USER": {
+      "TITLE": "Vai tiešām vēlaties dzēst?"
+    },
+    "UPDATE_FUSION": {
+      "TITLE": "Vai tiešām vēlaties atjaunināt šo Fusion?",
+      "CONTENT": "Fusion automātiski restartēsies"
+    }
+  },
+  "SECURITY_QUESTIONS": {
+    "QUESTION_1": "Kas ir jūsu mīļākais aktieris,mūziķis vai mākslinieks?",
+    "QUESTION_2": "Kā sauc jūsu mīļāko dzīvnieku?",
+    "QUESTION_3": "Kurā pilsētā esat piedzimis?",
+    "QUESTION_4": "Kādā augstskolā jūs mācījāties?",
+    "QUESTION_5": "Kāda ir jūsu mīļākā filma?"
+  },
+  "USER_GROUPS": {
+    "ADMIN": "Administrators",
+    "USER": "Lietotāju"
+  },
+  "DIALOG_BOX": {
+    "OK": "Labi",
+    "CANCEL": "Atcelt"
+  }
+}
