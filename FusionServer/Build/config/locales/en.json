@@ -1,0 +1,11 @@
+{
+	"LOGIN": {
+		"SUCCESS": "Login Successful",
+		"MULTIUSER_DENIED": "Another user is already logged in",
+		"INVALID": "Invalid username or password"
+	},
+	"REGISTER": {
+		"ALREADY_EXISTS": "Username already exists",
+		"CREATED": "User Created"
+	}
+}
