@@ -3,6 +3,7 @@
 # update.sh - FusionOS Update Script - from Version 1.0.0 and above
 #-------------------------------------------------------------------------------
 # Revision History
+# 27-Aug-2021 <jwa> - Simple mod to bypass upstream mirror(s) being offline
 # 13-Jun-2019 <jwa> - Enhancements to the update/install process to provide
 #                     better status during FusionOS Image build.
 # 04-Jun-2019 <jwa> - Modified to perform full installation and configuration on
@@ -295,7 +296,10 @@ echo
 # Update the Raspbian Library Repositories -- do we really need this?!?
 #
 sudo apt-get update -y
+# <27-Aug-21 jwa>  Ignore offline mirrors, but let the user know we're still running
 # if [[ $? != 0 ]] ; then exit 2 ; fi
+echo 
+echo "...processing..."
 
 # -------------------------------------------------------------------
 # Update/Set the system clock
