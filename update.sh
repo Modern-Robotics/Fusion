@@ -295,7 +295,7 @@ echo
 # Update the Raspbian Library Repositories -- do we really need this?!?
 #
 sudo apt-get update -y
-if [[ $? != 0 ]] ; then exit 2 ; fi
+# if [[ $? != 0 ]] ; then exit 2 ; fi
 
 # -------------------------------------------------------------------
 # Update/Set the system clock
