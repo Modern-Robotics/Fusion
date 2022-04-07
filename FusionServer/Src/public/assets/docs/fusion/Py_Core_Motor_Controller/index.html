@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Boxlight Robotics">
+        <link rel="canonical" href="http://BoxlightRobotics.com/Py_Core_Motor_Controller/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Core Motor Controller - Fusion Documentation Suite</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Fusion Documentation Suite</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../Blk_Core_Motor_Controller/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../Blk_Core_Servo_Controller/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#core-motor-controller-45-2203" class="nav-link">Core Motor Controller (45-2203)</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#coremotorcontrollerdriver-serial" class="nav-link">coreMotorController(driver, serial)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#constantspeedmotor-speed" class="nav-link">constantSpeed(motor, speed)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#constantpowermotor-power" class="nav-link">constantPower(motor, power)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#runtopositionmotor-power-target" class="nav-link">runToPosition(motor, power, target)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#readencodermotor" class="nav-link">readEncoder(motor)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#readbattvoltage" class="nav-link">readBattVoltage()</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#questions" class="nav-link">Questions?</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="core-motor-controller-45-2203"><strong>Core Motor Controller (45-2203)</strong></h1>
+<hr />
+<p>Before running the program, be sure to identify each module's FTDI serial number by running the <a href="../CoreControlDriver/">Print Devices</a> function.</p>
+<blockquote>
+<p><a href="../Blk_Core_Motor_Controller/">Core Motor Controller Visual Programming Blocks</a></p>
+</blockquote>
+<p><strong>List of available functions:</strong>  </p>
+<ul>
+<li><a href="./#coremotorcontrollerdriver-serial"><strong>coreMotorController(<em>driver</em>, <em>serial</em>)</strong></a></li>
+<li><a href="./#constantspeedmotor-speed"><strong>constantSpeed(<em>motor</em>, <em>speed</em>)</strong></a></li>
+<li><a href="./#constantpowermotor-power"><strong>constantPower(<em>motor</em>, <em>power</em>)</strong></a></li>
+<li><a href="./#runtopositionmotor-power-target"><strong>runToPosition(<em>motor</em>, <em>power</em>, <em>target</em>)</strong></a></li>
+<li><a href="./#readencodermotor"><strong>readEncoder(<em>motor</em>)</strong></a></li>
+<li><a href="./#readbattvoltage"><strong>readBattVoltage()</strong></a></li>
+</ul>
+<h2 id="coremotorcontrollerdriver-serial"><strong>coreMotorController(<em>driver</em>, <em>serial</em>)</strong></h2>
+<blockquote>
+<h3 id="definition">Definition</h3>
+<blockquote>
+<p>This class contains the necessary drivers for our Core Motor Controller and must be called at the beginning of the program before using any other class functions. The FTDI serial number is used for identifying a Core Control Module and must be entered as shown in the example.</p>
+</blockquote>
+<h3 id="parameters">Parameters</h3>
+<blockquote>
+<p><strong><em>driver</em></strong> : Main driver object so the class can call driver functions (<strong>c</strong>)<br />
+<strong><em>serial</em></strong> : Enter the FTDI serial number of the module. </p>
+</blockquote>
+<h3 id="returns">Returns</h3>
+<blockquote>
+<p>Core Motor Controller Object</p>
+</blockquote>
+<h3 id="example">Example</h3>
+<blockquote>
+<pre><code>import Fusion
+f = Fusion.driver()
+import CoreControl
+c = CoreControl.driver()
+
+cmc1 = CoreControl.coreMotorController(c, 'AL00VVPP')
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="constantspeedmotor-speed"><strong>constantSpeed(<em>motor</em>, <em>speed</em>)</strong></h2>
+<blockquote>
+<h3 id="definition_1">Definition</h3>
+<blockquote>
+<p>Set the speed of a motor connected to one of the motor ports. This function will maintain speed of the motors which means that 100% motor speed being applied only runs around 80% of maximum efficiency. Therefore if the motor encounters additional friction more power to the motor can be applied to maintain the speed.<br />
+Must have the <a href="./#coremotorcontrollerdriver-serial">Setup</a> function at the start of your program for this function to work.</p>
+</blockquote>
+<h3 id="parameters_1">Parameters</h3>
+<blockquote>
+<p><strong><em>motor</em></strong> : M1 or M2<br />
+<strong><em>speed</em></strong> : int (±100)</p>
+</blockquote>
+<h3 id="returns_1">Returns</h3>
+<blockquote>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="example_1">Example</h3>
+<blockquote>
+<pre><code>import CoreControl
+c = CoreControl.driver()
+cmc1 = CoreControl.coreMotorController(c, 'AL00VVPP')
+
+cmc1.constantSpeed(cmc1.M1, 50)
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="constantpowermotor-power"><strong>constantPower(<em>motor</em>, <em>power</em>)</strong></h2>
+<blockquote>
+<h3 id="definition_2">Definition</h3>
+<blockquote>
+<p>Set the power of a motor connected to one of the motor ports.<br />
+Must have the <a href="./#coremotorcontrollerdriver-serial">Setup</a> function at the start of your program for this function to work.</p>
+</blockquote>
+<h3 id="parameters_2">Parameters</h3>
+<blockquote>
+<p><strong><em>motor</em></strong> : M1 or M2<br />
+<strong><em>power</em></strong> : int (±100)</p>
+</blockquote>
+<h3 id="returns_2">Returns</h3>
+<blockquote>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="example_2">Example</h3>
+<blockquote>
+<pre><code>import CoreControl
+c = CoreControl.driver()
+cmc1 = CoreControl.coreMotorController(c, 'AL00VVPP')
+
+cmc1.constantPower(cmc1.M1, 50)
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="runtopositionmotor-power-target"><strong>runToPosition(<em>motor</em>, <em>power</em>, <em>target</em>)</strong></h2>
+<blockquote>
+<h3 id="definition_3">Definition</h3>
+<blockquote>
+<p>Run the motor to a specific encoder count at a set power. Motors vary with encoder counts per revolution which could create different results.<br />
+Must have the <a href="./#coremotorcontrollerdriver-serial">Setup</a> function at the start of your program for this function to work.</p>
+</blockquote>
+<h3 id="parameters_3">Parameters</h3>
+<blockquote>
+<p><strong><em>motor</em></strong> : M1 or M2<br />
+<strong><em>power</em></strong> : int (±100)<br />
+<strong><em>target</em></strong> : int (-‭2,147,483,648 - +‭2,147,483,647‬)</p>
+</blockquote>
+<h3 id="returns_3">Returns</h3>
+<blockquote>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="example_3">Example</h3>
+<blockquote>
+<pre><code>import CoreControl
+c = CoreControl.driver()
+cmc1 = CoreControl.coreMotorController(c, 'AL00VVPP')
+
+cmc1.runToPosition(cmc1.M1, 50, 10000)
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="readencodermotor"><strong>readEncoder(<em>motor</em>)</strong></h2>
+<blockquote>
+<h3 id="definition_4">Definition</h3>
+<blockquote>
+<p>Run the current encoder count of a motor.<br />
+Must have the <a href="./#coremotorcontrollerdriver-serial">Setup</a> function at the start of your program for this function to work.</p>
+</blockquote>
+<h3 id="parameters_4">Parameters</h3>
+<blockquote>
+<p><strong><em>motor</em></strong> : M1 or M2   </p>
+</blockquote>
+<h3 id="returns_4">Returns</h3>
+<blockquote>
+<p><strong><em>target</em></strong> : int (-‭2,147,483,648 - +‭2,147,483,647‬)</p>
+</blockquote>
+<h3 id="example_4">Example</h3>
+<blockquote>
+<pre><code>import CoreControl
+c = CoreControl.driver()
+cmc1 = CoreControl.coreMotorController(c, 'AL00VVPP')
+
+print cmc1.readEncoder(cmc1.M1)
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="readbattvoltage"><strong>readBattVoltage()</strong></h2>
+<blockquote>
+<h3 id="definition_5">Definition</h3>
+<blockquote>
+<p>Run the current battery voltage of the 12V battery powering the Core Motor Controller. The value return is returned in 20mV increments.<br />
+Must have the <a href="./#coremotorcontrollerdriver-serial">Setup</a> function at the start of your program for this function to work.<br />
+For example a returned value of 601 gives a voltage of (601 x .02) = <strong>12.02V</strong></p>
+</blockquote>
+<h3 id="parameters_5">Parameters</h3>
+<blockquote>
+<p><strong>None</strong>   </p>
+</blockquote>
+<h3 id="returns_5">Returns</h3>
+<blockquote>
+<p><strong><em>Battery Voltage Multiplier</em></strong> : int ()</p>
+</blockquote>
+<h3 id="example_5">Example</h3>
+<blockquote>
+<pre><code>import CoreControl
+c = CoreControl.driver()
+cmc1 = CoreControl.coreMotorController(c, 'AL00VVPP')
+
+print cmc1.readBattVoltage()
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="questions"><strong>Questions?</strong></h2>
+<blockquote>
+<p>Contact Boxlight Robotics at <a href="mailto:support@BoxlightRobotics.com">support@BoxlightRobotics.com</a> with a detailed description of the steps you have taken and observations you have made.</p>
+<p><strong>Email Subject</strong>: Fusion Python Core Motor Controller</p>
+</blockquote></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

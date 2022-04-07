@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Boxlight Robotics">
+        <link rel="canonical" href="http://BoxlightRobotics.com/Py_Compass/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Compass (45-2003) - Fusion Documentation Suite</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Fusion Documentation Suite</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../Py_VirtualGamepad/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../Py_Rate_Gyro/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#compass-45-2003" class="nav-link">Compass (45-2003)</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#fusioncompassdriver-addr" class="nav-link">Fusion.compass(driver, addr)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#hardironcalibration" class="nav-link">hardIronCalibration()</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#getheading" class="nav-link">getHeading()</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#nullaccelerometeraxis" class="nav-link">nullAccelerometer(axis)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#getaccelerometer" class="nav-link">getAccelerometer()</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#tiltup" class="nav-link">tiltUp()</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#tiltdown" class="nav-link">tiltDown()</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#getmagnetometer" class="nav-link">getMagnetometer()</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#scaleaccelerometer" class="nav-link">scaleAccelerometer()</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#questions" class="nav-link">Questions?</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="compass-45-2003"><strong>Compass (45-2003)</strong></h1>
+<hr />
+<p>The Compass uses a magnetometer and an accelerometer to calculate heading data based on Earth’s magnetic field. The compass can return the heading data, accelerometer data and magnetometer data to the user. Anything that generates a magnetic field must be moved away from the sensor like power cables, motor or magnetic material. This must happen because during calibration the sensor will add an offset to account for other magnetic sources in the area.</p>
+<blockquote>
+<p><strong>Sensor Type</strong> : Four Wire I2C<br />
+<strong>Default I2C Address</strong> : 0x24<br />
+<strong>Sensor ID Code</strong> : 0x63<br />
+<strong>Dimensions</strong> : 32mm x 32mm x 12mm<br />
+<strong>Mounting Holes</strong> : 24mm x 24mm<br />
+<strong>Power</strong> : 5V DC, 22mA Max<br />
+<strong>Signal Logic Levels</strong> : Logic 0 - 0V, Logic 1 - 5V<br />
+<strong>I2C Bus Speed</strong> : 100kHz max<br />
+<strong>I2C Address Change Option</strong> : Yes (Even Number 0x10 - 0xEE)<br />
+<a href="../Blk_Compass/">Compass Visual Programming Blocks</a></p>
+</blockquote>
+<p><strong>List of available functions:</strong>  </p>
+<ul>
+<li><a href="./#fusioncompassdriver-addr"><strong>Fusion.compass(<em>driver</em>, <em>addr</em>)</strong></a></li>
+<li><a href="./#hardironcalibration"><strong>hardIronCalibration()</strong></a></li>
+<li><a href="./#getheading"><strong>getHeading()</strong></a></li>
+<li><a href="./#nullaccelerometeraxis"><strong>nullAccelerometer(<em>axis</em>)</strong></a></li>
+<li><a href="./#getaccelerometer"><strong>getAccelerometer()</strong></a></li>
+<li><a href="./#tiltup"><strong>tiltUp()</strong></a></li>
+<li><a href="./#tiltdown"><strong>tiltDown()</strong></a></li>
+<li><a href="./#getmagnetometer"><strong>getMagnetometer()</strong></a></li>
+<li><a href="./#scaleaccelerometer"><strong>scaleAccelerometer())</strong></a></li>
+</ul>
+<p><img alt="" src="../img/Sensor_Diagrams/Compass.png" /></p>
+<h2 id="fusioncompassdriver-addr"><strong>Fusion.compass(<em>driver</em>, <em>addr</em>)</strong></h2>
+<blockquote>
+<h3 id="definition">Definition</h3>
+<blockquote>
+<p>This class contains the necessary drivers for our Compass and must be called at the beginning of the program before using any other class functions. </p>
+</blockquote>
+<h3 id="parameters">Parameters</h3>
+<blockquote>
+<p><strong><em>driver</em></strong> : Main driver object so the class can call driver functions (<strong>f</strong>)<br />
+<strong><em>addr</em></strong> : Enter an I2C address in hexadecimal if different from default </p>
+</blockquote>
+<h3 id="returns">Returns</h3>
+<blockquote>
+<p><strong>Compass Object</strong></p>
+</blockquote>
+<h3 id="example">Example</h3>
+<blockquote>
+<pre><code>import Fusion
+f = Fusion.driver()
+cmp1 = Fusion.compass(f)
+cmp2 = Fusion.compass(f, 0x40)
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="hardironcalibration"><strong>hardIronCalibration()</strong></h2>
+<blockquote>
+<h3 id="definition_1">Definition</h3>
+<blockquote>
+<p>Hard Iron Calibration (HIC) is a method of checking for magnets or an object generating a magnetic field around the sensor and generating an offset to account for the magnetic field. During HIC the sensor must be rotated 360° in 5 seconds while keeping a constant pace. Try to start and stop the sensor pointing due North. </p>
+</blockquote>
+<h3 id="parameters_1">Parameters</h3>
+<blockquote>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="returns_1">Returns</h3>
+<blockquote>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="example_1">Example</h3>
+<blockquote>
+<pre><code>import Fusion
+f = Fusion.driver()
+cmp = Fusion.compass(f)
+cmp.hardIronCalibration()
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="getheading"><strong>getHeading()</strong></h2>
+<blockquote>
+<h3 id="definition_2">Definition</h3>
+<blockquote>
+<p>This function returns the heading that ranges between 0° and 359°. The heading is calculated from the accelerometer readings, the magnetometer readings, and the data collected during calibration.</p>
+</blockquote>
+<h3 id="parameters_2">Parameters</h3>
+<blockquote>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="returns_2">Returns</h3>
+<blockquote>
+<p><strong><em>Heading(Degrees)</em></strong> : int (0 - 359)</p>
+</blockquote>
+<h3 id="example_2">Example</h3>
+<blockquote>
+<pre><code>import Fusion
+f = Fusion.driver()
+cmp = Fusion.compass(f)
+print cmp.getHeading()
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="nullaccelerometeraxis"><strong>nullAccelerometer(<em>axis</em>)</strong></h2>
+<blockquote>
+<h3 id="definition_3">Definition</h3>
+<blockquote>
+<p>This function will calibrate the <strong>X</strong>, <strong>Y</strong> and <strong>Z</strong> values by zeroing them. The <strong>X</strong> and <strong>Y</strong> calibration must be done with the sensor laying flat on the horizon. The <strong>Z</strong> must be calibrated with the sensor held vertical. Allow a minimum of 3 seconds for calibration.</p>
+<p>Position for <strong>X</strong> and <strong>Y</strong> axis.</p>
+<p><img alt="" src="../img/Sensor_Diagrams/gyro_flat.png" /></p>
+<p>Position for <strong>Z</strong> axis.</p>
+<p><img alt="" src="../img/Sensor_Diagrams/gyro_vertical.png" /></p>
+</blockquote>
+<h3 id="parameters_3">Parameters</h3>
+<blockquote>
+<p><strong><em>axis</em></strong> : char ( 'X' , 'Y' , 'Z')</p>
+</blockquote>
+<h3 id="returns_3">Returns</h3>
+<blockquote>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="example_3">Example</h3>
+<blockquote>
+<pre><code>import Fusion
+f = Fusion.driver()
+cmp = Fusion.compass(f)
+cmp.nullAccelerometer('X')
+cmp.nullAccelerometer('Y')
+cmp.nullAccelerometer('Z')
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="getaccelerometer"><strong>getAccelerometer()</strong></h2>
+<blockquote>
+<h3 id="definition_4">Definition</h3>
+<blockquote>
+<p>This function returns the accelerometer values for the <strong>X</strong>, <strong>Y</strong> and <strong>Z</strong> axis.</p>
+</blockquote>
+<h3 id="parameters_4">Parameters</h3>
+<blockquote>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="returns_4">Returns</h3>
+<blockquote>
+<p><strong><em>Accelerometer</em></strong> : int [ <strong>X</strong> , <strong>Y</strong> , <strong>Z</strong> ] (-32,767 - 32,768)</p>
+</blockquote>
+<h3 id="example_4">Example</h3>
+<blockquote>
+<p>The following example returns an array of size <strong>3</strong> and stores it into the variables <strong>X</strong>, <strong>Y</strong>, and <strong>Z</strong>.</p>
+<pre><code>import Fusion
+f = Fusion.driver()
+cmp = Fusion.compass(f)
+(X, Y, Z) = cmp.getAccelerometer()
+print X
+</code></pre>
+<p>To collect a single value instead of the array, reference the index. This will print the <strong>X</strong> value.</p>
+<pre><code>import Fusion
+f = Fusion.driver()
+cmp = Fusion.compass(f)
+print cmp.getAccelerometer()[0]
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="tiltup"><strong>tiltUp()</strong></h2>
+<blockquote>
+<h3 id="definition_5">Definition</h3>
+<blockquote>
+<p>This function calculates an offset to compensate for the magnetic field not being perfectly horizontal. The sensor must be held 20° above the horizon during calibration.</p>
+<p><img alt="" src="../img/Sensor_Diagrams/gyro_tiltUp.png" /></p>
+</blockquote>
+<h3 id="parameters_5">Parameters</h3>
+<blockquote>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="returns_5">Returns</h3>
+<blockquote>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="example_5">Example</h3>
+<blockquote>
+<pre><code>import Fusion
+f = Fusion.driver()
+cmp = Fusion.compass(f)
+cmp.tiltUp()
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="tiltdown"><strong>tiltDown()</strong></h2>
+<blockquote>
+<h3 id="definition_6">Definition</h3>
+<blockquote>
+<p>This function calculates an offset to compensate for the magnetic field not being perfectly horizontal. The sensor must be held 20° below the horizon during calibration.</p>
+<p><img alt="" src="../img/Sensor_Diagrams/gyro_tiltDown.png" /></p>
+</blockquote>
+<h3 id="parameters_6">Parameters</h3>
+<blockquote>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="returns_6">Returns</h3>
+<blockquote>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="example_6">Example</h3>
+<blockquote>
+<pre><code>import Fusion
+f = Fusion.driver()
+cmp = Fusion.compass(f)
+cmp.tiltDown()
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="getmagnetometer"><strong>getMagnetometer()</strong></h2>
+<blockquote>
+<h3 id="definition_7">Definition</h3>
+<blockquote>
+<p>This function returns the values of the magnetometer on the <strong>X</strong>, <strong>Y</strong> and <strong>Z</strong> axis.</p>
+</blockquote>
+<h3 id="parameters_7">Parameters</h3>
+<blockquote>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="returns_7">Returns</h3>
+<blockquote>
+<p><strong><em>Magnetometer</em></strong> : int [ <strong>X</strong> , <strong>Y</strong> , <strong>Z</strong> ] (0 - 1023)</p>
+</blockquote>
+<h3 id="example_7">Example</h3>
+<blockquote>
+<p>The following example returns an array of size <strong>3</strong> and stores it into the variables <strong>X</strong>, <strong>Y</strong>, <strong>Z</strong>.</p>
+<pre><code>import Fusion
+f = Fusion.driver()
+cmp = Fusion.compass(f)
+(X, Y, Z) = cmp.getMagnetometer()
+print X
+</code></pre>
+<p>To collect a single value instead of the array, reference the index. This will print the <strong>X</strong> value.</p>
+<pre><code>import Fusion
+f = Fusion.driver()
+cmp = Fusion.compass(f)
+print cmp.getMagnetometer()[0]
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="scaleaccelerometer"><strong>scaleAccelerometer()</strong></h2>
+<blockquote>
+<h3 id="definition_8">Definition</h3>
+<blockquote>
+<p>This function is called if the user wants to change the sensitivity of the accelerometer reading. First the sensor must be set vertical (Same position as <strong>Z</strong> calibration) and hold it there for the duration of the calibration. Once the sensor is in position the program may be ran. Once the program is completed, the scaling value will be updated within the Compass.</p>
+<p>Postion of sensor during scaling.</p>
+<p><img alt="" src="../img/Sensor_Diagrams/gyro_vertical.png" /></p>
+</blockquote>
+<h3 id="parameters_8">Parameters</h3>
+<blockquote>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="returns_8">Returns</h3>
+<blockquote>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="example_8">Example</h3>
+<blockquote>
+<pre><code>import Fusion
+f = Fusion.driver()
+cmp = Fusion.compass(f)
+cmp.scaleAccelerometer()
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="questions"><strong>Questions?</strong></h2>
+<blockquote>
+<p>Contact Boxlight Robotics at <a href="mailto:support@BoxlightRobotics.com">support@BoxlightRobotics.com</a> with a detailed description of the steps you have taken and observations you have made.</p>
+<p><strong>Email Subject</strong>: Fusion Python Compass</p>
+</blockquote></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

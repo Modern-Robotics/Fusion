@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Boxlight Robotics">
+        <link rel="canonical" href="http://BoxlightRobotics.com/Default_Lists/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Lists - Fusion Documentation Suite</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Fusion Documentation Suite</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../Default_Text/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../Default_Variables/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#lists-toolbox" class="nav-link">Lists Toolbox</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#list-creation" class="nav-link">List Creation</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#create-empty-list" class="nav-link">create empty list</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#create-list-with" class="nav-link">create list with</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#create-list-with-item" class="nav-link">create list with item</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#checking-a-lists-length" class="nav-link">Checking a List's Length</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#is-empty" class="nav-link">is empty</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#length-of" class="nav-link">length of</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#finding-items-in-a-list" class="nav-link">Finding Items in a List</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#getting-items-from-a-list" class="nav-link">Getting Items from a List</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#getting-a-single-item" class="nav-link">Getting a single item</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#getting-and-removing-an-item" class="nav-link">Getting and removing an item</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#removing-an-item" class="nav-link">Removing an item</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#getting-a-sublist" class="nav-link">Getting a sublist</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#adding-items-to-a-list" class="nav-link">Adding Items to a List</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#in-list-set" class="nav-link">in list ... set</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#in-list-insert-at" class="nav-link">in list ... insert at</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#splitting-strings-and-joining-lists" class="nav-link">Splitting strings and joining lists</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#make-list-from-text" class="nav-link">make list from text</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#make-text-from-list" class="nav-link">make text from list</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#related-blocks" class="nav-link">Related Blocks</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#printing-a-list" class="nav-link">Printing a list</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#doing-something-for-each-item-in-a-list" class="nav-link">Doing something for each item in a list</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#questions" class="nav-link">Questions?</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="lists-toolbox"><strong>Lists Toolbox</strong></h1>
+<hr />
+<p>As in everyday speech, a Blockly list is an ordered collection of items, such as a "to do" list or a shopping list.  Items in a list may be of any type, and the same value may appear more than once in a list.</p>
+<h1 id="list-creation"><strong>List Creation</strong></h1>
+<blockquote>
+<h2 id="create-empty-list"><strong>create empty list</strong></h2>
+<p>The simplest list is the empty list, which is created with the <strong>create empty list</strong> block:</p>
+<p><img alt="" src="../img/blocks/list-create-empty-list.png" /></p>
+<h2 id="create-list-with"><strong>create list with</strong></h2>
+<blockquote>
+<h3 id="basic-usage">basic usage</h3>
+<p>The <strong>create list with</strong> block allows the user to specify the initial values in a new list.  In this example, a list of words is being created and placed in a variable named <strong>letters</strong>:</p>
+<p><img alt="" src="../img/blocks/list-create-list-with-text.png" /></p>
+<p>For this document, we'll denote this list as ["alpha", "beta", "gamma"], and we will refer below to the variables defined in this section.</p>
+<p>This shows the creation of a list of numbers:</p>
+<p><img alt="" src="../img/blocks/list-create-list-with-numbers.png" /></p>
+<p>This creates a list of colours:</p>
+<p><img alt="" src="../img/blocks/list-create-list-with-colours.png" /></p>
+<p>It is less common, but possible, to create a list with values of different types:</p>
+<p><img alt="" src="../img/blocks/list-create-list-with-mixture.png" /></p>
+<h3 id="changing-number-of-inputs">changing number of inputs</h3>
+<p>To change the number of inputs, click on the gear icon.  This opens a new window:</p>
+<p><img alt="" src="../img/blocks/list-create-list-modify-tooltip.png" /></p>
+<p>You can then drag <strong>item</strong> sublocks from the left side of the window into the <strong>if</strong> block on the right side to add a new input, as shown:</p>
+<p><img alt="img/blocks/list-create-list-modify.gif" src="../img/blocks/list-create-list-modify.gif" /></p>
+<p>While the new item was added at the bottom in this example, it can be added anywhere.  Similarly, unwanted <strong>item</strong> subblocks can be dragged off the <strong>if</strong> block to the left.</p>
+</blockquote>
+<h2 id="create-list-with-item"><strong>create list with item</strong></h2>
+<p>The <strong>create list with item</strong> block lets you create a list that has the specified number of copies of an item.  For example, the following blocks set the variable <strong>words</strong> to the list containing ["very", "very", "very"].</p>
+<p><img alt="" src="../img/blocks/list-create-list-with-item.png" /></p>
+</blockquote>
+<h1 id="checking-a-lists-length"><strong>Checking a List's Length</strong></h1>
+<blockquote>
+<h2 id="is-empty"><strong>is empty</strong></h2>
+<p>The value of an <strong>is empty</strong> block is <strong>true</strong> if its input is the empty list and <strong>false</strong> if it is anything else (including a non-list).  IS THIS TRUE?  The value of the following blocks would be <strong>false</strong> because the variable <strong>colours</strong> is not empty: it has three items.</p>
+<p><img alt="" src="../img/blocks/list-empty.png" /></p>
+<p>Note the similarity to the <a href="../Default_Text/#checking-for-empty-text">"is empty" block for text</a>.</p>
+<h2 id="length-of"><strong>length of</strong></h2>
+<p>The value of the <strong>length of</strong> block is the number of elements in the list used as an input.  For example, the value of the following blocks would be 3 because colour has three items.</p>
+<p><img alt="" src="../img/blocks/list-length.png" /></p>
+<p>Note that the <strong>length of</strong> block tells you how many items are in the list, not how many <em>different</em> items are in it.  For example, the following has the value 3, even though <strong>words</strong> consists of three copies of the same text (["very", "very", "very"]).</p>
+<p><img alt="" src="../img/blocks/list-length2.png" /></p>
+<p>Note the similarity to the <a href="../Default_Text/#text-length">"length of" block for text</a>.</p>
+</blockquote>
+<h1 id="finding-items-in-a-list"><strong>Finding Items in a List</strong></h1>
+<blockquote>
+<p>These blocks find the position of an item in a list.  For example, the following has a value of 1 because the first appearance of "very" is as the beginning of the <strong>words</strong> list (["very", "very", "very"]).</p>
+<p><img alt="" src="../img/blocks/list-find-first1.png" /></p>
+<p>The result of the following is 3 because the last appearance of "very" in <strong>words</strong> is in position 3.</p>
+<p><img alt="" src="../img/blocks/list-find-last.png" /></p>
+<p>If the item is nowhere in the list, the result is in the value 0, as in this example:</p>
+<p><img alt="" src="../img/blocks/list-find-first2.png" /></p>
+<p>These blocks are analogous to <a href="../Default_Text/#finding-text">the ones for finding letters in text</a>.</p>
+</blockquote>
+<h1 id="getting-items-from-a-list"><strong>Getting Items from a List</strong></h1>
+<blockquote>
+<h2 id="getting-a-single-item"><strong>Getting a single item</strong></h2>
+<p>Recall the definition of the list <strong>colours</strong>:</p>
+<p><img alt="" src="../img/blocks/list-create-list-with-colours.png" /></p>
+<p>The following block gets the colour &lt;font color='blue'blue&lt;/font because it is the second element in the list (counting from the beginning on the left):</p>
+<p><img alt="" src="../img/blocks/list-in-list-get1.png" /></p>
+<p>This gets &lt;font color='green'green&lt;/font because it is the second element counting from the right end:
+<img alt="" src="../img/blocks/list-in-list-get2.png" /></p>
+<p>This gets the first element, &lt;font color='red'red&lt;/font:</p>
+<p><img alt="" src="../img/blocks/list-in-list-get3.png" /></p>
+<p>This gets the last element, &lt;font color='orange'yellow&lt;/font:</p>
+<p><img alt="" src="../img/blocks/list-in-list-get4.png" /></p>
+<p>This randomly selects an item from the list, returning any of &lt;font color='red'red&lt;/font, &lt;font color='blue'blue&lt;/font, &lt;font color='green'green&lt;/font, or &lt;font color='orange'yellow&lt;/font with equal likelihood.</p>
+<p><img alt="" src="../img/blocks/list-in-list-get5.png" /></p>
+<h2 id="getting-and-removing-an-item"><strong>Getting and removing an item</strong></h2>
+<p>A dropdown menu on the <strong>in list ... get</strong> block changes it to <strong>in list ... get and remove</strong>, which provides the same otuput but also modifies the original list:</p>
+<p><img alt="" src="../img/blocks/list-in-list-get-options.png" /></p>
+<p>This example sets the variable <strong>first letter</strong> to "alpha" and leaves <strong>letters</strong> as: ["beta", "gamma"].</p>
+<p><img alt="" src="../img/blocks/list-in-list-get-and-remove.png" /></p>
+<h2 id="removing-an-item"><strong>Removing an item</strong></h2>
+<p>Selecting "remove" on the dropdown causes the plug on the left of the block to disappear:</p>
+<p><img alt="" src="../img/blocks/list-in-list-remove.png" /></p>
+<p>This removes the first item from <strong>letters</strong>.</p>
+<h2 id="getting-a-sublist"><strong>Getting a sublist</strong></h2>
+<p>The <strong>in list ... get sublist</strong> block is similar to the <strong>in list ... get</strong> block except that it extracts a sublist, rather than an individual item.  There are several options for how the start and end of the sublist can be specified:</p>
+<p><img alt="" src="../img/blocks/list-sub-list1.png" /></p>
+<p><img alt="" src="../img/blocks/list-sub-list2.png" /></p>
+<p>In this example, a new list <strong>first letters</strong> is created.  This new list has two elements: ["alpha", "beta"].</p>
+<p><img alt="" src="../img/blocks/list-sub-list-example.png" /></p>
+<p>Note that this block does not modify the original list.</p>
+</blockquote>
+<h1 id="adding-items-to-a-list"><strong>Adding Items to a List</strong></h1>
+<blockquote>
+<h2 id="in-list-set"><strong>in list ... set</strong></h2>
+<p>The <strong>in list ... set</strong> block replaces the item at a specified location in a list with a different item.</p>
+<p><img alt="" src="../img/blocks/list-set.png" /></p>
+<p>For the meaning of each of the dropdown options, see the <a href="./#getting-items-from-a-list">previous section</a>.</p>
+<p>The following example does two things:<br />
+  1. The list <strong>words</strong> is created with 3 items: ["very", "very", "very"].<br />
+  2. The third item in the list is replaced by "good".  The new value of <strong>words</strong> is ["very", "very", "good"].</p>
+<p><img alt="" src="../img/blocks/list-set-example.png" /></p>
+<h2 id="in-list-insert-at"><strong>in list ... insert at</strong></h2>
+<p>The <strong>in list ... insert at</strong> block is obtained by using the dropdown menu on the <strong>in list ... set</strong> block:</p>
+<p><img alt="" src="../img/blocks/list-insert-at.png" /></p>
+<p>It inserts a new item into the list at the specified location, before the item previously at that location.  The following example (built on an earlier one) does three things:</p>
+<ol>
+<li>The list <strong>words</strong> is created with 3 items: ["very", "very", "very"].</li>
+<li>The third item in the list is replaced by "good".  The new value of <strong>words</strong> is ["very", "very", "good"].</li>
+<li>The word "you're" is inserted at the beginning of the list.  The final value of <strong>words</strong> is ["You're", "very", "very", "good"].</li>
+</ol>
+<p><img alt="" src="../img/blocks/list-insert-at-example.png" /></p>
+</blockquote>
+<h1 id="splitting-strings-and-joining-lists"><strong>Splitting strings and joining lists</strong></h1>
+<blockquote>
+<h2 id="make-list-from-text"><strong>make list from text</strong></h2>
+<p>The <strong>make list from text</strong> block splits the given text into pieces using a delimiter:</p>
+<p><img alt="" src="../img/blocks/list-split.png" /></p>
+<p>In the above example, a new list is returned containing three pieces of text: "311", "555", and "2368".</p>
+<h2 id="make-text-from-list"><strong>make text from list</strong></h2>
+<p>The <strong>make text from list</strong> block joins a list into a single text using a delimiter:</p>
+<p><img alt="" src="../img/blocks/list-join.png" /></p>
+<p>In the above example, a new text is returned with the value: "311-555-2368".</p>
+</blockquote>
+<h1 id="related-blocks"><strong>Related Blocks</strong></h1>
+<blockquote>
+<h2 id="printing-a-list"><strong>Printing a list</strong></h2>
+<p>The <a href="../Default_Text/#printing-text">print block</a> in the Text category can print lists.  The result of the following program is the shown alert box:</p>
+<p><img alt="" src="../img/blocks/list-print.png" /></p>
+<h2 id="doing-something-for-each-item-in-a-list"><strong>Doing something for each item in a list</strong></h2>
+<p>The <a href="../Default_Loops/#for-each">for-each block</a> in the Control category performs an operation on every item in a list.  For example, these blocks individually print each item in the list:</p>
+<p><img alt="" src="../img/blocks/control-for-each.png" /></p>
+<p>This does not remove the items from the original list.</p>
+<p>See also the examples of the <a href="../Default_Loops/#loop-termination-blocks">loop termination blocks</a>.</p>
+</blockquote>
+<h2 id="questions"><strong>Questions?</strong></h2>
+<blockquote>
+<p>Contact Boxlight Robotics at <a href="mailto:support@BoxlightRobotics.com">support@BoxlightRobotics.com</a> with a detailed description of the steps you have taken and observations you have made.</p>
+<p><strong>Email Subject</strong>: Blockly Lists</p>
+</blockquote></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

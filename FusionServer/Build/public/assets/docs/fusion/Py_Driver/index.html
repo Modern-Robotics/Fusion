@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Boxlight Robotics">
+        <link rel="canonical" href="http://BoxlightRobotics.com/Py_Driver/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Fusion Driver - Fusion Documentation Suite</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Fusion Documentation Suite</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../Py_Constants/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../Py_Motors/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#fusion-driver" class="nav-link">Fusion Driver</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#fusiondriver" class="nav-link">Fusion.driver()</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#readbattraw" class="nav-link">readBattRaw()</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#readbatt" class="nav-link">readBatt()</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#setledled-value" class="nav-link">setLED(led, value)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#analogread-port" class="nav-link">analogRead( port )</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#digitalreadport" class="nav-link">digitalRead(port)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#digitalstateport-state" class="nav-link">digitalState(port, state)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#digitalwriteport-state" class="nav-link">digitalWrite(port, state)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#i2creadaddr-reg-len" class="nav-link">i2cRead(addr, reg, len)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#i2cwriteaddr-reg-buf" class="nav-link">i2cWrite(addr, reg, buf[ ] )</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#questions" class="nav-link">Questions?</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="fusion-driver"><strong>Fusion Driver</strong></h1>
+<hr />
+<p>The Fusion Driver Class contains code for base controller functionality, LED control, motor controller, servo control and generic analog/digital control functions. </p>
+<p><strong>List of available functions:</strong>  </p>
+<ul>
+<li><a href="./#fusiondriver"><strong>Fusion.driver()</strong></a>  </li>
+<li><a href="./#readbattraw"><strong>readBattRaw()</strong></a></li>
+<li><a href="./#readbatt"><strong>readBatt()</strong></a></li>
+<li><a href="./#setledled-value"><strong>setLED(<em>led</em>, <em>value</em>)</strong></a></li>
+<li><a href="./#analogread-port"><strong>analogRead(<em>port</em>)</strong></a></li>
+<li><a href="./#digitalreadport"><strong>digitalRead(<em>port</em>)</strong></a></li>
+<li><a href="./#digitalstateport-state"><strong>digitalState(<em>port</em>, <em>state</em>)</strong></a></li>
+<li><a href="./#digitalwriteport-state"><strong>digitalWrite(<em>port</em>, <em>state</em>)</strong></a></li>
+<li><a href="./#i2creadaddr-reg-len"><strong>i2cRead(<em>addr</em>, <em>reg</em>, <em>len</em>)</strong></a></li>
+<li><a href="./#i2cwriteaddr-reg-buf"><strong>i2cWrite(<em>addr</em>, <em>reg</em>, <em>buf[]</em>)</strong></a></li>
+</ul>
+<h2 id="fusiondriver"><strong>Fusion.driver()</strong></h2>
+<blockquote>
+<h3 id="definition">Definition</h3>
+<blockquote>
+<p>The following class is used to provide base functionality of the Fusion control board and provide drivers to interface with the various array of sensors, servos and motors.</p>
+</blockquote>
+<h3 id="parameters">Parameters</h3>
+<blockquote>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="returns">Returns</h3>
+<blockquote>
+<p><strong>Fusion Driver Object</strong></p>
+</blockquote>
+<h3 id="example">Example</h3>
+<blockquote>
+<pre><code>import Fusion
+f = Fusion.driver()
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="readbattraw"><strong>readBattRaw()</strong></h2>
+<blockquote>
+<h3 id="definition_1">Definition</h3>
+<blockquote>
+<p>Read the raw value of the battery voltage from the on-board ADC converter.</p>
+</blockquote>
+<h3 id="parameters_1">Parameters</h3>
+<blockquote>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="returns_1">Returns</h3>
+<blockquote>
+<p><strong>Raw Voltage</strong> : int (0 - 1023)</p>
+</blockquote>
+<h3 id="example_1">Example</h3>
+<blockquote>
+<pre><code>import Fusion
+f = Fusion.driver()
+print f.readBattRaw()
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="readbatt"><strong>readBatt()</strong></h2>
+<blockquote>
+<h3 id="definition_2">Definition</h3>
+<blockquote>
+<p>Read the scaled value of the battery voltage from the on-board ADC converter.</p>
+</blockquote>
+<h3 id="parameters_2">Parameters</h3>
+<blockquote>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="returns_2">Returns</h3>
+<blockquote>
+<p><strong>Voltage</strong> : float (volts)</p>
+</blockquote>
+<h3 id="example_2">Example</h3>
+<blockquote>
+<pre><code>import Fusion
+f = Fusion.driver()
+print f.readBatt()
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="setledled-value"><strong>setLED(<em>led</em>, <em>value</em>)</strong></h2>
+<blockquote>
+<h3 id="definition_3">Definition</h3>
+<blockquote>
+<p>Set the selected on-board LED or <strong>ON</strong> (1) or <strong>OFF</strong> (0).</p>
+<ul>
+<li><a href="../Int_Fusion-Control/#led">Set LED Visual Programming Block</a></li>
+</ul>
+</blockquote>
+<h3 id="parameters_3">Parameters</h3>
+<blockquote>
+<p><strong><em>led</em></strong> : BLUE or YELLOW<br />
+<strong><em>value</em></strong> : int (1 or 0)</p>
+<h3 id="returns_3">Returns</h3>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="example_3">Example</h3>
+<blockquote>
+<pre><code>import Fusion
+f = Fusion.driver()
+f.setLED(f.YELLOW, 1)
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="analogread-port"><strong>analogRead( <em>port</em> )</strong></h2>
+<blockquote>
+<h3 id="definition_4">Definition</h3>
+<blockquote>
+<p>Used to read analog devices connected to ports <strong>A0</strong> - <strong>A7</strong>.</p>
+</blockquote>
+<h3 id="parameters_4">Parameters</h3>
+<blockquote>
+<p><strong><em>port</em></strong> : A0 - A7</p>
+</blockquote>
+<h3 id="returns_4">Returns</h3>
+<blockquote>
+<p><strong>Value</strong> : int (0 - 1023)</p>
+</blockquote>
+<h3 id="example_4">Example</h3>
+<blockquote>
+<pre><code>import Fusion
+f = Fusion.driver()
+print f.analogRead(f.A0)
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="digitalreadport"><strong>digitalRead(<em>port</em>)</strong></h2>
+<blockquote>
+<h3 id="definition_5">Definition</h3>
+<blockquote>
+<p>Used to read digital devices connected to ports <strong>D0</strong> - <strong>D7</strong>.</p>
+</blockquote>
+<h3 id="parameters_5">Parameters</h3>
+<blockquote>
+<p><strong><em>port</em></strong> : D0 - D7</p>
+</blockquote>
+<h3 id="returns_5">Returns</h3>
+<blockquote>
+<p><strong><em>Value</em></strong> : int (0 - 1)</p>
+</blockquote>
+<h3 id="example_5">Example</h3>
+<blockquote>
+<pre><code>import Fusion
+f = Fusion.driver()
+print f.digitalRead(f.D0)
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="digitalstateport-state"><strong>digitalState(<em>port</em>, <em>state</em>)</strong></h2>
+<blockquote>
+<h3 id="definition_6">Definition</h3>
+<blockquote>
+<p>Sets the state of the selected digital port <strong>D0</strong> - <strong>D7</strong> as input or output.</p>
+</blockquote>
+<h3 id="parameters_6">Parameters</h3>
+<blockquote>
+<p><strong><em>port</em></strong> : D0 - D7<br />
+<strong><em>state</em></strong> : INPUT or OUTPUT</p>
+</blockquote>
+<h3 id="returns_6">Returns</h3>
+<blockquote>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="example_6">Example</h3>
+<blockquote>
+<pre><code>import Fusion
+f = Fusion.driver()
+f.digitalState(f.D0, f.OUTPUT)
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="digitalwriteport-state"><strong>digitalWrite(<em>port</em>, <em>state</em>)</strong></h2>
+<blockquote>
+<h3 id="definition_7">Definition</h3>
+<blockquote>
+<p>Sets the value of the selected digital port <strong>D0</strong> - <strong>D7</strong> when in output mode.</p>
+</blockquote>
+<h3 id="parameters_7">Parameters</h3>
+<blockquote>
+<p><strong><em>port</em></strong> : D0 - D7<br />
+<strong><em>state</em></strong> : int (1 or 0)</p>
+</blockquote>
+<h3 id="returns_7">Returns</h3>
+<blockquote>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="example_7">Example</h3>
+<blockquote>
+<pre><code>import Fusion
+f = Fusion.driver()
+f.digitalState(f.D0, f.OUTPUT)
+f.digitalWrite(f.D0, 1)
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="i2creadaddr-reg-len"><strong>i2cRead(<em>addr</em>, <em>reg</em>, <em>len</em>)</strong></h2>
+<blockquote>
+<h3 id="definition_8">Definition</h3>
+<blockquote>
+<p>Read up to 32 bytes from a device on the I2C buffer.</p>
+</blockquote>
+<h3 id="parameters_8">Parameters</h3>
+<blockquote>
+<p><strong><em>addr</em></strong> : Device I2C Address<br />
+<strong><em>reg</em></strong> : First register to read from<br />
+<strong><em>len</em></strong> : Number of registers to read</p>
+</blockquote>
+<h3 id="returns_8">Returns</h3>
+<blockquote>
+<p><strong>buf[reg1, reg2, ...]</strong><br />
+<strong>i2c_error</strong> : A global value can be read or cleared at any time, displays errors detected during the last I2C transaction. </p>
+</blockquote>
+<h3 id="example_8">Example</h3>
+<blockquote>
+<pre><code>import Fusion
+f = Fusion.driver()
+print f.i2cRead(0x20, 0x00, 3)
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="i2cwriteaddr-reg-buf"><strong>i2cWrite(<em>addr</em>, <em>reg</em>, <em>buf[ ]</em> )</strong></h2>
+<blockquote>
+<h3 id="definition_9">Definition</h3>
+<blockquote>
+<p>Write a buffer of up to 32 bytes to a device on the I2C buffer. The length is determined based on the length of the buffer being written.</p>
+</blockquote>
+<h3 id="parameters_9">Parameters</h3>
+<blockquote>
+<p><strong><em>addr</em></strong> : Device I2C Address<br />
+<strong><em>reg</em></strong> : First register to read from<br />
+<strong><em>buf[]</em></strong> : Buffer of up to 32 bytes</p>
+</blockquote>
+<h3 id="returns_9">Returns</h3>
+<blockquote>
+<p><strong>i2c_error</strong> : A global value can be read or cleared at any time, displays errors detected during the last I2C transaction. </p>
+</blockquote>
+<h3 id="example_9">Example</h3>
+<blockquote>
+<pre><code>import Fusion
+f = Fusion.driver()
+buf = [1, 2]
+f.i2cWrite(0x20, 0x00, buf)
+f.i2cWrite(0x20, 0x02, [3, 4])
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="questions"><strong>Questions?</strong></h2>
+<blockquote>
+<p>Contact Boxlight Robotics at <a href="mailto:support@BoxlightRobotics.com">support@BoxlightRobotics.com</a> with a detailed description of the steps you have taken and observations you have made.</p>
+<p><strong>Email Subject</strong>: Fusion Python Driver</p>
+</blockquote></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

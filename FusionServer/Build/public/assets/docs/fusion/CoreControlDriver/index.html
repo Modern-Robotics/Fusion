@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Boxlight Robotics">
+        <link rel="canonical" href="http://BoxlightRobotics.com/CoreControlDriver/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Core Control Driver - Fusion Documentation Suite</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Fusion Documentation Suite</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../Core_Power_Distribution_Module/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../Blk_Core_Device_Interface/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#core-control-module-driver" class="nav-link">Core Control Module Driver</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#python" class="nav-link">Python</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#corecontroldriver" class="nav-link">CoreControl.driver()</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#printdevices" class="nav-link">printDevices()</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#blockly" class="nav-link">Blockly</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#print-devices" class="nav-link">Print Devices</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#questions" class="nav-link">Questions?</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="core-control-module-driver"><strong>Core Control Module Driver</strong></h1>
+<hr />
+<p>The Core Control Driver is used to set up all the Core Control Modules and read which modules are connected to the Fusion.</p>
+<p><strong>List of available Python functions:</strong>  </p>
+<ul>
+<li><a href="./#corecontroldriver"><strong>CoreControl.driver()</strong></a></li>
+<li><a href="./#printdevices"><strong>printDevices()</strong></a></li>
+</ul>
+<p><strong>List of available Blockly blocks:</strong>  </p>
+<ul>
+<li><a href="./#print-devices"><strong>Print Devices</strong></a></li>
+</ul>
+<h2 id="python"><strong>Python</strong></h2>
+<hr />
+<h2 id="corecontroldriver"><strong>CoreControl.driver()</strong></h2>
+<blockquote>
+<h3 id="definition">Definition</h3>
+<blockquote>
+<p>This class contains the necessary drivers for our Core Control Modules and must be called at the beginning of the program before using any other class functions. </p>
+</blockquote>
+<h3 id="parameters">Parameters</h3>
+<blockquote>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="returns">Returns</h3>
+<blockquote>
+<p>Core Control Object</p>
+</blockquote>
+<h3 id="example">Example</h3>
+<blockquote>
+<pre><code>import CoreControl
+c = CoreControl.driver()
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="printdevices"><strong>printDevices()</strong></h2>
+<blockquote>
+<h3 id="definition_1">Definition</h3>
+<blockquote>
+<p>Print a list of attached Core Control Modules showing the ttyl port, modules type and FTDI serial number. The serial number is used to indentify a specific controller in programming.  </p>
+<p>Device IDs for modules:<br />
+<strong>Core Device Interface</strong> - USBAMUX<br />
+<strong>Core Legacy Module</strong> - USBLSMUX<br />
+<strong>Core Motor Controller</strong> - USBMCON<br />
+<strong>Core Servo Controller</strong> - USBSCON</p>
+</blockquote>
+<h3 id="parameters_1">Parameters</h3>
+<blockquote>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="returns_1">Returns</h3>
+<blockquote>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="example_1">Example</h3>
+<blockquote>
+<pre><code>import CoreControl
+c = CoreControl.driver()
+c.printDevices()
+</code></pre>
+<p><img src="../img/Core_Control/printDevicesOutput.PNG" width="500"></p>
+</blockquote>
+</blockquote>
+<h2 id="blockly"><strong>Blockly</strong></h2>
+<hr />
+<h2 id="print-devices"><strong>Print Devices</strong></h2>
+<blockquote>
+<p>Print a list of attached Core Control Modules showing the ttyl port, modules type and FTDI serial number. The serial number is used to indentify a specific controller in programming.</p>
+<p>Device IDs for modules:<br />
+<strong>Core Device Interface</strong> - USBAMUX<br />
+<strong>Core Legacy Module</strong> - USBLSMUX<br />
+<strong>Core Motor Controller</strong> - USBMCON<br />
+<strong>Core Servo Controller</strong> - USBSCON</p>
+<h3 id="block">Block:</h3>
+<p><img src="../img/Core_Control/printDevices.PNG" width="400"></p>
+<h3 id="code">Code:</h3>
+<blockquote>
+<pre><code>import CoreControl
+c = CoreControl.driver()
+
+c.printDevices
+</code></pre>
+<p><img src="../img/Core_Control/printDevicesOutput.PNG" width="500"></p>
+</blockquote>
+</blockquote>
+<h2 id="questions"><strong>Questions?</strong></h2>
+<blockquote>
+<p>Contact Boxlight Robotics at <a href="mailto:support@BoxlightRobotics.com">support@BoxlightRobotics.com</a> with a detailed description of the steps you have taken and observations you have made.</p>
+<p><strong>Email Subject</strong>: Fusion Core Control Modules Driver</p>
+</blockquote></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

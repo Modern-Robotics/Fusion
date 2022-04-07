@@ -1,0 +1,147 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="author" content="Hector Hernandez">
+    <meta name="description" content="Fusion Controller Interface brought to you by Modern Robotics Inc.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Fusion Interface</title>
+
+    <base href="/" />
+
+    <!-- Css Files -->
+    <!-- build:css style.css -->    
+    <link rel="stylesheet" href="assets/libs/normalize/normalize.css">
+    <link rel="stylesheet" href="assets/libs/angular-material/angular-material.min.css">
+    <link rel="stylesheet" href="assets/libs/angular-resizable/angular-resizable.min.css">
+    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="assets/libs/jstree/dist/themes/default/style.min.css" />
+    <link rel="stylesheet" href="assets/libs/roboto-fontface/css/roboto/roboto-fontface.css">
+    <!-- endbuild -->
+    
+</head>
+
+<body ng-app="fusionApp">
+
+    <div ng-controller="appCtrl" layout="column" class="fusion-container">
+
+        <!-- Injects Sidebar view -->
+        <div ng-include="'app/shared/sidebar/sidebar.htm'"></div>
+
+        <!-- Injects Header view -->
+        <div ng-include="'app/shared/header/header.htm'"></div>
+
+        <!-- Injects Body content -->
+        <md-content ui-view flex layout="column" class="fusion-body-container" ng-cloak></md-content>
+
+        <!-- Injects Footer view -->
+        <div hide-gt-xs ng-include="'app/shared/footer/footer.htm'"></div>        
+
+    </div>
+
+    <!-- Reference Files -->
+    <!-- build:js ref.js -->
+    
+
+    <!-- Font Awesome Library -->
+    <script src="assets/libs/font-awesome/js/all.min.js"></script>    
+
+    <!-- Socket IO Library -->
+    <script src="assets/libs/socket.io-client/dist/socket.io.js"></script>
+
+    <!-- Latest greatest angular -->
+    <script src="assets/libs/angular/angular.min.js"></script>
+    <script src="assets/libs/angular-animate/angular-animate.min.js"></script>
+    <script src="assets/libs/angular-aria/angular-aria.min.js"></script>
+    <script src="assets/libs/angular-messages/angular-messages.min.js"></script>
+    <script src="assets/libs/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="assets/libs/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="assets/libs/angular-material/angular-material.min.js"></script>
+    <script src="assets/libs/angular-cookies/angular-cookies.min.js"></script>
+
+    <!-- Angular Translations-->
+    <script src="assets/libs/angular-translate/angular-translate.min.js"></script>
+    <script src="assets/libs/angular-translate-handler-log/angular-translate-handler-log.min.js"></script>
+    <script src="assets/libs/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
+    <script src="assets/libs/angular-translate-storage-cookie/angular-translate-storage-cookie.min.js"></script>
+    <script src="assets/libs/angular-translate-storage-local/angular-translate-storage-local.min.js"></script>
+
+    <!-- Jquery Library -->
+    <script src="assets/libs/jQuery/dist/jquery.min.js"></script>
+    <script src="assets/libs/jquery-ui/jquery-ui.min.js"></script>
+
+    <!-- File upload library -->
+    <script src="assets/libs/ng-file-upload/ng-file-upload-shim.min.js"></script>
+    <script src="assets/libs/ng-file-upload/ng-file-upload.min.js"></script>    
+    
+    <!-- Context menu library -->
+    <script src="assets/libs/angular-rightclick-contextmenu/dist/sarsha.contextmenu.js"></script>
+    
+    <!-- Angular Ace editor -->
+    <script src="assets/libs/angular-ui-ace/ui-ace.min.js"></script>    
+    
+    <!-- Angular splitter pane -->
+    <script src="assets/libs/angular-resizable/angular-resizable.min.js"></script>
+
+    <!-- Highlight library -->
+    <script src="assets/libs/highlightjs/highlight.pack.min.js"></script>    
+    
+    <!-- JS Tree -->
+    <script src="assets/libs/jstree/dist/jstree.min.js"></script>
+    <script src="assets/libs/jsTree-directive/jsTree.directive.js"></script>
+
+    <!-- Blockly library -->
+    <script src="assets/libs/google-blockly/blockly_compressed.js"></script>
+    <script src="assets/libs/google-blockly/blocks_compressed.js"></script>
+    <script src="assets/libs/google-blockly/msg/js/en.js"></script>
+    <script src="assets/libs/google-blockly/python_compressed.js"></script>
+    <script src="assets/custom-blockly/blocks/fusion.js"></script>
+    <script src="assets/custom-blockly/generators/python/fusion.js"></script>
+
+    <!-- Ace editor -->
+    <script src="assets/libs/ace-builds/src-min-noconflict/ace.js"></script>
+    <script src="assets/libs/ace-builds/src-min-noconflict/ext-language_tools.js"></script>
+    <script src="assets/libs/ace-builds/src-min-noconflict/ext-settings_menu.js"></script>
+    <!-- endbuild -->
+
+
+    <!-- Angular Files -->
+    <!-- build:js ang.js -->    
+    <script src="app/app.module.js"></script>
+    <script src="app/app.factory.js"></script>
+    <script src="app/app.socket.js"></script>
+    <script src="app/app.auth.js"></script>
+    <script src="app/app.customStorage.js"></script>
+    <script src="app/app.config.js"></script>
+    <script src="app/app.routes.js"></script>
+    <script src="app/app.http.js"></script>    
+    <script src="app/components/user/userFactory.js"></script>
+    <script src="app/components/editor/editorFactory.js"></script>
+    <script src="app/components/blockly/blocklyFactory.js"></script>
+    <script src="app/components/fileManager/fileManagerFactory.js"></script>
+    <script src="app/components/settings/settingsFactory.js"></script>
+    <script src="app/appCtrl.js"></script>
+    <script src="app/components/user/register/registerCtrl.js"></script>
+    <script src="app/components/user/login/loginCtrl.js"></script>
+    <script src="app/components/user/account/accountCtrl.js"></script>
+    <script src="app/components/user/recover/recoverCtrl.js"></script>
+    <script src="app/components/settings/settingsCtrl.js"></script>
+    <script src="app/components/diagnostics/diagnosticsCtrl.js"></script>
+    <script src="app/components/fileManager/fileManagerCtrl.js"></script>
+    <script src="app/shared/header/headerCtrl.js"></script>
+    <script src="app/shared/sidebar/sidebarCtrl.js"></script>
+    <script src="app/shared/footer/footerCtrl.js"></script>
+    <script src="app/components/home/homeCtrl.js"></script>
+    <script src="app/components/editor/editorCtrl.js"></script>
+    <script src="app/components/blockly/blocklyCtrl.js"></script>
+    <script src="app/components/vnc/vncCtrl.js"></script>
+    <script src="app/components/datalogger/dataloggerCtrl.js"></script>
+    <!-- endbuild -->    
+
+</body>
+
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Boxlight Robotics">
+        <link rel="canonical" href="http://BoxlightRobotics.com/Editor/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Editor - Fusion Documentation Suite</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Fusion Documentation Suite</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../Blockly/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../On_Board_LED/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#editor-guide" class="nav-link">Editor Guide</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#create-a-new-program" class="nav-link">Create a new program</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#open-an-existing-program" class="nav-link">Open an existing program</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#writing-a-led-flashing-program" class="nav-link">Writing a LED flashing program</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#questions" class="nav-link">Questions?</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="editor-guide"><strong>Editor Guide</strong></h1>
+<hr />
+<p>Refer to the <a href="../Editor_Topic/">Editor Library Informtation</a> for available Fusion specific functions.</p>
+<h2 id="create-a-new-program"><strong>Create a new program</strong></h2>
+<blockquote>
+<p>To create a new program from the Home screen, click the <strong>LAUNCH</strong> button in the Editor box.</p>
+<p><img alt="" src="../img/Editor/EditorHomePage.PNG" /></p>
+<p>A program will open that is listed at Untitled<strong>X</strong>.py where <strong>X</strong> is an incrementing number. Click the save button to save the file with a new name. For our example we will name out file <em>myprog</em> which will result in a file being created call <em>myprog.py</em>.<br />
+Every new program has an import and class constructor at the beginning of the code. This is needed to operate any Boxlight Robotics sensor or access Fusion library functions.</p>
+</blockquote>
+<h2 id="open-an-existing-program"><strong>Open an existing program</strong></h2>
+<blockquote>
+<p>To open an existing program, click the open file button and select the program you want to open. The program will open in the programming environment as it was the last time it was saved and the file will be listed in the working files directory.</p>
+</blockquote>
+<h2 id="writing-a-led-flashing-program"><strong>Writing a LED flashing program</strong></h2>
+<blockquote>
+<p>This example will show how to create an Editor program to continuously toggle the on-board yellow and blue LEDs. After opening a new program, the program environment contains only the import and class constructor.</p>
+<blockquote>
+<pre><code>import Fusion
+f = Fusion.driver()
+</code></pre>
+</blockquote>
+<p><strong>1)</strong> Turn <em>on</em> the yellow LED and turn <em>off</em> the blue LED using the <a href="../Py_Driver/#setledled-value"><code>setLED(led, value)</code></a> function from the <strong>Fusion Driver</strong> class.</p>
+<blockquote>
+<pre><code>import Fusion
+f = Fusion.driver()
+
+setLED(f.YELLOW, 1)
+setLED(f.BLUE, 0)
+</code></pre>
+</blockquote>
+<p><strong>2)</strong> The next step is to add a time delay after turning the yellow LED on. This delay determines the length of time that the yellow LED stay on. In order to use the built-in <code>sleep(seconds)</code> function, the time module must be imported.</p>
+<blockquote>
+<pre><code>import Fusion
+import time
+f = Fusion.driver()
+
+f.setLED(f.YELLOW, 1)
+f.setLED(f.BLUE, 0)
+time.sleep(1)
+</code></pre>
+</blockquote>
+<p><strong>3)</strong> Now, turn <em>off</em> the yellow LED and turn <em>on</em> the blue LED using the <a href="../Py_Driver/#setledled-value"><code>setLED(led, value)</code></a> function.</p>
+<blockquote>
+<pre><code>import Fusion
+import time
+f = Fusion.driver()
+
+f.setLED(f.YELLOW, 1)
+f.setLED(f.BLUE, 0)
+time.sleep(1)
+f.setLED(f.YELLOW, 0)
+f.setLED(f.BLUE, 1)
+</code></pre>
+</blockquote>
+<p><strong>4)</strong> The final step before running the program is to add another time delay for the length of time the blue LED stays on.</p>
+<blockquote>
+<pre><code>import Fusion
+import time
+f = Fusion.driver()
+
+f.setLED(f.YELLOW, 1)
+f.setLED(f.BLUE, 0)
+time.sleep(1)
+f.setLED(f.YELLOW, 0)
+f.setLED(f.BLUE, 1)
+time.sleep(1)
+</code></pre>
+</blockquote>
+<p><strong>5)</strong> In the toolbar at the top of the page, click "Run" to start running (also saves) the current program. You should observe the following:</p>
+<blockquote>
+<p><em>1.</em> Only the Yellow LED turns on for 1 second.<br />
+<em>2.</em> Only the Blue LED turns on for 1 second.<br />
+<em>3.</em> The program will end and both LEDs will be off.</p>
+<p><img alt="" src="../img/Blockly/Basic_LED.gif" /></p>
+</blockquote>
+<p>To continuously toggle the LEDs <em>on</em> and <em>off</em>, the <code>setLED()</code> and <code>sleep()</code> functions must be placed inside a loop. For our purpose we will use a <code>while</code> loop with its condition being <code>True</code>. It is important that any code within the <code>while True:</code> loop must be indented with a <strong>Tab</strong>.</p>
+<blockquote>
+<pre><code>import Fusion
+import time
+f = Fusion.driver()
+
+while True:
+    f.setLED(f.YELLOW, 1)
+    f.setLED(f.BLUE, 0)
+    time.sleep(1)
+    f.setLED(f.YELLOW, 0)
+    f.setLED(f.BLUE, 1)
+    time.sleep(1)
+</code></pre>
+</blockquote>
+<p>You should observe the following:  </p>
+<blockquote>
+<p><em>1.</em> Only the Yellow LED turns on for 1 second.<br />
+<em>2.</em> Only the Blue LED turns on for 1 second.<br />
+<em>3.</em> The program will continually loop and flash the LEDs until "Stop" is selected in the toolbar.</p>
+<p><img alt="" src="../img/Blockly/Intermediate_LED.gif" /></p>
+</blockquote>
+</blockquote>
+<h2 id="questions"><strong>Questions?</strong></h2>
+<blockquote>
+<p>Contact Boxlight Robotics at <a href="mailto:support@BoxlightRobotics.com">support@BoxlightRobotics.com</a> with a detailed description of the steps you have taken and observations you have made.</p>
+<p><strong>Email Subject</strong>: Fusion Editor Programming</p>
+</blockquote></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

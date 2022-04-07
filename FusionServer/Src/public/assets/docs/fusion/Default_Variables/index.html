@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Boxlight Robotics">
+        <link rel="canonical" href="http://BoxlightRobotics.com/Default_Variables/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Variables - Fusion Documentation Suite</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Fusion Documentation Suite</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../Default_Lists/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../Py_Constants/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#variables" class="nav-link">Variables</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#default-names" class="nav-link">Default Names</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#dropdown-menu" class="nav-link">Dropdown Menu</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#set-variable" class="nav-link">Set Variable</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#get-variable" class="nav-link">Get Variable</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#example" class="nav-link">Example</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#questions" class="nav-link">Questions?</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="variables"><strong>Variables</strong></h1>
+<hr />
+<p>We use the term <em>variable</em> the same as it is used in mathematics and in other programming languages: a named value that can be changed (varies).  </p>
+<p>Variables can be created in several different ways.</p>
+<ul>
+<li>Every <a href="Default_Loops#count_with">count with</a> and <a href="Default_Loops#for_each">for each</a> block uses a variable and defines its values.  These values can only be used within the block.  A traditional computer science term for these are loop variables.</li>
+<li>User-defined functions (also known as "procedures") can define inputs, which creates variables that can be used only within the function.  These are traditionally called "parameters" or "arguments".</li>
+<li>Users may create variables at any time through the "set" block.  These are traditionally called "global variables".</li>
+<li>Blockly does not support local variables.</li>
+</ul>
+<h2 id="default-names"><strong>Default Names</strong></h2>
+<p>While users can choose any name for a variable, core Blockly provides a default name, "item", as shown in the below picture.  Some applications provide other default values, such as "value", also shown below.</p>
+<h2 id="dropdown-menu"><strong>Dropdown Menu</strong></h2>
+<blockquote>
+<p>Clicking on a variable's dropdown symbol (triangle) gives the following menu:</p>
+<p><img alt="" src="../img/blocks/variables-dropdown.png" /></p>
+<p>The menu provides the following options.</p>
+<ul>
+<li>The names of all variables defined in the program.</li>
+<li>"Rename variable...", which changes the name of this variable wherever it appears in the program.  Selecting this opens a small window that prompts the user for the new name with the text: "Rename all %1 variables to:", where %1 is replaced by the old name (here "item").</li>
+<li>"New variable...", which enables the user to enter a new name for the variable, without replacing or changing variables with the old name (here "item").  Selecting this opens a small window that prompts the user for the new name with the text "New variable name:".</li>
+</ul>
+</blockquote>
+<h2 id="set-variable"><strong>Set Variable</strong></h2>
+<blockquote>
+<p>The <strong>set</strong> block assigns a value to a variable, creating the variable if it doesn't already exist.  For example, this sets the value of the variable named "age" to 12.</p>
+<p><img alt="" src="../img/blocks/variables-set-variable.png" /></p>
+</blockquote>
+<h2 id="get-variable"><strong>Get Variable</strong></h2>
+<blockquote>
+<p>The <strong>get</strong> block provides the value stored in a variable, without changing it.</p>
+<p><img alt="" src="../img/blocks/variables-get-variable.png" /></p>
+<p>It is possible, but a bad idea, to write a program in which a <strong>get</strong> appears without a corresponding <strong>set</strong>.</p>
+</blockquote>
+<h2 id="example"><strong>Example</strong></h2>
+<blockquote>
+<p>Consider the following example code:</p>
+<p><img alt="" src="../img/blocks/variables-example.png" /></p>
+<p>The first row of blocks creates a variable named "age" and sets its initial value to the number 12.  The second row of blocks gets the value 12, adds 1 to it, and stores the sum (13) into the variable.  The final row displays the message: "Happy birthday!  You are now 13"</p>
+</blockquote>
+<h2 id="questions"><strong>Questions?</strong></h2>
+<blockquote>
+<p>Contact Boxlight Robotics at <a href="mailto:support@BoxlightRobotics.com">support@BoxlightRobotics.com</a> with a detailed description of the steps you have taken and observations you have made.</p>
+<p><strong>Email Subject</strong>: Blockly Variables</p>
+</blockquote></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

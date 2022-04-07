@@ -1,0 +1,14 @@
+{
+  "name": "google-blockly",
+  "homepage": "https://github.com/google/blockly",
+  "version": "1.20181219.0",
+  "_release": "1.20181219.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.20181219.0",
+    "commit": "817399a793a1e4f5109bad0782729eeb25160519"
+  },
+  "_source": "https://github.com/google/blockly.git",
+  "_target": "*",
+  "_originalSource": "google-blockly"
+}

@@ -1,0 +1,655 @@
+* {
+    box-sizing: border-box;
+/*    font-family: 'Roboto', sans-serif;*/
+}
+
+html,
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+.fusion-container {
+    height: 100%;
+}
+
+.fusion-body-container {
+    max-width: 2000px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/************************************************/
+
+/* Fusion Header */
+
+/************************************************/
+
+.fusion-header-button {
+    line-height: normal;
+    min-height: inherit;
+    min-width: inherit;
+    padding: 10px;
+    color: white;
+}
+
+.fusion-header-logo {
+    color: white; 
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-size: 30px;
+    text-transform: capitalize;
+    color: white !important;
+}
+
+.fusion-header-button:not([disabled]):hover {
+    background-color: gray;
+}
+
+.fusion-header-image {
+    height: 25px;
+    width: auto;
+    vertical-align: middle;
+}
+
+.fusion-header-title {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+@media only screen and (max-width: 480px) {
+    .fusion-header-title {
+        font-size: 20px;
+        font-weight: 600;
+        margin-left: 5px;
+    }
+}
+
+.fusion-power-option-icon {
+    margin-top: 10px;
+}
+
+
+/************************************************/
+
+/* Fusion Sidebar */
+
+/************************************************/
+
+.fusion-sidebar-content {
+    height: calc(100vh - 64px);
+}
+
+.md-sidenav-left {
+    z-index: 100;
+}
+
+@media only screen and (min-width: 960px) {
+    .fusion-sidebar-content {
+        height: calc(100vh - 64px)
+    }
+}
+
+@media only screen and (max-width: 960px) and (min-width: 610px) {
+    .fusion-sidebar-content {
+        height: calc(100vh - 56px)
+    }
+}
+
+.md-sidenav-left {
+    width: 200px;
+}
+
+.fusion-sidebar-button {
+    padding: 0px;
+    margin: 0px;
+    text-transform: none;
+}
+
+.fusion-sidebar-button div {
+    text-align: left;
+    padding-left: 15px;
+}
+
+.fusion-sidebar-button svg {
+    margin-right: 15px;
+}
+
+
+.f-disabled {
+    pointer-events: none;
+    opacity: .4;
+    cursor: not-allowed;
+}
+
+
+/************************************************/
+
+/* Register Page */
+
+/************************************************/
+
+.fusion-register-container {
+    max-width: 800px;
+    width: 100%;
+    margin: 40px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.fusion-register-input .md-errors-spacer {
+    min-height: 0px;
+    height: 0px;
+}
+
+
+/************************************************/
+
+/* Login Page */
+
+/************************************************/
+
+.fusion-login-container {
+    max-width: 400px;
+    width: 100%;
+    margin: 40px;
+}
+
+.fusion-login-container md-content {
+    background-color: white;
+    padding: 30px;
+}
+
+.fusion-login-logo {
+    width: 50%;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+}
+
+.fusion-login-input {
+    margin: 0px;
+    margin-bottom: 10px;
+}
+
+
+/************************************************/
+
+/* Account Page */
+
+/************************************************/
+
+.fusion-account-container {
+    max-width: 800px;
+    width: 100%;
+    margin: 40px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.fusion-account-input .md-errors-spacer {
+    min-height: 0px;
+    height: 0px;
+}
+
+
+/************************************************/
+
+/* Recovery Page */
+
+/************************************************/
+
+.fusion-recover-container {
+    max-width: 400px;
+    width: 100%;
+    margin: 40px;
+}
+
+.fusion-recover-container md-content {
+    background-color: white;
+    padding: 30px;
+}
+
+.fusion-password-change {
+    background-color: lightcoral;
+}
+
+
+/************************************************/
+
+/* Home Page */
+
+/************************************************/
+
+.fusion-home-logo-container {
+    min-height: 80px;
+    max-height: 200px;
+}
+
+.fusion-home-logo {
+    height: 100%;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+
+/************************************************/
+
+/* Blockly Page */
+
+/************************************************/
+
+.fusion-blockly-code {
+    margin: 0;
+    padding: 15px;
+    overflow-y: auto;
+    border-left: 2px solid gray;
+}
+
+.fusion-blockly-code code {
+    background-color: transparent;
+    white-space: pre-wrap;
+}
+
+.blockly-output-container{
+    border-top: 4px solid white;
+}
+
+
+/************************************************/
+
+/* Editor Page */
+
+/************************************************/
+
+.fusion-editor-sidebar {
+    width: 250px;
+    background-color: lightgray;
+    text-align: center;
+    border-right: 2px solid gray;
+    border-top: 2px solid gray;
+}
+
+#editor-workspace{
+    border-left: 4px solid white;
+}
+
+.fusion-editor-ide-container{
+    border-bottom: 4px solid white;
+}
+
+.fusion-editor-console-header{
+    background-color: lightgray;
+    align-items: center;
+    padding-left: 30px;
+    border-top: 1px solid gray;
+}
+
+.fusion-editor-console-input{
+    border-top: 1px solid gray;
+    background-color: darkslategray;
+}
+
+.fusion-editor-console-caret{
+    margin-left: 10px;
+    margin-right: 10px;
+    color:white;
+}
+
+.fusion-editor-workingfiles-container {
+    background-color: rgb(240, 240, 240);
+    overflow: auto;
+    /*    border-top: 2px solid gray;*/
+    text-align: left;
+    margin-top: 5px;
+    padding: 5px;
+}
+
+.fusion-editor-workingfile {
+    display: flex;
+    padding: 15px;
+    border-bottom: 1px solid gray;
+}
+
+.fusion-editor-selected-file {
+    background-color: lightblue;
+    color: black;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.fusion-editor-example-file {
+    font-weight: bold;
+}
+
+.fusion-editor-nonSelected-file {}
+
+.fusion-editor-nonSelected-file:hover {
+    border: 1px solid black;
+}
+
+.fusion-editor-output {
+    background-color: darkslategray;
+    color: white;
+    border: none;
+    resize: none;
+    cursor: default;
+    padding-left: 30px;
+    font-family: monospace;
+}
+
+.fusion-editor-input{
+    background-color: darkslategray;
+    color: white;
+    border: none;
+    resize: none;
+    outline-width: 0;
+}
+
+.fusion-editor-input-caret{
+    background-color: darkslategray;
+    color: white;
+}
+
+.fusion-editor-import-drop-box {
+    background: #F8F8F8;
+    border: 5px dashed #DDD;
+    padding: 40px 15px 40px 15px;
+    width: 100%;
+    text-align: center;
+}
+
+.fusion-editor-import-dragover {
+    border: 5px dashed blue;
+}
+
+.fusion-toolbar-container {
+    border-top: 2px solid gray;
+    border-bottom: 2px solid gray;
+}
+
+.fusion-toolbar {
+    background-color: lightgray;
+    width: 100%;
+}
+
+.fusion-toolbar md-menu-bar {
+    height: 30px;
+}
+
+.fusion-toolbar-item {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    min-width: 40px;
+    min-height: auto;
+    height: auto;
+}
+
+.fusion-toolbar-item:hover {
+    background-color: rgb(250, 250, 250);
+}
+
+.fusion-ribbon {
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: rgb(240, 240, 240);
+}
+
+.fusion-ribbon .md-button {
+    min-width: 30px;
+    min-height: 30px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.fusion-ribbon .md-button:hover {
+    background-color: lightgray;
+}
+
+.fusion-open-file-container {
+    max-height: 200px;
+    width: 400px;
+    overflow: auto;
+    border: 2px solid lightgray;
+}
+
+.fusion-dialog-selected-item {
+    background-color: lightgray;
+}
+
+
+/************************************************/
+
+/* Import dialog */
+
+/************************************************/
+
+.fusion-import-drop-box {
+    background: #F8F8F8;
+    border: 5px dashed #DDD;
+    padding: 40px 15px 40px 15px;
+    text-align: center;
+}
+
+.fusion-import-dragover {
+    border: 5px dashed blue;
+}
+
+.fusion-import-file-list {
+    max-height: 100px;
+    overflow: auto;
+}
+
+.fusion-import-file-log {
+    max-height: 100px;
+    overflow: auto;
+}
+
+.fusion-export-file-container {
+    max-height: 200px;
+    overflow: auto;
+    width: 400px;
+}
+
+
+/************************************************/
+
+/* File Manager Page */
+
+/************************************************/
+
+.fusion-file-manager-header-container {
+    background-color: lightgray;
+}
+
+.funion-file-manager-breadcrumbs {
+    border: 1px solid gray;
+    padding: 5px;
+    margin-left: 15px;
+    background-color: rgb(240, 240, 240);
+}
+
+.fusion-file-manager-tree-container {
+    width: 250px;
+    background-color: rgb(240, 240, 240);
+    overflow: auto;
+}
+
+.fusion-file-manager-display-container {
+    padding: 15px;
+    overflow: auto;
+}
+
+.fusion-file-manager-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.fusion-file-manager-table tr th a {
+    text-decoration: none;
+    color: gray;
+}
+
+.fusion-file-manager-table tr th {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 2px solid lightgray;
+}
+
+.fusion-file-manager-table tr {
+    border-bottom: 1px solid lightgray;
+}
+
+.fusion-file-manager-table tr:focus {
+    outline: none;
+}
+
+.fusion-file-manager-table tr td {
+    padding: 10px;
+}
+
+.fusion-file-manager-selected-file {
+    background-color: lightblue;
+    color: black;
+}
+
+.fusion-file-manager-unSelected-file {
+    background-color: white;
+    color: black;
+}
+
+
+/************************************************/
+
+/* Settings Page */
+
+/************************************************/
+
+.fusion-settings-software-body {
+    flex: 1 1 auto;
+    border: none;
+    resize: none;
+    padding: 10px;
+    background-color: darkslategray;
+    color: white;
+}
+
+::placeholder {
+    color: white;
+}
+
+.fusion-settings-user-table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow-x: auto;
+}
+
+.fusion-settings-user-table th {
+    background-color: black;
+    color: white;
+}
+
+.fusion-settings-user-table tr:hover td {
+    background-color: lightgray;
+}
+
+.fusion-settings-user-table tr:nth-child(even) {
+    background-color: #f1f1f1;
+}
+
+.fusion-user-edit-container {
+    max-width: 800px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.fusion-user-create-container {
+    max-width: 800px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.fusion-settings-dialog-container {
+    width: 100%;
+    max-width: 850px;
+}
+
+.fusion-settings-wireless-mini-container {
+    border: 2px solid lightgray;
+    min-height: 300px;
+    overflow: auto;
+}
+
+.fusion-settings-wireless-mini-header {
+    border-bottom: 2px solid gray;
+    margin-bottom: 15px;
+}
+
+.fusion-settings-connected-wireless-connection {
+    background-color: lightgreen;
+}
+
+/************************************************/
+
+/* Toasts */
+
+/************************************************/
+
+md-toast.md-success-toast-theme .md-toast-content {
+    background-color: green;
+}
+
+md-toast.md-error-toast-theme .md-toast-content {
+    background-color: red;
+}
+
+md-toast.md-info-toast-theme .md-toast-content {
+    background-color: lightblue;
+    color: black;
+}
+
+
+/************************************************/
+
+/* Code Highlights */
+
+/************************************************/
+
+code:not(.highlight){
+    color: #383a42
+}
+
+.hljs-keyword {
+    color: #a626a4;
+}
+
+
+/************************************************/
+
+/* Misc adjustments */
+
+/************************************************/
+
+md-toolbar.md-default-theme.md-menu-toolbar,
+md-toolbar.md-menu-toolbar {
+    z-index: 40;
+}
+
+.rg-bottom span, .rg-left span, .rg-right span, .rg-top span{
+    border: none;
+}
+
+.unselectable {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}

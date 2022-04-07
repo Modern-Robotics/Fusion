@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Boxlight Robotics">
+        <link rel="canonical" href="http://BoxlightRobotics.com/Py_Core_Device_Interface/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Core Device Interface - Fusion Documentation Suite</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Fusion Documentation Suite</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../Blk_Core_Device_Interface/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../Blk_Core_Legacy_Module/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#core-device-interface-45-2201" class="nav-link">Core Device Interface (45-2201)</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#coredeviceinterfacedriver-serial" class="nav-link">coreDeviceInterface(driver, serial)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#setledled-value" class="nav-link">setLED(led, value)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#analogreadanalog_port" class="nav-link">analogRead(analog_port)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#digitalstateport-state" class="nav-link">digitalState(port, state)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#digitalreadport" class="nav-link">digitalRead(port)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#digitalwriteport-value" class="nav-link">digitalWrite(port, value)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#analogoutputwriteport-voltage-frequency-mode" class="nav-link">analogOutputWrite(port, voltage, frequency, mode)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#setpwmport-on_time-period" class="nav-link">setPWM(port, on_time, period)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#getaddresses" class="nav-link">getAddresses()</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#i2creadaddress-register-length" class="nav-link">i2cRead(address, register, length)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#i2cwriteaddress-register-buffer" class="nav-link">i2cWrite(address, register, buffer)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#questions" class="nav-link">Questions?</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="core-device-interface-45-2201"><strong>Core Device Interface (45-2201)</strong></h1>
+<hr />
+<p>Before running the program, be sure to identify each module's FTDI serial number by running the <a href="../CoreControlDriver/">Print Devices</a> function.</p>
+<blockquote>
+<p><a href="../Blk_Core_Device_Interface/">Core Device Interface Visual Programming Blocks</a></p>
+</blockquote>
+<p><strong>List of available functions:</strong>  </p>
+<ul>
+<li><a href="./#coredeviceinterfacedriver-serial"><strong>coreDeviceInterface(<em>driver</em>, <em>serial</em>)</strong></a></li>
+<li><a href="./#setledled-value"><strong>setLED(<em>led</em>, <em>value</em>)</strong></a></li>
+<li><a href="./#analogreadanalog_port"><strong>analogRead(<em>analog_port</em>)</strong></a></li>
+<li><a href="./#digitalstateport-state"><strong>digitalState(<em>port</em>, <em>state</em>)</strong></a></li>
+<li><a href="./#digitalreadport"><strong>digitalRead(<em>port</em>)</strong></a></li>
+<li><a href="./#digitalwriteport-value"><strong>digitalWrite(<em>port</em>, <em>value</em>)</strong></a></li>
+<li><a href="./#analogoutputwriteport-voltage-frequency-mode"><strong>analogOutputWrite(<em>port</em>, <em>voltage</em>, <em>frequency</em>, <em>mode</em>)</strong></a></li>
+<li><a href="./#setpwmport-on_time-period"><strong>setPWM(<em>port</em>, <em>on_time</em>, <em>period</em>)</strong></a></li>
+<li><a href="./#getaddresses"><strong>getAddresses()</strong></a></li>
+<li><a href="./#i2creadaddress-register-length"><strong>i2cRead(<em>address</em>, <em>register</em>, <em>length</em>)</strong></a></li>
+<li><a href="./#i2cwriteaddress-register-buffer"><strong>i2cWrite(<em>address</em>, <em>register</em>, <em>buffer</em>)</strong></a></li>
+</ul>
+<h2 id="coredeviceinterfacedriver-serial"><strong>coreDeviceInterface(<em>driver</em>, <em>serial</em>)</strong></h2>
+<blockquote>
+<h3 id="definition">Definition</h3>
+<blockquote>
+<p>This class contains the necessary drivers for our Core Device Interface and must be called at the beginning of the program before using any other class functions. The FTDI serial number is used for identifying a Core Control Module and must be entered as shown in the example.</p>
+</blockquote>
+<h3 id="parameters">Parameters</h3>
+<blockquote>
+<p><strong><em>driver</em></strong> : Main driver object so the class can call driver functions (<strong>c</strong>)<br />
+<strong><em>serial</em></strong> : Enter the FTDI serial number of the module. </p>
+</blockquote>
+<h3 id="returns">Returns</h3>
+<blockquote>
+<p>Core Device Interface Object</p>
+</blockquote>
+<h3 id="example">Example</h3>
+<blockquote>
+<pre><code>import Fusion
+f = Fusion.driver()
+import CoreControl
+c = CoreControl.driver()
+
+cdi1 = CoreControl.coreDeviceInterface(c, 'A900VGFC')
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="setledled-value"><strong>setLED(<em>led</em>, <em>value</em>)</strong></h2>
+<blockquote>
+<h3 id="definition_1">Definition</h3>
+<blockquote>
+<p>Turn on or off the on-board LEDs.<br />
+Must have the <a href="./#coredeviceinterfacedriver-serial">Setup</a> function at the start of your program for this function to work.</p>
+</blockquote>
+<h3 id="parameters_1">Parameters</h3>
+<blockquote>
+<p><strong><em>led</em></strong> : RED or BLUE<br />
+<strong><em>value</em></strong> : 0 or 1</p>
+</blockquote>
+<h3 id="returns_1">Returns</h3>
+<blockquote>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="example_1">Example</h3>
+<blockquote>
+<pre><code>import CoreControl
+c = CoreControl.driver()
+cdi1 = CoreControl.coreDeviceInterface(c, 'A900VGFC')
+
+cdi1.setLED(cdi1.RED, 1)
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="analogreadanalog_port"><strong>analogRead(<em>analog_port</em>)</strong></h2>
+<blockquote>
+<h3 id="definition_2">Definition</h3>
+<blockquote>
+<p>Read from an analog device attached to the corresponding port.<br />
+Must have the <a href="./#coredeviceinterfacedriver-serial">Setup</a> function at the start of your program for this function to work.</p>
+</blockquote>
+<h3 id="parameters_2">Parameters</h3>
+<blockquote>
+<p><strong><em>analog port</em></strong> : A0 - A7</p>
+</blockquote>
+<h3 id="returns_2">Returns</h3>
+<blockquote>
+<p><strong><em>analog reading</em></strong> : int(0 - 1023)</p>
+</blockquote>
+<h3 id="example_2">Example</h3>
+<blockquote>
+<pre><code>import CoreControl
+c = CoreControl.driver()
+cdi1 = CoreControl.coreDeviceInterface(c, 'A900VGFC')
+
+print cdi1.analogRead(cdi1.A0)
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="digitalstateport-state"><strong>digitalState(<em>port</em>, <em>state</em>)</strong></h2>
+<blockquote>
+<h3 id="definition_3">Definition</h3>
+<blockquote>
+<p>Set the digital port to be either an INPUT or an OUTPUT.<br />
+Must have the <a href="./#coredeviceinterfacedriver-serial">Setup</a> function at the start of your program for this function to work.</p>
+</blockquote>
+<h3 id="parameters_3">Parameters</h3>
+<blockquote>
+<p><strong><em>port</em></strong> : D0 - D7<br />
+<strong><em>state</em></strong> : INPUT(0) or OUTPUT(1)</p>
+</blockquote>
+<h3 id="returns_3">Returns</h3>
+<blockquote>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="example_3">Example</h3>
+<blockquote>
+<pre><code>import CoreControl
+c = CoreControl.driver()
+cdi1 = CoreControl.coreDeviceInterface(c, 'A900VGFC')
+
+cdi1.digitalState(cdi1.D0, cdi1.INPUT)
+cdi1.digitalState(cdi1.D1, cdi1.OUTPUT)
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="digitalreadport"><strong>digitalRead(<em>port</em>)</strong></h2>
+<blockquote>
+<h3 id="definition_4">Definition</h3>
+<blockquote>
+<p>Read from a digital device attached to the corresponding port.<br />
+Must have the <a href="./#coredeviceinterfacedriver-serial">Setup</a> function at the start of your program for this function to work.</p>
+</blockquote>
+<h3 id="parameters_4">Parameters</h3>
+<blockquote>
+<p><strong><em>port</em></strong> : D0 - D7  </p>
+</blockquote>
+<h3 id="returns_4">Returns</h3>
+<blockquote>
+<p><strong><em>digital reading</em></strong> : 0 or 1</p>
+</blockquote>
+<h3 id="example_4">Example</h3>
+<blockquote>
+<pre><code>import CoreControl
+c = CoreControl.driver()
+cdi1 = CoreControl.coreDeviceInterface(c, 'A900VGFC')
+cdi1.digitalState(cdi1.D0, cdi1.INPUT)
+
+print cdi1.digitalRead(cdi1.D0)
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="digitalwriteport-value"><strong>digitalWrite(<em>port</em>, <em>value</em>)</strong></h2>
+<blockquote>
+<h3 id="definition_5">Definition</h3>
+<blockquote>
+<p>Write to a digital device attached to the corresponding port.<br />
+Must have the <a href="./#coredeviceinterfacedriver-serial">Setup</a> function at the start of your program for this function to work.</p>
+</blockquote>
+<h3 id="parameters_5">Parameters</h3>
+<blockquote>
+<p><strong><em>port</em></strong> : D0 - D7<br />
+<strong><em>value</em></strong> : 0 or 1</p>
+</blockquote>
+<h3 id="returns_5">Returns</h3>
+<blockquote>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="example_5">Example</h3>
+<blockquote>
+<pre><code>import CoreControl
+c = CoreControl.driver()
+cdi1 = CoreControl.coreDeviceInterface(c, 'A900VGFC')
+cdi1.digitalState(cdi1.D1, cdi1.OUTPUT)
+
+cdi1.digitalWrite(cdi1.D1, 1)
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="analogoutputwriteport-voltage-frequency-mode"><strong>analogOutputWrite(<em>port</em>, <em>voltage</em>, <em>frequency</em>, <em>mode</em>)</strong></h2>
+<blockquote>
+<h3 id="definition_6">Definition</h3>
+<blockquote>
+<p>Output a wave form at a set voltage and frequency from one of the analog output ports.<br />
+Must have the <a href="./#coredeviceinterfacedriver-serial">Setup</a> function at the start of your program for this function to work.</p>
+</blockquote>
+<h3 id="parameters_6">Parameters</h3>
+<blockquote>
+<p><strong><em>port</em></strong> : AO0 or AO1<br />
+<strong><em>voltage</em></strong> :</p>
+<ul>
+<li><strong><em>DC</em></strong> : -1024 - +1023 (-4V - +4V)</li>
+<li><strong><em>Other</em></strong> : 0 - 1023 (0V - 8V)</li>
+</ul>
+<p><strong><em>frequency</em></strong> : 0Hz to 5000Hz (0 in DC mode)<br />
+<strong><em>mode</em></strong> : DC(0), Sine(1), Square(2), Triangle(3)</p>
+</blockquote>
+<h3 id="returns_6">Returns</h3>
+<blockquote>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="example_6">Example</h3>
+<blockquote>
+<pre><code>import CoreControl
+c = CoreControl.driver()
+cdi1 = CoreControl.coreDeviceInterface(c, 'A900VGFC')
+
+# Output a DC voltage at +4V
+cdi1.analogOutputWrite(cdi1.AO0, 1023, 0, 0)
+# Output a Sine wave with pk-pk of 4V at a frequency of 2000Hz
+cdi1.analogOutputWrite(cdi1.AO1, 512, 2000, 1)
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="setpwmport-on_time-period"><strong>setPWM(<em>port</em>, <em>on_time</em>, <em>period</em>)</strong></h2>
+<blockquote>
+<h3 id="definition_7">Definition</h3>
+<blockquote>
+<p>Set a PWM output to a specific port. This port cannot operate servos. The <strong><em>on time</em></strong> parameter sets the pulse width for the channel output in units of 1µS. Setting a value greater than <strong><em>period</em></strong> will result in the output being set to 1. The <strong><em>period</em></strong> parameter sets the pulse repetition period for the channel output in units of 1µS. <br />
+<img alt="" src="../img/Core_Control/pwm.png" /><br />
+Must have the <a href="./#coredeviceinterfacedriver-serial">Setup</a> function at the start of your program for this function to work.</p>
+</blockquote>
+<h3 id="parameters_7">Parameters</h3>
+<blockquote>
+<p><strong><em>port</em></strong> : P0 or P1<br />
+<strong><em>on time</em></strong> : 0 - 65,535 (µS) 
+<strong><em>period</em></strong> : 0 - 65,535 (µS)</p>
+</blockquote>
+<h3 id="returns_7">Returns</h3>
+<blockquote>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="example_7">Example</h3>
+<blockquote>
+<pre><code>import CoreControl
+c = CoreControl.driver()
+cdi1 = CoreControl.coreDeviceInterface(c, 'A900VGFC')
+
+cdi1.setPWM(cdi1.P0, 500, 1000)
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="getaddresses"><strong>getAddresses()</strong></h2>
+<blockquote>
+<h3 id="definition_8">Definition</h3>
+<blockquote>
+<p>Return a list of connected I2C devices.<br />
+Must have the <a href="./#coredeviceinterfacedriver-serial">Setup</a> function at the start of your program for this function to work.</p>
+</blockquote>
+<h3 id="parameters_8">Parameters</h3>
+<blockquote>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="returns_8">Returns</h3>
+<blockquote>
+<p><strong><em>addresses</em></strong> : A buffer of connected I2C addresses in hexadecimal</p>
+</blockquote>
+<h3 id="example_8">Example</h3>
+<blockquote>
+<pre><code>import CoreControl
+c = CoreControl.driver()
+cdi1 = CoreControl.coreDeviceInterface(c, 'A900VGFC')
+
+print cdi1.getAddresses()
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="i2creadaddress-register-length"><strong>i2cRead(<em>address</em>, <em>register</em>, <em>length</em>)</strong></h2>
+<blockquote>
+<h3 id="definition_9">Definition</h3>
+<blockquote>
+<p>Read data from an I2C device based on the <strong><em>address</em></strong> of the device, the <strong><em>register</em></strong> location and the <strong><em>length</em></strong> of values to be read.<br />
+Must have the <a href="./#coredeviceinterfacedriver-serial">Setup</a> function at the start of your program for this function to work.</p>
+</blockquote>
+<h3 id="parameters_9">Parameters</h3>
+<blockquote>
+<p><strong><em>address</em></strong> : The current I2C address of the sensor connected<br />
+<strong><em>register</em></strong> :  The register location within the sensor to start reading from<br />
+<strong><em>length</em></strong> :  The number of registers to read starting from the <strong><em>register</em></strong> location</p>
+</blockquote>
+<h3 id="returns_9">Returns</h3>
+<blockquote>
+<p><strong><em>I2C value(s)</em></strong> : A buffer of values starting with the value in the <strong><em>register</em></strong> location to the set <strong><em>length</em></strong></p>
+</blockquote>
+<h3 id="example_9">Example</h3>
+<blockquote>
+<pre><code>import CoreControl
+c = CoreControl.driver()
+cdi1 = CoreControl.coreDeviceInterface(c, 'A900VGFC')
+
+print cdi1.i2cRead(0x4C, 0x01, 2)
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="i2cwriteaddress-register-buffer"><strong>i2cWrite(<em>address</em>, <em>register</em>, <em>buffer</em>)</strong></h2>
+<blockquote>
+<h3 id="definition_10">Definition</h3>
+<blockquote>
+<p>Write data to an I2C device based on the <strong><em>address</em></strong> of the device, the <strong><em>register</em></strong> location with a <strong><em>buffer</em></strong> of values.<br />
+Must have the <a href="./#coredeviceinterfacedriver-serial">Setup</a> function at the start of your program for this function to work.</p>
+</blockquote>
+<h3 id="parameters_10">Parameters</h3>
+<blockquote>
+<p><strong><em>address</em></strong> : The current I2C address of the sensor connected<br />
+<strong><em>register</em></strong> :  The register location within the sensor to start writing to<br />
+<strong><em>buffer</em></strong> :  An array of values to be written to the I2C device</p>
+</blockquote>
+<h3 id="returns_10">Returns</h3>
+<blockquote>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="example_10">Example</h3>
+<blockquote>
+<pre><code>import CoreControl
+c = CoreControl.driver()
+cdi1 = CoreControl.coreDeviceInterface(c, 'A900VGFC')
+
+cdi1.i2cWrite(0x4C, 0x04, [7])
+cdi1.i2cWrite(0x20, 0x10, [2, 1])
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="questions"><strong>Questions?</strong></h2>
+<blockquote>
+<p>Contact Boxlight Robotics at <a href="mailto:support@BoxlightRobotics.com">support@BoxlightRobotics.com</a> with a detailed description of the steps you have taken and observations you have made.</p>
+<p><strong>Email Subject</strong>: Fusion Python Core Device Interface</p>
+</blockquote></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

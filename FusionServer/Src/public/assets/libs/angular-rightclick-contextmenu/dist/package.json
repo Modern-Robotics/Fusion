@@ -1,0 +1,36 @@
+{
+  "name": "right-click-menu",
+  "version": "0.0.4",
+  "description": "Right click context menu for AngularJS",
+  "main": "sarsha.contextmenu.js",
+  "directories": {
+    "example": "example"
+  },
+  "keywords": [
+    "angular",
+    "angularJS",
+    "context",
+    "menu",
+    "right",
+    "click",
+    "menu"
+  ],
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/msarsha/angular-rightclick-contextmenu"
+  },
+  "author": "Matan Sar-Shalom <smatan84@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "browserify": "^13.1.0",
+    "browserify-css": "^0.9.1",
+    "gulp": "^3.9.1",
+    "gulp-angular-templatecache": "^2.0.0",
+    "gulp-clean": "^0.3.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-uglify": "^1.5.4",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}
