@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Boxlight Robotics">
+        <link rel="canonical" href="http://BoxlightRobotics.com/Sensor_Compass/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>**Compass (45-2003)** - Fusion Documentation Suite</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../js/jquery-1.10.2.min.js"></script>
+        <script src="../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../js/highlight.pack.js"></script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="..">Fusion Documentation Suite</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                    <li >
+                        <a href="..">**Welcome to the Fusion Documentation Suite**</a>
+                    </li>
+                    <li >
+                        <a href="../AP_Android/">**Connect to Fusion via Android**</a>
+                    </li>
+                    <li >
+                        <a href="../AP_Change/">**Change Fusion Access Point SSID and Passkey**</a>
+                    </li>
+                    <li >
+                        <a href="../AP_Find/">**Find/Connect Fusion Access Point**</a>
+                    </li>
+                    <li >
+                        <a href="../AP_Linux/">**Connect to Fusion via Linux**</a>
+                    </li>
+                    <li >
+                        <a href="../AP_Mac/">**Connect to Fusion via Mac**</a>
+                    </li>
+                    <li >
+                        <a href="../AP_Restore/">**Restore Fusion Access Point SSID and Passkey**</a>
+                    </li>
+                    <li >
+                        <a href="../AP_Windows/">**Connect to Fusion via Windows**</a>
+                    </li>
+                    <li >
+                        <a href="../AP_iOS/">**Connect to Fusion via iOS**</a>
+                    </li>
+                    <li >
+                        <a href="../AV_RCA/">**A/V RCA 3.5mm Connector**</a>
+                    </li>
+                    <li >
+                        <a href="../About/">**About Boxlight Robotics**</a>
+                    </li>
+                    <li >
+                        <a href="../Accessing_Web_Interface/">**Accessing the Fusion Web Interface**</a>
+                    </li>
+                    <li >
+                        <a href="../Account_Create/">**Create an Account**</a>
+                    </li>
+                    <li >
+                        <a href="../Account_Delete/">**Delete an Account**</a>
+                    </li>
+                    <li >
+                        <a href="../Account_Edit/">**Edit an Account**</a>
+                    </li>
+                    <li >
+                        <a href="../Analog_Ports/">**Analog Ports**</a>
+                    </li>
+                    <li >
+                        <a href="../Basic_Fusion-Control/">**Basic Fusion Control**</a>
+                    </li>
+                    <li >
+                        <a href="../Basic_Move-Robot/">**Basic Move Robot Control**</a>
+                    </li>
+                    <li >
+                        <a href="../Basic_Rotate-Robot/">**Basic Rotate Robot Control**</a>
+                    </li>
+                    <li >
+                        <a href="../Blk_Analog_Digital/">**Generic Analog and Digital Sensors**</a>
+                    </li>
+                    <li >
+                        <a href="../Blk_Color_Beacon/">**Color Beacon (45-2019)**</a>
+                    </li>
+                    <li >
+                        <a href="../Blk_Color_Sensor/">**Color Sensor (45-2018)**</a>
+                    </li>
+                    <li >
+                        <a href="../Blk_Compass/">**Compass (45-2003)**</a>
+                    </li>
+                    <li >
+                        <a href="../Blk_Core_Device_Interface/">**Core Device Interface (45-2201)**</a>
+                    </li>
+                    <li >
+                        <a href="../Blk_Core_Legacy_Module/">**Core Legacy Module (45-2202)**</a>
+                    </li>
+                    <li >
+                        <a href="../Blk_Core_Motor_Controller/">**Core Motor Controller (45-2203)**</a>
+                    </li>
+                    <li >
+                        <a href="../Blk_Core_Servo_Controller/">**Core Servo Controller (45-2204)**</a>
+                    </li>
+                    <li >
+                        <a href="../Blk_File_Handling/">**File Handling**</a>
+                    </li>
+                    <li >
+                        <a href="../Blk_IR_Locator_360/">**IR Locator 360° (45-2009)**</a>
+                    </li>
+                    <li >
+                        <a href="../Blk_IR_Seeker_V3/">**IR Seeker V3 (45-2017)**</a>
+                    </li>
+                    <li >
+                        <a href="../Blk_Integrating_Gyro/">**Integrating Gyro (45-2005)**</a>
+                    </li>
+                    <li >
+                        <a href="../Blk_Light_Sensor/">**Light Sensor (45-2015)**</a>
+                    </li>
+                    <li >
+                        <a href="../Blk_Magnetic_Sensor/">**Magnetic Sensor (45-2020)**</a>
+                    </li>
+                    <li >
+                        <a href="../Blk_Optical_Distance_Sensor/">**Optical Distance Sensor (45-2006)**</a>
+                    </li>
+                    <li >
+                        <a href="../Blk_Range_Sensor/">**Range Sensor (45-2008)**</a>
+                    </li>
+                    <li >
+                        <a href="../Blk_Rate_Gyro/">**Rate Gyro (45-2004)**</a>
+                    </li>
+                    <li >
+                        <a href="../Blk_Sound_Generator/">**Sound Generator (45-2016)**</a>
+                    </li>
+                    <li >
+                        <a href="../Blk_Touch_Sensor/">**Touch Sensor (45-2007)**</a>
+                    </li>
+                    <li >
+                        <a href="../Blk_VirtualGamepad/">**Virtual Gamepad**</a>
+                    </li>
+                    <li >
+                        <a href="../Blk_usbGamepad/">**USB Gamepad**</a>
+                    </li>
+                    <li >
+                        <a href="../Blockly/">**Blockly Guide**</a>
+                    </li>
+                    <li >
+                        <a href="../Blockly_Topic/">**Blockly Reference**</a>
+                    </li>
+                    <li >
+                        <a href="../Charge_Battery/">Charge Battery</a>
+                    </li>
+                    <li >
+                        <a href="../Connect_Battery/">**Connecting a battery**</a>
+                    </li>
+                    <li >
+                        <a href="../Connect_Internet/">**Connect Fusion to the Internet**</a>
+                    </li>
+                    <li >
+                        <a href="../Connect_USB_Power/">**Connect USB power**</a>
+                    </li>
+                    <li >
+                        <a href="../CoreControlDriver/">**Core Control Module Driver**</a>
+                    </li>
+                    <li >
+                        <a href="../Core_Control_Topic/">**Core Control Module Reference**</a>
+                    </li>
+                    <li >
+                        <a href="../Core_Device_Interface/">**Core Device Interface (45-2201)**</a>
+                    </li>
+                    <li >
+                        <a href="../Core_Legacy_Module/">**Core Legacy Module (45-2202)**</a>
+                    </li>
+                    <li >
+                        <a href="../Core_Motor_Controller/">**Core Motor Controller (45-2203)**</a>
+                    </li>
+                    <li >
+                        <a href="../Core_Power_Distribution_Module/">**Core Power Distribution Module (45-2200)**</a>
+                    </li>
+                    <li >
+                        <a href="../Core_Servo_Controller/">**Core Servo Controller (45-2204)**</a>
+                    </li>
+                    <li >
+                        <a href="../Data_Logging_Tool/">**Data Logging Tool**</a>
+                    </li>
+                    <li >
+                        <a href="../Default_Functions/">Default Functions</a>
+                    </li>
+                    <li >
+                        <a href="../Default_Lists/">**Lists Toolbox**</a>
+                    </li>
+                    <li >
+                        <a href="../Default_Logic/">**Logic Conditionals and Comparisons**</a>
+                    </li>
+                    <li >
+                        <a href="../Default_Loops/">**Blocks for Loop Creation**</a>
+                    </li>
+                    <li >
+                        <a href="../Default_Math/">Default Math</a>
+                    </li>
+                    <li >
+                        <a href="../Default_Text/">**Text Toolbox**</a>
+                    </li>
+                    <li >
+                        <a href="../Default_Variables/">**Variables**</a>
+                    </li>
+                    <li >
+                        <a href="../Diagnostic_Tool/">**Diagnostic Tool**</a>
+                    </li>
+                    <li >
+                        <a href="../Digital_Ports/">**Digital Ports**</a>
+                    </li>
+                    <li >
+                        <a href="../Editor/">**Editor Guide**</a>
+                    </li>
+                    <li >
+                        <a href="../Editor_Topic/">**Editor Reference**</a>
+                    </li>
+                    <li >
+                        <a href="../Ethernet_Port/">**Ethernet Port**</a>
+                    </li>
+                    <li >
+                        <a href="../Fusion_Controller_Topic/">**Fusion Controller Reference**</a>
+                    </li>
+                    <li >
+                        <a href="../Getting_Started_Topic/">**Getting Started**</a>
+                    </li>
+                    <li >
+                        <a href="../HDMI/">**HDMI Port**</a>
+                    </li>
+                    <li >
+                        <a href="../I2C_Ports/">**I2C Ports**</a>
+                    </li>
+                    <li >
+                        <a href="../Int_Fusion-Control/">**Intermediate Fusion Control**</a>
+                    </li>
+                    <li >
+                        <a href="../Int_Motors/">**Motor Control**</a>
+                    </li>
+                    <li >
+                        <a href="../Int_Servos/">**Servo Control**</a>
+                    </li>
+                    <li >
+                        <a href="../Missing_Items/">**Missing items from your Fusion?**</a>
+                    </li>
+                    <li >
+                        <a href="../Motor_Ports/">**Motor Ports**</a>
+                    </li>
+                    <li >
+                        <a href="../On_Board_LED/">**OnBoard LEDs**</a>
+                    </li>
+                    <li >
+                        <a href="../Power_Off/">**Power down the Fusion**</a>
+                    </li>
+                    <li >
+                        <a href="../Power_On/">**Power the Fusion on**</a>
+                    </li>
+                    <li >
+                        <a href="../Program_Autostart/">**Autonomous Mode**</a>
+                    </li>
+                    <li >
+                        <a href="../Py_Color_Beacon/">**Color Beacon (45-2019)**</a>
+                    </li>
+                    <li >
+                        <a href="../Py_Color_Sensor/">**Color Sensor (45-2018)**</a>
+                    </li>
+                    <li >
+                        <a href="../Py_Compass/">**Compass (45-2003)**</a>
+                    </li>
+                    <li >
+                        <a href="../Py_Constants/">**Constants**</a>
+                    </li>
+                    <li >
+                        <a href="../Py_Core_Device_Interface/">**Core Device Interface (45-2201)**</a>
+                    </li>
+                    <li >
+                        <a href="../Py_Core_Legacy_Module/">**Core Legacy Module (45-2202)**</a>
+                    </li>
+                    <li >
+                        <a href="../Py_Core_Motor_Controller/">**Core Motor Controller (45-2203)**</a>
+                    </li>
+                    <li >
+                        <a href="../Py_Core_Servo_Controller/">**Core Servo Controller (45-2204)**</a>
+                    </li>
+                    <li >
+                        <a href="../Py_Driver/">**Fusion Driver**</a>
+                    </li>
+                    <li >
+                        <a href="../Py_IR_Locator_360/">**IR Locator 360° (45-2009)**</a>
+                    </li>
+                    <li >
+                        <a href="../Py_IR_Seeker_V3/">**IR Seeker V3 (45-2017)**</a>
+                    </li>
+                    <li >
+                        <a href="../Py_Integrating_Gyro/">**Integrating Gyro (45-2005)**</a>
+                    </li>
+                    <li >
+                        <a href="../Py_Light_Sensor/">**Light Sensor (45-2015)**</a>
+                    </li>
+                    <li >
+                        <a href="../Py_Magnetic_Sensor/">**Magnetic Sensor (45-2020)**</a>
+                    </li>
+                    <li >
+                        <a href="../Py_Motors/">**Fusion Motors**</a>
+                    </li>
+                    <li >
+                        <a href="../Py_Optical_Distance_Sensor/">**Optical Distance Sensor (45-2006)**</a>
+                    </li>
+                    <li >
+                        <a href="../Py_Range_Sensor/">**Range Sensor (45-2008)**</a>
+                    </li>
+                    <li >
+                        <a href="../Py_Rate_Gyro/">**Rate Gyro (45-2004)**</a>
+                    </li>
+                    <li >
+                        <a href="../Py_Servos/">**Fusion Servos**</a>
+                    </li>
+                    <li >
+                        <a href="../Py_Sound_Generator/">**Sound Generator (45-2016)**</a>
+                    </li>
+                    <li >
+                        <a href="../Py_Touch_Sensor/">**Touch Sensor (45-2007)**</a>
+                    </li>
+                    <li >
+                        <a href="../Py_VirtualGamepad/">**Virtual Gamepad**</a>
+                    </li>
+                    <li >
+                        <a href="../Py_usbGamepad/">**USB Gamepad**</a>
+                    </li>
+                    <li >
+                        <a href="../Robot_Building_Topic/">Robot Building Topic</a>
+                    </li>
+                    <li >
+                        <a href="../Robot_Building_Topic_2/">Robot Building Topic 2</a>
+                    </li>
+                    <li >
+                        <a href="../SD_Card/">**Micro SD Card Slot**</a>
+                    </li>
+                    <li >
+                        <a href="../Sensor_Color_Beacon/">**Color Beacon (45-2019)**</a>
+                    </li>
+                    <li >
+                        <a href="../Sensor_Color_Sensor/">**Color Sensor (45-2018)**</a>
+                    </li>
+                    <li class="active">
+                        <a href="./">**Compass (45-2003)**</a>
+                    </li>
+                    <li >
+                        <a href="../Sensor_IR_Locator_360/">Sensor IR Locator 360</a>
+                    </li>
+                    <li >
+                        <a href="../Sensor_IR_Seeker_V3/">Sensor IR Seeker V3</a>
+                    </li>
+                    <li >
+                        <a href="../Sensor_Integrating_Gyro/">Sensor Integrating Gyro</a>
+                    </li>
+                    <li >
+                        <a href="../Sensor_Light_Sensor/">Sensor Light Sensor</a>
+                    </li>
+                    <li >
+                        <a href="../Sensor_Magnet_Sensor/">Sensor Magnet Sensor</a>
+                    </li>
+                    <li >
+                        <a href="../Sensor_Optical_Distance_Sensor/">Sensor Optical Distance Sensor</a>
+                    </li>
+                    <li >
+                        <a href="../Sensor_Program_Control_Button/">Sensor Program Control Button</a>
+                    </li>
+                    <li >
+                        <a href="../Sensor_Range_Sensor/">Sensor Range Sensor</a>
+                    </li>
+                    <li >
+                        <a href="../Sensor_Rate_Gyro/">Sensor Rate Gyro</a>
+                    </li>
+                    <li >
+                        <a href="../Sensor_Sound_Generator/">Sensor Sound Generator</a>
+                    </li>
+                    <li >
+                        <a href="../Sensor_Topic/">Sensor Topic</a>
+                    </li>
+                    <li >
+                        <a href="../Sensor_Touch_Sensor/">Sensor Touch Sensor</a>
+                    </li>
+                    <li >
+                        <a href="../Servo_Ports/">Servo Ports</a>
+                    </li>
+                    <li >
+                        <a href="../Trouble_Step1/">Trouble Step1</a>
+                    </li>
+                    <li >
+                        <a href="../Trouble_Step3/">Trouble Step3</a>
+                    </li>
+                    <li >
+                        <a href="../Trouble_Step4/">Trouble Step4</a>
+                    </li>
+                    <li >
+                        <a href="../USB_Hub/">USB Hub</a>
+                    </li>
+                    <li >
+                        <a href="../Update/">Update</a>
+                    </li>
+                    <li >
+                        <a href="../Web_Interface_Topic/">Web Interface Topic</a>
+                    </li>
+                    <li >
+                        <a href="../WiFi_Hub/">WiFi Hub</a>
+                    </li>
+                    <li >
+                        <a href="../time/">Time</a>
+                    </li>
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../Sensor_Color_Sensor/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../Sensor_IR_Locator_360/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#compass-45-2003">Compass (45-2003)</a></li>
+            <li><a href="#hard-iron-calibration">Hard Iron Calibration</a></li>
+            <li><a href="#tilt-compensation">Tilt Compensation</a></li>
+            <li><a href="#accelerometer-nulling">Accelerometer Nulling</a></li>
+            <li><a href="#accelerometer-scale-coefficient">Accelerometer Scale Coefficient</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="compass-45-2003"><strong>Compass (45-2003)</strong></h1>
+<hr />
+<p>The Compass uses a magnetometer and an accelerometer to calculate heading data based on Earth’s magnetic field. The compass can return the heading data, accelerometer data and magnetometer data to the user. Anything that generates a magnetic field must be moved away from the sensor like power cables, motor or magnetic material. This must happen because during calibration the sensor will add an offset to account for other magnetic sources in the area.</p>
+<blockquote>
+<p><strong>Sensor Type</strong> : Four Wire I2C<br />
+<strong>Default I2C Address</strong> : 0x24<br />
+<strong>Sensor ID Code</strong> : 0x63<br />
+<strong>Dimensions</strong> : 32mm x 32mm x 12mm<br />
+<strong>Mounting Holes</strong> : 24mm x 24mm<br />
+<strong>Power</strong> : 5V DC, 22mA Max<br />
+<strong>Signal Logic Levels</strong> : Logic 0 - 0V, Logic 1 - 5V<br />
+<strong>I2C Bus Speed</strong> : 100kHz max<br />
+<strong>I2C Address Change Option</strong> : Yes (Even Number 0x10 - 0xEE) </p>
+<p><a href="../Blk_Compass/">Compass Visual Programming Blocks</a><br />
+<a href="../Py_Compass/">Compass Python Library Information</a></p>
+</blockquote>
+<p><img alt="" src="../img/Sensor_Diagrams/Compass.png" /></p>
+<table style="width:50%" align="center" border="2">
+    <tr><th><p align="center">Register</p></th><th><p align="center">Function</p></th></tr>
+    <tr><td><p align="center">0x00</p></td><td><p align="left">Sensor Firmware Revision</p></td></tr>
+    <tr><td><p align="center">0x01</p></td><td><p align="left">Manufacturer Code</p></td></tr>
+    <tr><td><p align="center">0x02</p></td><td><p align="left">Sensor ID Code</p></td></tr>
+    <tr><td><p align="center">0x03</p></td><td><p align="left">Command</p></td></tr>
+    <tr><td><p align="center">0x04/0x05</p></td><td><p align="left">Heading Data (lsb/msb)</p></td></tr>
+    <tr><td><p align="center">0x06/0x07</p></td><td><p align="left">Accelerometer X Value (lsb/msb)</p></td></tr>
+    <tr><td><p align="center">0x08/0x09</p></td><td><p align="left">Accelerometer Y Value (lsb/msb)</p></td></tr>
+    <tr><td><p align="center">0x0A/0x0B</p></td><td><p align="left">Accelerometer Z Value (lsb/msb)</p></td></tr>
+    <tr><td><p align="center">0x0C/0x0D</p></td><td><p align="left">Magnetometer X Value (lsb/msb)</p></td></tr>
+    <tr><td><p align="center">0x0E/0x0F</p></td><td><p align="left">Magnetometer Y Value (lsb/msb)</p></td></tr>
+    <tr><td><p align="center">0x10/0x11</p></td><td><p align="left">Magnetometer Z Value (lsb/msb)</p></td></tr>
+    <tr><td><p align="center">0x12/0x13</p></td><td><p align="left">Accelerometer X Offset (lsb/msb)</p></td></tr>
+    <tr><td><p align="center">0x14/0x15</p></td><td><p align="left">Accelerometer Y Offset (lsb/msb)</p></td></tr>
+    <tr><td><p align="center">0x16/0x17</p></td><td><p align="left">Accelerometer Z Offset (lsb/msb)</p></td></tr>
+    <tr><td><p align="center">0x18/0x19</p></td><td><p align="left">Magnetometer X Offset (lsb/msb)</p></td></tr>
+    <tr><td><p align="center">0x1A/0x1B</p></td><td><p align="left">Magnetometer Y Offset (lsb/msb)</p></td></tr>
+    <tr><td><p align="center">0x1C/0x1D</p></td><td><p align="left">Magnetometer Z Offset (lsb/msb)</p></td></tr>
+    <tr><td><p align="center">0x1E/0x1F</p></td><td><p align="left">Magnetometer Tilt Coefficient (lsb/msb)</p></td></tr>
+    <tr><td><p align="center">0x20/0x21</p></td><td><p align="left">Accelerometer Scale Coefficient (lsb/msb)</p></td></tr>
+    <tr><td><p align="center">0x22/0x23</p></td><td><p align="left">Magnetometer X Scale Coefficient (lsb/msb)</p></td></tr>
+    <tr><td><p align="center">0x24/0x25</p></td><td><p align="left">Magnetometer Y Scale Coefficient (lsb/msb)</p></td></tr>
+</table>
+
+<table style="width:70%" align="center" border="2">
+    <tr><th><p align="center">Command</p></th><th><p align="center">Operation</p></th><th><p align="center">EEPROM Auto-Update</p></th></tr>
+    <tr><td><p align="center">0x00</p></td><td><p align="left">Normal measurement mode</p></td><td><p align="center"></p></td></tr>
+    <tr><td><p align="center">0x43</p></td><td><p align="left">Hard Iron Calibration mode</p></td><td><p align="center">X</p></td></tr>
+    <tr><td><p align="center">0x58</p></td><td><p align="left">Accelerometer X axis null</p></td><td><p align="center">X</p></td></tr>
+    <tr><td><p align="center">0x59</p></td><td><p align="left">Accelerometer Y axis null</p></td><td><p align="center">X</p></td></tr>
+    <tr><td><p align="center">0x5A</p></td><td><p align="left">Accelerometer Z axis null</p></td><td><p align="center">X</p></td></tr>
+    <tr><td><p align="center">0x47</p></td><td><p align="left">Accelerometer sensitivity/gain adjust</p></td><td><p align="center">X</p></td></tr>
+    <tr><td><p align="center">0x55</p></td><td><p align="left">Measure tilted up accelerometer value</p></td><td><p align="center"></p></td></tr>
+    <tr><td><p align="center">0x44</p></td><td><p align="left">Measure tilted down accelerometer value</p></td><td><p align="center">X</p></td></tr>
+    <tr><td><p align="center">0x57</p></td><td><p align="left">Write EEPROM Data</p></td><td><p align="center">X</p></td></tr>
+</table>
+
+<p>During normal operation, the LED will blink briefly at 1Hz. During Hard Iron Calibration,the LED will blink at ½Hz. During tilt up and tilt down calibration the LED will be onduring a period of calibration measurement.</p>
+<h2 id="hard-iron-calibration"><strong>Hard Iron Calibration</strong></h2>
+<blockquote>
+<p>Hard Iron Calibration is entered by setting the command location to 0x43. Once Hard Iron Calibration is active rotate the Compass 360°, making sure it does not tilt, for a period of 5 seconds. Once the rotation procedure is complete, the command location must be set to 0x00 to signal that calibration is complete. If the data collected during the rotation was good, the Compass will enter Normal Measurement Mode using the new calibration data. If the data collected during the rotation was not good, the command value will change to 0x46 and the Compass will enter Normal Measurement Mode using the previous calibration data.</p>
+</blockquote>
+<h2 id="tilt-compensation"><strong>Tilt Compensation</strong></h2>
+<blockquote>
+<p>Tilt compensation is performed in two steps, tilt up and tilt down in that order. The first step is tilt up. To set the Compass up for tilt up measurement, the Compass should be pointed due North and set with the front of the device tiled up by approximately 20°. Then the command location should be set to 0x55 while the Compass is held perfectly still. Once the LED extinguishes itself, the command location will return to 0x00, indicating that tilt up data has been captured.<br />
+The second step is tilt down. To set the Compass up for tilt down measurement, the Compass should be pointed due North and set with the front of the device tilted down by approximately 20°. Then the command location should be set to 0x44 while the compass is held perfectly still. Once the LED extinguishes itself, the command location will return 0x00, indicating that tilt down data has been captured and the tilt compensation coefficient has been acquired.<br />
+If the two tilt steps are not performed in the correct order, or some other error is detected, the command location will be set to 0x46 and the Compass will enter Normal Measurement Mode using the previous tilt compensation coefficient.</p>
+</blockquote>
+<h2 id="accelerometer-nulling"><strong>Accelerometer Nulling</strong></h2>
+<blockquote>
+<p>Accelerometer axis nulling is performed using the three axis null commands. For both the x and y axis nulling should be performed with the device set perfectly level. Setting the command location to 0x58 will update the accelerometer X axis offset. Setting the command location to 0x59 will update the accelerometer Y axis offset. For the Z axis nulling, the device should be set to be perfectly vertical. Setting the command location to 0x5A will update the accelerometer Z axis offset</p>
+</blockquote>
+<h2 id="accelerometer-scale-coefficient"><strong>Accelerometer Scale Coefficient</strong></h2>
+<blockquote>
+<p>The Accelerometer Scale Coefficient is adjusted to be approximately 1mg/count. If greater measurement accuracy is required, the Accelerometer Scale Coefficient (fsb/lsb) may be set by the user. This can be simply done by setting the device perfectly vertical
+and obtaining the accelerometer X value via registers 0x06 and 0x07.<br />
+Once the Accelerometer Scale Coefficient has been adjusted, the 0x57 command should be issued to ensure the new value is recorded in EEPROM.</p>
+<blockquote>
+<p>Example:  </p>
+<p><strong>Step 1: Sensor Position</strong><br />
+Set the sensor vertical so that the wires are pointing up in the air.</p>
+<p><strong>Step 2: Find the X Value</strong><br />
+Find the Accelerometer X Value - Register 0x06(lsb)/0x07(msb)  </p>
+<p>Register 0x06 (lsb) = <strong>0xE2</strong><br />
+Register 0x07 (msb) = <strong>0x04</strong>  </p>
+<p>X Value = msb:lsb = 0x04:0xE2 = <strong>0x04E2</strong> = <strong>1250</strong></p>
+<p><strong>Step 3: Calculating Scaling Value</strong><br />
+Scaling Value = 1000/X Value = 1000/1250 = <strong>.8</strong></p>
+<p><strong>Step 4: Calculate Register Values</strong><br />
+Register Values (lsb:fsb) = .8*256 = 204.8 = 204 = <strong>0xCC</strong> = <strong>0x00CC</strong></p>
+<p><strong>Step 5: Enter Values into Accelerometer Scale Coefficient Register</strong><br />
+Accelerometer Scale Coefficient = 0x20(fsb)/0x21(lsb)</p>
+<p>Register 0x20 (fsb) = <strong>0xCC</strong><br />
+Register 0x21 (lsb) = <strong>0x00</strong></p>
+<p><strong>Step 6: Saving the value to EEPROM</strong><br />
+Enter a value of <strong>0x57</strong> (Write EEPROM Data) to the Command Register (0x03) to save the scaled value into EEPROM.</p>
+</blockquote>
+</blockquote></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '..';</script>
+        <script src="../js/base.js"></script>
+        <script src="../search/require.js"></script>
+        <script src="../search/search.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&larr;</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&rarr;</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </body>
+</html>

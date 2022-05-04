@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Boxlight Robotics">
+        <link rel="canonical" href="http://BoxlightRobotics.com/Py_Driver/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>**Fusion Driver** - Fusion Documentation Suite</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../js/jquery-1.10.2.min.js"></script>
+        <script src="../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../js/highlight.pack.js"></script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="..">Fusion Documentation Suite</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                    <li >
+                        <a href="..">**Welcome to the Fusion Documentation Suite**</a>
+                    </li>
+                    <li >
+                        <a href="../AP_Android/">**Connect to Fusion via Android**</a>
+                    </li>
+                    <li >
+                        <a href="../AP_Change/">**Change Fusion Access Point SSID and Passkey**</a>
+                    </li>
+                    <li >
+                        <a href="../AP_Find/">**Find/Connect Fusion Access Point**</a>
+                    </li>
+                    <li >
+                        <a href="../AP_Linux/">**Connect to Fusion via Linux**</a>
+                    </li>
+                    <li >
+                        <a href="../AP_Mac/">**Connect to Fusion via Mac**</a>
+                    </li>
+                    <li >
+                        <a href="../AP_Restore/">**Restore Fusion Access Point SSID and Passkey**</a>
+                    </li>
+                    <li >
+                        <a href="../AP_Windows/">**Connect to Fusion via Windows**</a>
+                    </li>
+                    <li >
+                        <a href="../AP_iOS/">**Connect to Fusion via iOS**</a>
+                    </li>
+                    <li >
+                        <a href="../AV_RCA/">**A/V RCA 3.5mm Connector**</a>
+                    </li>
+                    <li >
+                        <a href="../About/">**About Boxlight Robotics**</a>
+                    </li>
+                    <li >
+                        <a href="../Accessing_Web_Interface/">**Accessing the Fusion Web Interface**</a>
+                    </li>
+                    <li >
+                        <a href="../Account_Create/">**Create an Account**</a>
+                    </li>
+                    <li >
+                        <a href="../Account_Delete/">**Delete an Account**</a>
+                    </li>
+                    <li >
+                        <a href="../Account_Edit/">**Edit an Account**</a>
+                    </li>
+                    <li >
+                        <a href="../Analog_Ports/">**Analog Ports**</a>
+                    </li>
+                    <li >
+                        <a href="../Basic_Fusion-Control/">**Basic Fusion Control**</a>
+                    </li>
+                    <li >
+                        <a href="../Basic_Move-Robot/">**Basic Move Robot Control**</a>
+                    </li>
+                    <li >
+                        <a href="../Basic_Rotate-Robot/">**Basic Rotate Robot Control**</a>
+                    </li>
+                    <li >
+                        <a href="../Blk_Analog_Digital/">**Generic Analog and Digital Sensors**</a>
+                    </li>
+                    <li >
+                        <a href="../Blk_Color_Beacon/">**Color Beacon (45-2019)**</a>
+                    </li>
+                    <li >
+                        <a href="../Blk_Color_Sensor/">**Color Sensor (45-2018)**</a>
+                    </li>
+                    <li >
+                        <a href="../Blk_Compass/">**Compass (45-2003)**</a>
+                    </li>
+                    <li >
+                        <a href="../Blk_Core_Device_Interface/">**Core Device Interface (45-2201)**</a>
+                    </li>
+                    <li >
+                        <a href="../Blk_Core_Legacy_Module/">**Core Legacy Module (45-2202)**</a>
+                    </li>
+                    <li >
+                        <a href="../Blk_Core_Motor_Controller/">**Core Motor Controller (45-2203)**</a>
+                    </li>
+                    <li >
+                        <a href="../Blk_Core_Servo_Controller/">**Core Servo Controller (45-2204)**</a>
+                    </li>
+                    <li >
+                        <a href="../Blk_File_Handling/">**File Handling**</a>
+                    </li>
+                    <li >
+                        <a href="../Blk_IR_Locator_360/">**IR Locator 360° (45-2009)**</a>
+                    </li>
+                    <li >
+                        <a href="../Blk_IR_Seeker_V3/">**IR Seeker V3 (45-2017)**</a>
+                    </li>
+                    <li >
+                        <a href="../Blk_Integrating_Gyro/">**Integrating Gyro (45-2005)**</a>
+                    </li>
+                    <li >
+                        <a href="../Blk_Light_Sensor/">**Light Sensor (45-2015)**</a>
+                    </li>
+                    <li >
+                        <a href="../Blk_Magnetic_Sensor/">**Magnetic Sensor (45-2020)**</a>
+                    </li>
+                    <li >
+                        <a href="../Blk_Optical_Distance_Sensor/">**Optical Distance Sensor (45-2006)**</a>
+                    </li>
+                    <li >
+                        <a href="../Blk_Range_Sensor/">**Range Sensor (45-2008)**</a>
+                    </li>
+                    <li >
+                        <a href="../Blk_Rate_Gyro/">**Rate Gyro (45-2004)**</a>
+                    </li>
+                    <li >
+                        <a href="../Blk_Sound_Generator/">**Sound Generator (45-2016)**</a>
+                    </li>
+                    <li >
+                        <a href="../Blk_Touch_Sensor/">**Touch Sensor (45-2007)**</a>
+                    </li>
+                    <li >
+                        <a href="../Blk_VirtualGamepad/">**Virtual Gamepad**</a>
+                    </li>
+                    <li >
+                        <a href="../Blk_usbGamepad/">**USB Gamepad**</a>
+                    </li>
+                    <li >
+                        <a href="../Blockly/">**Blockly Guide**</a>
+                    </li>
+                    <li >
+                        <a href="../Blockly_Topic/">**Blockly Reference**</a>
+                    </li>
+                    <li >
+                        <a href="../Charge_Battery/">Charge Battery</a>
+                    </li>
+                    <li >
+                        <a href="../Connect_Battery/">**Connecting a battery**</a>
+                    </li>
+                    <li >
+                        <a href="../Connect_Internet/">**Connect Fusion to the Internet**</a>
+                    </li>
+                    <li >
+                        <a href="../Connect_USB_Power/">**Connect USB power**</a>
+                    </li>
+                    <li >
+                        <a href="../CoreControlDriver/">**Core Control Module Driver**</a>
+                    </li>
+                    <li >
+                        <a href="../Core_Control_Topic/">**Core Control Module Reference**</a>
+                    </li>
+                    <li >
+                        <a href="../Core_Device_Interface/">**Core Device Interface (45-2201)**</a>
+                    </li>
+                    <li >
+                        <a href="../Core_Legacy_Module/">**Core Legacy Module (45-2202)**</a>
+                    </li>
+                    <li >
+                        <a href="../Core_Motor_Controller/">**Core Motor Controller (45-2203)**</a>
+                    </li>
+                    <li >
+                        <a href="../Core_Power_Distribution_Module/">**Core Power Distribution Module (45-2200)**</a>
+                    </li>
+                    <li >
+                        <a href="../Core_Servo_Controller/">**Core Servo Controller (45-2204)**</a>
+                    </li>
+                    <li >
+                        <a href="../Data_Logging_Tool/">**Data Logging Tool**</a>
+                    </li>
+                    <li >
+                        <a href="../Default_Functions/">Default Functions</a>
+                    </li>
+                    <li >
+                        <a href="../Default_Lists/">**Lists Toolbox**</a>
+                    </li>
+                    <li >
+                        <a href="../Default_Logic/">**Logic Conditionals and Comparisons**</a>
+                    </li>
+                    <li >
+                        <a href="../Default_Loops/">**Blocks for Loop Creation**</a>
+                    </li>
+                    <li >
+                        <a href="../Default_Math/">Default Math</a>
+                    </li>
+                    <li >
+                        <a href="../Default_Text/">**Text Toolbox**</a>
+                    </li>
+                    <li >
+                        <a href="../Default_Variables/">**Variables**</a>
+                    </li>
+                    <li >
+                        <a href="../Diagnostic_Tool/">**Diagnostic Tool**</a>
+                    </li>
+                    <li >
+                        <a href="../Digital_Ports/">**Digital Ports**</a>
+                    </li>
+                    <li >
+                        <a href="../Editor/">**Editor Guide**</a>
+                    </li>
+                    <li >
+                        <a href="../Editor_Topic/">**Editor Reference**</a>
+                    </li>
+                    <li >
+                        <a href="../Ethernet_Port/">**Ethernet Port**</a>
+                    </li>
+                    <li >
+                        <a href="../Fusion_Controller_Topic/">**Fusion Controller Reference**</a>
+                    </li>
+                    <li >
+                        <a href="../Getting_Started_Topic/">**Getting Started**</a>
+                    </li>
+                    <li >
+                        <a href="../HDMI/">**HDMI Port**</a>
+                    </li>
+                    <li >
+                        <a href="../I2C_Ports/">**I2C Ports**</a>
+                    </li>
+                    <li >
+                        <a href="../Int_Fusion-Control/">**Intermediate Fusion Control**</a>
+                    </li>
+                    <li >
+                        <a href="../Int_Motors/">**Motor Control**</a>
+                    </li>
+                    <li >
+                        <a href="../Int_Servos/">**Servo Control**</a>
+                    </li>
+                    <li >
+                        <a href="../Missing_Items/">**Missing items from your Fusion?**</a>
+                    </li>
+                    <li >
+                        <a href="../Motor_Ports/">**Motor Ports**</a>
+                    </li>
+                    <li >
+                        <a href="../On_Board_LED/">**OnBoard LEDs**</a>
+                    </li>
+                    <li >
+                        <a href="../Power_Off/">**Power down the Fusion**</a>
+                    </li>
+                    <li >
+                        <a href="../Power_On/">**Power the Fusion on**</a>
+                    </li>
+                    <li >
+                        <a href="../Program_Autostart/">**Autonomous Mode**</a>
+                    </li>
+                    <li >
+                        <a href="../Py_Color_Beacon/">**Color Beacon (45-2019)**</a>
+                    </li>
+                    <li >
+                        <a href="../Py_Color_Sensor/">**Color Sensor (45-2018)**</a>
+                    </li>
+                    <li >
+                        <a href="../Py_Compass/">**Compass (45-2003)**</a>
+                    </li>
+                    <li >
+                        <a href="../Py_Constants/">**Constants**</a>
+                    </li>
+                    <li >
+                        <a href="../Py_Core_Device_Interface/">**Core Device Interface (45-2201)**</a>
+                    </li>
+                    <li >
+                        <a href="../Py_Core_Legacy_Module/">**Core Legacy Module (45-2202)**</a>
+                    </li>
+                    <li >
+                        <a href="../Py_Core_Motor_Controller/">**Core Motor Controller (45-2203)**</a>
+                    </li>
+                    <li >
+                        <a href="../Py_Core_Servo_Controller/">**Core Servo Controller (45-2204)**</a>
+                    </li>
+                    <li class="active">
+                        <a href="./">**Fusion Driver**</a>
+                    </li>
+                    <li >
+                        <a href="../Py_IR_Locator_360/">Py IR Locator 360</a>
+                    </li>
+                    <li >
+                        <a href="../Py_IR_Seeker_V3/">Py IR Seeker V3</a>
+                    </li>
+                    <li >
+                        <a href="../Py_Integrating_Gyro/">Py Integrating Gyro</a>
+                    </li>
+                    <li >
+                        <a href="../Py_Light_Sensor/">Py Light Sensor</a>
+                    </li>
+                    <li >
+                        <a href="../Py_Magnetic_Sensor/">Py Magnetic Sensor</a>
+                    </li>
+                    <li >
+                        <a href="../Py_Motors/">Py Motors</a>
+                    </li>
+                    <li >
+                        <a href="../Py_Optical_Distance_Sensor/">Py Optical Distance Sensor</a>
+                    </li>
+                    <li >
+                        <a href="../Py_Range_Sensor/">Py Range Sensor</a>
+                    </li>
+                    <li >
+                        <a href="../Py_Rate_Gyro/">Py Rate Gyro</a>
+                    </li>
+                    <li >
+                        <a href="../Py_Servos/">Py Servos</a>
+                    </li>
+                    <li >
+                        <a href="../Py_Sound_Generator/">Py Sound Generator</a>
+                    </li>
+                    <li >
+                        <a href="../Py_Touch_Sensor/">Py Touch Sensor</a>
+                    </li>
+                    <li >
+                        <a href="../Py_VirtualGamepad/">Py VirtualGamepad</a>
+                    </li>
+                    <li >
+                        <a href="../Py_usbGamepad/">Py usbGamepad</a>
+                    </li>
+                    <li >
+                        <a href="../Robot_Building_Topic/">Robot Building Topic</a>
+                    </li>
+                    <li >
+                        <a href="../Robot_Building_Topic_2/">Robot Building Topic 2</a>
+                    </li>
+                    <li >
+                        <a href="../SD_Card/">SD Card</a>
+                    </li>
+                    <li >
+                        <a href="../Sensor_Color_Beacon/">Sensor Color Beacon</a>
+                    </li>
+                    <li >
+                        <a href="../Sensor_Color_Sensor/">Sensor Color Sensor</a>
+                    </li>
+                    <li >
+                        <a href="../Sensor_Compass/">Sensor Compass</a>
+                    </li>
+                    <li >
+                        <a href="../Sensor_IR_Locator_360/">Sensor IR Locator 360</a>
+                    </li>
+                    <li >
+                        <a href="../Sensor_IR_Seeker_V3/">Sensor IR Seeker V3</a>
+                    </li>
+                    <li >
+                        <a href="../Sensor_Integrating_Gyro/">Sensor Integrating Gyro</a>
+                    </li>
+                    <li >
+                        <a href="../Sensor_Light_Sensor/">Sensor Light Sensor</a>
+                    </li>
+                    <li >
+                        <a href="../Sensor_Magnet_Sensor/">Sensor Magnet Sensor</a>
+                    </li>
+                    <li >
+                        <a href="../Sensor_Optical_Distance_Sensor/">Sensor Optical Distance Sensor</a>
+                    </li>
+                    <li >
+                        <a href="../Sensor_Program_Control_Button/">Sensor Program Control Button</a>
+                    </li>
+                    <li >
+                        <a href="../Sensor_Range_Sensor/">Sensor Range Sensor</a>
+                    </li>
+                    <li >
+                        <a href="../Sensor_Rate_Gyro/">Sensor Rate Gyro</a>
+                    </li>
+                    <li >
+                        <a href="../Sensor_Sound_Generator/">Sensor Sound Generator</a>
+                    </li>
+                    <li >
+                        <a href="../Sensor_Topic/">Sensor Topic</a>
+                    </li>
+                    <li >
+                        <a href="../Sensor_Touch_Sensor/">Sensor Touch Sensor</a>
+                    </li>
+                    <li >
+                        <a href="../Servo_Ports/">Servo Ports</a>
+                    </li>
+                    <li >
+                        <a href="../Trouble_Step1/">Trouble Step1</a>
+                    </li>
+                    <li >
+                        <a href="../Trouble_Step3/">Trouble Step3</a>
+                    </li>
+                    <li >
+                        <a href="../Trouble_Step4/">Trouble Step4</a>
+                    </li>
+                    <li >
+                        <a href="../USB_Hub/">USB Hub</a>
+                    </li>
+                    <li >
+                        <a href="../Update/">Update</a>
+                    </li>
+                    <li >
+                        <a href="../Web_Interface_Topic/">Web Interface Topic</a>
+                    </li>
+                    <li >
+                        <a href="../WiFi_Hub/">WiFi Hub</a>
+                    </li>
+                    <li >
+                        <a href="../time/">Time</a>
+                    </li>
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../Py_Core_Servo_Controller/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../Py_IR_Locator_360/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#fusion-driver">Fusion Driver</a></li>
+            <li><a href="#fusiondriver">Fusion.driver()</a></li>
+            <li><a href="#readbattraw">readBattRaw()</a></li>
+            <li><a href="#readbatt">readBatt()</a></li>
+            <li><a href="#setledled-value">setLED(led, value)</a></li>
+            <li><a href="#analogread-port">analogRead( port )</a></li>
+            <li><a href="#digitalreadport">digitalRead(port)</a></li>
+            <li><a href="#digitalstateport-state">digitalState(port, state)</a></li>
+            <li><a href="#digitalwriteport-state">digitalWrite(port, state)</a></li>
+            <li><a href="#i2creadaddr-reg-len">i2cRead(addr, reg, len)</a></li>
+            <li><a href="#i2cwriteaddr-reg-buf">i2cWrite(addr, reg, buf[ ] )</a></li>
+            <li><a href="#questions">Questions?</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="fusion-driver"><strong>Fusion Driver</strong></h1>
+<hr />
+<p>The Fusion Driver Class contains code for base controller functionality, LED control, motor controller, servo control and generic analog/digital control functions. </p>
+<p><strong>List of available functions:</strong>  </p>
+<ul>
+<li><a href="./#fusiondriver"><strong>Fusion.driver()</strong></a>  </li>
+<li><a href="./#readbattraw"><strong>readBattRaw()</strong></a></li>
+<li><a href="./#readbatt"><strong>readBatt()</strong></a></li>
+<li><a href="./#setledled-value"><strong>setLED(<em>led</em>, <em>value</em>)</strong></a></li>
+<li><a href="./#analogread-port"><strong>analogRead(<em>port</em>)</strong></a></li>
+<li><a href="./#digitalreadport"><strong>digitalRead(<em>port</em>)</strong></a></li>
+<li><a href="./#digitalstateport-state"><strong>digitalState(<em>port</em>, <em>state</em>)</strong></a></li>
+<li><a href="./#digitalwriteport-state"><strong>digitalWrite(<em>port</em>, <em>state</em>)</strong></a></li>
+<li><a href="./#i2creadaddr-reg-len"><strong>i2cRead(<em>addr</em>, <em>reg</em>, <em>len</em>)</strong></a></li>
+<li><a href="./#i2cwriteaddr-reg-buf"><strong>i2cWrite(<em>addr</em>, <em>reg</em>, <em>buf[]</em>)</strong></a></li>
+</ul>
+<h2 id="fusiondriver"><strong>Fusion.driver()</strong></h2>
+<blockquote>
+<h3 id="definition">Definition</h3>
+<blockquote>
+<p>The following class is used to provide base functionality of the Fusion control board and provide drivers to interface with the various array of sensors, servos and motors.</p>
+</blockquote>
+<h3 id="parameters">Parameters</h3>
+<blockquote>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="returns">Returns</h3>
+<blockquote>
+<p><strong>Fusion Driver Object</strong></p>
+</blockquote>
+<h3 id="example">Example</h3>
+<blockquote>
+<pre><code>import Fusion
+f = Fusion.driver()
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="readbattraw"><strong>readBattRaw()</strong></h2>
+<blockquote>
+<h3 id="definition_1">Definition</h3>
+<blockquote>
+<p>Read the raw value of the battery voltage from the on-board ADC converter.</p>
+</blockquote>
+<h3 id="parameters_1">Parameters</h3>
+<blockquote>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="returns_1">Returns</h3>
+<blockquote>
+<p><strong>Raw Voltage</strong> : int (0 - 1023)</p>
+</blockquote>
+<h3 id="example_1">Example</h3>
+<blockquote>
+<pre><code>import Fusion
+f = Fusion.driver()
+print f.readBattRaw()
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="readbatt"><strong>readBatt()</strong></h2>
+<blockquote>
+<h3 id="definition_2">Definition</h3>
+<blockquote>
+<p>Read the scaled value of the battery voltage from the on-board ADC converter.</p>
+</blockquote>
+<h3 id="parameters_2">Parameters</h3>
+<blockquote>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="returns_2">Returns</h3>
+<blockquote>
+<p><strong>Voltage</strong> : float (volts)</p>
+</blockquote>
+<h3 id="example_2">Example</h3>
+<blockquote>
+<pre><code>import Fusion
+f = Fusion.driver()
+print f.readBatt()
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="setledled-value"><strong>setLED(<em>led</em>, <em>value</em>)</strong></h2>
+<blockquote>
+<h3 id="definition_3">Definition</h3>
+<blockquote>
+<p>Set the selected on-board LED or <strong>ON</strong> (1) or <strong>OFF</strong> (0).</p>
+<ul>
+<li><a href="../Int_Fusion-Control/#led">Set LED Visual Programming Block</a></li>
+</ul>
+</blockquote>
+<h3 id="parameters_3">Parameters</h3>
+<blockquote>
+<p><strong><em>led</em></strong> : BLUE or YELLOW<br />
+<strong><em>value</em></strong> : int (1 or 0)</p>
+<h3 id="returns_3">Returns</h3>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="example_3">Example</h3>
+<blockquote>
+<pre><code>import Fusion
+f = Fusion.driver()
+f.setLED(f.YELLOW, 1)
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="analogread-port"><strong>analogRead( <em>port</em> )</strong></h2>
+<blockquote>
+<h3 id="definition_4">Definition</h3>
+<blockquote>
+<p>Used to read analog devices connected to ports <strong>A0</strong> - <strong>A7</strong>.</p>
+</blockquote>
+<h3 id="parameters_4">Parameters</h3>
+<blockquote>
+<p><strong><em>port</em></strong> : A0 - A7</p>
+</blockquote>
+<h3 id="returns_4">Returns</h3>
+<blockquote>
+<p><strong>Value</strong> : int (0 - 1023)</p>
+</blockquote>
+<h3 id="example_4">Example</h3>
+<blockquote>
+<pre><code>import Fusion
+f = Fusion.driver()
+print f.analogRead(f.A0)
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="digitalreadport"><strong>digitalRead(<em>port</em>)</strong></h2>
+<blockquote>
+<h3 id="definition_5">Definition</h3>
+<blockquote>
+<p>Used to read digital devices connected to ports <strong>D0</strong> - <strong>D7</strong>.</p>
+</blockquote>
+<h3 id="parameters_5">Parameters</h3>
+<blockquote>
+<p><strong><em>port</em></strong> : D0 - D7</p>
+</blockquote>
+<h3 id="returns_5">Returns</h3>
+<blockquote>
+<p><strong><em>Value</em></strong> : int (0 - 1)</p>
+</blockquote>
+<h3 id="example_5">Example</h3>
+<blockquote>
+<pre><code>import Fusion
+f = Fusion.driver()
+print f.digitalRead(f.D0)
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="digitalstateport-state"><strong>digitalState(<em>port</em>, <em>state</em>)</strong></h2>
+<blockquote>
+<h3 id="definition_6">Definition</h3>
+<blockquote>
+<p>Sets the state of the selected digital port <strong>D0</strong> - <strong>D7</strong> as input or output.</p>
+</blockquote>
+<h3 id="parameters_6">Parameters</h3>
+<blockquote>
+<p><strong><em>port</em></strong> : D0 - D7<br />
+<strong><em>state</em></strong> : INPUT or OUTPUT</p>
+</blockquote>
+<h3 id="returns_6">Returns</h3>
+<blockquote>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="example_6">Example</h3>
+<blockquote>
+<pre><code>import Fusion
+f = Fusion.driver()
+f.digitalState(f.D0, f.OUTPUT)
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="digitalwriteport-state"><strong>digitalWrite(<em>port</em>, <em>state</em>)</strong></h2>
+<blockquote>
+<h3 id="definition_7">Definition</h3>
+<blockquote>
+<p>Sets the value of the selected digital port <strong>D0</strong> - <strong>D7</strong> when in output mode.</p>
+</blockquote>
+<h3 id="parameters_7">Parameters</h3>
+<blockquote>
+<p><strong><em>port</em></strong> : D0 - D7<br />
+<strong><em>state</em></strong> : int (1 or 0)</p>
+</blockquote>
+<h3 id="returns_7">Returns</h3>
+<blockquote>
+<p><strong>None</strong></p>
+</blockquote>
+<h3 id="example_7">Example</h3>
+<blockquote>
+<pre><code>import Fusion
+f = Fusion.driver()
+f.digitalState(f.D0, f.OUTPUT)
+f.digitalWrite(f.D0, 1)
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="i2creadaddr-reg-len"><strong>i2cRead(<em>addr</em>, <em>reg</em>, <em>len</em>)</strong></h2>
+<blockquote>
+<h3 id="definition_8">Definition</h3>
+<blockquote>
+<p>Read up to 32 bytes from a device on the I2C buffer.</p>
+</blockquote>
+<h3 id="parameters_8">Parameters</h3>
+<blockquote>
+<p><strong><em>addr</em></strong> : Device I2C Address<br />
+<strong><em>reg</em></strong> : First register to read from<br />
+<strong><em>len</em></strong> : Number of registers to read</p>
+</blockquote>
+<h3 id="returns_8">Returns</h3>
+<blockquote>
+<p><strong>buf[reg1, reg2, ...]</strong><br />
+<strong>i2c_error</strong> : A global value can be read or cleared at any time, displays errors detected during the last I2C transaction. </p>
+</blockquote>
+<h3 id="example_8">Example</h3>
+<blockquote>
+<pre><code>import Fusion
+f = Fusion.driver()
+print f.i2cRead(0x20, 0x00, 3)
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="i2cwriteaddr-reg-buf"><strong>i2cWrite(<em>addr</em>, <em>reg</em>, <em>buf[ ]</em> )</strong></h2>
+<blockquote>
+<h3 id="definition_9">Definition</h3>
+<blockquote>
+<p>Write a buffer of up to 32 bytes to a device on the I2C buffer. The length is determined based on the length of the buffer being written.</p>
+</blockquote>
+<h3 id="parameters_9">Parameters</h3>
+<blockquote>
+<p><strong><em>addr</em></strong> : Device I2C Address<br />
+<strong><em>reg</em></strong> : First register to read from<br />
+<strong><em>buf[]</em></strong> : Buffer of up to 32 bytes</p>
+</blockquote>
+<h3 id="returns_9">Returns</h3>
+<blockquote>
+<p><strong>i2c_error</strong> : A global value can be read or cleared at any time, displays errors detected during the last I2C transaction. </p>
+</blockquote>
+<h3 id="example_9">Example</h3>
+<blockquote>
+<pre><code>import Fusion
+f = Fusion.driver()
+buf = [1, 2]
+f.i2cWrite(0x20, 0x00, buf)
+f.i2cWrite(0x20, 0x02, [3, 4])
+</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="questions"><strong>Questions?</strong></h2>
+<blockquote>
+<p>Contact Boxlight Robotics at <a href="mailto:support@BoxlightRobotics.com">support@BoxlightRobotics.com</a> with a detailed description of the steps you have taken and observations you have made.</p>
+<p><strong>Email Subject</strong>: Fusion Python Driver</p>
+</blockquote></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '..';</script>
+        <script src="../js/base.js"></script>
+        <script src="../search/require.js"></script>
+        <script src="../search/search.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&larr;</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&rarr;</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </body>
+</html>
