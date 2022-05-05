@@ -1,0 +1,1 @@
+!function(){const n=require("./../utils/logger"),o=require("./connection");module.exports=async function(){try{n.verbose("Configuring classroom connection"),await o.connect()}catch(o){n.warn("Classroom connection error: "+o)}o.connected?n.info("Running in classroom mode"):n.info("Running in standalone mode")}()}();
