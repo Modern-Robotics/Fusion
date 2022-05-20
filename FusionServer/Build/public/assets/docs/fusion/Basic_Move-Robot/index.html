@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Boxlight Robotics">
+        <link rel="canonical" href="http://BoxlightRobotics.com/Basic_Move-Robot/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Basic Move Robot - Fusion Documentation Suite</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../js/jquery-1.10.2.min.js"></script>
+        <script src="../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../js/highlight.pack.js"></script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="..">Fusion Documentation Suite</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../Basic_Fusion-Control/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../Basic_Rotate-Robot/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#basic-move-robot-control">Basic Move Robot Control</a></li>
+            <li><a href="#motor-selection-blocks-reminder">Motor Selection Blocks - Reminder</a></li>
+            <li><a href="#forward">Forward</a></li>
+            <li><a href="#backward">Backward</a></li>
+            <li><a href="#fast">Fast</a></li>
+            <li><a href="#medium">Medium</a></li>
+            <li><a href="#slow">Slow</a></li>
+            <li><a href="#questions">Questions?</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="basic-move-robot-control"><strong>Basic Move Robot Control</strong></h1>
+<hr />
+<p>The Move toolbox contains blocks to drive the robot forward and backward. There are also basic speed controls included in this toolbox.</p>
+<p><strong>List of available blocks:</strong>  </p>
+<ul>
+<li><a href="./#forward"><strong>Forward</strong></a></li>
+<li><a href="./#backward"><strong>Backward</strong></a></li>
+<li><a href="./#fast"><strong>Fast</strong></a></li>
+<li><a href="./#medium"><strong>Medium</strong></a></li>
+<li><a href="./#slow"><strong>Slow</strong></a></li>
+</ul>
+<h2 id="motor-selection-blocks-reminder"><strong>Motor Selection Blocks - Reminder</strong></h2>
+<blockquote>
+<p>To set the software to provide the correct speed values for straight line and cured motion, the program bust being with a Motor Selection Block.  </p>
+<p>Robot Kits may be supplied with two different motors which have different characteristics.  Each program must have a motor selection block to configure the program for the motor type.</p>
+<p>The wheels are the easiest way to tell which motors your robot has.  To select the proper motor type, add one of these two blocks based on the color of your wheels.  The Motor Selection Block should be placed immediately after the Start Block.</p>
+<p>These blocks can be found in the <a href="../Basic_Fusion_Control"><strong>Fusion Control</strong></a> toolbox.  </p>
+<h3 id="blocks">Blocks:</h3>
+<p><img src="../img/Basic_Blocks/Control/MotorSelect_Blue.png" width="150"> <img src="../img/Basic_Blocks/Control/MotorSelect_Black.png" width="150"></p>
+<h2 id="forward"><strong>Forward</strong></h2>
+<p>Drive forward for 1 second then stop.</p>
+<h3 id="block">Block:</h3>
+<p><img alt="" src="../img/Basic_Blocks/Move/Forward.PNG" /></p>
+</blockquote>
+<h2 id="backward"><strong>Backward</strong></h2>
+<blockquote>
+<p>Drive reverse for 1 second then stop.</p>
+<h3 id="block_1">Block:</h3>
+<p><img alt="" src="../img/Basic_Blocks/Move/Backward.PNG" /></p>
+</blockquote>
+<h2 id="fast"><strong>Fast</strong></h2>
+<blockquote>
+<p>Change the default speed to 80.</p>
+<h3 id="block_2">Block:</h3>
+<p><img alt="" src="../img/Basic_Blocks/Move/Fast.PNG" /></p>
+</blockquote>
+<h2 id="medium"><strong>Medium</strong></h2>
+<blockquote>
+<p>Change the default speed to 60 (<strong>Default</strong>).</p>
+<h3 id="block_3">Block:</h3>
+<p><img alt="" src="../img/Basic_Blocks/Move/Medium.PNG" /></p>
+</blockquote>
+<h2 id="slow"><strong>Slow</strong></h2>
+<blockquote>
+<p>Change the default speed to 20.</p>
+<h3 id="block_4">Block:</h3>
+<p><img alt="" src="../img/Basic_Blocks/Move/Slow.PNG" /></p>
+</blockquote>
+<h2 id="questions"><strong>Questions?</strong></h2>
+<blockquote>
+<p>Contact Boxlight Robotics at <a href="mailto:support@BoxlightRobotics.com">support@BoxlightRobotics.com</a> with a detailed description of the steps you have taken and observations you have made.</p>
+<p><strong>Email Subject</strong>: Basic Move Robot</p>
+</blockquote></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '..';</script>
+        <script src="../js/base.js"></script>
+        <script src="../search/require.js"></script>
+        <script src="../search/search.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&larr;</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&rarr;</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </body>
+</html>
