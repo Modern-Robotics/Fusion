@@ -1,0 +1,1 @@
+!function(){const e=new(require("events").EventEmitter);module.exports=e}();

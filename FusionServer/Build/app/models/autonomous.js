@@ -1,0 +1,1 @@
+!function(){const e=require("mongoose"),t=e.Schema({active:{type:Boolean,required:!0,default:!1},user:{type:String,default:""},type:{type:String,default:""},program:{type:String,default:""}});module.exports=e.model("autonomous",t)}();
