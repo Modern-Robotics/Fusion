@@ -1,0 +1,22 @@
+{
+    "Server": {
+        "Port": 8080
+    },
+    "Wifi_NIC": "wlan1",
+    "Wifi_WAP": "wlan0",
+    "Wire_NET": "eth0",
+    "Wireless": {
+        "Connection": {
+            "Timeout": 30000,
+            "Interval": 1000
+        }
+    },
+    "Classroom": {
+        "Networks": [
+            {
+                "hiddenSSID": "MyBot_Gatekeeper_WiFi",
+                "hiddenPassword": "CMMthgilxoBsecure"
+            }
+        ]
+    }
+}
