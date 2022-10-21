@@ -2058,3 +2058,105 @@ Blockly.Blocks['Close_File'] = {
     this.setHelpUrl(origin + doc_path +'/Blk_File_Handling/#close-file');
     }
 };
+
+Blockly.Blocks['fusion_display_color'] = {
+    init: function () {
+        var colour = new Blockly.FieldColour('#ff0000');
+        colour.setColours(['#000000', '#ff0000', '#00ff00', '#ffff00', '#0000ff', '#ff00ff', '#00ffff', '#ffffff']).setColumns(4);
+        this.appendDummyInput()
+            .appendField("Set Display Color to:")
+            .appendField(colour, 'COLOUR');
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+		this.setColour(240);
+        this.setTooltip('Select a color to illuminate.');
+        //this.setHelpUrl(origin + doc_path +'/Blk_Color_Beacon/#set-color');
+    }
+};
+
+Blockly.Blocks['fusion_display_emoji'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField("Display emoji:")
+            .appendField(new Blockly.FieldDropdown([
+                ["Straight Ahead", "StraightAhead"],
+                ["Snooze", "Snooze"],
+                ["Look Left", "EyesLeft"],
+                ["Look Right", "EyesRight"],
+                ["Crash", "Crash"],
+            ]), "Emoji");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(240);
+        this.setTooltip('Displays selected emoji on lcd.');
+    }
+};
+
+Blockly.Blocks['fusion_display_text'] = {
+  init: function() {
+		this.appendValueInput("Text")
+        	.setCheck("String")
+        	.appendField("Display text");
+    	this.setPreviousStatement(true, null);
+	    this.setNextStatement(true, null);
+	    this.setColour(240);
+		this.setTooltip("Display text in lcd.");
+		this.setHelpUrl("");
+ 	}
+};
+
+Blockly.Blocks['fusion_basic_display_straight_ahead'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldImage("assets/img/fusion/emojis/StraightAhead.png", imageW, imageH, "Straight"));
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(180);
+        this.setTooltip('Display straight ahead emoji on lcd');
+    }
+};
+
+Blockly.Blocks['fusion_basic_display_snooze'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldImage("assets/img/fusion/emojis/Snooze.png", imageW, imageH, "Snooze"));
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(180);
+        this.setTooltip('Display snooze emoji on lcd.');
+    }
+};
+
+Blockly.Blocks['fusion_basic_display_eyes_left'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldImage("assets/img/fusion/emojis/EyesLeft.png", imageW, imageH, "Eyes Left"));
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(180);
+        this.setTooltip('Display eyes left emoji on lcd.');
+	}
+};
+
+Blockly.Blocks['fusion_basic_display_eyes_right'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldImage("assets/img/fusion/emojis/EyesRight.png", imageW, imageH, "Eyes Right"));
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(180);
+        this.setTooltip('Display eyes right emoji on lcd.');
+    }
+};
+
+Blockly.Blocks['fusion_basic_display_crash'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldImage("assets/img/fusion/emojis/Crash.png", imageW, imageH, "Crash"));
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(180);
+        this.setTooltip('Display crash emoji on display');
+    }
+};
+
