@@ -8,6 +8,33 @@
 
 
 ################################################################################
+# Step 0: Raspi-Config
+################################################################################
+
+
+########################################
+# Interfaces
+########################################
+
+# Enable Camera
+# Enable SSH
+# Enable VNC
+# Enable SPI
+# Enable I2C
+# Enable Serial Port
+# Enable Serial Console
+
+
+########################################
+# Localisation
+########################################
+
+# Set Locale
+# Set Timezone
+# Set WiFi Country
+
+
+################################################################################
 # Step 1: Install Required Libraries
 ################################################################################
 
@@ -134,9 +161,9 @@ pip_packages["spidev"]=3.5
 # Loop through package list, install specified version
 for key in ${!pip_packages[@]}; do
 	installedVersion=$(python -c "$find_pip_package_version" ${key})
-	if [ $installedVersion != ${pip_packages[${key}]} ]; then
+	if [[ $installedVersion != ${pip_packages[${key}]} ]]; then
 		# Fusion package is installed from local directory
-		if [ ${key} == "Fusion" ]; then
+		if [[ ${key} == "Fusion" ]]; then
 			sudo pip install $fusion_driver_path
 		else
 			sudo pip install ${key}==${pip_packages[${key}]}
@@ -209,6 +236,8 @@ if [[ $(sudo systemctl is-active apsta.service) == "inactive" ]]; then
 	sudo systemctl disable dhcpcd
 	sudo cp /usr/Fusion/bin/startDualNetworkMode /usr/local/bin/startDualNetworkMode
 	sudo chmod 644 /usr/local/bin/startDualNetworkMode
+	sudo cp /usr/Fusion/config/apsta.service /lib/systemd/system/apsta.service
+	sudo chmod 644 /lib/systemd/system/apsta.service
 	sudo systemctl daemon-reload
 	sudo systemctl enable apsta.service
 fi
