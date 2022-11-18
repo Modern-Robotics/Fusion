@@ -46,7 +46,7 @@ for key in ${!apt_packages[@]}; do
 	if [[ $(apt-cache policy ${key} | awk '/Installed: /{ print $2 }') != ${apt_packages[${key}]} ]]; then
 		sudo apt-mark unhold ${key}
 		sudo apt install ${key}=${apt_packages[${key}]} -y
-		sudo apt-mark hold git
+		sudo apt-mark hold ${key}
 	fi	
 done
 
@@ -59,14 +59,14 @@ sudo apt autoclean -y
 # 1.B Node.js
 ########################################
 
-# Export and load nvm command for script use
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-
 # Verify/Install NVM (Node Version Manager)
 if [[ $(nvm -v) != "0.39.1" ]]; then
 	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 fi
+
+# Export and load nvm command for script use
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 # Verify/Install Node.js
 if [[ $(node -v) != "v9.10.1" ]]; then
@@ -150,7 +150,7 @@ done
 
 # Move LCD library for easier python import usage
 if [ ! -d "/usr/lib/python2.7/dist-packages/lcddisplay" ]; then
-    sudo cp -R ./lib/LCD_Module_RPI_code/RaspberryPi/python/lib /usr/lib/python2.7/dist-packages/lcddisplay
+    sudo cp -R /usr/Fusion/lib/LCD_Module_RPI_code/RaspberryPi/python/lib /usr/lib/python2.7/dist-packages/lcddisplay
 fi
 
 
@@ -165,7 +165,7 @@ fi
 
 if [ ! -f "/etc/dhcpcd.conf.orig" ]; then
     sudo mv /etc/dhcpcd.conf /etc/dhcpcd.conf.orig
-	sudo cp ./config/dhcpcd/dhcpcd.conf /etc/dhcpcd.conf
+	sudo cp /usr/Fusion/config/dhcpcd/dhcpcd.conf /etc/dhcpcd.conf
 fi
 
 
@@ -175,7 +175,7 @@ fi
 
 if [ ! -f "/etc/dnsmasq.conf.orig" ]; then
 	sudo mv /etc/dnsmasq.conf /etc/dnsmasq.conf.orig
-	sudo cp ./config/dnsmasq/dnsmasq.conf /etc/dnsmasq.conf
+	sudo cp /usr/Fusion/config/dnsmasq/dnsmasq.conf /etc/dnsmasq.conf
 fi
 
 
@@ -185,8 +185,8 @@ fi
 
 if [ ! -f "/etc/default/hostapd.orig" ]; then
 	sudo mv /etc/default/hostapd /etc/default/hostapd.orig
-	sudo cp ./config/hostapd/hostapd /etc/default/hostapd
-	sudo cp ./config/hostapd/hostapd.conf /etc/hostapd/hostapd.conf
+	sudo cp /usr/Fusion/config/hostapd/hostapd /etc/default/hostapd
+	sudo cp /usr/Fusion/config/hostapd/hostapd.conf /etc/hostapd/hostapd.conf
 	sudo systemctl unmask hostapd.service
 fi
 
@@ -207,7 +207,7 @@ if [[ $(sudo systemctl is-active apsta.service) == "inactive" ]]; then
 	sudo systemctl disable hostapd
 	sudo systemctl disable dnsmasq
 	sudo systemctl disable dhcpcd
-	sudo cp ./bin/startDualNetworkMode /usr/local/bin/startDualNetworkMode
+	sudo cp /usr/Fusion/bin/startDualNetworkMode /usr/local/bin/startDualNetworkMode
 	sudo chmod 644 /usr/local/bin/startDualNetworkMode
 	sudo systemctl daemon-reload
 	sudo systemctl enable apsta.service
@@ -219,7 +219,7 @@ fi
 ########################################
 
 if [[ $(sudo systemctl is-active splashscreen.service) == "inactive" ]]; then
-	sudo cp ./config/splashscreen.service /lib/systemd/system/splashscreen.service
+	sudo cp /usr/Fusion/config/splashscreen.service /lib/systemd/system/splashscreen.service
 	sudo chmod 644 /lib/systemd/system/splashscreen.service
 	sudo systemctl daemon-reload
 	sudo systemctl enable splashscreen.service
@@ -231,7 +231,7 @@ fi
 ########################################
 
 if [[ $(sudo systemctl is-active mybot.service) == "inactive" ]]; then
-	sudo cp ./config/mybot.service /lib/systemd/system/mybot.service
+	sudo cp /usr/Fusion/config/mybot.service /lib/systemd/system/mybot.service
 	sudo chmod 644 /lib/systemd/system/mybot.service
 	sudo systemctl daemon-reload
 	sudo systemctl enable mybot.service
