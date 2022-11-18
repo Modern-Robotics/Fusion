@@ -1,0 +1,13 @@
+[Unit]
+Description=MyBot Interface Service
+After=multi-user.target apsta.service
+
+[Service]
+Type=simple
+WorkingDirectory=/usr/Fusion/FusionServer/Build
+ExecStart=node /usr/Fusion/FusionServer/Build/server.js
+Restart=on-failure
+RestartSec=1s
+
+[Install]
+WantedBy=multi-user.target

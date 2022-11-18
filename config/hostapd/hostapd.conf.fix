@@ -1,0 +1,13 @@
+interface=uap0
+channel=1
+ssid=PiWifi
+hw_mode=g
+macaddr_acl=0
+auth_algs=1
+ignore_broadcast_ssid=0
+wpa=2
+wpa_passphrase=somepassword
+wpa_key_mgmt=WPA-PSK
+wpa_pairwise=TKIP
+rsn_pairwise=CCMP
+driver=nl80211

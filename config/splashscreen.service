@@ -1,0 +1,12 @@
+[Unit]
+Description=Service that starts mybot splash screen
+After=multi-user.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+WorkingDirectory=/usr/Fusion/FusionServer/Build/scripts
+ExecStart=python /usr/Fusion/FusionServer/Build/scripts/startSplashScreen.py
+
+[Install]
+WantedBy=multi-user.target
