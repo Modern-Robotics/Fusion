@@ -72,7 +72,7 @@ apt_packages["automake"]=1:1.16.1-4
 for key in ${!apt_packages[@]}; do    	
 	if [[ $(apt-cache policy ${key} | awk '/Installed: /{ print $2 }') != ${apt_packages[${key}]} ]]; then
 		sudo apt-mark unhold ${key}
-		sudo apt install ${key}=${apt_packages[${key}]} -y
+		sudo apt install ${key}=${apt_packages[${key}]} -y --allow-downgrades
 		sudo apt-mark hold ${key}
 	fi	
 done
@@ -85,6 +85,10 @@ sudo apt autoclean -y
 ########################################
 # 1.B Node.js
 ########################################
+
+# Export and load nvm command for script use
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 # Verify/Install NVM (Node Version Manager)
 if [[ $(nvm -v) != "0.39.1" ]]; then
@@ -265,3 +269,10 @@ if [[ $(sudo systemctl is-active mybot.service) == "inactive" ]]; then
 	sudo systemctl daemon-reload
 	sudo systemctl enable mybot.service
 fi
+
+
+################################################################################
+# Step 4: Reboot
+################################################################################
+
+sudo reboot
