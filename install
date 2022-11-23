@@ -235,7 +235,7 @@ if [[ $(sudo systemctl is-active apsta.service) == "inactive" ]]; then
 	sudo systemctl disable dnsmasq
 	sudo systemctl disable dhcpcd
 	sudo cp /usr/Fusion/bin/startDualNetworkMode /usr/local/bin/startDualNetworkMode
-	sudo chmod 644 /usr/local/bin/startDualNetworkMode
+	sudo chmod 744 /usr/local/bin/startDualNetworkMode
 	sudo cp /usr/Fusion/config/apsta.service /lib/systemd/system/apsta.service
 	sudo chmod 644 /lib/systemd/system/apsta.service
 	sudo systemctl daemon-reload
