@@ -8,4 +8,4 @@
 #
 #===============================================================================
 #
-sudo curl --silent --show-error https://raw.githubusercontent.com/Modern-Robotics/Fusion/master/update.sh | sudo bash
+sudo curl --silent --show-error https://raw.githubusercontent.com/Modern-Robotics/Fusion/master/install | sudo bash
