@@ -16,7 +16,6 @@
 # Interfaces
 ########################################
 
-# Enable Camera
 # Enable SSH
 # Enable VNC
 # Enable SPI
@@ -219,6 +218,16 @@ if [ ! -f "/etc/default/hostapd.orig" ]; then
 	sudo cp /usr/Fusion/config/hostapd/hostapd /etc/default/hostapd
 	sudo cp /usr/Fusion/config/hostapd/hostapd.conf /etc/hostapd/hostapd.conf
 	sudo systemctl unmask hostapd.service
+fi
+
+
+########################################
+# 2.C: HOSTS
+########################################
+
+if [ ! -f "/etc/hosts.orig" ]; then
+	sudo mv /etc/hosts /etc/hosts.orig
+	sudo cp /usr/Fusion/config/hosts /etc/hosts
 fi
 
 
