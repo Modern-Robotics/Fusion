@@ -1,0 +1,1 @@
+!function(){const r=require("winston"),t=require("./transports/consoleTransport"),e=require("./transports/fileTransport"),s=r.createLogger({level:"silly",format:r.format.json(),transports:[t,e]});s.stream={write:function(r,t){s.debug(r.substring(0,r.lastIndexOf("\n")))}},module.exports=s}();

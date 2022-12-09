@@ -1,0 +1,1 @@
+!function(){const e=require("socket.io-client")("https://172.16.0.1:8443",{rejectUnauthorized:!1});module.exports=e}();
