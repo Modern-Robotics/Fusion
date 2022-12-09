@@ -1,0 +1,1 @@
+!function(){const e=require("./../http"),i=require("socket.io")(e,{origins:"*:*",serveClient:!0,cookie:!1,pingTimeout:4e3,pingInterval:5e3});module.exports=i}();

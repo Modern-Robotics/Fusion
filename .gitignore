@@ -1,0 +1,16 @@
+filesystem/
+.vscode/
+config/.serverConfig
+package-lock.json
+.crash/
+spec/
+
+fusion.info
+**/*.pyc
+docsrc/fusion
+docsrc/site
+
+logging/filesystem
+.logs
+
+etc/MMCNetworks.json
