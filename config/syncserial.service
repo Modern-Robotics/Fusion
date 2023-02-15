@@ -1,0 +1,10 @@
+[Unit]
+Description=Syncs the MyBot board to the serial login
+After=apsta.service
+
+[Service]
+Type=oneshot
+ExecStart=syncSerial
+
+[Install]
+WantedBy=sysinit.target

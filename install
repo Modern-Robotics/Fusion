@@ -76,7 +76,7 @@ done
 
 # Declare list of package names and versions
 declare -A apt_packages
-apt_packages["git"]=1:2.20.1-2+deb10u6 							# 1:2.20.1-2+deb10u3
+apt_packages["git"]=1:2.20.1-2+deb10u3 							# 1:2.20.1-2+deb10u3
 apt_packages["python-smbus"]=4.1-1								# 4.1-1
 apt_packages["python-pip"]=18.1-5+rpt1							# 18.1-5+rpt1
 apt_packages["python-pil"]=5.4.1-2+deb10u3						# 5.4.1-2+deb10u3
@@ -95,7 +95,6 @@ apt_packages["libftdi1-dev"]=1.4-1+b2							# Not Installed
 apt_packages["hostapd"]=2:2.7+git20190128+0c1e29f-6+deb10u3		# Not Installed
 apt_packages["dnsmasq"]=2.80-1+rpt1+deb10u1						# Not Installed
 apt_packages["mongodb"]=1:2.4.14-4								# Not Installed
-apt_packages["automake"]=1:1.16.1-4								# Not Installed
 
 # Loop through package list, install specified version, and lock to prevent accidental upgrades
 apt_update_needed=false
@@ -107,15 +106,15 @@ for key in ${!apt_packages[@]}; do
 			sudo apt update
 			apt_update_performed=true
 		fi
-		sudo apt-mark unhold ${key}
 		sudo apt install ${key}=${apt_packages[${key}]} -y --allow-downgrades
-		sudo apt-mark hold ${key}
 	fi	
 done
 
-# Clean orphaned dependencies and cache
-sudo apt autoremove -y
-sudo apt autoclean -y
+# Clean orphaned dependencies and cache if update performed
+if [ $apt_update_performed == true ]; then
+	sudo apt autoremove -y
+	sudo apt autoclean -y
+fi
 
 
 ########################################
@@ -191,8 +190,18 @@ for key in ${!pip_packages[@]}; do
 	fi
 done
 
+
 ########################################
-# 1.D: LCD Libraries
+# 1.D: Pygame
+########################################
+
+# Modify pygame library to disable welcome messages
+sudo sed -i "s|^print('pygame %s' % ver)|# &|" /usr/lib/python2.7/dist-packages/pygame/__init__.py
+sudo sed -i "s|^print('Hello from the pygame community. https://www.pygame.org/contribute.html')|# &|" /usr/lib/python2.7/dist-packages/pygame/__init__.py
+
+
+########################################
+# 1.E: LCD Libraries
 ########################################
 
 # Move LCD library for easier python import usage
@@ -202,7 +211,7 @@ fi
 
 
 ################################################################################
-# Step 2: Edit Configuration Files
+# Step 2: Configuration Files
 ################################################################################
 
 
@@ -252,7 +261,7 @@ fi
 
 
 ################################################################################
-# Step 3: Configure Custom Services
+# Step 3: Custom Services
 ################################################################################
 
 
@@ -300,8 +309,22 @@ if [[ $(sudo systemctl is-active mybot.service) == "inactive" ]]; then
 fi
 
 
+########################################
+# 3.C: Sync Serial
+########################################
+
+if [[ $(sudo systemctl is-active syncserial.service) == "inactive" ]]; then
+	sudo cp /usr/Fusion/bin/syncSerial /usr/local/bin/syncSerial
+	sudo chmod 744 /usr/local/bin/syncSerial
+	sudo cp /usr/Fusion/config/syncserial.service /lib/systemd/system/syncserial.service
+	sudo chmod 644 /lib/systemd/system/syncserial.service
+	sudo systemctl daemon-reload
+	sudo systemctl enable syncserial.service
+fi
+
+
 ################################################################################
-# Step 4: Reboot
+# Step 4: Poweroff
 ################################################################################
 
-sudo reboot
+poweroff

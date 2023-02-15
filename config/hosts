@@ -3,12 +3,12 @@
 ff02::1		ip6-allnodes
 ff02::2		ip6-allrouters
 
-# IP Address        Hostname
+# IP Address		Hostname
 127.0.1.1		raspberrypi
 192.168.50.1		my.bot
-192.168.50.1        m.ybot
-192.168.50.1        m.ybot
-192.168.50.1        myb.ot
-192.168.50.1        my.butt
-192.168.50.1        my.fusion
-192.168.50.1        fusion.bot
+192.168.50.1		m.ybot
+192.168.50.1		m.ybot
+192.168.50.1		myb.ot
+192.168.50.1		my.butt
+192.168.50.1		my.fusion
+192.168.50.1		fusion.bot

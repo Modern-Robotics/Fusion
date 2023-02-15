@@ -1,11 +1,9 @@
 [Unit]
 Description=AP STA mode service
-After=multi-user.target
 
 [Service]
 Type=oneshot
-RemainAfterExit=yes
 ExecStart=startDualNetworkMode
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=sysinit.target
