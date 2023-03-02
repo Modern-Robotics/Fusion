@@ -250,16 +250,6 @@ if [ ! -f "/etc/default/hostapd.orig" ]; then
 fi
 
 
-########################################
-# 2.C: HOSTS
-########################################
-
-if [ ! -f "/etc/hosts.orig" ]; then
-	sudo mv /etc/hosts /etc/hosts.orig
-	sudo cp /usr/Fusion/config/hosts /etc/hosts
-fi
-
-
 ################################################################################
 # Step 3: Custom Services
 ################################################################################
@@ -277,7 +267,7 @@ if [[ $(sudo systemctl is-active apsta.service) == "inactive" ]]; then
 	sudo systemctl disable dnsmasq
 	sudo systemctl disable dhcpcd
 	sudo cp /usr/Fusion/bin/startDualNetworkMode /usr/local/bin/startDualNetworkMode
-	sudo chmod 744 /usr/local/bin/startDualNetworkMode
+	sudo chmod 755 /usr/local/bin/startDualNetworkMode
 	sudo cp /usr/Fusion/config/apsta.service /lib/systemd/system/apsta.service
 	sudo chmod 644 /lib/systemd/system/apsta.service
 	sudo systemctl daemon-reload
@@ -315,7 +305,7 @@ fi
 
 if [[ $(sudo systemctl is-active syncserial.service) == "inactive" ]]; then
 	sudo cp /usr/Fusion/bin/syncSerial /usr/local/bin/syncSerial
-	sudo chmod 744 /usr/local/bin/syncSerial
+	sudo chmod 755 /usr/local/bin/syncSerial
 	sudo cp /usr/Fusion/config/syncserial.service /lib/systemd/system/syncserial.service
 	sudo chmod 644 /lib/systemd/system/syncserial.service
 	sudo systemctl daemon-reload
