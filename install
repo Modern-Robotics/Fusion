@@ -42,9 +42,9 @@
 # Define Variables Default Values
 ########################################
 
-channel=$((1 + $RANDOM % 11))
-ssid=RecruitAP_$(cat /sys/class/net/eth0/address | sed 's|:||g' | grep -o '.\{6\}$')
-wpa_passphrase=mrirecruit
+# channel=$((1 + $RANDOM % 11))
+# ssid=RecruitAP_$(cat /sys/class/net/eth0/address | sed 's|:||g' | grep -o '.\{6\}$')
+# wpa_passphrase=mrirecruit
 branch=Recruit
 version=HEAD
 
@@ -243,9 +243,9 @@ if [ ! -f "/etc/default/hostapd.orig" ]; then
 	sudo mv /etc/default/hostapd /etc/default/hostapd.orig
 	sudo cp /usr/Fusion/config/hostapd/hostapd /etc/default/hostapd
 	sudo cp /usr/Fusion/config/hostapd/hostapd.conf /etc/hostapd/hostapd.conf
-	sudo sed -i 's|^channel=.*$|channel='"${channel}"'|g' /etc/hostapd/hostapd.conf
-	sudo sed -i 's|^ssid=.*$|ssid='"${ssid}"'|g' /etc/hostapd/hostapd.conf
-	sudo sed -i 's|^wpa_passphrase=.*$|wpa_passphrase='"${wpa_passphrase}"'|g' /etc/hostapd/hostapd.conf
+	# sudo sed -i 's|^channel=.*$|channel='"${channel}"'|g' /etc/hostapd/hostapd.conf
+	# sudo sed -i 's|^ssid=.*$|ssid='"${ssid}"'|g' /etc/hostapd/hostapd.conf
+	# sudo sed -i 's|^wpa_passphrase=.*$|wpa_passphrase='"${wpa_passphrase}"'|g' /etc/hostapd/hostapd.conf
 	sudo systemctl unmask hostapd.service
 fi
 
@@ -256,7 +256,7 @@ fi
 
 
 ########################################
-# 3.A: APSTA
+# 3.A: APSTA Service
 ########################################
 
 if [[ $(sudo systemctl is-active apsta.service) == "inactive" ]]; then
@@ -276,7 +276,7 @@ fi
 
 
 ########################################
-# 3.B: Splashscreen
+# 3.B: Splashscreen Service
 ########################################
 
 if [[ $(sudo systemctl is-active splashscreen.service) == "inactive" ]]; then
@@ -288,7 +288,7 @@ fi
 
 
 ########################################
-# 3.C: MyBot
+# 3.C: MyBot Service
 ########################################
 
 if [[ $(sudo systemctl is-active mybot.service) == "inactive" ]]; then
@@ -300,7 +300,7 @@ fi
 
 
 ########################################
-# 3.C: Sync Serial
+# 3.C: Sync Serial Service
 ########################################
 
 if [[ $(sudo systemctl is-active syncserial.service) == "inactive" ]]; then

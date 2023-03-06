@@ -1,5 +1,31 @@
 #!/bin/bash
 
+# Sets the default access point settings on a fresh MyBot system
+function setDefaultAccessPointSettings {
+    
+    # Set default channel
+    if [[ $(awk -F '=' '/^channel=/ { print $2 }' ~/Projects/Fusion-dev/config/hostapd/hostapd.conf) == '${channel}' ]]; then
+        echo 'Channel still set to default'
+        channel=$((1 + $RANDOM % 11))
+        sudo sed -i 's|^channel=.*$|channel='"${channel}"'|g' /etc/hostapd/hostapd.conf
+    fi
+
+    # Set default ssid
+    if [[ $(awk -F '=' '/^ssid=/ { print $2 }' ~/Projects/Fusion-dev/config/hostapd/hostapd.conf) == '${ssid}' ]]; then
+        echo 'SSID still set to default'
+        ssid=RecruitAP_$(cat /sys/class/net/eth0/address | sed 's|:||g' | grep -o '.\{6\}$')
+        sudo sed -i 's|^ssid=.*$|ssid='"${ssid}"'|g' /etc/hostapd/hostapd.conf
+    fi
+
+    # Set default passphrase
+    if [[ $(awk -F '=' '/^wpa_passphrase=/ { print $2 }' ~/Projects/Fusion-dev/config/hostapd/hostapd.conf) == '${wpa_passphrase}' ]]; then
+        echo 'WPA Passphrase still set to default'
+        wpa_passphrase=mrirecruit
+        sudo sed -i 's|^wpa_passphrase=.*$|wpa_passphrase='"${wpa_passphrase}"'|g' /etc/hostapd/hostapd.conf
+    fi
+
+}
+
 # Redundant stops to make sure services are not running
 echo "Stopping network services (if running)..."
 systemctl stop hostapd.service
@@ -27,6 +53,9 @@ iptables -t nat -I PREROUTING --src 0/0 --dst 192.168.50.1 -p tcp --dport 80 -j 
 # Switched to ip tool since ifconfig is deprecated
 # ifconfig uap0 up
 ip link set uap0 up
+
+# Setting robot specific hostapd settings
+setDefaultAccessPointSettings
 
 # Start hostapd. 10-second sleep avoids some race condition, apparently. It may not need to be that long. (?) 
 echo "Starting hostapd service..."
