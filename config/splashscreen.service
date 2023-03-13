@@ -5,8 +5,8 @@ DefaultDependencies=no
 
 [Service]
 Type=oneshot
-WorkingDirectory=/usr/Fusion/config
-ExecStart=python /usr/Fusion/config/startSplashScreen.py
+WorkingDirectory=/usr/Fusion/config/splashscreen
+ExecStart=python /usr/Fusion/config/splashscreen/startSplashScreen.py
 
 [Install]
 WantedBy=sysinit.target
