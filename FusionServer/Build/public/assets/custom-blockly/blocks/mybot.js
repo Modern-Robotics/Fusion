@@ -32,6 +32,7 @@ let rotateBlockColor = 285
 
 Blockly.Blocks['mybot_start'] = {
     init: function() {
+        Blockly.BlockSvg.START_HAT = true;
         this.appendDummyInput()
             .appendField(new Blockly.FieldImage("assets/img/fusion/FusionStart.png", imageW * 3, imageH * 1.5, { alt: "*", flipRtl: "FALSE" }));
         this.setNextStatement(true, null);
@@ -65,7 +66,7 @@ Blockly.Blocks['mybot_basic_ledb'] = {
     }
 };
   
-  Blockly.Blocks['mybot_basic_ledy'] = {
+Blockly.Blocks['mybot_basic_ledy'] = {
     init: function() {
         this.appendDummyInput()
             .appendField(new Blockly.FieldImage("assets/img/fusion/lightY.png", imageW, imageH, { alt: "*", flipRtl: "FALSE" }));
@@ -75,9 +76,9 @@ Blockly.Blocks['mybot_basic_ledb'] = {
         this.setTooltip("Turn on Yellow LED. Turn off Blue LED.");
         this.setHelpUrl(documentationPath + "/Basic_Fusion-Control/#yellow-led-on");
     }
-  };
+};
   
-  Blockly.Blocks['mybot_basic_ledby'] = {
+Blockly.Blocks['mybot_basic_ledby'] = {
     init: function() {
         this.appendDummyInput()
             .appendField(new Blockly.FieldImage("assets/img/fusion/lightBY.png", imageW, imageH, { alt: "*", flipRtl: "FALSE" }));
@@ -87,9 +88,9 @@ Blockly.Blocks['mybot_basic_ledb'] = {
         this.setTooltip("Turn on Blue and Yellow LED.");
         this.setHelpUrl(documentationPath + "/Basic_Fusion-Control/#both-leds-on");
     }
-  };
+};
   
-  Blockly.Blocks['mybot_basic_ledoff'] = {
+Blockly.Blocks['mybot_basic_ledoff'] = {
     init: function() {
         this.appendDummyInput()
             .appendField(new Blockly.FieldImage("assets/img/fusion/light.png", imageW, imageH, { alt: "*", flipRtl: "FALSE" }));
@@ -99,9 +100,9 @@ Blockly.Blocks['mybot_basic_ledb'] = {
         this.setTooltip("Turn off Blue and Yellow LED.");
         this.setHelpUrl(documentationPath + "/Basic_Fusion-Control/#both-leds-off");
     }
-  };
+};
   
-  Blockly.Blocks['mybot_basic_wait'] = {
+Blockly.Blocks['mybot_basic_wait'] = {
     init: function() {
         this.appendValueInput("TIME")
             .setCheck("Number")
@@ -113,9 +114,9 @@ Blockly.Blocks['mybot_basic_ledb'] = {
         this.setTooltip("Wait 1 second.");
         this.setHelpUrl(documentationPath + "/Basic_Fusion-Control/#wait");
     }
-  };
-  
-  Blockly.Blocks['mybot_display_straight_ahead'] = {
+};
+
+Blockly.Blocks['mybot_display_straight_ahead'] = {
     init: function() {
         this.appendDummyInput()
             .appendField(new Blockly.FieldImage("assets/img/fusion/emojis/StraightAhead.png", imageW, imageH, { alt: "*", flipRtl: "FALSE" }));
@@ -124,11 +125,11 @@ Blockly.Blocks['mybot_basic_ledb'] = {
         this.setNextStatement(true, null);
         this.setColour(displayBlockColor);
         this.setTooltip("Display eyes straight emoji.");
-        this.setHelpUrl(documentationPath + "");
-}
-  };
+        this.setHelpUrl(documentationPath + "/Basic_Display-Robot/#display-straight-ahead-emoji");
+    }
+};
   
-  Blockly.Blocks['mybot_display_snooze'] = {
+Blockly.Blocks['mybot_display_snooze'] = {
     init: function() {
         this.appendDummyInput()
             .appendField(new Blockly.FieldImage("assets/img/fusion/emojis/Snooze.png", imageW, imageH, { alt: "*", flipRtl: "FALSE" }));
@@ -137,11 +138,11 @@ Blockly.Blocks['mybot_basic_ledb'] = {
         this.setNextStatement(true, null);
         this.setColour(displayBlockColor);
         this.setTooltip("Display snooze emoji.");
-        this.setHelpUrl(documentationPath + "");
+        this.setHelpUrl(documentationPath + "/Basic_Display-Robot/#display-snooze-emoji");
     }
-  };
+};
   
-  Blockly.Blocks['mybot_display_eyes_closed'] = {
+Blockly.Blocks['mybot_display_eyes_closed'] = {
     init: function() {
         this.appendDummyInput()
             .appendField(new Blockly.FieldImage("assets/img/fusion/emojis/EyesClosed.png", imageW, imageH, { alt: "*", flipRtl: "FALSE" }));
@@ -150,11 +151,11 @@ Blockly.Blocks['mybot_basic_ledb'] = {
         this.setNextStatement(true, null);
         this.setColour(displayBlockColor);
         this.setTooltip("Display eyes closed emoji.");
-        this.setHelpUrl(documentationPath + "");
+        this.setHelpUrl(documentationPath + "/Basic_Display-Robot/#display-eyes-closed-emoji");
     }
-  };
+};
   
-  Blockly.Blocks['mybot_display_eyes_left'] = {
+Blockly.Blocks['mybot_display_eyes_left'] = {
     init: function() {
         this.appendDummyInput()
             .appendField(new Blockly.FieldImage("assets/img/fusion/emojis/EyesLeft.png", imageW, imageH, { alt: "*", flipRtl: "FALSE" }));
@@ -163,11 +164,11 @@ Blockly.Blocks['mybot_basic_ledb'] = {
         this.setNextStatement(true, null);
         this.setColour(displayBlockColor);
         this.setTooltip("Display eyes left emoji.");
-        this.setHelpUrl(documentationPath + "");
+        this.setHelpUrl(documentationPath + "/Basic_Display-Robot/#display-eyes-left-emoji");
     }
-  };
+};
   
-  Blockly.Blocks['mybot_display_eyes_right'] = {
+Blockly.Blocks['mybot_display_eyes_right'] = {
     init: function() {
         this.appendDummyInput()
             .appendField(new Blockly.FieldImage("assets/img/fusion/emojis/EyesRight.png", imageW, imageH, { alt: "*", flipRtl: "FALSE" }));
@@ -176,11 +177,11 @@ Blockly.Blocks['mybot_basic_ledb'] = {
         this.setNextStatement(true, null);
         this.setColour(displayBlockColor);
         this.setTooltip("Display eyes right emoji.");
-        this.setHelpUrl(documentationPath + "");
+        this.setHelpUrl(documentationPath + "/Basic_Display-Robot/#display-eyes-right-emoji");
     }
-  };
+};
   
-  Blockly.Blocks['mybot_display_eyes_crashed'] = {
+Blockly.Blocks['mybot_display_eyes_crashed'] = {
     init: function() {
         this.appendDummyInput()
             .appendField(new Blockly.FieldImage("assets/img/fusion/emojis/Crash.png", imageW, imageH, { alt: "*", flipRtl: "FALSE" }));
@@ -189,11 +190,24 @@ Blockly.Blocks['mybot_basic_ledb'] = {
         this.setNextStatement(true, null);
         this.setColour(displayBlockColor);
         this.setTooltip("Display crash emoji.");
-        this.setHelpUrl(documentationPath + "");
+        this.setHelpUrl(documentationPath + "/Basic_Display-Robot/#display-crashed-emoji");
     }
-  };
+};
+
+Blockly.Blocks['mybot_display_clear'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldImage("assets/img/fusion/screen-icon.png", imageW, imageH, { alt: "*", flipRtl: "FALSE" }));
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(displayBlockColor);
+        this.setTooltip("Clears the display.");
+        this.setHelpUrl(documentationPath + "/Basic_Display-Robot/#clear-display");
+    }
+};
   
-  Blockly.Blocks['mybot_basic_forward'] = {
+Blockly.Blocks['mybot_basic_forward'] = {
     init: function() {
         this.appendValueInput("TIME")
             .setCheck("Number")
@@ -205,9 +219,9 @@ Blockly.Blocks['mybot_basic_ledb'] = {
         this.setTooltip("Drive forward for 1 second then stop.");
         this.setHelpUrl(documentationPath + "/Basic_Move-Robot/#forward");
     }
-  };
+};
   
-  Blockly.Blocks['mybot_basic_backward'] = {
+Blockly.Blocks['mybot_basic_backward'] = {
     init: function() {
         this.appendValueInput("TIME")
             .setCheck("Number")
@@ -219,9 +233,9 @@ Blockly.Blocks['mybot_basic_ledb'] = {
         this.setTooltip("Drive reverse for 1 second then stop.");
         this.setHelpUrl(documentationPath + "/Basic_Move-Robot/#backwards");
     }
-  };
+};
   
-  Blockly.Blocks['mybot_basic_fast'] = {
+Blockly.Blocks['mybot_basic_fast'] = {
     init: function() {
         this.appendDummyInput()
             .appendField(new Blockly.FieldImage("assets/img/fusion/hare.png", imageW, imageH, { alt: "*", flipRtl: "FALSE" }));
@@ -231,9 +245,9 @@ Blockly.Blocks['mybot_basic_ledb'] = {
         this.setTooltip("Drive Fast Speed.");
         this.setHelpUrl(documentationPath + "/Basic_Move-Robot/#fast");
     }
-  };
+};
   
-  Blockly.Blocks['mybot_basic_medium'] = {
+Blockly.Blocks['mybot_basic_medium'] = {
     init: function() {
         this.appendDummyInput()
             .appendField(new Blockly.FieldImage("assets/img/fusion/turtle.png", imageW, imageH, { alt: "*", flipRtl: "FALSE" }));
@@ -243,9 +257,9 @@ Blockly.Blocks['mybot_basic_ledb'] = {
         this.setTooltip("Drive Medium Speed.");
         this.setHelpUrl(documentationPath + "/Basic_Move-Robot/#medium");
     }
-  };
+};
   
-  Blockly.Blocks['mybot_basic_slow'] = {
+Blockly.Blocks['mybot_basic_slow'] = {
     init: function() {
         this.appendDummyInput()
             .appendField(new Blockly.FieldImage("assets/img/fusion/snail.png", imageW, imageH, { alt: "*", flipRtl: "FALSE" }));
@@ -255,9 +269,9 @@ Blockly.Blocks['mybot_basic_ledb'] = {
         this.setTooltip("Drive Slow Speed.");
         this.setHelpUrl(documentationPath + "/Basic_Move-Robot/#slow");
     }
-  };
+};
   
-  Blockly.Blocks['mybot_basic_right45'] = {
+Blockly.Blocks['mybot_basic_right45'] = {
     init: function() {
         this.appendDummyInput()
             .appendField(new Blockly.FieldImage("assets/img/fusion/TSR.png", imageW, imageH, { alt: "*", flipRtl: "FALSE" }));
@@ -267,9 +281,9 @@ Blockly.Blocks['mybot_basic_ledb'] = {
         this.setTooltip("Turn right 45 degrees.");
         this.setHelpUrl(documentationPath + "/Basic_Rotate-Robot/#rotate-right-45");
     }
-  };
+};
   
-  Blockly.Blocks['mybot_basic_right90'] = {
+Blockly.Blocks['mybot_basic_right90'] = {
     init: function() {
         this.appendDummyInput()
             .appendField(new Blockly.FieldImage("assets/img/fusion/TR.png", imageW, imageH, { alt: "*", flipRtl: "FALSE" }));
@@ -279,9 +293,9 @@ Blockly.Blocks['mybot_basic_ledb'] = {
         this.setTooltip("Turn right 90 degrees.");
         this.setHelpUrl(documentationPath + "/Basic_Rotate-Robot/#rotate-right-90");
     }
-  };
+};
   
-  Blockly.Blocks['mybot_basic_right180'] = {
+Blockly.Blocks['mybot_basic_right180'] = {
     init: function() {
         this.appendDummyInput()
             .appendField(new Blockly.FieldImage("assets/img/fusion/TUR.png", imageW, imageH, { alt: "*", flipRtl: "FALSE" }));
@@ -291,9 +305,9 @@ Blockly.Blocks['mybot_basic_ledb'] = {
         this.setTooltip("Turn right 180 degrees.");
         this.setHelpUrl(documentationPath + "/Basic_Rotate-Robot/#rotate-right-180");
     }
-  };
+};
   
-  Blockly.Blocks['mybot_basic_left45'] = {
+Blockly.Blocks['mybot_basic_left45'] = {
     init: function() {
         this.appendDummyInput()
             .appendField(new Blockly.FieldImage("assets/img/fusion/TSL.png", imageW, imageH, { alt: "*", flipRtl: "FALSE" }));
@@ -303,9 +317,9 @@ Blockly.Blocks['mybot_basic_ledb'] = {
         this.setTooltip("Turn left 45 degrees.");
         this.setHelpUrl(documentationPath + "/Basic_Rotate-Robot/#rotate-left-45");
     }
-  };
+};
   
-  Blockly.Blocks['mybot_basic_left90'] = {
+Blockly.Blocks['mybot_basic_left90'] = {
     init: function() {
         this.appendDummyInput()
             .appendField(new Blockly.FieldImage("assets/img/fusion/TL.png", imageW, imageH, { alt: "*", flipRtl: "FALSE" }));
@@ -315,9 +329,9 @@ Blockly.Blocks['mybot_basic_ledb'] = {
         this.setTooltip("Turn left 90 degrees.");
         this.setHelpUrl(documentationPath + "/Basic_Rotate-Robot/#rotate-left-90");
     }
-  };
+};
   
-  Blockly.Blocks['mybot_basic_left180'] = {
+Blockly.Blocks['mybot_basic_left180'] = {
     init: function() {
         this.appendDummyInput()
             .appendField(new Blockly.FieldImage("assets/img/fusion/TUL.png", imageW, imageH, { alt: "*", flipRtl: "FALSE" }));
@@ -327,7 +341,7 @@ Blockly.Blocks['mybot_basic_ledb'] = {
         this.setTooltip("Turn left 180 degrees.");
         this.setHelpUrl(documentationPath + "/Basic_Rotate-Robot/#rotate-left-180");
     }
-  };
+};
 
 
 ///////////////////////////////////
@@ -2388,7 +2402,7 @@ Blockly.Blocks['fusion_display_color'] = {
         this.setNextStatement(true, null);
 		this.setColour(240);
         this.setTooltip('Select a color to illuminate.');
-        //this.setHelpUrl(origin + doc_path +'/Blk_Color_Beacon/#set-color');
+        this.setHelpUrl(origin + doc_path + '/Int_Display-Robot/#display-color');
     }
 };
 
@@ -2408,7 +2422,20 @@ Blockly.Blocks['fusion_display_emoji'] = {
         this.setNextStatement(true, null);
         this.setColour(240);
         this.setTooltip('Displays selected emoji on lcd.');
+        this.setHelpUrl(origin + doc_path + '/Int_Display-Robot/#display-emoji');
     }
+};
+
+Blockly.Blocks['fusion_display_clear'] = {
+    init: function() {
+		this.appendDummyInput()
+        	.appendField("Clear display");
+    	this.setPreviousStatement(true, null);
+	    this.setNextStatement(true, null);
+	    this.setColour(240);
+		this.setTooltip("Clears LCD display");
+        this.setHelpUrl(origin + doc_path + '/Int_Display-Robot/#clear-display');
+ 	}
 };
 
 Blockly.Blocks['fusion_display_text'] = {
@@ -2420,7 +2447,7 @@ Blockly.Blocks['fusion_display_text'] = {
 	    this.setNextStatement(true, null);
 	    this.setColour(240);
 		this.setTooltip("Display text in lcd.");
-		this.setHelpUrl("");
+		this.setHelpUrl(origin + doc_path + '/Int_Display-Robot/#display-text');
  	}
 };
 

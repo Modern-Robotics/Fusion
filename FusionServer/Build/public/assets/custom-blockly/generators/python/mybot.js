@@ -92,26 +92,22 @@ Blockly.Python['mybot_drive_with_gyro'] = function (block) {
 };
   
 Blockly.Python['mybot_basic_ledb'] = function(block) {
-    // TODO: Assemble Python into code variable.
-    var code = '...\n';
+    var code = 'f.setLED(f.YELLOW, 0)\nf.setLED(f.BLUE, 1)\n';
     return code;
 };
   
 Blockly.Python['mybot_basic_ledy'] = function(block) {
-    // TODO: Assemble Python into code variable.
-    var code = '...\n';
+    var code = 'f.setLED(f.YELLOW, 1)\nf.setLED(f.BLUE, 0)\n';
     return code;
 };
   
 Blockly.Python['mybot_basic_ledby'] = function(block) {
-    // TODO: Assemble Python into code variable.
-    var code = '...\n';
+    var code = 'f.setLED(f.YELLOW, 1)\nf.setLED(f.BLUE, 1)\n';
     return code;
 };
   
 Blockly.Python['mybot_basic_ledoff'] = function(block) {
-    // TODO: Assemble Python into code variable.
-    var code = '...\n';
+    var code = 'f.setLED(f.YELLOW, 0)\nf.setLED(f.BLUE, 0)\n';
     return code;
 };
   
@@ -280,6 +276,30 @@ Blockly.Python['mybot_display_eyes_crashed'] = function(block) {
 	code += 'image = Image.open(imageFullPath)\n';
 	code += 'image = image.rotate(180)\n';
 	code += 'disp.ShowImage(image)\n';
+	return code;
+
+};
+
+Blockly.Python['mybot_display_clear'] = function(block) {
+
+    let displayLibraries = '';
+	displayLibraries += 'from lcddisplay import LCD_2inch\n';
+	displayLibraries += 'from PIL import Image, ImageDraw, ImageFont\n';
+	Blockly.Python.definitions_['fusion_display_libraries'] = displayLibraries;
+	
+	let display = '';
+	display += 'disp = LCD_2inch.LCD_2inch()\n';
+	display += 'disp.Init()\n';
+	display += 'disp.clear()\n';
+	Blockly.Python.definitions_['fusion_display'] = display;
+	
+	let color = 'WHITE';	
+	
+	let code = '';
+	code += `image1 = Image.new("RGB", (disp.height, disp.width ), "${color}")\n`
+	code += 'draw = ImageDraw.Draw(image1)\n'
+	code += 'disp.ShowImage(image1)\n'
+	
 	return code;
 
 };
@@ -1394,7 +1414,7 @@ Blockly.Python['fusion_display_color'] = function (block) {
 	code += 'draw = ImageDraw.Draw(image1)\n'
 	code += 'disp.ShowImage(image1)\n'
 	
-	return code;	
+	return code;
 	
 };
 
@@ -1424,6 +1444,30 @@ Blockly.Python['fusion_display_emoji'] = function (block) {
 	code += 'image = Image.open(imageFullPath)\n';
 	code += 'image = image.rotate(180)\n';
 	code += 'disp.ShowImage(image)\n';
+	return code;
+
+};
+
+Blockly.Python['fusion_display_clear'] = function (block) {
+
+	let displayLibraries = '';
+	displayLibraries += 'from lcddisplay import LCD_2inch\n';
+	displayLibraries += 'from PIL import Image, ImageDraw, ImageFont\n';
+	Blockly.Python.definitions_['fusion_display_libraries'] = displayLibraries;
+	
+	let display = '';
+	display += 'disp = LCD_2inch.LCD_2inch()\n';
+	display += 'disp.Init()\n';
+	display += 'disp.clear()\n';
+	Blockly.Python.definitions_['fusion_display'] = display;
+	
+	let color = 'WHITE';	
+	
+	let code = '';
+	code += `image1 = Image.new("RGB", (disp.height, disp.width ), "${color}")\n`
+	code += 'draw = ImageDraw.Draw(image1)\n'
+	code += 'disp.ShowImage(image1)\n'
+	
 	return code;
 
 };

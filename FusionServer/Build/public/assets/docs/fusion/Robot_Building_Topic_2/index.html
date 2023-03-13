@@ -12,11 +12,11 @@
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
 
         <script src="../js/jquery-1.10.2.min.js" defer></script>
         <script src="../js/bootstrap.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
 
@@ -63,7 +63,7 @@
     </div>
 
     
-    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-light">
         <ul class="nav flex-column">
             
             <li class="nav-item" data-level="1"><a href="#robot-building-instructions" class="nav-link">Robot Building Instructions</a>
@@ -92,15 +92,15 @@
 <p>The Fusion Controller is complimented with a versatile and robust metal building system. The building system features 4mm holes placed on a standard 8mm by 8mm grid to simplify adding mechanical parts and sensors. In addition to a variety of sensors, we have a number of 3D printable parts designs which can be downloaded and printed to expand the capabilities and learning opportunities of your robot.</p>
 <p>Click on the tiles below to view step-by-step assembly instructions for your MyBot Kit:</p>
 <h2 id="assembling-the-basic-kits"><strong>Assembling the Basic Kits</strong></h2>
-<p><a href="../ext_docs/BXL_MyBot_BaseKit_v1p3a.pdf"><img src="../img/Building_Instructions/Tile_BaseKitBuild.png" width="300"></a>
-<a href="../ext_docs/BXL_MyBot_PlanExpKit_v1p3a.pdf"><img src="../img/Building_Instructions/Tile_PlanExpKitBuild.png" width="300"></a></p>
+<p><a href="./ext_docs/BXL_MyBot_BaseKit_v1p3a.pdf"><img src="../img/Building_Instructions/Tile_BaseKitBuild.png" width="300"></a>
+<a href="./ext_docs/BXL_MyBot_PlanExpKit_v1p3a.pdf"><img src="../img/Building_Instructions/Tile_PlanExpKitBuild.png" width="300"></a></p>
 <h2 id="modifications-for-adding-new-sensors"><strong>Modifications for Adding New Sensors</strong></h2>
-<p><a href="../ext_docs/BXL_MyBot_BaseKit_Mod_PEPack_v1p2a.pdf"><img src="../img/Building_Instructions/Tile_PlanExpAddon.png" width="300"></a></p>
+<p><a href="./ext_docs/BXL_MyBot_BaseKit_Mod_PEPack_v1p2a.pdf"><img src="../img/Building_Instructions/Tile_PlanExpAddon.png" width="300"></a></p>
 <hr />
 <h2 id="legacy-build-instructions"><em>Legacy Build Instructions</em></h2>
 <p>If you have an Original MyBot Base Kit and need to review the instructions or update your unit to accommodate the Planetary Exploration Sensor Pack, please use the links below. Original Base Kit builds are easily identified by looking at the motor mounting brackets; if they touch the 3 hole by 5 hole plates, your kit was built using the original instructions.  Complete step-by-step modification instructions are provided to add the Planetary Exploration Sensor Pack to your original base kit.  </p>
-<h4 id="click-here-for-the-original-mybotfusion-base-kit-build-instructions"><a href="../ext_docs/MRI_MyBot_BaseKit_Legacy_v1p0a.pdf">Click here for the original MyBot/Fusion Base Kit Build Instructions:  <img src="../img/Building_Instructions/Tile_LegacyBuild.png" width="100"></a></h4>
-<h4 id="click-here-if-youre-adding-a-planetary-exploration-sensor-pack-to-an-original-basekit"><a href="../ext_docs/MRI_MyBot_BaseKit_Mod_PEPack_v1p2.pdf">Click here if you're adding a Planetary Exploration Sensor Pack to an original basekit:  <img src="../img/Building_Instructions/Tile_LegacyUpdate.png" width="100"></a></h4></div>
+<h4 id="click-here-for-the-original-mybotfusion-base-kit-build-instructions"><a href="./ext_docs/MRI_MyBot_BaseKit_Legacy_v1p0a.pdf">Click here for the original MyBot/Fusion Base Kit Build Instructions:  <img src="../img/Building_Instructions/Tile_LegacyBuild.png" width="100"></a></h4>
+<h4 id="click-here-if-youre-adding-a-planetary-exploration-sensor-pack-to-an-original-basekit"><a href="./ext_docs/MRI_MyBot_BaseKit_Mod_PEPack_v1p2.pdf">Click here if you're adding a Planetary Exploration Sensor Pack to an original basekit:  <img src="../img/Building_Instructions/Tile_LegacyUpdate.png" width="100"></a></h4></div>
             </div>
         </div>
 
@@ -123,13 +123,16 @@
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
             </div>
             <div class="modal-body">
-                <p>From here you can search these documents. Enter your search terms below.</p>
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
                 <form>
                     <div class="form-group">
                         <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
                     </div>
                 </form>
-                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+                <div id="mkdocs-search-results"></div>
             </div>
             <div class="modal-footer">
             </div>
