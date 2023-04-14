@@ -2,7 +2,7 @@ filesystem/
 .vscode/
 config/.serverConfig
 node_modules/
-Build/
+
 .crash/
 spec/
 
