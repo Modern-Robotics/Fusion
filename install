@@ -181,7 +181,7 @@ declare -A custom_pip_packages
 declare -A custom_pip_packages_paths
 
 # Loop through all files in the lib directory searching for custom packages
-for file in ~/Projects/Fusion/lib/*; do
+for file in /usr/Fusion/lib/*; do
 
   # If the file ends with .tar.gz, add it to custom packages
   if [[ $file == *.tar.gz ]]; then
