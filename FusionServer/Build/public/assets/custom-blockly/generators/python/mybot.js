@@ -11,6 +11,7 @@ goog.require('Blockly.Python');
 var fusionLibraryReference = 'import Fusion\nf = Fusion.driver()';
 var fusionImport = fusionLibraryReference;
 var pythonTimeLibraryReference = 'import time';
+let displayLibraryReference = 'import Display';
 var helpURL = 'http://modernroboticsinc.com/fusion';
 
 var gyro_drive = 0;
@@ -120,186 +121,96 @@ Blockly.Python['mybot_basic_wait'] = function(block) {
   
 Blockly.Python['mybot_display_straight_ahead'] = function(block) {
 
-    let osLibraries = 'import os';
-	Blockly.Python.definitions_['fusion_os_libraries'] = osLibraries;
-
-	let displayLibraries = '';
-	displayLibraries += 'from lcddisplay import LCD_2inch\n';
-	displayLibraries += 'from PIL import Image, ImageDraw, ImageFont\n';
-	Blockly.Python.definitions_['fusion_display_libraries'] = displayLibraries;
-	
-	let display = '';
-	display += 'disp = LCD_2inch.LCD_2inch()\n';
-	display += 'disp.Init()\n';
-	display += 'disp.clear()\n';
-	Blockly.Python.definitions_['fusion_display'] = display;
-
-	let code = '';
-	code += 'scriptAbsolutePath = os.getcwd()\n';
-	code += 'imageRelativePath = "./../../../../public/assets/img/fusion/emojis/StraightAhead.jpg"\n';
-	code += 'imageFullPath = os.path.join(scriptAbsolutePath, imageRelativePath)\n';
-	code += 'image = Image.open(imageFullPath)\n';
-	code += 'image = image.rotate(180)\n';
-	code += 'disp.ShowImage(image)\n';
+    Blockly.Python.definitions_['mybot_display_libraries'] = displayLibraryReference;
+	let code = `Display.showEmoji("eyes_straight")\n`;
 	return code;
 
 };
   
 Blockly.Python['mybot_display_snooze'] = function(block) {
 
-    let osLibraries = 'import os';
-	Blockly.Python.definitions_['fusion_os_libraries'] = osLibraries;
-
-	let displayLibraries = '';
-	displayLibraries += 'from lcddisplay import LCD_2inch\n';
-	displayLibraries += 'from PIL import Image, ImageDraw, ImageFont\n';
-	Blockly.Python.definitions_['fusion_display_libraries'] = displayLibraries;
-	
-	let display = '';
-	display += 'disp = LCD_2inch.LCD_2inch()\n';
-	display += 'disp.Init()\n';
-	display += 'disp.clear()\n';
-	Blockly.Python.definitions_['fusion_display'] = display;
-
-	let code = '';
-	code += 'scriptAbsolutePath = os.getcwd()\n';
-	code += 'imageRelativePath = "./../../../../public/assets/img/fusion/emojis/Snooze.jpg"\n';
-	code += 'imageFullPath = os.path.join(scriptAbsolutePath, imageRelativePath)\n';
-	code += 'image = Image.open(imageFullPath)\n';
-	code += 'image = image.rotate(180)\n';
-	code += 'disp.ShowImage(image)\n';
+    Blockly.Python.definitions_['mybot_display_libraries'] = displayLibraryReference;
+	let code = `Display.showEmoji("snooze")\n`;
 	return code;
 
 };
   
 Blockly.Python['mybot_display_eyes_closed'] = function(block) {
 
-    let osLibraries = 'import os';
-	Blockly.Python.definitions_['fusion_os_libraries'] = osLibraries;
-
-	let displayLibraries = '';
-	displayLibraries += 'from lcddisplay import LCD_2inch\n';
-	displayLibraries += 'from PIL import Image, ImageDraw, ImageFont\n';
-	Blockly.Python.definitions_['fusion_display_libraries'] = displayLibraries;
-	
-	let display = '';
-	display += 'disp = LCD_2inch.LCD_2inch()\n';
-	display += 'disp.Init()\n';
-	display += 'disp.clear()\n';
-	Blockly.Python.definitions_['fusion_display'] = display;
-
-	let code = '';
-	code += 'scriptAbsolutePath = os.getcwd()\n';
-	code += 'imageRelativePath = "./../../../../public/assets/img/fusion/emojis/EyesClosed.jpg"\n';
-	code += 'imageFullPath = os.path.join(scriptAbsolutePath, imageRelativePath)\n';
-	code += 'image = Image.open(imageFullPath)\n';
-	code += 'image = image.rotate(180)\n';
-	code += 'disp.ShowImage(image)\n';
+    Blockly.Python.definitions_['mybot_display_libraries'] = displayLibraryReference;
+	let code = `Display.showEmoji("eyes_closed")\n`;
 	return code;
 
 };
   
 Blockly.Python['mybot_display_eyes_left'] = function(block) {
 
-    let osLibraries = 'import os';
-	Blockly.Python.definitions_['fusion_os_libraries'] = osLibraries;
-
-	let displayLibraries = '';
-	displayLibraries += 'from lcddisplay import LCD_2inch\n';
-	displayLibraries += 'from PIL import Image, ImageDraw, ImageFont\n';
-	Blockly.Python.definitions_['fusion_display_libraries'] = displayLibraries;
-	
-	let display = '';
-	display += 'disp = LCD_2inch.LCD_2inch()\n';
-	display += 'disp.Init()\n';
-	display += 'disp.clear()\n';
-	Blockly.Python.definitions_['fusion_display'] = display;
-
-	let code = '';
-	code += 'scriptAbsolutePath = os.getcwd()\n';
-	code += 'imageRelativePath = "./../../../../public/assets/img/fusion/emojis/EyesLeft.jpg"\n';
-	code += 'imageFullPath = os.path.join(scriptAbsolutePath, imageRelativePath)\n';
-	code += 'image = Image.open(imageFullPath)\n';
-	code += 'image = image.rotate(180)\n';
-	code += 'disp.ShowImage(image)\n';
+    Blockly.Python.definitions_['mybot_display_libraries'] = displayLibraryReference;
+	let code = `Display.showEmoji("eyes_left")\n`;
 	return code;
 
 };
   
 Blockly.Python['mybot_display_eyes_right'] = function(block) {
 
-    let osLibraries = 'import os';
-	Blockly.Python.definitions_['fusion_os_libraries'] = osLibraries;
-
-	let displayLibraries = '';
-	displayLibraries += 'from lcddisplay import LCD_2inch\n';
-	displayLibraries += 'from PIL import Image, ImageDraw, ImageFont\n';
-	Blockly.Python.definitions_['fusion_display_libraries'] = displayLibraries;
-	
-	let display = '';
-	display += 'disp = LCD_2inch.LCD_2inch()\n';
-	display += 'disp.Init()\n';
-	display += 'disp.clear()\n';
-	Blockly.Python.definitions_['fusion_display'] = display;
-
-	let code = '';
-	code += 'scriptAbsolutePath = os.getcwd()\n';
-	code += 'imageRelativePath = "./../../../../public/assets/img/fusion/emojis/EyesRight.jpg"\n';
-	code += 'imageFullPath = os.path.join(scriptAbsolutePath, imageRelativePath)\n';
-	code += 'image = Image.open(imageFullPath)\n';
-	code += 'image = image.rotate(180)\n';
-	code += 'disp.ShowImage(image)\n';
+    Blockly.Python.definitions_['mybot_display_libraries'] = displayLibraryReference;
+	let code = `Display.showEmoji("eyes_right")\n`;
 	return code;
 
 };
 
 Blockly.Python['mybot_display_eyes_crashed'] = function(block) {
 
-    let osLibraries = 'import os';
-	Blockly.Python.definitions_['fusion_os_libraries'] = osLibraries;
-
-	let displayLibraries = '';
-	displayLibraries += 'from lcddisplay import LCD_2inch\n';
-	displayLibraries += 'from PIL import Image, ImageDraw, ImageFont\n';
-	Blockly.Python.definitions_['fusion_display_libraries'] = displayLibraries;
-	
-	let display = '';
-	display += 'disp = LCD_2inch.LCD_2inch()\n';
-	display += 'disp.Init()\n';
-	display += 'disp.clear()\n';
-	Blockly.Python.definitions_['fusion_display'] = display;
-
-	let code = '';
-	code += 'scriptAbsolutePath = os.getcwd()\n';
-	code += 'imageRelativePath = "./../../../../public/assets/img/fusion/emojis/Crash.jpg"\n';
-	code += 'imageFullPath = os.path.join(scriptAbsolutePath, imageRelativePath)\n';
-	code += 'image = Image.open(imageFullPath)\n';
-	code += 'image = image.rotate(180)\n';
-	code += 'disp.ShowImage(image)\n';
+    Blockly.Python.definitions_['mybot_display_libraries'] = displayLibraryReference;
+	let code = `Display.showEmoji("crash")\n`;
 	return code;
 
 };
 
 Blockly.Python['mybot_display_clear'] = function(block) {
 
-    let displayLibraries = '';
-	displayLibraries += 'from lcddisplay import LCD_2inch\n';
-	displayLibraries += 'from PIL import Image, ImageDraw, ImageFont\n';
-	Blockly.Python.definitions_['fusion_display_libraries'] = displayLibraries;
-	
-	let display = '';
-	display += 'disp = LCD_2inch.LCD_2inch()\n';
-	display += 'disp.Init()\n';
-	display += 'disp.clear()\n';
-	Blockly.Python.definitions_['fusion_display'] = display;
-	
-	let color = 'WHITE';	
-	
-	let code = '';
-	code += `image1 = Image.new("RGB", (disp.height, disp.width ), "${color}")\n`
-	code += 'draw = ImageDraw.Draw(image1)\n'
-	code += 'disp.ShowImage(image1)\n'
-	
+    Blockly.Python.definitions_['mybot_display_libraries'] = displayLibraryReference;
+	let code = `Display.showColor("white")\n`;
+	return code;
+
+};
+
+Blockly.Python['mybot_display_face_straight'] = function (block) {
+
+	Blockly.Python.definitions_['mybot_display_libraries'] = displayLibraryReference;
+	let code = `Display.showFace("straight")\n`;
+	return code;
+
+};
+
+Blockly.Python['mybot_display_face_left'] = function (block) {
+
+	Blockly.Python.definitions_['mybot_display_libraries'] = displayLibraryReference;
+	let code = `Display.showFace("left")\n`;
+	return code;
+
+};
+
+Blockly.Python['mybot_display_face_right'] = function (block) {
+
+	Blockly.Python.definitions_['mybot_display_libraries'] = displayLibraryReference;
+	let code = `Display.showFace("right")\n`;
+	return code;
+
+};
+
+Blockly.Python['mybot_display_face_snooze'] = function (block) {
+
+	Blockly.Python.definitions_['mybot_display_libraries'] = displayLibraryReference;
+	let code = `Display.showFace("snooze")\n`;
+	return code;
+
+};
+
+Blockly.Python['mybot_display_face_crash'] = function (block) {
+
+	Blockly.Python.definitions_['mybot_display_libraries'] = displayLibraryReference;
+	let code = `Display.showFace("crash")\n`;
 	return code;
 
 };
@@ -1356,49 +1267,38 @@ Blockly.Python['Close_File'] = function(block) {
 };
 
 Blockly.Python['fusion_display_color'] = function (block) {
-	
-	let displayLibraries = '';
-	displayLibraries += 'from lcddisplay import LCD_2inch\n';
-	displayLibraries += 'from PIL import Image, ImageDraw, ImageFont\n';
-	Blockly.Python.definitions_['fusion_display_libraries'] = displayLibraries;
-	
-	let display = '';
-	display += 'disp = LCD_2inch.LCD_2inch()\n';
-	display += 'disp.Init()\n';
-	display += 'disp.clear()\n';
-	Blockly.Python.definitions_['fusion_display'] = display;
-	
-	let color = null;
+
+    let color = null;
 	let colorValue = block.getFieldValue('COLOUR');
-	
-	switch(colorValue) {
+
+    switch(colorValue) {
 		
 		case '#000000':
-			color = 'BLACK';
+			color = 'black';
 			break;
 			
 		case '#ff0000':
-			color = 'RED';
+			color = 'red';
 			break;
 		
 		case '#00ff00':
-			color = 'GREEN';
+			color = 'green';
 			break;
 			
 		case '#ffff00':
-			color = 'YELLOW';
+			color = 'yellow';
 			break;
 			
 		case '#0000ff':
-			color = 'BLUE';
+			color = 'blue';
 			break;
 		
 		case '#ff00ff':
-			color = 'PURPLE';
+			color = 'purple';
 			break;
 			
 		case '#00ffff':
-			color = 'TEAL';
+			color = 'teal';
 			break;
 		
 		case '#ffffff':
@@ -1406,101 +1306,50 @@ Blockly.Python['fusion_display_color'] = function (block) {
 			break;
 		
 		default:
-			color = 'BLACK';
-	}	
-	
-	let code = '';
-	code += `image1 = Image.new("RGB", (disp.height, disp.width ), "${color}")\n`
-	code += 'draw = ImageDraw.Draw(image1)\n'
-	code += 'disp.ShowImage(image1)\n'
-	
+			color = 'black';
+	}
+
+    Blockly.Python.definitions_['mybot_display_libraries'] = displayLibraryReference;
+	let code = `Display.showColor("${color}")\n`;
 	return code;
 	
 };
 
 Blockly.Python['fusion_display_emoji'] = function (block) {
 
-	let emoji = block.getFieldValue('Emoji');
-    
-    let osLibraries = 'import os';
-	Blockly.Python.definitions_['fusion_os_libraries'] = osLibraries;
+    let emoji = block.getFieldValue('Emoji');
 
+    Blockly.Python.definitions_['mybot_display_libraries'] = displayLibraryReference;
+	let code = `Display.showEmoji("${emoji}")\n`;
+	return code;
 
-	let displayLibraries = '';
-	displayLibraries += 'from lcddisplay import LCD_2inch\n';
-	displayLibraries += 'from PIL import Image, ImageDraw, ImageFont\n';
-	Blockly.Python.definitions_['fusion_display_libraries'] = displayLibraries;
+};
 
-	let display = '';
-	display += 'disp = LCD_2inch.LCD_2inch()\n';
-	display += 'disp.Init()\n';
-	display += 'disp.clear()\n';
-	Blockly.Python.definitions_['fusion_display'] = display;
+Blockly.Python['fusion_display_face'] = function (block) {
 
-	let code = '';
-	code += 'scriptAbsolutePath = os.getcwd()\n';
-	code += `imageRelativePath = "./../../../../public/assets/img/fusion/emojis/${emoji}.jpg"\n`;
-	code += 'imageFullPath = os.path.join(scriptAbsolutePath, imageRelativePath)\n';
-	code += 'image = Image.open(imageFullPath)\n';
-	code += 'image = image.rotate(180)\n';
-	code += 'disp.ShowImage(image)\n';
+    let face = block.getFieldValue('Face');
+
+    Blockly.Python.definitions_['mybot_display_libraries'] = displayLibraryReference;
+	let code = `Display.showFace("${face}")\n`;
 	return code;
 
 };
 
 Blockly.Python['fusion_display_clear'] = function (block) {
 
-	let displayLibraries = '';
-	displayLibraries += 'from lcddisplay import LCD_2inch\n';
-	displayLibraries += 'from PIL import Image, ImageDraw, ImageFont\n';
-	Blockly.Python.definitions_['fusion_display_libraries'] = displayLibraries;
-	
-	let display = '';
-	display += 'disp = LCD_2inch.LCD_2inch()\n';
-	display += 'disp.Init()\n';
-	display += 'disp.clear()\n';
-	Blockly.Python.definitions_['fusion_display'] = display;
-	
-	let color = 'WHITE';	
-	
-	let code = '';
-	code += `image1 = Image.new("RGB", (disp.height, disp.width ), "${color}")\n`
-	code += 'draw = ImageDraw.Draw(image1)\n'
-	code += 'disp.ShowImage(image1)\n'
-	
+	Blockly.Python.definitions_['mybot_display_libraries'] = displayLibraryReference;
+	let code = `Display.showColor("white")\n`;
 	return code;
 
 };
 
 Blockly.Python['fusion_display_text'] = function (block) {
 
-	var text = Blockly.Python.valueToCode(block, 'Text', Blockly.Python.ORDER_ATOMIC);
+    var text = Blockly.Python.valueToCode(block, 'Text', Blockly.Python.ORDER_ATOMIC);
 	text = text.replace(/['"]+/g, '');
 
-    let osLibraries = 'import os';
-	Blockly.Python.definitions_['fusion_os_libraries'] = osLibraries;
-
-	let displayLibraries = '';
-	displayLibraries += 'from lcddisplay import LCD_2inch\n';
-	displayLibraries += 'from PIL import Image, ImageDraw, ImageFont\n';
-	Blockly.Python.definitions_['fusion_display_libraries'] = displayLibraries;
-
-	let display = '';
-	display += 'disp = LCD_2inch.LCD_2inch()\n';
-	display += 'disp.Init()\n';
-	display += 'disp.clear()\n';
-	Blockly.Python.definitions_['fusion_display'] = display;
-	
-	let code = '';
-	code += 'scriptAbsolutePath = os.getcwd()\n';	
-	code += `fontRelativePath = "./../../../../public/assets/font/Font00.ttf"\n`;
-	code += 'fontFullPath = os.path.join(scriptAbsolutePath, fontRelativePath)\n';
-	code += 'Font1 = ImageFont.truetype(fontFullPath, 40)\n';
-	code += 'image = Image.new("RGB", (disp.height, disp.width ), "WHITE")\n';
-	code += 'draw = ImageDraw.Draw(image)\n';
-	code += `draw.text((40,90), "${text}", fill = "Black", font = Font1)\n`;
-	code += 'image = image.rotate(180)\n';
-	code += 'disp.ShowImage(image)\n';
+    Blockly.Python.definitions_['mybot_display_libraries'] = displayLibraryReference;
+	let code = `Display.showText("${text}")\n`;
 	return code;
 
 };

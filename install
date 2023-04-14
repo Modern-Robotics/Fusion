@@ -42,9 +42,6 @@
 # Define Variables Default Values
 ########################################
 
-# channel=$((1 + $RANDOM % 11))
-# ssid=RecruitAP_$(cat /sys/class/net/eth0/address | sed 's|:||g' | grep -o '.\{6\}$')
-# wpa_passphrase=mrirecruit
 branch=Recruit
 version=HEAD
 
@@ -56,9 +53,6 @@ version=HEAD
 while getopts c:s:p:b:v: flag
 do
     case "${flag}" in
-        c) channel=${OPTARG};;
-        s) ssid=${OPTARG};;
-        p) wpa_passphrase=${OPTARG};;
         b) branch=${OPTARG};;
         v) version=${OPTARG};;
     esac
@@ -153,10 +147,6 @@ fi
 # 1.D: PIP Packages
 ########################################
 
-# Dynamically retrieve fusion driver path and version
-fusion_driver_path=$(find /usr/Fusion/lib/ -name Fusion-*.tar.gz)
-fusion_driver_version=$(find /usr/Fusion/lib/ -name Fusion-*.tar.gz | grep -Eo '[0-9]+\.[0-9]+\.[0-9]')
-
 # An embedded python script used to retrieve a pip package's version
 # Currently used because the traditional 'pip show (package)' command is too slow
 find_pip_package_version="
@@ -171,7 +161,6 @@ except pkg_resources.DistributionNotFound:
 
 # Declare list of pip package names and versions
 declare -A pip_packages
-pip_packages["Fusion"]=$fusion_driver_version
 pip_packages["remi"]=1.1
 pip_packages["pylibftdi"]=0.17.0
 pip_packages["RPi.GPIO"]=0.7.0
@@ -180,14 +169,41 @@ pip_packages["spidev"]=3.5
 # Loop through package list, install specified version
 for key in ${!pip_packages[@]}; do
 	installedVersion=$(python -c "$find_pip_package_version" ${key})
-	if [[ $installedVersion != ${pip_packages[${key}]} ]]; then
-		# Fusion package is installed from local directory
-		if [[ ${key} == "Fusion" ]]; then
-			sudo pip install $fusion_driver_path
-		else
-			sudo pip install ${key}==${pip_packages[${key}]}
-		fi
+	if [[ $installedVersion != ${pip_packages[${key}]} ]]; then		
+		sudo pip install ${key}==${pip_packages[${key}]}
 	fi
+done
+
+# Declare an array to store custom pip packages' versions'
+declare -A custom_pip_packages
+
+# Declare an array to store custom pip packages' paths
+declare -A custom_pip_packages_paths
+
+# Loop through all files in the lib directory searching for custom packages
+for file in ~/Projects/Fusion/lib/*; do
+
+  # If the file ends with .tar.gz, add it to custom packages
+  if [[ $file == *.tar.gz ]]; then
+
+    # Extract the name and version
+    fileName=$(basename "$file" .tar.gz)
+    packageName=$(echo "$fileName" | grep -oP '^[^-]+')
+    packageVersion=$(echo "$file" | grep -oP '(?<=-)\d+\.\d+\.\d+')
+
+    custom_pip_packages[$packageName]="$packageVersion"
+    custom_pip_packages_paths[$packageName]="$file"
+
+  fi
+done
+
+
+# Loop through custom package list, install specified version
+for package in ${!custom_pip_packages[@]}; do
+    installedVersion=$(python -c "$find_pip_package_version" ${key})
+    if [[ $installedVersion != ${custom_pip_packages[${package}]} ]]; then
+        sudo pip install ${custom_pip_packages_paths[${package}]}
+    fi
 done
 
 
@@ -219,7 +235,8 @@ fi
 # 2.A: DHCPCD
 ########################################
 
-if [ ! -f "/etc/dhcpcd.conf.orig" ]; then
+# Installs DHCPCD config
+if ! cmp -s /etc/dhcpcd.conf /usr/Fusion/config/dhcpcd/dhcpcd.conf; then
 	sudo mv /etc/dhcpcd.conf /etc/dhcpcd.conf.orig
 	sudo cp /usr/Fusion/config/dhcpcd/dhcpcd.conf /etc/dhcpcd.conf
 fi
@@ -229,7 +246,8 @@ fi
 # 2.B: DNSMASQ
 ########################################
 
-if [ ! -f "/etc/dnsmasq.conf.orig" ]; then
+# Installs DNSMSQ config
+if ! cmp -s /etc/dnsmasq.conf /usr/Fusion/config/dnsmasq/dnsmasq.conf; then
 	sudo mv /etc/dnsmasq.conf /etc/dnsmasq.conf.orig
 	sudo cp /usr/Fusion/config/dnsmasq/dnsmasq.conf /etc/dnsmasq.conf
 fi
@@ -239,15 +257,28 @@ fi
 # 2.C: HOSTAPD
 ########################################
 
-if [ ! -f "/etc/default/hostapd.orig" ]; then
+# Installs HOSTAPD default config
+if ! cmp -s /etc/default/hostapd /usr/Fusion/config/hostapd/hostapd; then
 	sudo mv /etc/default/hostapd /etc/default/hostapd.orig
 	sudo cp /usr/Fusion/config/hostapd/hostapd /etc/default/hostapd
+fi
+
+# Installs HOSTAPD config
+# Must undo sed changes for proper comparison?
+if ! cmp -s /etc/hostapd/hostapd.conf /usr/Fusion/config/hostapd/hostapd.conf; then
 	sudo cp /usr/Fusion/config/hostapd/hostapd.conf /etc/hostapd/hostapd.conf
-	# sudo sed -i 's|^channel=.*$|channel='"${channel}"'|g' /etc/hostapd/hostapd.conf
-	# sudo sed -i 's|^ssid=.*$|ssid='"${ssid}"'|g' /etc/hostapd/hostapd.conf
-	# sudo sed -i 's|^wpa_passphrase=.*$|wpa_passphrase='"${wpa_passphrase}"'|g' /etc/hostapd/hostapd.conf
 	sudo systemctl unmask hostapd.service
 fi
+
+# if [ ! -f "/etc/default/hostapd.orig" ]; then
+# 	sudo mv /etc/default/hostapd /etc/default/hostapd.orig
+# 	sudo cp /usr/Fusion/config/hostapd/hostapd /etc/default/hostapd
+# 	sudo cp /usr/Fusion/config/hostapd/hostapd.conf /etc/hostapd/hostapd.conf
+# 	# sudo sed -i 's|^channel=.*$|channel='"${channel}"'|g' /etc/hostapd/hostapd.conf
+# 	# sudo sed -i 's|^ssid=.*$|ssid='"${ssid}"'|g' /etc/hostapd/hostapd.conf
+# 	# sudo sed -i 's|^wpa_passphrase=.*$|wpa_passphrase='"${wpa_passphrase}"'|g' /etc/hostapd/hostapd.conf
+# 	sudo systemctl unmask hostapd.service
+# fi
 
 
 ################################################################################
@@ -259,15 +290,20 @@ fi
 # 3.A: APSTA Service
 ########################################
 
-if [[ $(sudo systemctl is-active apsta.service) == "inactive" ]]; then
+# Installs bash script
+if ! cmp -s /usr/local/bin/startDualNetworkMode /usr/Fusion/bin/startDualNetworkMode; then
+	sudo cp /usr/Fusion/bin/startDualNetworkMode /usr/local/bin/startDualNetworkMode
+	sudo chmod 755 /usr/local/bin/startDualNetworkMode
+fi
+
+# Installs unit file
+if ! cmp -s /lib/systemd/system/apsta.service /usr/Fusion/config/apsta.service; then
 	sudo systemctl stop hostapd
 	sudo systemctl stop dnsmasq
 	sudo systemctl stop dhcpcd
 	sudo systemctl disable hostapd
 	sudo systemctl disable dnsmasq
 	sudo systemctl disable dhcpcd
-	sudo cp /usr/Fusion/bin/startDualNetworkMode /usr/local/bin/startDualNetworkMode
-	sudo chmod 755 /usr/local/bin/startDualNetworkMode
 	sudo cp /usr/Fusion/config/apsta.service /lib/systemd/system/apsta.service
 	sudo chmod 644 /lib/systemd/system/apsta.service
 	sudo systemctl daemon-reload
@@ -279,7 +315,8 @@ fi
 # 3.B: Splashscreen Service
 ########################################
 
-if [[ $(sudo systemctl is-active splashscreen.service) == "inactive" ]]; then
+# Installs unit file
+if ! cmp -s /lib/systemd/system/splashscreen.service /usr/Fusion/config/splashscreen.service; then
 	sudo cp /usr/Fusion/config/splashscreen.service /lib/systemd/system/splashscreen.service
 	sudo chmod 644 /lib/systemd/system/splashscreen.service
 	sudo systemctl daemon-reload
@@ -291,7 +328,8 @@ fi
 # 3.C: MyBot Service
 ########################################
 
-if [[ $(sudo systemctl is-active mybot.service) == "inactive" ]]; then
+# Installs unit file
+if ! cmp -s /lib/systemd/system/mybot.service /usr/Fusion/config/mybot.service; then
 	sudo cp /usr/Fusion/config/mybot.service /lib/systemd/system/mybot.service
 	sudo chmod 644 /lib/systemd/system/mybot.service
 	sudo systemctl daemon-reload
@@ -303,9 +341,14 @@ fi
 # 3.C: Sync Serial Service
 ########################################
 
-if [[ $(sudo systemctl is-active syncserial.service) == "inactive" ]]; then
+# Installs bash script
+if ! cmp -s /usr/local/bin/syncSerial /usr/Fusion/bin/syncSerial; then
 	sudo cp /usr/Fusion/bin/syncSerial /usr/local/bin/syncSerial
 	sudo chmod 755 /usr/local/bin/syncSerial
+fi
+
+# Installs unit file
+if ! cmp -s /lib/systemd/system/syncserial.service /usr/Fusion/config/syncserial.service; then
 	sudo cp /usr/Fusion/config/syncserial.service /lib/systemd/system/syncserial.service
 	sudo chmod 644 /lib/systemd/system/syncserial.service
 	sudo systemctl daemon-reload
@@ -313,8 +356,28 @@ if [[ $(sudo systemctl is-active syncserial.service) == "inactive" ]]; then
 fi
 
 
+########################################
+# 3.C: Power off Board Service
+########################################
+
+# Installs bash script
+if ! cmp -s /usr/local/bin/powerOffBoard /usr/Fusion/bin/powerOffBoard; then
+	sudo cp /usr/Fusion/bin/powerOffBoard /usr/local/bin/powerOffBoard
+	sudo chmod 755 /usr/local/bin/powerOffBoard
+fi
+
+# Installs unit file
+if ! cmp -s /lib/systemd/system/poweroffboard.service /usr/Fusion/config/poweroffboard.service; then
+	sudo cp /usr/Fusion/config/poweroffboard.service /lib/systemd/system/poweroffboard.service
+	sudo chmod 644 /lib/systemd/system/poweroffboard.service
+	sudo systemctl daemon-reload
+	sudo systemctl enable poweroffboard.service
+	sudo systemctl start poweroffboard.service
+fi
+
+
 ################################################################################
 # Step 4: Poweroff
 ################################################################################
 
-poweroff
+reboot

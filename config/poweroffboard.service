@@ -1,0 +1,12 @@
+[Unit]
+Description=Shuts down the MyBot board when the Pi powers down
+Before=shutdown.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+ExecStart=/bin/true
+ExecStop=bash powerOffBoard
+
+[Install]
+WantedBy=multi-user.target

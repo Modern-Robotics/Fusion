@@ -87,9 +87,9 @@
         "DATA_LOGGER_HEADLINE": "Data Logging",
         "DATA_LOGGER_DESCRIPTION": "Collect and log data using sensors.",
         "SETTINGS_HEADLINE": "Settings",
-        "SETTINGS_DESCRIPTION": "Change your Fusion's settings.",
+        "SETTINGS_DESCRIPTION": "Change your Recruit's settings.",
         "SERVER_HEADLINE": "Server",
-        "SERVER_DESCRIPTION": "Connect your Fusion to a server.",
+        "SERVER_DESCRIPTION": "Connect your Recruit to a server.",
         "BLOCKLY_GAMES_HEADLINE": "Blockly Games",
         "BLOCKLY_GAMES_DESCRIPTION": "A series of educational games that teach programming."
     },
@@ -241,8 +241,8 @@
             "TITLE": "Are you sure you want to delete:"
         },
         "UPDATE_FUSION": {
-            "TITLE": "Are you sure you want to update this Fusion?",
-            "CONTENT": "The Fusion will auto restart when complete."
+            "TITLE": "Are you sure you want to update this Recruit?",
+            "CONTENT": "The Recruit will auto restart when complete."
         }
     },
     "ABOUT": {},

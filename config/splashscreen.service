@@ -5,8 +5,7 @@ DefaultDependencies=no
 
 [Service]
 Type=oneshot
-WorkingDirectory=/usr/Fusion/config/splashscreen
-ExecStart=python /usr/Fusion/config/splashscreen/startSplashScreen.py
+ExecStart=python -u -B -c "import Display; Display.showSplashScreen()"
 
 [Install]
 WantedBy=sysinit.target

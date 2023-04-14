@@ -1,1 +1,1 @@
-require("./../../server");
+process.on("uncaughtException",(function(e){console.log("Caught exception: "+e)})),require("./../../server");
