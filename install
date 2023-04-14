@@ -166,10 +166,10 @@ pip_packages["RPi.GPIO"]=0.7.0
 pip_packages["spidev"]=3.5
 
 # Loop through package list, install specified version
-for key in ${!pip_packages[@]}; do
-	installedVersion=$(python -c "$find_pip_package_version" ${key})
-	if [[ $installedVersion != ${pip_packages[${key}]} ]]; then		
-		sudo pip install ${key}==${pip_packages[${key}]}
+for package in ${!pip_packages[@]}; do
+	installedVersion=$(python -c "$find_pip_package_version" ${package})
+	if [[ $installedVersion != ${pip_packages[${package}]} ]]; then		
+		sudo pip install ${package}==${pip_packages[${package}]}
 	fi
 done
 
@@ -199,7 +199,7 @@ done
 
 # Loop through custom package list, install specified version
 for package in ${!custom_pip_packages[@]}; do
-    installedVersion=$(python -c "$find_pip_package_version" ${key})
+    installedVersion=$(python -c "$find_pip_package_version" ${package})
     if [[ $installedVersion != ${custom_pip_packages[${package}]} ]]; then
         sudo pip install ${custom_pip_packages_paths[${package}]}
     fi
