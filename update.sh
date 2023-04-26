@@ -394,7 +394,7 @@ else
         sudo git checkout -f ${FRT_BRANCH}
         if [[ $? != 0 ]] ; then exit 5 ; fi
     else
-        sudo git checkout -f -q $(sudo git rev-list --tags --max-count=1)
+        sudo git checkout -f -q $(sudo git describe --tags --abbrev=0)
         if [[ $? != 0 ]] ; then exit 5 ; fi
     fi
 fi
