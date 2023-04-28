@@ -1,6 +1,4 @@
-Small change to trigger change.
-
-Boxlight Robotics Fusion Controller System Firmware Release Notes    
+  Boxlight Robotics Fusion Controller System Firmware Release Notes    
 ===================================================================
 
 ----

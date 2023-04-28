@@ -2481,12 +2481,12 @@ Blockly.Blocks['fusion_display_emoji'] = {
         this.appendDummyInput()
             .appendField("Display emoji:")
             .appendField(new Blockly.FieldDropdown([
-                ["Straight Ahead", "eyes_straight"],
-                ["Snooze", "snooze"],
-                ["Look Left", "eyes_left"],
-                ["Look Right", "eyes_right"],
-				["Close Eyes", "eyes_closed"],
-                ["Crash", "crash"],
+                [{"src": "assets/img/fusion/emojis/StraightAhead.png", "width": 50, "height": 50}, "eyes_straight"],                
+                [{"src": "assets/img/fusion/emojis/EyesLeft.png", "width": 50, "height": 50}, "eyes_left"],
+                [{"src": "assets/img/fusion/emojis/EyesRight.png", "width": 50, "height": 50}, "eyes_right"],
+                [{"src": "assets/img/fusion/emojis/EyesClosed.png", "width": 50, "height": 50}, "eyes_closed"],                
+                [{"src": "assets/img/fusion/emojis/Crash.png", "width": 50, "height": 50}, "crash"],
+                [{"src": "assets/img/fusion/emojis/Snooze.png", "width": 50, "height": 50}, "snooze"],
             ]), "Emoji");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
@@ -2501,11 +2501,16 @@ Blockly.Blocks['fusion_display_face'] = {
         this.appendDummyInput()
             .appendField("Display face:")
             .appendField(new Blockly.FieldDropdown([
-                ["Straight", "straight"],
-                ["Left", "left"],
-                ["Right", "right"],
-                ["Crash", "crash"],
-				["Snooze", "snooze"],
+                [{"src": "assets/img/fusion/faces/straight.jpg", "width": 50, "height": 50}, "straight"],                
+                [{"src": "assets/img/fusion/faces/left.jpg", "width": 50, "height": 50}, "left"],
+                [{"src": "assets/img/fusion/faces/right.jpg", "width": 50, "height": 50}, "right"],
+                [{"src": "assets/img/fusion/faces/crash.jpg", "width": 50, "height": 50}, "crash"],
+                [{"src": "assets/img/fusion/faces/snooze.jpg", "width": 50, "height": 50}, "snooze"],
+                [{"src": "assets/img/fusion/faces/straight-2.jpg", "width": 50, "height": 50}, "straight-2"],
+                [{"src": "assets/img/fusion/faces/left-2.jpg", "width": 50, "height": 50}, "left-2"],
+                [{"src": "assets/img/fusion/faces/right-2.jpg", "width": 50, "height": 50}, "right-2"],
+                [{"src": "assets/img/fusion/faces/crash-2.jpg", "width": 50, "height": 50}, "crash-2"],
+                [{"src": "assets/img/fusion/faces/snooze-2.jpg", "width": 50, "height": 50}, "snooze-2"],
             ]), "Face");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);

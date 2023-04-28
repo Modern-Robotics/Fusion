@@ -122,7 +122,7 @@ Blockly.Python['mybot_basic_wait'] = function(block) {
 Blockly.Python['mybot_display_straight_ahead'] = function(block) {
 
     Blockly.Python.definitions_['mybot_display_libraries'] = displayLibraryReference;
-	let code = `Display.showEmoji("eyes_straight")\n`;
+	let code = `Display.show_emoji("eyes_straight")\n`;
 	return code;
 
 };
@@ -130,7 +130,7 @@ Blockly.Python['mybot_display_straight_ahead'] = function(block) {
 Blockly.Python['mybot_display_snooze'] = function(block) {
 
     Blockly.Python.definitions_['mybot_display_libraries'] = displayLibraryReference;
-	let code = `Display.showEmoji("snooze")\n`;
+	let code = `Display.show_emoji("snooze")\n`;
 	return code;
 
 };
@@ -138,7 +138,7 @@ Blockly.Python['mybot_display_snooze'] = function(block) {
 Blockly.Python['mybot_display_eyes_closed'] = function(block) {
 
     Blockly.Python.definitions_['mybot_display_libraries'] = displayLibraryReference;
-	let code = `Display.showEmoji("eyes_closed")\n`;
+	let code = `Display.show_emoji("eyes_closed")\n`;
 	return code;
 
 };
@@ -146,7 +146,7 @@ Blockly.Python['mybot_display_eyes_closed'] = function(block) {
 Blockly.Python['mybot_display_eyes_left'] = function(block) {
 
     Blockly.Python.definitions_['mybot_display_libraries'] = displayLibraryReference;
-	let code = `Display.showEmoji("eyes_left")\n`;
+	let code = `Display.show_emoji("eyes_left")\n`;
 	return code;
 
 };
@@ -154,7 +154,7 @@ Blockly.Python['mybot_display_eyes_left'] = function(block) {
 Blockly.Python['mybot_display_eyes_right'] = function(block) {
 
     Blockly.Python.definitions_['mybot_display_libraries'] = displayLibraryReference;
-	let code = `Display.showEmoji("eyes_right")\n`;
+	let code = `Display.show_emoji("eyes_right")\n`;
 	return code;
 
 };
@@ -162,7 +162,7 @@ Blockly.Python['mybot_display_eyes_right'] = function(block) {
 Blockly.Python['mybot_display_eyes_crashed'] = function(block) {
 
     Blockly.Python.definitions_['mybot_display_libraries'] = displayLibraryReference;
-	let code = `Display.showEmoji("crash")\n`;
+	let code = `Display.show_emoji("crash")\n`;
 	return code;
 
 };
@@ -170,7 +170,7 @@ Blockly.Python['mybot_display_eyes_crashed'] = function(block) {
 Blockly.Python['mybot_display_clear'] = function(block) {
 
     Blockly.Python.definitions_['mybot_display_libraries'] = displayLibraryReference;
-	let code = `Display.showColor("white")\n`;
+	let code = `Display.show_color("white")\n`;
 	return code;
 
 };
@@ -178,7 +178,7 @@ Blockly.Python['mybot_display_clear'] = function(block) {
 Blockly.Python['mybot_display_face_straight'] = function (block) {
 
 	Blockly.Python.definitions_['mybot_display_libraries'] = displayLibraryReference;
-	let code = `Display.showFace("straight")\n`;
+	let code = `Display.show_face("straight")\n`;
 	return code;
 
 };
@@ -186,7 +186,7 @@ Blockly.Python['mybot_display_face_straight'] = function (block) {
 Blockly.Python['mybot_display_face_left'] = function (block) {
 
 	Blockly.Python.definitions_['mybot_display_libraries'] = displayLibraryReference;
-	let code = `Display.showFace("left")\n`;
+	let code = `Display.show_face("left")\n`;
 	return code;
 
 };
@@ -194,7 +194,7 @@ Blockly.Python['mybot_display_face_left'] = function (block) {
 Blockly.Python['mybot_display_face_right'] = function (block) {
 
 	Blockly.Python.definitions_['mybot_display_libraries'] = displayLibraryReference;
-	let code = `Display.showFace("right")\n`;
+	let code = `Display.show_face("right")\n`;
 	return code;
 
 };
@@ -202,7 +202,7 @@ Blockly.Python['mybot_display_face_right'] = function (block) {
 Blockly.Python['mybot_display_face_snooze'] = function (block) {
 
 	Blockly.Python.definitions_['mybot_display_libraries'] = displayLibraryReference;
-	let code = `Display.showFace("snooze")\n`;
+	let code = `Display.show_face("snooze")\n`;
 	return code;
 
 };
@@ -210,7 +210,7 @@ Blockly.Python['mybot_display_face_snooze'] = function (block) {
 Blockly.Python['mybot_display_face_crash'] = function (block) {
 
 	Blockly.Python.definitions_['mybot_display_libraries'] = displayLibraryReference;
-	let code = `Display.showFace("crash")\n`;
+	let code = `Display.show_face("crash")\n`;
 	return code;
 
 };
@@ -1310,7 +1310,7 @@ Blockly.Python['fusion_display_color'] = function (block) {
 	}
 
     Blockly.Python.definitions_['mybot_display_libraries'] = displayLibraryReference;
-	let code = `Display.showColor("${color}")\n`;
+	let code = `Display.show_color("${color}")\n`;
 	return code;
 	
 };
@@ -1320,7 +1320,7 @@ Blockly.Python['fusion_display_emoji'] = function (block) {
     let emoji = block.getFieldValue('Emoji');
 
     Blockly.Python.definitions_['mybot_display_libraries'] = displayLibraryReference;
-	let code = `Display.showEmoji("${emoji}")\n`;
+	let code = `Display.show_emoji("${emoji}")\n`;
 	return code;
 
 };
@@ -1330,7 +1330,7 @@ Blockly.Python['fusion_display_face'] = function (block) {
     let face = block.getFieldValue('Face');
 
     Blockly.Python.definitions_['mybot_display_libraries'] = displayLibraryReference;
-	let code = `Display.showFace("${face}")\n`;
+	let code = `Display.show_face("${face}")\n`;
 	return code;
 
 };
@@ -1338,7 +1338,7 @@ Blockly.Python['fusion_display_face'] = function (block) {
 Blockly.Python['fusion_display_clear'] = function (block) {
 
 	Blockly.Python.definitions_['mybot_display_libraries'] = displayLibraryReference;
-	let code = `Display.showColor("white")\n`;
+	let code = `Display.show_color("white")\n`;
 	return code;
 
 };
@@ -1349,11 +1349,10 @@ Blockly.Python['fusion_display_text'] = function (block) {
 	text = text.replace(/['"]+/g, '');
 
     Blockly.Python.definitions_['mybot_display_libraries'] = displayLibraryReference;
-	let code = `Display.showText("${text}")\n`;
+	let code = `Display.show_text("${text}")\n`;
 	return code;
 
 };
-
 
 Blockly.Python['fusion_basic_display_straight_ahead'] = function (block) {
 

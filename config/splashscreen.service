@@ -5,7 +5,7 @@ DefaultDependencies=no
 
 [Service]
 Type=oneshot
-ExecStart=python -u -B -c "import Display; Display.showSplashScreen()"
+ExecStart=python -u -B -c "import Display; Display.show_splash_screen()"
 
 [Install]
 WantedBy=sysinit.target

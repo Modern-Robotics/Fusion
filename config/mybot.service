@@ -4,6 +4,7 @@ After=apsta.service
 
 [Service]
 Type=simple
+Environment=NODE_ENV=production
 WorkingDirectory=/usr/Fusion/FusionServer/Build
 ExecStart=node /usr/Fusion/FusionServer/Build/server.js
 Restart=on-failure
