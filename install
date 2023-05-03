@@ -58,6 +58,17 @@ do
     esac
 done
 
+########################################
+# Verify Running On Buster
+########################################
+
+if grep -q "VERSION_ID=\"10\"" /etc/os-release; then
+    echo "Buster OS detected"
+else
+    echo "Buster OS not detected"
+    exit 1
+fi
+
 
 ################################################################################
 # Step 1: Install Required Libraries
