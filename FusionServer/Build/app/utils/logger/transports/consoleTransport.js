@@ -1,1 +1,1 @@
-!function(){const o=require("winston"),e=new o.transports.Console({level:"silly",format:o.format.combine(o.format.colorize(),o.format.printf((o=>`[${o.level}] ${o.message}`)))});module.exports=e}();
+!function(){const o=require("winston"),e="production"===process.env.NODE_ENV?"info":"silly",n=new o.transports.Console({level:e,format:o.format.combine(o.format.colorize(),o.format.printf((o=>`[${o.level}] ${o.message}`)))});module.exports=n}();
