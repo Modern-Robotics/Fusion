@@ -33,6 +33,19 @@
 # Set WiFi Country
 
 
+########################################
+# Verify Running On Buster
+########################################
+
+if grep -q "VERSION_ID=\"10\"" /etc/os-release; then
+    echo "Starting update..."
+else
+    echo "Buster OS not detected"
+	echo "Exiting..."
+    exit 1
+fi
+
+
 ################################################################################
 # Step 0: Parameters
 ################################################################################
@@ -50,24 +63,13 @@ version=HEAD
 # Overide Variables Values If Supplied
 ########################################
 
-while getopts c:s:p:b:v: flag
+while getopts b:v: flag
 do
     case "${flag}" in
         b) branch=${OPTARG};;
         v) version=${OPTARG};;
     esac
 done
-
-########################################
-# Verify Running On Buster
-########################################
-
-if grep -q "VERSION_ID=\"10\"" /etc/os-release; then
-    echo "Buster OS detected"
-else
-    echo "Buster OS not detected"
-    exit 1
-fi
 
 
 ################################################################################
@@ -143,7 +145,7 @@ fi
 
 if [ ! -d "/usr/Fusion" ]; then
 	# Install software
-	sudo git clone https://github.com/Modern-Robotics/Fusion.git /usr/Fusion --branch ${branch}
+	sudo git clone --depth 1 https://github.com/Modern-Robotics/Fusion.git /usr/Fusion --branch ${branch}
 	sudo npm --prefix /usr/Fusion/FusionServer/Build install --production
 else
 	# Update software
