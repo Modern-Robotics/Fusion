@@ -178,7 +178,7 @@ Blockly.Python['mybot_display_emoji_glasses'] = function(block) {
 Blockly.Python['mybot_display_emoji_oh_no'] = function(block) {
 
     Blockly.Python.definitions_['mybot_display_libraries'] = displayLibraryReference;
-	let code = `Display.show_emoji("on_no")\n`;
+	let code = `Display.show_emoji("oh_no")\n`;
 	return code;
 
 };

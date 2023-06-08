@@ -2551,7 +2551,7 @@ Blockly.Blocks['fusion_display_emoji'] = {
                 [{"src": "assets/img/fusion/emojis/Crash.png", "width": imageW, "height": imageH}, "crash"],
                 [{"src": "assets/img/fusion/emojis/Snooze.png", "width": imageW, "height": imageH}, "snooze"],
                 [{"src": "assets/img/fusion/emojis/Glasses.png", "width": imageW, "height": imageH}, "glasses"],
-                [{"src": "assets/img/fusion/emojis/OhNo.png", "width": imageW, "height": imageH}, "on_no"],
+                [{"src": "assets/img/fusion/emojis/OhNo.png", "width": imageW, "height": imageH}, "oh_no"],
                 [{"src": "assets/img/fusion/emojis/Sunglasses.png", "width": imageW, "height": imageH}, "sunglasses"],                
                 [{"src": "assets/img/fusion/emojis/ThumbsUp.png", "width": imageW, "height": imageH}, "thumbs_up"],
                 [{"src": "assets/img/fusion/emojis/ThumbsDown.png", "width": imageW, "height": imageH}, "thumbs_down"],
