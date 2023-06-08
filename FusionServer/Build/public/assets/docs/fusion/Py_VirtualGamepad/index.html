@@ -8,7 +8,7 @@
         <meta name="author" content="Boxlight Robotics">
         <link rel="canonical" href="http://BoxlightRobotics.com/Py_VirtualGamepad/">
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Virtual Gamepad - Fusion Documentation Suite</title>
+        <title>Virtual Gamepad - Mybot Documentation Suite</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
@@ -23,7 +23,7 @@
     <body>
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href="..">Fusion Documentation Suite</a>
+                <a class="navbar-brand" href="..">Mybot Documentation Suite</a>
                 <!-- Expander button -->
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
                     <span class="navbar-toggler-icon"></span>
@@ -105,7 +105,7 @@
 
 <h1 id="virtual-gamepad"><strong>Virtual Gamepad</strong></h1>
 <hr />
-<p>This library allows you to display and use a virtual gamepad right on your touch screen device to control the Fusion. The Virtual Gamepad comes with 2 joysticks and 4 buttons that are controlled using the functions below.<br />
+<p>This library allows you to display and use a virtual gamepad right on your touch screen device to control the MyBot. The Virtual Gamepad comes with 2 joysticks and 4 buttons that are controlled using the functions below.<br />
 Once the code is written, start the python program and click the Virtual Gamepad button on the toolbar to open the window. The Virtual Gamepad window will open on the current IP address on port 5000 (Default: <strong>my.bot:5000</strong> or <em>192.168.50.1:5000</em>) in a new tab.</p>
 <blockquote>
 <p><a href="../Blk_VirtualGamepad/">Virtual Gamepad Visual Programming Blocks</a></p>
@@ -149,7 +149,7 @@ v = VirtualGamepad.service()
 </blockquote>
 <h3 id="parameters_1">Parameters</h3>
 <blockquote>
-<p><strong><em>cam</em></strong> : If set to <strong>True</strong> it will enable the use of a USB camera or PiCamera to live stream video back to the virtual gamepad background. A camera must be attached to the Fusion in order to use this block or an exception will occur when the drivers are initialized. Use <a href="./#virtualgamepadservice">VirtualGamepad.service()</a> if you do not have a camera attached.<br />
+<p><strong><em>cam</em></strong> : If set to <strong>True</strong> it will enable the use of a USB camera or PiCamera to live stream video back to the virtual gamepad background. A camera must be attached to the MyBot in order to use this block or an exception will occur when the drivers are initialized. Use <a href="./#virtualgamepadservice">VirtualGamepad.service()</a> if you do not have a camera attached.<br />
 <strong><em>resolution</em></strong> : The resolution parameter allows the user to change the default resolution of <em>(320x240)</em> to any defined value supported by their selected camera by entering <em>(width, height)</em>.<br />
 <strong><em>fps</em></strong> : Frames per second is the rate at which the live stream frames are displayed to screen. Default is <em>10</em>fps however can be increased depending on the camera abilities and WiFi connection strength.<br />
 <strong><em>mode</em></strong> : Mode refers to the type of camera that is connected to the device. The default mode is <em>'YUV'</em> however <em>'MJPG'</em> and <em>'PICAM'</em> are also supported. Certain cameras may work better on one mode than the other and the user should refer to the manufacturer documentation or support to determine what modes are supported. </p>
@@ -309,7 +309,7 @@ while True:
 <h2 id="questions"><strong>Questions?</strong></h2>
 <blockquote>
 <p>Contact Boxlight Robotics at <a href="mailto:support@BoxlightRobotics.com">support@BoxlightRobotics.com</a> with a detailed description of the steps you have taken and observations you have made.</p>
-<p><strong>Email Subject</strong>: Fusion Python Virtual Gamepad</p>
+<p><strong>Email Subject</strong>: MyBot Python Virtual Gamepad</p>
 </blockquote></div>
             </div>
         </div>

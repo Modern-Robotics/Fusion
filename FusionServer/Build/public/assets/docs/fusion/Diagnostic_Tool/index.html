@@ -8,7 +8,7 @@
         <meta name="author" content="Boxlight Robotics">
         <link rel="canonical" href="http://BoxlightRobotics.com/Diagnostic_Tool/">
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Diagnostic Tool - Fusion Documentation Suite</title>
+        <title>Diagnostic Tool - Mybot Documentation Suite</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
@@ -23,7 +23,7 @@
     <body>
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href="..">Fusion Documentation Suite</a>
+                <a class="navbar-brand" href="..">Mybot Documentation Suite</a>
                 <!-- Expander button -->
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
                     <span class="navbar-toggler-icon"></span>
@@ -113,7 +113,7 @@
 
 <h1 id="diagnostic-tool"><strong>Diagnostic Tool</strong></h1>
 <hr />
-<p>The Diagnostic Tool is very useful when trying to find important system information, test ports or sensors and retrieve valuable information that aids the support team in diagnosing the Fusion. In the event that you are having trouble with your Fusion our support team will ask for information gathered from the <a href="./#rpi-performance"><strong>System Information</strong></a>.<br />
+<p>The Diagnostic Tool is very useful when trying to find important system information, test ports or sensors and retrieve valuable information that aids the support team in diagnosing the MyBot. In the event that you are having trouble with your MyBot our support team will ask for information gathered from the <a href="./#rpi-performance"><strong>System Information</strong></a>.<br />
 <img alt="" src="../img/Diagnostic_Tool/Diagnostic_Tool.PNG" />
 This tool is also useful in identifying the behavior and initial values of sensors and servos instead of having to write example programs. Refer to the <a href="../Sensor_Topic/">Sensor Documentation</a> for an explanation of testing sensors without the use of the Blockly or Python libraries.</p>
 <h2 id="rpi-performance"><strong>RPi Performance</strong></h2>
@@ -124,22 +124,22 @@ This tool is also useful in identifying the behavior and initial values of senso
 <strong>Mem</strong> represents the available random access memory on the Raspberry Pi. This is used to store data that is currently being used to run the operating system and any programs or processes.<br />
 <strong>Battery Voltage</strong> displays the current voltage of the 6V battery. At full charge the battery is at a voltage of approximately 6.4V.<br />
 <img src="../img/Diagnostic_Tool/RPiPerformance.PNG" width="600"><br />
-Clicking the <strong>System Information</strong> button opens a screen that displays useful information that can be used when communicating with the support team. If more information is requested from the support team, click <span style="color:blue"><strong>Full Support Diagnostic Download</strong></span> to download a .zip file. Email this .zip file to <a href="mailto:support@BoxlightRobotics.com">support@BoxlightRobotics.com</a> with the subject <strong>Fusion Diagnostic Support Files</strong>.<br />
+Clicking the <strong>System Information</strong> button opens a screen that displays useful information that can be used when communicating with the support team. If more information is requested from the support team, click <span style="color:blue"><strong>Full Support Diagnostic Download</strong></span> to download a .zip file. Email this .zip file to <a href="mailto:support@BoxlightRobotics.com">support@BoxlightRobotics.com</a> with the subject <strong>MyBot Diagnostic Support Files</strong>.<br />
 <img src="../img/Diagnostic_Tool/SystemInformation.PNG" width="600">  </p>
 </blockquote>
 <h2 id="onboard-leds"><strong>OnBoard LEDs</strong></h2>
 <blockquote>
-<p>On the Fusion there are 2 <a href="../On_Board_LED/">user controlled LEDs</a>. By checking the box the corresponding LED will turn on. uncheck the box to turn the LED off.<br />
+<p>On the MyBot there are 2 <a href="../On_Board_LED/">user controlled LEDs</a>. By checking the box the corresponding LED will turn on. uncheck the box to turn the LED off.<br />
 <img src="../img/Diagnostic_Tool/OnBoardLEDs.PNG" width="300"></p>
 </blockquote>
 <h2 id="servo-ports"><strong>Servo Ports</strong></h2>
 <blockquote>
-<p>There are 4 <a href="../Servo_Ports/">Servo Ports</a> on the Fusion. Checking the check box enables the servo port by supplying power to the connected servo. The port must be enabled in order change values within the box next to it. You can send the servo port a value between <strong>0</strong> to <strong>255</strong> to move its full range. Uncheck the box to disable the selected servo port and no longer supply power to the connected servo.<br />
+<p>There are 4 <a href="../Servo_Ports/">Servo Ports</a> on the MyBot. Checking the check box enables the servo port by supplying power to the connected servo. The port must be enabled in order change values within the box next to it. You can send the servo port a value between <strong>0</strong> to <strong>255</strong> to move its full range. Uncheck the box to disable the selected servo port and no longer supply power to the connected servo.<br />
 <img src="../img/Diagnostic_Tool/ServoPorts.PNG" width="300"></p>
 </blockquote>
 <h2 id="motor-control"><strong>Motor Control</strong></h2>
 <blockquote>
-<p>There are 2 DC <a href="../Motor_Ports/">Motor Ports</a> on the Fusion. Each port can take a value between <strong>-100</strong> to <strong>100</strong>. Enter a value of <strong>0</strong> to stop the selected motor or click the <img src="../img/Diagnostic_Tool/Stop.PNG" width="30"> button to immediately stop both motor ports.<br />
+<p>There are 2 DC <a href="../Motor_Ports/">Motor Ports</a> on the MyBot. Each port can take a value between <strong>-100</strong> to <strong>100</strong>. Enter a value of <strong>0</strong> to stop the selected motor or click the <img src="../img/Diagnostic_Tool/Stop.PNG" width="30"> button to immediately stop both motor ports.<br />
 <img src="../img/Diagnostic_Tool/MotorControl.PNG" width="300"></p>
 </blockquote>
 <h2 id="analog-inputs"><strong>Analog Inputs</strong></h2>
@@ -154,11 +154,11 @@ Clicking the <strong>System Information</strong> button opens a screen that disp
 </blockquote>
 <h2 id="digital-i2c-ports"><strong>Digital I2C Ports</strong></h2>
 <blockquote>
-<p>There are 4 <a href="../I2C_Ports/">I2C Ports</a> connected to a single I2C Bus on the Fusion. The first step to take when using this section is to click <strong>Refresh</strong> on the bottom left. This will populate the list on the left with the connected I2C sensors and their addresses. For a list of sensors and their I2C registers refer to the <a href="../Sensor_Topic/">Sensor Documentation</a>.<br />
-In the first example the Fusion is reading from an Integrating Gyro with address <strong>0x20</strong>. The heading data for this sensor is 2 Bytes long, therefore <strong>0x04</strong> is entered into the <em>lsb</em> and <strong>0x05</strong> is entered into the <em>msb</em>. This will take the values from both registers and concatenate them together. Clicking the <strong>Read</strong> button will return the current register value to the <em>Value</em> field. There are times where it is more efficient to constantly read from the port. To do this, check the <strong>Poll Read</strong> check box and the <em>Value</em> field will be constantly updated with the value read from the registers.<br />
+<p>There are 4 <a href="../I2C_Ports/">I2C Ports</a> connected to a single I2C Bus on the MyBot. The first step to take when using this section is to click <strong>Refresh</strong> on the bottom left. This will populate the list on the left with the connected I2C sensors and their addresses. For a list of sensors and their I2C registers refer to the <a href="../Sensor_Topic/">Sensor Documentation</a>.<br />
+In the first example the MyBot is reading from an Integrating Gyro with address <strong>0x20</strong>. The heading data for this sensor is 2 Bytes long, therefore <strong>0x04</strong> is entered into the <em>lsb</em> and <strong>0x05</strong> is entered into the <em>msb</em>. This will take the values from both registers and concatenate them together. Clicking the <strong>Read</strong> button will return the current register value to the <em>Value</em> field. There are times where it is more efficient to constantly read from the port. To do this, check the <strong>Poll Read</strong> check box and the <em>Value</em> field will be constantly updated with the value read from the registers.<br />
 To read from a single register, only enter the register location into the <em>lsb</em> field.<br />
 <img src="../img/Diagnostic_Tool/DigitalI2CPortsRead.PNG" width="400"><br />
-In this next example the Fusion is writing to the Color Beacon with address <strong>0x4c</strong>. Writing to the Color Number(<strong>0x04</strong>) register by putting the register location into the <em>lsb</em> field. Next, a value of <strong>4</strong> is entered into the <em>Value</em> field to produce the color blue. Clicking read will write the <em>Value</em> to the <em>Register</em>. <br />
+In this next example the MyBot is writing to the Color Beacon with address <strong>0x4c</strong>. Writing to the Color Number(<strong>0x04</strong>) register by putting the register location into the <em>lsb</em> field. Next, a value of <strong>4</strong> is entered into the <em>Value</em> field to produce the color blue. Clicking read will write the <em>Value</em> to the <em>Register</em>. <br />
 <img src="../img/Diagnostic_Tool/DigitalI2CPortsWrite.PNG" width="400">  </p>
 </blockquote>
 <h2 id="change-i2c-address"><strong>Change I2C Address</strong></h2>
@@ -173,7 +173,7 @@ With only <strong>1</strong> of the sensors connected, follow the instructions b
 <h2 id="questions"><strong>Questions?</strong></h2>
 <blockquote>
 <p>Contact Boxlight Robotics at <a href="mailto:support@BoxlightRobotics.com">support@BoxlightRobotics.com</a> with a detailed description of the steps you have taken and observations you have made.</p>
-<p><strong>Email Subject</strong>: Fusion Diagnostic Tool</p>
+<p><strong>Email Subject</strong>: MyBot Diagnostic Tool</p>
 </blockquote></div>
             </div>
         </div>

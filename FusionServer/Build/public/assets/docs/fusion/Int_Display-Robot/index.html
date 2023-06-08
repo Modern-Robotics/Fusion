@@ -8,7 +8,7 @@
         <meta name="author" content="Boxlight Robotics">
         <link rel="canonical" href="http://BoxlightRobotics.com/Int_Display-Robot/">
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Display Robot - Fusion Documentation Suite</title>
+        <title>Display Robot - Mybot Documentation Suite</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
@@ -23,7 +23,7 @@
     <body>
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href="..">Fusion Documentation Suite</a>
+                <a class="navbar-brand" href="..">Mybot Documentation Suite</a>
                 <!-- Expander button -->
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
                     <span class="navbar-toggler-icon"></span>
@@ -39,7 +39,7 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../Int_Fusion-Control/" class="nav-link">
+                                <a rel="prev" href="../Int_MyBot-Control/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
@@ -76,11 +76,15 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#clear-display" class="nav-link">Clear Display</a>
+            <li class="nav-item" data-level="2"><a href="#display-face" class="nav-link">Display Face</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             <li class="nav-item" data-level="2"><a href="#display-text" class="nav-link">Display Text</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#clear-display" class="nav-link">Clear Display</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -102,8 +106,9 @@
 <ul>
 <li><a href="./#display-color"><strong>Display Color</strong></a></li>
 <li><a href="./#display-emoji"><strong>Display Emoji</strong></a></li>
-<li><a href="./#clear-display"><strong>Clear Display</strong></a></li>
+<li><a href="./#display-face"><strong>Display Face</strong></a></li>
 <li><a href="./#display-text"><strong>Display Text</strong></a></li>
+<li><a href="./#clear-display"><strong>Clear Display</strong></a></li>
 </ul>
 <blockquote>
 <h2 id="display-color"><strong>Display Color</strong></h2>
@@ -113,17 +118,9 @@
 <h3 id="code-produced">Code Produced:</h3>
 <blockquote></blockquote>
 </blockquote>
-<pre><code>from lcddisplay import LCD_2inch
-from PIL import Image, ImageDraw, ImageFont
+<pre><code>import Display
 
-disp = LCD_2inch.LCD_2inch()
-disp.Init()
-disp.clear()
-
-
-image1 = Image.new("RGB", (disp.height, disp.width ), "RED")
-draw = ImageDraw.Draw(image1)
-disp.ShowImage(image1)
+Display.show_color("red")
 </code></pre>
 <blockquote>
 <h2 id="display-emoji"><strong>Display Emoji</strong></h2>
@@ -133,41 +130,21 @@ disp.ShowImage(image1)
 <h3 id="code-produced_1">Code Produced:</h3>
 <blockquote></blockquote>
 </blockquote>
-<pre><code>import os
-from lcddisplay import LCD_2inch
-from PIL import Image, ImageDraw, ImageFont
+<pre><code>import Display
 
-disp = LCD_2inch.LCD_2inch()
-disp.Init()
-disp.clear()
-
-
-scriptAbsolutePath = os.getcwd()
-imageRelativePath = "./../../../../public/assets/img/fusion/emojis/StraightAhead.jpg"
-imageFullPath = os.path.join(scriptAbsolutePath, imageRelativePath)
-image = Image.open(imageFullPath)
-image = image.rotate(180)
-disp.ShowImage(image)
+Display.show_emoji("eyes_straight")
 </code></pre>
 <blockquote>
-<h2 id="clear-display"><strong>Clear Display</strong></h2>
-<p>Clears the display by showing a clear white background.</p>
+<h2 id="display-face"><strong>Display Face</strong></h2>
+<p>Shows the selected face on the display.</p>
 <h3 id="block_2">Block:</h3>
-<p><img alt="" src="../img/Intermediate_Blocks/Display/clear-display.png" /></p>
+<p><img alt="" src="../img/Intermediate_Blocks/Display/display-face.png" /></p>
 <h3 id="code-produced_2">Code Produced:</h3>
 <blockquote></blockquote>
 </blockquote>
-<pre><code>from lcddisplay import LCD_2inch
-from PIL import Image, ImageDraw, ImageFont
+<pre><code>import Display
 
-disp = LCD_2inch.LCD_2inch()
-disp.Init()
-disp.clear()
-
-
-image1 = Image.new("RGB", (disp.height, disp.width ), "WHITE")
-draw = ImageDraw.Draw(image1)
-disp.ShowImage(image1)
+Display.show_face("straight")
 </code></pre>
 <blockquote>
 <h2 id="display-text"><strong>Display Text</strong></h2>
@@ -177,24 +154,21 @@ disp.ShowImage(image1)
 <h3 id="code-produced_3">Code Produced:</h3>
 <blockquote></blockquote>
 </blockquote>
-<pre><code>import os
-from lcddisplay import LCD_2inch
-from PIL import Image, ImageDraw, ImageFont
+<pre><code>import Display
 
-disp = LCD_2inch.LCD_2inch()
-disp.Init()
-disp.clear()
+Display.show_text("Hello World")
+</code></pre>
+<blockquote>
+<h2 id="clear-display"><strong>Clear Display</strong></h2>
+<p>Clears the display by showing a clear white background.</p>
+<h3 id="block_4">Block:</h3>
+<p><img alt="" src="../img/Intermediate_Blocks/Display/clear-display.png" /></p>
+<h3 id="code-produced_4">Code Produced:</h3>
+<blockquote></blockquote>
+</blockquote>
+<pre><code>import Display
 
-
-scriptAbsolutePath = os.getcwd()
-fontRelativePath = "./../../../../public/assets/font/Font00.ttf"
-fontFullPath = os.path.join(scriptAbsolutePath, fontRelativePath)
-Font1 = ImageFont.truetype(fontFullPath, 40)
-image = Image.new("RGB", (disp.height, disp.width ), "WHITE")
-draw = ImageDraw.Draw(image)
-draw.text((40,90), "Hello World", fill = "Black", font = Font1)
-image = image.rotate(180)
-disp.ShowImage(image)
+Display.show_color("white")
 </code></pre>
 <h2 id="questions"><strong>Questions?</strong></h2>
 <blockquote>

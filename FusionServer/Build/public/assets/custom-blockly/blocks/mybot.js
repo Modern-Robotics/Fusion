@@ -21,7 +21,8 @@ let startBlockColor = 135;
 let gyroBlockColor = 30;
 let ledBlockColor = 30
 let waitBlockColor = 60;
-let displayBlockColor = 180;
+let displayEmojiBlockColor = 180;
+let displayFaceBlockColor = 10;
 let moveBlockColor = 180;
 let speedBlockColor = 90;
 let rotateBlockColor = 285
@@ -37,8 +38,8 @@ Blockly.Blocks['mybot_start'] = {
             .appendField(new Blockly.FieldImage("assets/img/fusion/RecruitStart.png", imageW * 3, imageH * 1.5, { alt: "*", flipRtl: "FALSE" }));
         this.setNextStatement(true, null);
         this.setColour(startBlockColor);
-        this.setTooltip("Initialize the Fusion Robot.");
-        this.setHelpUrl(documentationPath + "/Int_Fusion-Control/#start-block");
+        this.setTooltip("Initialize the MyBot Robot.");
+        this.setHelpUrl(documentationPath + "/Int_MyBot-Control/#start-block");
     }
 };
 
@@ -62,7 +63,7 @@ Blockly.Blocks['mybot_basic_ledb'] = {
         this.setNextStatement(true, null);
         this.setColour(ledBlockColor);
         this.setTooltip("Turn on Blue LED. Turn off Yellow LED.");
-        this.setHelpUrl(documentationPath + "/Basic_Fusion-Control/#blue-led-on");
+        this.setHelpUrl(documentationPath + "/Basic_MyBot-Control/#blue-led-on");
     }
 };
   
@@ -74,7 +75,7 @@ Blockly.Blocks['mybot_basic_ledy'] = {
         this.setNextStatement(true, null);
         this.setColour(ledBlockColor);
         this.setTooltip("Turn on Yellow LED. Turn off Blue LED.");
-        this.setHelpUrl(documentationPath + "/Basic_Fusion-Control/#yellow-led-on");
+        this.setHelpUrl(documentationPath + "/Basic_MyBot-Control/#yellow-led-on");
     }
 };
   
@@ -86,7 +87,7 @@ Blockly.Blocks['mybot_basic_ledby'] = {
         this.setNextStatement(true, null);
         this.setColour(ledBlockColor);
         this.setTooltip("Turn on Blue and Yellow LED.");
-        this.setHelpUrl(documentationPath + "/Basic_Fusion-Control/#both-leds-on");
+        this.setHelpUrl(documentationPath + "/Basic_MyBot-Control/#both-leds-on");
     }
 };
   
@@ -98,7 +99,7 @@ Blockly.Blocks['mybot_basic_ledoff'] = {
         this.setNextStatement(true, null);
         this.setColour(ledBlockColor);
         this.setTooltip("Turn off Blue and Yellow LED.");
-        this.setHelpUrl(documentationPath + "/Basic_Fusion-Control/#both-leds-off");
+        this.setHelpUrl(documentationPath + "/Basic_MyBot-Control/#both-leds-off");
     }
 };
   
@@ -112,7 +113,7 @@ Blockly.Blocks['mybot_basic_wait'] = {
         this.setNextStatement(true, null);
         this.setColour(waitBlockColor);
         this.setTooltip("Wait 1 second.");
-        this.setHelpUrl(documentationPath + "/Basic_Fusion-Control/#wait");
+        this.setHelpUrl(documentationPath + "/Basic_MyBot-Control/#wait");
     }
 };
 
@@ -123,7 +124,7 @@ Blockly.Blocks['mybot_display_straight_ahead'] = {
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(displayBlockColor);
+        this.setColour(displayEmojiBlockColor);
         this.setTooltip("Display eyes straight emoji.");
         this.setHelpUrl(documentationPath + "/Basic_Display-Robot/#display-straight-ahead-emoji");
     }
@@ -136,7 +137,7 @@ Blockly.Blocks['mybot_display_snooze'] = {
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(displayBlockColor);
+        this.setColour(displayEmojiBlockColor);
         this.setTooltip("Display snooze emoji.");
         this.setHelpUrl(documentationPath + "/Basic_Display-Robot/#display-snooze-emoji");
     }
@@ -149,7 +150,7 @@ Blockly.Blocks['mybot_display_eyes_closed'] = {
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(displayBlockColor);
+        this.setColour(displayEmojiBlockColor);
         this.setTooltip("Display eyes closed emoji.");
         this.setHelpUrl(documentationPath + "/Basic_Display-Robot/#display-eyes-closed-emoji");
     }
@@ -162,7 +163,7 @@ Blockly.Blocks['mybot_display_eyes_left'] = {
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(displayBlockColor);
+        this.setColour(displayEmojiBlockColor);
         this.setTooltip("Display eyes left emoji.");
         this.setHelpUrl(documentationPath + "/Basic_Display-Robot/#display-eyes-left-emoji");
     }
@@ -175,7 +176,7 @@ Blockly.Blocks['mybot_display_eyes_right'] = {
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(displayBlockColor);
+        this.setColour(displayEmojiBlockColor);
         this.setTooltip("Display eyes right emoji.");
         this.setHelpUrl(documentationPath + "/Basic_Display-Robot/#display-eyes-right-emoji");
     }
@@ -188,81 +189,141 @@ Blockly.Blocks['mybot_display_eyes_crashed'] = {
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(displayBlockColor);
+        this.setColour(displayEmojiBlockColor);
         this.setTooltip("Display crash emoji.");
         this.setHelpUrl(documentationPath + "/Basic_Display-Robot/#display-crashed-emoji");
     }
 };
 
-//////////////////////////////////////////////////////
+Blockly.Blocks['mybot_display_emoji_glasses'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldImage("assets/img/fusion/emojis/Glasses.png", imageW, imageH, { alt: "*", flipRtl: "FALSE" }));
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(displayEmojiBlockColor);
+        this.setTooltip("Display glasses emoji.");
+        this.setHelpUrl(documentationPath + "/Basic_Display-Robot/#display-glasses-emoji");
+    }
+};
+
+Blockly.Blocks['mybot_display_emoji_oh_no'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldImage("assets/img/fusion/emojis/OhNo.png", imageW, imageH, { alt: "*", flipRtl: "FALSE" }));
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(displayEmojiBlockColor);
+        this.setTooltip("Display on no emoji.");
+        this.setHelpUrl(documentationPath + "/Basic_Display-Robot/#display-oh-no-emoji");
+    }
+};
+
+Blockly.Blocks['mybot_display_emoji_sunglasses'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldImage("assets/img/fusion/emojis/Sunglasses.png", imageW, imageH, { alt: "*", flipRtl: "FALSE" }));
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(displayEmojiBlockColor);
+        this.setTooltip("Display sunglasses emoji.");
+        this.setHelpUrl(documentationPath + "/Basic_Display-Robot/#display-sunglasses-emoji");
+    }
+};
+
+Blockly.Blocks['mybot_display_emoji_thumbs_down'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldImage("assets/img/fusion/emojis/ThumbsDown.png", imageW, imageH, { alt: "*", flipRtl: "FALSE" }));
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(displayEmojiBlockColor);
+        this.setTooltip("Display thumbs down emoji.");
+        this.setHelpUrl(documentationPath + "/Basic_Display-Robot/#display-thumbs-down-emoji");
+    }
+};
+
+Blockly.Blocks['mybot_display_emoji_thumbs_up'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldImage("assets/img/fusion/emojis/ThumbsUp.png", imageW, imageH, { alt: "*", flipRtl: "FALSE" }));
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(displayEmojiBlockColor);
+        this.setTooltip("Display thumbs up emoji.");
+        this.setHelpUrl(documentationPath + "/Basic_Display-Robot/#display-thumbs-up-emoji");
+    }
+};
 
 Blockly.Blocks['mybot_display_face_straight'] = {
     init: function() {
         this.appendDummyInput()
-            .appendField(new Blockly.FieldImage("assets/img/fusion/faces/straight.jpg", imageW, imageH, { alt: "*", flipRtl: "FALSE" }));
+            .appendField(new Blockly.FieldImage("assets/img/fusion/faces/straight.png", imageW, imageH, { alt: "*", flipRtl: "FALSE" }));
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(displayBlockColor);
-        // this.setTooltip("Display eyes straight emoji.");
-        // this.setHelpUrl(documentationPath + "/Basic_Display-Robot/#display-straight-ahead-emoji");
+        this.setColour(displayFaceBlockColor);
+        this.setTooltip("Display eyes straight face.");
+        this.setHelpUrl(documentationPath + "/Basic_Display-Robot/#display-eyes-straight-face");
     }
 };
 
 Blockly.Blocks['mybot_display_face_left'] = {
     init: function() {
         this.appendDummyInput()
-            .appendField(new Blockly.FieldImage("assets/img/fusion/faces/left.jpg", imageW, imageH, { alt: "*", flipRtl: "FALSE" }));
+            .appendField(new Blockly.FieldImage("assets/img/fusion/faces/left.png", imageW, imageH, { alt: "*", flipRtl: "FALSE" }));
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(displayBlockColor);
-        // this.setTooltip("Display eyes straight emoji.");
-        // this.setHelpUrl(documentationPath + "/Basic_Display-Robot/#display-straight-ahead-emoji");
+        this.setColour(displayFaceBlockColor);
+        this.setTooltip("Display eyes left face.");
+        this.setHelpUrl(documentationPath + "/Basic_Display-Robot/#display-eyes-left-face");
     }
 };
 
 Blockly.Blocks['mybot_display_face_right'] = {
     init: function() {
         this.appendDummyInput()
-            .appendField(new Blockly.FieldImage("assets/img/fusion/faces/right.jpg", imageW, imageH, { alt: "*", flipRtl: "FALSE" }));
+            .appendField(new Blockly.FieldImage("assets/img/fusion/faces/right.png", imageW, imageH, { alt: "*", flipRtl: "FALSE" }));
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(displayBlockColor);
-        // this.setTooltip("Display eyes straight emoji.");
-        // this.setHelpUrl(documentationPath + "/Basic_Display-Robot/#display-straight-ahead-emoji");
+        this.setColour(displayFaceBlockColor);
+        this.setTooltip("Display eyes right face.");
+        this.setHelpUrl(documentationPath + "/Basic_Display-Robot/#display-eyes-right-face");
     }
 };
 
 Blockly.Blocks['mybot_display_face_snooze'] = {
     init: function() {
         this.appendDummyInput()
-            .appendField(new Blockly.FieldImage("assets/img/fusion/faces/snooze.jpg", imageW, imageH, { alt: "*", flipRtl: "FALSE" }));
+            .appendField(new Blockly.FieldImage("assets/img/fusion/faces/snooze.png", imageW, imageH, { alt: "*", flipRtl: "FALSE" }));
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(displayBlockColor);
-        // this.setTooltip("Display eyes straight emoji.");
-        // this.setHelpUrl(documentationPath + "/Basic_Display-Robot/#display-straight-ahead-emoji");
+        this.setColour(displayFaceBlockColor);
+        this.setTooltip("Display snooze face.");
+        this.setHelpUrl(documentationPath + "/Basic_Display-Robot/#display-snooze-face");
     }
 };
 
 Blockly.Blocks['mybot_display_face_crash'] = {
     init: function() {
         this.appendDummyInput()
-            .appendField(new Blockly.FieldImage("assets/img/fusion/faces/crash.jpg", imageW, imageH, { alt: "*", flipRtl: "FALSE" }));
+            .appendField(new Blockly.FieldImage("assets/img/fusion/faces/crash.png", imageW, imageH, { alt: "*", flipRtl: "FALSE" }));
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(displayBlockColor);
-        // this.setTooltip("Display eyes straight emoji.");
-        // this.setHelpUrl(documentationPath + "/Basic_Display-Robot/#display-straight-ahead-emoji");
+        this.setColour(displayFaceBlockColor);
+        this.setTooltip("Display crash face.");
+        this.setHelpUrl(documentationPath + "/Basic_Display-Robot/#display-crash-face");
     }
 };
-
-/////////////////////////////////////////////////////
-
 
 Blockly.Blocks['mybot_display_clear'] = {
     init: function() {
@@ -271,7 +332,7 @@ Blockly.Blocks['mybot_display_clear'] = {
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
-        this.setColour(displayBlockColor);
+        this.setColour(displayEmojiBlockColor);
         this.setTooltip("Clears the display.");
         this.setHelpUrl(documentationPath + "/Basic_Display-Robot/#clear-display");
     }
@@ -301,7 +362,7 @@ Blockly.Blocks['mybot_basic_backward'] = {
         this.setNextStatement(true, null);
         this.setColour(moveBlockColor);
         this.setTooltip("Drive reverse for 1 second then stop.");
-        this.setHelpUrl(documentationPath + "/Basic_Move-Robot/#backwards");
+        this.setHelpUrl(documentationPath + "/Basic_Move-Robot/#backward");
     }
 };
   
@@ -413,6 +474,8 @@ Blockly.Blocks['mybot_basic_left180'] = {
     }
 };
 
+//////////////////////////////////////////////////////
+
 
 ///////////////////////////////////
 // Define intermediate blocks
@@ -422,7 +485,7 @@ Blockly.Blocks.fusion.HUE = 240;
 
 Blockly.Blocks['fusion_motor'] = {
     init: function () {
-        this.setHelpUrl(origin + doc_path +'/Int_Motors/#motor-speed');
+        this.setHelpUrl(documentationPath +'/Int_Motors/#motor-speed');
         this.setColour(0);
         this.appendValueInput('Power')
             .appendField(new Blockly.FieldDropdown([["M0 (Right)", "M0"], ["M1 (Left)", "M1"]]), "Motor")
@@ -445,7 +508,7 @@ Blockly.Blocks['fusion_motor'] = {
 
 Blockly.Blocks['fusion_drive'] = {
     init: function () {
-        this.setHelpUrl(origin + doc_path +'/Int_Motors/#drive-at-speed');
+        this.setHelpUrl(documentationPath +'/Int_Motors/#drive-at-speed');
         this.setColour(0);
         this.appendValueInput("Power")
             .setCheck("Number")
@@ -467,7 +530,7 @@ Blockly.Blocks['fusion_drive'] = {
 
 Blockly.Blocks['fusion_drive_time'] = {
     init: function () {
-        this.setHelpUrl(origin + doc_path +'/Int_Motors/#drive-at-speed-for-time');
+        this.setHelpUrl(documentationPath +'/Int_Motors/#drive-at-speed-for-time');
         this.setColour(0);
         this.appendValueInput("Power")
             .setCheck("Number")
@@ -503,7 +566,7 @@ Blockly.Blocks['fusion_drive_time'] = {
 
 Blockly.Blocks['fusion_rotate'] = {
     init: function () {
-        this.setHelpUrl(origin + doc_path +'/Int_Motors/#rotate-at-speed-for-time');
+        this.setHelpUrl(documentationPath +'/Int_Motors/#rotate-at-speed-for-time');
         this.setColour(0);
         this.appendValueInput("Power")
             .setCheck("Number")
@@ -556,7 +619,7 @@ Blockly.Blocks['fusion_servo_target'] = {
 		Blockly.HSV_SATURATION = 0.45;
 		Blockly.HSV_VALUE = 0.65;
         this.setTooltip('Send selected servo to a target position 0 - 255. BE CAREFUL as MRI is not responsible for damaged servos due to exceeding mechanical limits.');
-        this.setHelpUrl(origin + doc_path +'/Int_Servos/#servo-target');
+        this.setHelpUrl(documentationPath +'/Int_Servos/#servo-target');
     },
     onchange: function () {
         var target = Blockly.Python.valueToCode(this, "target", Blockly.Python.ORDER_NONE)
@@ -580,7 +643,7 @@ Blockly.Blocks['fusion_led'] = {
         this.setNextStatement(true, null);
         this.setColour(Blockly.Blocks.fusion.HUE);
         this.setTooltip('Turn an on-board user LED on or off.');
-        this.setHelpUrl(origin + doc_path +'/Int_Fusion-Control/#led');
+        this.setHelpUrl(documentationPath +'/Int_MyBot-Control/#led');
     }
 };
 
@@ -595,7 +658,7 @@ Blockly.Blocks['fusion_end'] = {
         Blockly.HSV_SATURATION = 0.45;
         Blockly.HSV_VALUE = 0.65;
         this.setTooltip('Stop the program.');
-        this.setHelpUrl(origin + doc_path +'/Int_Fusion-Control/#end-program');
+        this.setHelpUrl(documentationPath +'/Int_MyBot-Control/#end-program');
     }
 };
 
@@ -610,14 +673,14 @@ Blockly.Blocks['fusion_start'] = {
 		this.setColour(135);
 		Blockly.HSV_SATURATION = 0.45;
 		Blockly.HSV_VALUE = 0.65;
-        this.setTooltip('Initialize the Fusion Robot.');
-        this.setHelpUrl(origin + doc_path +'/Int_Fusion-Control/#start-block');
+        this.setTooltip('Initialize the MyBot Robot.');
+        this.setHelpUrl(documentationPath +'/Int_MyBot-Control/#start-block');
     }
 };
 
 Blockly.Blocks['fusion_comment'] = {
     init: function () {
-        this.setHelpUrl(origin + doc_path +'/Int_Fusion-Control/#comment');
+        this.setHelpUrl(documentationPath +'/Int_MyBot-Control/#comment');
         this.setColour(160);
         this.appendDummyInput()
             .appendField('Comment #')
@@ -641,7 +704,7 @@ Blockly.Blocks['drive_with_gyro'] = {
         Blockly.HSV_SATURATION = 0.45;
         Blockly.HSV_VALUE = 0.65;
         this.setTooltip('Drive with the Integrating Gyro. This block modifies the Move Robot and Rotate Robot blocks in Basic Blockly for more accurate turning. Refer to the documentation for a further instruction with this block.');
-        this.setHelpUrl(origin + doc_path +'/Basic_Move-Robot/#drive-with-gyro');
+        this.setHelpUrl(documentationPath +'/Basic_Move-Robot/#drive-with-gyro');
     }
 };
 
@@ -658,7 +721,7 @@ Blockly.Blocks['fusion_basic_select_motor_1'] = {
 		Blockly.HSV_SATURATION = 0.45;
 		Blockly.HSV_VALUE = 0.65;
         this.setTooltip('Selects motor for use with move commands.');
-        this.setHelpUrl(origin + doc_path +'/Basic_Fusion-Control/#motor-selection-blocks');
+        this.setHelpUrl(documentationPath +'/Basic_MyBot-Control/#motor-selection-blocks');
     }
 }
 
@@ -675,7 +738,7 @@ Blockly.Blocks['fusion_basic_select_motor_2'] = {
 		Blockly.HSV_SATURATION = 0.45;
 		Blockly.HSV_VALUE = 0.65;
         this.setTooltip('Selects motor for use with move commands.');
-        this.setHelpUrl(origin + doc_path +'/Basic_Fusion-Control/#motor-selection-blocks');
+        this.setHelpUrl(documentationPath +'/Basic_MyBot-Control/#motor-selection-blocks');
     }
 }
 
@@ -687,7 +750,7 @@ Blockly.Blocks['fusion_basic_forward'] = {
         this.setNextStatement(true, null);
         this.setColour(180);
         this.setTooltip('Drive forward for 1 second then stop.');
-        this.setHelpUrl(origin + doc_path +'/Basic_Move-Robot/#forward');
+        this.setHelpUrl(documentationPath +'/Basic_Move-Robot/#forward');
     }
 };
 
@@ -699,7 +762,7 @@ Blockly.Blocks['fusion_basic_backward'] = {
         this.setNextStatement(true, null);
         this.setColour(180);
         this.setTooltip('Drive reverse for 1 second then stop.');
-        this.setHelpUrl(origin + doc_path +'/Basic_Move-Robot/#backwards');
+        this.setHelpUrl(documentationPath +'/Basic_Move-Robot/#backwards');
     }
 };
 
@@ -711,7 +774,7 @@ Blockly.Blocks['fusion_basic_fast'] = {
         this.setNextStatement(true, null);
         this.setColour(90);
         this.setTooltip('Drive Fast Speed.');
-        this.setHelpUrl(origin + doc_path +'/Basic_Move-Robot/#fast');
+        this.setHelpUrl(documentationPath +'/Basic_Move-Robot/#fast');
     }
 };
 
@@ -723,7 +786,7 @@ Blockly.Blocks['fusion_basic_medium'] = {
         this.setNextStatement(true, null);
         this.setColour(90);
         this.setTooltip('Drive Medium Speed.');
-        this.setHelpUrl(origin + doc_path +'/Basic_Move-Robot/#medium');
+        this.setHelpUrl(documentationPath +'/Basic_Move-Robot/#medium');
     }
 };
 
@@ -735,7 +798,7 @@ Blockly.Blocks['fusion_basic_slow'] = {
         this.setNextStatement(true, null);
         this.setColour(90);
         this.setTooltip('Drive Slow Speed.');
-        this.setHelpUrl(origin + doc_path +'/Basic_Move-Robot/#slow');
+        this.setHelpUrl(documentationPath +'/Basic_Move-Robot/#slow');
     }
 };
 
@@ -747,7 +810,7 @@ Blockly.Blocks['fusion_basic_right45'] = {
         this.setNextStatement(true, null);
         this.setColour(285);
         this.setTooltip('Turn right 45 degrees.');
-        this.setHelpUrl(origin + doc_path +'/Basic_Rotate-Robot/#rotate-right-45');
+        this.setHelpUrl(documentationPath +'/Basic_Rotate-Robot/#rotate-right-45');
     }
 };
 
@@ -759,7 +822,7 @@ Blockly.Blocks['fusion_basic_right90'] = {
         this.setNextStatement(true, null);
         this.setColour(285);
         this.setTooltip('Turn right 90 degrees.');
-        this.setHelpUrl(origin + doc_path +'/Basic_Rotate-Robot/#rotate-right-90');
+        this.setHelpUrl(documentationPath +'/Basic_Rotate-Robot/#rotate-right-90');
     }
 };
 
@@ -771,7 +834,7 @@ Blockly.Blocks['fusion_basic_right180'] = {
         this.setNextStatement(true, null);
         this.setColour(285);
         this.setTooltip('Turn right 180 degrees.');
-        this.setHelpUrl(origin + doc_path +'/Basic_Rotate-Robot/#rotate-right-180');
+        this.setHelpUrl(documentationPath +'/Basic_Rotate-Robot/#rotate-right-180');
     }
 };
 
@@ -783,7 +846,7 @@ Blockly.Blocks['fusion_basic_left45'] = {
         this.setNextStatement(true, null);
         this.setColour(285);
         this.setTooltip('Turn left 45 degrees.');
-        this.setHelpUrl(origin + doc_path +'/Basic_Rotate-Robot/#rotate-left-45');
+        this.setHelpUrl(documentationPath +'/Basic_Rotate-Robot/#rotate-left-45');
     }
 };
 
@@ -795,7 +858,7 @@ Blockly.Blocks['fusion_basic_left90'] = {
         this.setNextStatement(true, null);
         this.setColour(285);
         this.setTooltip('Turn left 90 degrees.');
-        this.setHelpUrl(origin + doc_path +'/Basic_Rotate-Robot/#rotate-left-90');
+        this.setHelpUrl(documentationPath +'/Basic_Rotate-Robot/#rotate-left-90');
     }
 };
 
@@ -807,7 +870,7 @@ Blockly.Blocks['fusion_basic_left180'] = {
         this.setNextStatement(true, null);
         this.setColour(285);
         this.setTooltip('Turn left 180 degrees.');
-        this.setHelpUrl(origin + doc_path +'/Basic_Rotate-Robot/#rotate-left-180');
+        this.setHelpUrl(documentationPath +'/Basic_Rotate-Robot/#rotate-left-180');
     }
 };
 
@@ -819,7 +882,7 @@ Blockly.Blocks['fusion_basic_wait'] = {
         this.setNextStatement(true, null);
         this.setColour(60);
         this.setTooltip('Wait 1 second.');
-        this.setHelpUrl(origin + doc_path +'/Basic_Fusion-Control/#wait');
+        this.setHelpUrl(documentationPath +'/Basic_MyBot-Control/#wait');
     }
 };
 
@@ -831,7 +894,7 @@ Blockly.Blocks['fusion_basic_ledB'] = {
         this.setNextStatement(true, null);
         this.setColour(30);
         this.setTooltip('Turn on Blue LED. Turn off Yellow LED.');
-        this.setHelpUrl(origin + doc_path +'/Basic_Fusion-Control/#blue-led-on');
+        this.setHelpUrl(documentationPath +'/Basic_MyBot-Control/#blue-led-on');
     }
 };
 
@@ -843,7 +906,7 @@ Blockly.Blocks['fusion_basic_ledY'] = {
         this.setNextStatement(true, null);
         this.setColour(30);
         this.setTooltip('Turn on Yellow LED. Turn off Blue LED.');
-        this.setHelpUrl(origin + doc_path +'/Basic_Fusion-Control/#yellow-led-on');
+        this.setHelpUrl(documentationPath +'/Basic_MyBot-Control/#yellow-led-on');
     }
 };
 
@@ -855,7 +918,7 @@ Blockly.Blocks['fusion_basic_ledBY'] = {
         this.setNextStatement(true, null);
         this.setColour(30);
         this.setTooltip('Turn on Blue and Yellow LED.');
-        this.setHelpUrl(origin + doc_path +'/Basic_Fusion-Control/#both-leds-on');
+        this.setHelpUrl(documentationPath +'/Basic_MyBot-Control/#both-leds-on');
     }
 };
 
@@ -867,7 +930,7 @@ Blockly.Blocks['fusion_basic_ledoff'] = {
         this.setNextStatement(true, null);
         this.setColour(30);
         this.setTooltip('Turn off Blue and Yellow LED.');
-        this.setHelpUrl(origin + doc_path +'/Basic_Fusion-Control/#both-leds-off');
+        this.setHelpUrl(documentationPath +'/Basic_MyBot-Control/#both-leds-off');
     }
 };
 
@@ -883,7 +946,7 @@ Blockly.Blocks['time_delay'] = {
         this.setNextStatement(true, null);
         this.setColour(140);
         this.setTooltip('Wait a set number of seconds.');
-        this.setHelpUrl(origin + doc_path +'/time/#wait-in-seconds');
+        this.setHelpUrl(documentationPath +'/time/#wait-in-seconds');
     },
     onchange: function () {
         var delay = Blockly.Python.valueToCode(this, "delay", Blockly.Python.ORDER_NONE)
@@ -900,7 +963,7 @@ Blockly.Blocks['time_get'] = {
         this.setOutput(true, "Number");
         this.setColour(120);
         this.setTooltip("Returns the current timestamp from the system clock");
-        this.setHelpUrl(origin + doc_path +'/time/#get-time');
+        this.setHelpUrl(documentationPath +'/time/#get-time');
     }
 };
 
@@ -915,7 +978,7 @@ Blockly.Blocks['fusion_analog_read'] = {
 		Blockly.HSV_SATURATION = 0.45;
 		Blockly.HSV_VALUE = 0.65;
         this.setTooltip('Read the value of an analog port 0 - 1023.');
-        this.setHelpUrl(origin + doc_path +'/Blk_Analog_Digital/#analog-read');
+        this.setHelpUrl(documentationPath +'/Blk_Analog_Digital/#analog-read');
         this.setOutput(true, "Number");
     },
 
@@ -936,7 +999,7 @@ Blockly.Blocks['fusion_digital_read'] = {
 		Blockly.HSV_SATURATION = 0.45;
 		Blockly.HSV_VALUE = 0.65;
         this.setTooltip('Read the value of a digital port 0 or 1.');
-        this.setHelpUrl(origin + doc_path +'/Blk_Analog_Digital/#digital-read');
+        this.setHelpUrl(documentationPath +'/Blk_Analog_Digital/#digital-read');
     },
 
     getBlockType: function () {
@@ -959,7 +1022,7 @@ Blockly.Blocks['fusion_digital_write'] = {
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip('Write the value of 0 or 1 to a digital port.');
-        this.setHelpUrl(origin + doc_path +'/Blk_Analog_Digital/#digital-write');
+        this.setHelpUrl(documentationPath +'/Blk_Analog_Digital/#digital-write');
     },
 
     getBlockType: function () {
@@ -969,7 +1032,7 @@ Blockly.Blocks['fusion_digital_write'] = {
 
 Blockly.Blocks['fusion_touch_read'] = {
     init: function () {
-        this.setHelpUrl(origin + doc_path +'/Blk_Touch_Sensor/#pressed');
+        this.setHelpUrl(documentationPath +'/Blk_Touch_Sensor/#pressed');
         Blockly.HSV_SATURATION = .10;
 		Blockly.HSV_VALUE = .70;
 		this.setColour(50);
@@ -1000,7 +1063,7 @@ Blockly.Blocks['fusion_compass_heading'] = {
 		Blockly.HSV_SATURATION = 0.45;
 		Blockly.HSV_VALUE = 0.65;
         this.setTooltip('Returns the cardinal heading in degrees 0 - 359.');
-        this.setHelpUrl(origin + doc_path +'/Blk_Compass/#get-heading');
+        this.setHelpUrl(documentationPath +'/Blk_Compass/#get-heading');
     },
 
     getBlockType: function () {
@@ -1020,7 +1083,7 @@ Blockly.Blocks['fusion_compass_hardIronCalibration'] = {
 		Blockly.HSV_SATURATION = 0.45;
 		Blockly.HSV_VALUE = 0.65;
         this.setTooltip('Point the robot North, then rotate the robot 360° over the course of 5 seconds to calibrate the Compass.');
-        this.setHelpUrl(origin + doc_path +'/Blk_Compass/#hard-iron-calibration');
+        this.setHelpUrl(documentationPath +'/Blk_Compass/#hard-iron-calibration');
     }
 };
 
@@ -1036,7 +1099,7 @@ Blockly.Blocks['fusion_compass_tiltUp'] = {
 		Blockly.HSV_SATURATION = 0.45;
 		Blockly.HSV_VALUE = 0.65;
         this.setTooltip('Tile the robot up 20° above the horizon. Refer to documentation for more help.');
-        this.setHelpUrl(origin + doc_path +'/Blk_Compass/#tilt-up-calibration');
+        this.setHelpUrl(documentationPath +'/Blk_Compass/#tilt-up-calibration');
     }
 };
 
@@ -1052,7 +1115,7 @@ Blockly.Blocks['fusion_compass_tiltDown'] = {
 		Blockly.HSV_SATURATION = 0.45;
 		Blockly.HSV_VALUE = 0.65;
         this.setTooltip('Tile the robot down 20° below the horizon. Refer to documentation for more help.');
-        this.setHelpUrl(origin + doc_path +'/Blk_Compass/#tilt-down-calibration');
+        this.setHelpUrl(documentationPath +'/Blk_Compass/#tilt-down-calibration');
     }
 };
 
@@ -1069,7 +1132,7 @@ Blockly.Blocks['fusion_compass_nullAccelerometer'] = {
 		Blockly.HSV_SATURATION = 0.45;
 		Blockly.HSV_VALUE = 0.65;
         this.setTooltip('Set the accelerometer value of a particular axis to 0. The X and Y axis the sensor must be kept flat on the surface. The Z axis must be held vertical with the wire pointing up.');
-        this.setHelpUrl(origin + doc_path +'/Blk_Compass/#accelerometer-calibration');
+        this.setHelpUrl(documentationPath +'/Blk_Compass/#accelerometer-calibration');
     }
 };
 
@@ -1085,7 +1148,7 @@ Blockly.Blocks['fusion_compass_getAccelerometer'] = {
 		Blockly.HSV_SATURATION = 0.45;
 		Blockly.HSV_VALUE = 0.65;
         this.setTooltip('Returns the acclerometer value of a particular axis between 0 and 255.');
-        this.setHelpUrl(origin + doc_path +'/Blk_Compass/#get-accelerometer-reading');
+        this.setHelpUrl(documentationPath +'/Blk_Compass/#get-accelerometer-reading');
     },
 
     getBlockType: function () {
@@ -1105,7 +1168,7 @@ Blockly.Blocks['fusion_compass_getMagnetometer'] = {
 		Blockly.HSV_SATURATION = 0.45;
 		Blockly.HSV_VALUE = 0.65;
         this.setTooltip('Returns the strength of the magnetic field on the X, Y and Z axis.');
-        this.setHelpUrl(origin + doc_path +'/Blk_Compass/#get-magnetometer-reading');
+        this.setHelpUrl(documentationPath +'/Blk_Compass/#get-magnetometer-reading');
     },
 
     getBlockType: function () {
@@ -1125,7 +1188,7 @@ Blockly.Blocks['fusion_compass_scaleAccelerometer'] = {
 		Blockly.HSV_SATURATION = 0.45;
 		Blockly.HSV_VALUE = 0.65;
         this.setTooltip('Hold the sensor vertical with the wire point up before using this block.');
-        this.setHelpUrl(origin + doc_path +'/Blk_Compass/#scale-accelerometer');
+        this.setHelpUrl(documentationPath +'/Blk_Compass/#scale-accelerometer');
     }
 };
 
@@ -1141,7 +1204,7 @@ Blockly.Blocks['fusion_intGyro_heading'] = {
 		Blockly.HSV_SATURATION = 0.45;
 		Blockly.HSV_VALUE = 0.65;
         this.setTooltip('getDegrees: Heading from 0 - 359. getAbsolute: Heading from -32,767 - 32,767.');
-        this.setHelpUrl(origin + doc_path +'/Blk_Integrating_Gyro/#get-heading');
+        this.setHelpUrl(documentationPath +'/Blk_Integrating_Gyro/#get-heading');
     },
 
     getBlockType: function () {
@@ -1161,7 +1224,7 @@ Blockly.Blocks['fusion_intGyro_calibrate'] = {
 		Blockly.HSV_SATURATION = 0.45;
 		Blockly.HSV_VALUE = 0.65;
         this.setTooltip('Calibrate the gyro at the beginning of the program (3 Seconds). Use "Zero Integrating Gyro" block to zero the gyro reading within code. Does not need to be run in every program as calibration values are saved in the sensor.');
-        this.setHelpUrl(origin + doc_path +'/Blk_Integrating_Gyro/#calibrate');
+        this.setHelpUrl(documentationPath +'/Blk_Integrating_Gyro/#calibrate');
     }
 };
 
@@ -1177,7 +1240,7 @@ Blockly.Blocks['fusion_intGyro_zero'] = {
 		Blockly.HSV_SATURATION = 0.45;
 		Blockly.HSV_VALUE = 0.65;
         this.setTooltip('Sets the current gyro position to 0.');
-        this.setHelpUrl(origin + doc_path +'/Blk_Integrating_Gyro/#zero');
+        this.setHelpUrl(documentationPath +'/Blk_Integrating_Gyro/#zero');
     }
 };
 
@@ -1193,7 +1256,7 @@ Blockly.Blocks['fusion_rate_gyro_read'] = {
 		Blockly.HSV_SATURATION = 0.45;
 		Blockly.HSV_VALUE = 0.65;
         this.setTooltip('Detect the rate of rotation on a horizontal plane. Returns a value 0 - 1023.');
-        this.setHelpUrl(origin + doc_path +'/Blk_Rate_Gyro/#read');
+        this.setHelpUrl(documentationPath +'/Blk_Rate_Gyro/#read');
     },
     getBlockType: function () {
         return Blockly.Types.NUMBER;
@@ -1212,7 +1275,7 @@ Blockly.Blocks['fusion_seeker_heading'] = {
 		Blockly.HSV_SATURATION = 0.45;
 		Blockly.HSV_VALUE = 0.65;
         this.setTooltip('The value is 0 if the source is directly in front with a +/- change if the source moves.');
-        this.setHelpUrl(origin + doc_path +'/Blk_IR_Seeker_V3/#heading');
+        this.setHelpUrl(documentationPath +'/Blk_IR_Seeker_V3/#heading');
     },
 
     getBlockType: function () {
@@ -1232,7 +1295,7 @@ Blockly.Blocks['fusion_seeker_intensity'] = {
 		Blockly.HSV_SATURATION = 0.45;
 		Blockly.HSV_VALUE = 0.65;
         this.setTooltip('The value is 0 if no IR source is detected. Value increases as an IR source gets closer.');
-        this.setHelpUrl(origin + doc_path +'/Blk_IR_Seeker_V3/#intensity');
+        this.setHelpUrl(documentationPath +'/Blk_IR_Seeker_V3/#intensity');
     },
 
     getBlockType: function () {
@@ -1252,7 +1315,7 @@ Blockly.Blocks['fusion_locator_heading'] = {
 		Blockly.HSV_SATURATION = 0.45;
 		Blockly.HSV_VALUE = 0.65;
         this.setTooltip('The value is 0 if the source is directly in front with increasing values in the CW direction (0 - 359).');
-        this.setHelpUrl(origin + doc_path +'/Blk_IR_Locator_360/#heading');
+        this.setHelpUrl(documentationPath +'/Blk_IR_Locator_360/#heading');
     },
 
     getBlockType: function () {
@@ -1272,7 +1335,7 @@ Blockly.Blocks['fusion_locator_intensity'] = {
 		Blockly.HSV_SATURATION = 0.45;
 		Blockly.HSV_VALUE = 0.65;
         this.setTooltip('The value is 0 if no IR source is detected. Value increases as an IR source gets closer.');
-        this.setHelpUrl(origin + doc_path +'/Blk_IR_Locator_360/#intensity');
+        this.setHelpUrl(documentationPath +'/Blk_IR_Locator_360/#intensity');
     },
 
     getBlockType: function () {
@@ -1295,7 +1358,7 @@ Blockly.Blocks['fusion_color_beacon_set_color'] = {
 		Blockly.HSV_SATURATION = 0.45;
 		Blockly.HSV_VALUE = 0.65;
         this.setTooltip('Select a color to illuminate.');
-        this.setHelpUrl(origin + doc_path +'/Blk_Color_Beacon/#set-color');
+        this.setHelpUrl(documentationPath +'/Blk_Color_Beacon/#set-color');
     }
 };
 
@@ -1324,7 +1387,7 @@ Blockly.Blocks['fusion_color_beacon_set_custom_color'] = {
 		Blockly.HSV_SATURATION = 0.45;
 		Blockly.HSV_VALUE = 0.65;
         this.setTooltip('Select a color to illuminate based on RGB value. Each value has a range of 0 - 255.');
-        this.setHelpUrl(origin + doc_path +'/Blk_Color_Beacon/#set-custom-color');
+        this.setHelpUrl(documentationPath +'/Blk_Color_Beacon/#set-custom-color');
     },
     onchange: function () {
         var red = Blockly.Python.valueToCode(this, "Red", Blockly.Python.ORDER_NONE);
@@ -1364,7 +1427,7 @@ Blockly.Blocks['fusion_color_sensor_setup_init'] = {
 		Blockly.HSV_SATURATION = 0.45;
 		Blockly.HSV_VALUE = 0.65;
         this.setTooltip('Set the mode and frequency of the Color Sensor. Mode and frequency are save on the sensor for future programs untill changed by the user.');
-        this.setHelpUrl(origin + doc_path +'/Blk_Color_Sensor/#set-mode');
+        this.setHelpUrl(documentationPath +'/Blk_Color_Sensor/#set-mode');
     }
 };
 
@@ -1379,7 +1442,7 @@ Blockly.Blocks['fusion_color_sensor_color_number'] = {
 		Blockly.HSV_SATURATION = 0.45;
 		Blockly.HSV_VALUE = 0.65;
         this.setTooltip('Gets the color as a number between 0 and 16.');
-        this.setHelpUrl(origin + doc_path +'/Blk_Color_Sensor/#get-color-number');
+        this.setHelpUrl(documentationPath +'/Blk_Color_Sensor/#get-color-number');
     }
 };
 
@@ -1395,7 +1458,7 @@ Blockly.Blocks['fusion_color_sensor_color_rgb'] = {
 		Blockly.HSV_SATURATION = 0.45;
 		Blockly.HSV_VALUE = 0.65;
         this.setTooltip('Returns the Red, Green or Blue reading ranging from 0 to 255.');
-        this.setHelpUrl(origin + doc_path +'/Blk_Color_Sensor/#get-rgb');
+        this.setHelpUrl(documentationPath +'/Blk_Color_Sensor/#get-rgb');
     },
 
     getBlockType: function () {
@@ -1415,7 +1478,7 @@ Blockly.Blocks['fusion_light_read'] = {
 		Blockly.HSV_SATURATION = 0.45;
 		Blockly.HSV_VALUE = 0.65;
         this.setTooltip('Measures the amount of ambient light. Returns a value 0 - 1023.');
-        this.setHelpUrl(origin + doc_path +'/Blk_Light_Sensor/#read');
+        this.setHelpUrl(documentationPath +'/Blk_Light_Sensor/#read');
     },
     getBlockType: function () {
         return Blockly.Types.NUMBER;
@@ -1433,7 +1496,7 @@ Blockly.Blocks['fusion_range_sensor_us'] = {
 		Blockly.HSV_SATURATION = 0.45;
 		Blockly.HSV_VALUE = 0.65;
         this.setTooltip('Measure Distance in centimeters (cm) using sound waves.');
-        this.setHelpUrl(origin + doc_path +'/Blk_Range_Sensor/#ultrasonic');
+        this.setHelpUrl(documentationPath +'/Blk_Range_Sensor/#ultrasonic');
     },
 
     getBlockType: function () {
@@ -1452,7 +1515,7 @@ Blockly.Blocks['fusion_range_sensor_ods'] = {
 		Blockly.HSV_SATURATION = 0.45;
 		Blockly.HSV_VALUE = 0.65;
         this.setTooltip('Detect proximity to of objects using light.');
-        this.setHelpUrl(origin + doc_path +'/Blk_Range_Sensor/#optical');
+        this.setHelpUrl(documentationPath +'/Blk_Range_Sensor/#optical');
     },
 
     getBlockType: function () {
@@ -1472,7 +1535,7 @@ Blockly.Blocks['fusion_ods_read'] = {
 		Blockly.HSV_SATURATION = 0.45;
 		Blockly.HSV_VALUE = 0.65;
         this.setTooltip('Detect proximity using infrared light. Returns a value 0 - 1023.');
-        this.setHelpUrl(origin + doc_path +'/Blk_Optical_Distance_Sensor/#read');
+        this.setHelpUrl(documentationPath +'/Blk_Optical_Distance_Sensor/#read');
     },
 
     getBlockType: function () {
@@ -1492,7 +1555,7 @@ Blockly.Blocks['fusion_magnetic_read'] = {
 		Blockly.HSV_SATURATION = 0.45;
 		Blockly.HSV_VALUE = 0.65;
         this.setTooltip('Measures the inensity of a magnetic field. Returns a value 0 - 1023.');
-        this.setHelpUrl(origin + doc_path +'/Blk_Magnetic_Sensor/#read');
+        this.setHelpUrl(documentationPath +'/Blk_Magnetic_Sensor/#read');
     },
     getBlockType: function () {
         return Blockly.Types.NUMBER;
@@ -1534,7 +1597,7 @@ Blockly.Blocks['fusion_sound_generator'] = {
 		Blockly.HSV_SATURATION = 0.45;
 		Blockly.HSV_VALUE = 0.65;
         this.setTooltip('Play a note. If the check box is not selected, the program will continue while playing the note. If the box is selected, the program will pause until the note is completed and waits the additional time.');
-        this.setHelpUrl(origin + doc_path +'/Blk_Sound_Generator/#set-sound-blocking');
+        this.setHelpUrl(documentationPath +'/Blk_Sound_Generator/#set-sound-blocking');
     },
     onchange: function () {
         var pitch = Blockly.Python.valueToCode(this, "pitch", Blockly.Python.ORDER_NONE)
@@ -1584,7 +1647,7 @@ Blockly.Blocks['fusion_usbGamepad_readAxis'] = {
         Blockly.HSV_VALUE = 0.65;
 		this.setOutput(true, "Number");
         this.setTooltip('Read the selected axis of the connected gamepad from -100 to 100.');
-        this.setHelpUrl(origin + doc_path +'/Blk_usbGamepad/#read-axis');
+        this.setHelpUrl(documentationPath +'/Blk_usbGamepad/#read-axis');
     },
 
     getBlockType: function () {
@@ -1607,7 +1670,7 @@ Blockly.Blocks['fusion_usbGamepad_readAxisFloat'] = {
         Blockly.HSV_VALUE = 0.65;
 		this.setOutput(true, "Number");
         this.setTooltip('Read the selected axis of the connected gamepad from -1.00 to 1.00.');
-        this.setHelpUrl(origin + doc_path +'/Blk_usbGamepad/#read-axis-float');
+        this.setHelpUrl(documentationPath +'/Blk_usbGamepad/#read-axis-float');
     },
 
     getBlockType: function () {
@@ -1639,7 +1702,7 @@ Blockly.Blocks['fusion_usbGamepad_mixer'] = {
         Blockly.HSV_VALUE = 0.65;
 		this.setOutput(true, "Number");
         this.setTooltip('Combine the values of two sleceted axes. Returns a tuple from -100 to 100 that can be directly set to M0 and M1. This allows for a proportional tank drive. Refer to examples and documentation for a more detailed explanation.');
-        this.setHelpUrl(origin + doc_path +'/Blk_usbGamepad/#axis-mixer');
+        this.setHelpUrl(documentationPath +'/Blk_usbGamepad/#axis-mixer');
     },
 
     getBlockType: function () {
@@ -1659,7 +1722,7 @@ Blockly.Blocks['fusion_usbGamepad_readButton'] = {
         Blockly.HSV_VALUE = 0.65;
 		this.setOutput(true, "Number");
         this.setTooltip('Read the selected button of the connected gamepad. A value of 0 is returned if the button is not pressed and a value of 1 is reeturned if the button is pressed.');
-        this.setHelpUrl(origin + doc_path +'/Blk_usbGamepad/#read-button');
+        this.setHelpUrl(documentationPath +'/Blk_usbGamepad/#read-button');
     },
 
     getBlockType: function () {
@@ -1678,7 +1741,7 @@ Blockly.Blocks['fusion_usbGamepad_readHat'] = {
         Blockly.HSV_VALUE = 0.65;
 		this.setOutput(true, "Number");
         this.setTooltip('Read the hat (D-Pad) of the connected gamepad. The value is returned in a tuple (X,Y) where X and Y are either -1, 0 or 1.');
-        this.setHelpUrl(origin + doc_path +'/Blk_usbGamepad/#read-hat');
+        this.setHelpUrl(documentationPath +'/Blk_usbGamepad/#read-hat');
     },
 
     getBlockType: function () {
@@ -1709,7 +1772,7 @@ Blockly.Blocks['fusion_VirtualGamepad_Joystick'] = {
  		this.setInputsInline(false);
  		this.setOutput(true, "Number");
         this.setTooltip('Read the X-axis and Y-axis of the left or right joystick. Choose to mix or invert the values.');
-        this.setHelpUrl(origin + doc_path +'/Blk_VirtualGamepad/#read-joystick');
+        this.setHelpUrl(documentationPath +'/Blk_VirtualGamepad/#read-joystick');
      },
  
      getBlockType: function () {
@@ -1729,7 +1792,7 @@ Blockly.Blocks['fusion_VirtualGamepad_readButton'] = {
         Blockly.HSV_VALUE = 0.65;
 		this.setOutput(true, "Number");
         this.setTooltip('Read one of the 4 on screen buttons. Returns either a 0 or 1.');
-        this.setHelpUrl(origin + doc_path +'/Blk_VirtualGamepad/#read-button');
+        this.setHelpUrl(documentationPath +'/Blk_VirtualGamepad/#read-button');
     },
 
     getBlockType: function () {
@@ -1755,7 +1818,7 @@ Blockly.Blocks['fusion_VirtualGamepad_telemetry'] = {
         Blockly.HSV_SATURATION = 0.45;
         Blockly.HSV_VALUE = 0.65;
         this.setTooltip('Print data to the Virtual Gamepad screen.');
-        this.setHelpUrl(origin + doc_path +'/Blk_VirtualGamepad/#telemetry');
+        this.setHelpUrl(documentationPath +'/Blk_VirtualGamepad/#telemetry');
     }
 };
 
@@ -1790,7 +1853,7 @@ Blockly.Blocks['fusion_VirtualGamepad_camera'] = {
         Blockly.HSV_SATURATION = 0.45;
         Blockly.HSV_VALUE = 0.65;
         this.setTooltip('Display the output of a connected USB camera to the Virtual Gamepad screen.');
-        this.setHelpUrl(origin + doc_path +'/Blk_VirtualGamepad/#camera');
+        this.setHelpUrl(documentationPath +'/Blk_VirtualGamepad/#camera');
     }
 };
 
@@ -1808,7 +1871,7 @@ Blockly.Blocks['CoreControl_printDevices'] = {
 		this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip('Read a list of connected Core Control Modules. This will return a list contatin USB ports, Module name and Module FTDI serial number. The module serial number is needed to communicate with the module.');
-        this.setHelpUrl(origin + doc_path +'/CoreControlDriver/#print-devices');
+        this.setHelpUrl(documentationPath +'/CoreControlDriver/#print-devices');
     } 
 };
 
@@ -1824,7 +1887,7 @@ Blockly.Blocks['CoreControl_CoreMotorController'] = {
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip('Setup a Core Motor Controller by setting a name that corresponds to the FTDI serial number.');
-		this.setHelpUrl(origin + doc_path +'/Blk_Core_Motor_Controller/#setup');
+		this.setHelpUrl(documentationPath +'/Blk_Core_Motor_Controller/#setup');
     }
 };
 
@@ -1843,7 +1906,7 @@ Blockly.Blocks['CoreControl_constantSpeed'] = {
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip('Set speed of a motor between -100 and 100.');
-		this.setHelpUrl(origin + doc_path +'/Blk_Core_Motor_Controller/#motor-speed');
+		this.setHelpUrl(documentationPath +'/Blk_Core_Motor_Controller/#motor-speed');
     },
     onchange: function () {
         var power = Blockly.Python.valueToCode(this, "power", Blockly.Python.ORDER_NONE)
@@ -1870,7 +1933,7 @@ Blockly.Blocks['CoreControl_constantPower'] = {
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip('Set power of a motor between -100 and 100.');
-		this.setHelpUrl(origin + doc_path +'/Blk_Core_Motor_Controller/#motor-power');
+		this.setHelpUrl(documentationPath +'/Blk_Core_Motor_Controller/#motor-power');
     },
     onchange: function () {
         var power = Blockly.Python.valueToCode(this, "power", Blockly.Python.ORDER_NONE)
@@ -1900,7 +1963,7 @@ Blockly.Blocks['CoreControl_runToPosition'] = {
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip('Run to an encoder position at a set speed.');
-		this.setHelpUrl(origin + doc_path +'/Blk_Core_Motor_Controller/#run-to-position');
+		this.setHelpUrl(documentationPath +'/Blk_Core_Motor_Controller/#run-to-position');
     },
     onchange: function () {
         var power = Blockly.Python.valueToCode(this, "power", Blockly.Python.ORDER_NONE)
@@ -1924,7 +1987,7 @@ Blockly.Blocks['CoreControl_readEncoder'] = {
         this.setInputsInline(true);
 		this.setOutput(true, "Number");
         this.setTooltip('Read the current encoder position of the motor.');
-		this.setHelpUrl(origin + doc_path +'/Blk_Core_Motor_Controller/#read-encoder');
+		this.setHelpUrl(documentationPath +'/Blk_Core_Motor_Controller/#read-encoder');
     },
         getBlockType: function () {
         return Blockly.Types.NUMBER;
@@ -1941,7 +2004,7 @@ Blockly.Blocks['CoreControl_readBattVoltage'] = {
         this.setInputsInline(true);
 		this.setOutput(true, "Number");
         this.setTooltip('Read the 12V battery voltage.');
-		this.setHelpUrl(origin + doc_path +'/Blk_Core_Motor_Controller/#read-battery-voltage');
+		this.setHelpUrl(documentationPath +'/Blk_Core_Motor_Controller/#read-battery-voltage');
     },
         getBlockType: function () {
         return Blockly.Types.NUMBER;
@@ -1964,7 +2027,7 @@ Blockly.Blocks['CoreControl_CoreServoController'] = {
 		Blockly.HSV_SATURATION = 0.45;
 		Blockly.HSV_VALUE = 0.65;
         this.setTooltip('Setup a Core Servo Controller by setting a name that corresponds to the FTDI serial number.');
-		this.setHelpUrl(origin + doc_path +'/Blk_Core_Servo_Controller/#setup');
+		this.setHelpUrl(documentationPath +'/Blk_Core_Servo_Controller/#setup');
     }
 };
 
@@ -1988,7 +2051,7 @@ Blockly.Blocks['CoreControl_servoTarget'] = {
 		Blockly.HSV_SATURATION = 0.45;
 		Blockly.HSV_VALUE = 0.65;
         this.setTooltip('Send selected servo to a target position 0 - 255. BE CAREFUL as MRI is not responsible for damaged servos due to exceeding mechanical limits.');
-        this.setHelpUrl(origin + doc_path +'/Blk_Core_Servo_Controller/#servo-target');
+        this.setHelpUrl(documentationPath +'/Blk_Core_Servo_Controller/#servo-target');
     },
     onchange: function () {
         var target = Blockly.Python.valueToCode(this, "target", Blockly.Python.ORDER_NONE)
@@ -2016,7 +2079,7 @@ Blockly.Blocks['CoreControl_CoreDeviceInterface'] = {
 		Blockly.HSV_SATURATION = 0.45;
 		Blockly.HSV_VALUE = 0.65;
         this.setTooltip('Setup a Core Device Interface by setting a name that corresponds to the FTDI serial number.');
-		this.setHelpUrl(origin + doc_path +'/Blk_Core_Device_Interface/#setup');
+		this.setHelpUrl(documentationPath +'/Blk_Core_Device_Interface/#setup');
     }
 };
 
@@ -2037,7 +2100,7 @@ Blockly.Blocks['CoreControl_cdi_led'] = {
 		this.setInputsInline(true);
         this.setColour(Blockly.Blocks.fusion.HUE);
         this.setTooltip('Turn an on-board user LED on or off.');
-        this.setHelpUrl(origin + doc_path +'/Core_Device_Interface/#set-led');
+        this.setHelpUrl(documentationPath +'/Core_Device_Interface/#set-led');
     }
 };
 
@@ -2056,7 +2119,7 @@ Blockly.Blocks['CoreControl_analogRead'] = {
 		Blockly.HSV_VALUE = 0.65;
 		this.setInputsInline(true);
         this.setTooltip('Read the value of an analog port 0 - 1023.');
-        this.setHelpUrl(origin + doc_path +'/Blk_Core_Device_Interface/#analog-read');
+        this.setHelpUrl(documentationPath +'/Blk_Core_Device_Interface/#analog-read');
         this.setOutput(true, "Number");
     },
 
@@ -2093,7 +2156,7 @@ Blockly.Blocks['CoreControl_analogOutputWrite'] = {
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip('Output a voltage from the specified port at a set frequency and waveform.');
-        this.setHelpUrl(origin + doc_path +'/Blk_Core_Device_Interface/#analog-output-write');
+        this.setHelpUrl(documentationPath +'/Blk_Core_Device_Interface/#analog-output-write');
     },
 
     onchange: function () {
@@ -2141,7 +2204,7 @@ Blockly.Blocks['CoreControl_digitalRead'] = {
 		Blockly.HSV_VALUE = 0.65;
 		this.setInputsInline(true);
         this.setTooltip('Read the value of a digital port 0 or 1.');
-        this.setHelpUrl(origin + doc_path +'/Blk_Core_Device_Interface/#digital-read');
+        this.setHelpUrl(documentationPath +'/Blk_Core_Device_Interface/#digital-read');
     },
 
     getBlockType: function () {
@@ -2168,7 +2231,7 @@ Blockly.Blocks['CoreControl_digitalWrite'] = {
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip('Write the value of 0 or 1 to a digital port.');
-        this.setHelpUrl(origin + doc_path +'/Blk_Core_Device_Interface/#digital-write');
+        this.setHelpUrl(documentationPath +'/Blk_Core_Device_Interface/#digital-write');
     },
 
     getBlockType: function () {
@@ -2203,7 +2266,7 @@ Blockly.Blocks['CoreControl_setPWM'] = {
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip('Write the value of 0 or 1 to a digital port.');
-        this.setHelpUrl(origin + doc_path +'/Blk_Core_Device_Interface/#set-pwm');
+        this.setHelpUrl(documentationPath +'/Blk_Core_Device_Interface/#set-pwm');
     }
 };
 
@@ -2229,7 +2292,7 @@ Blockly.Blocks['CoreControl_i2cRead'] = {
 		Blockly.HSV_VALUE = 0.65;
 		this.setInputsInline(true);
         this.setTooltip('Read a value(s) from a connected I2C device.');
-        this.setHelpUrl(origin + doc_path +'/Blk_Core_Device_Interface/#i2c-read');
+        this.setHelpUrl(documentationPath +'/Blk_Core_Device_Interface/#i2c-read');
     },
 
     getBlockType: function () {
@@ -2260,7 +2323,7 @@ Blockly.Blocks['CoreControl_i2cWrite'] = {
 		this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip('Write a value to a connected I2C device.');
-        this.setHelpUrl(origin + doc_path +'/Blk_Core_Device_Interface/#i2c-write');
+        this.setHelpUrl(documentationPath +'/Blk_Core_Device_Interface/#i2c-write');
     },
 
     getBlockType: function () {
@@ -2284,7 +2347,7 @@ Blockly.Blocks['CoreControl_CoreLegacyModule'] = {
 		Blockly.HSV_SATURATION = 0.45;
 		Blockly.HSV_VALUE = 0.65;
         this.setTooltip('Setup a Core Legacy Module by setting a name that corresponds to the FTDI serial number.');
-		this.setHelpUrl(origin + doc_path +'/Blk_Core_Legacy_Module/#setup');
+		this.setHelpUrl(documentationPath +'/Blk_Core_Legacy_Module/#setup');
     }
 };
 
@@ -2307,7 +2370,7 @@ Blockly.Blocks['CoreControl_clm_led'] = {
 		this.setInputsInline(true);
         this.setColour(Blockly.Blocks.fusion.HUE);
         this.setTooltip('Turn an on-board user LED on or off.');
-        this.setHelpUrl(origin + doc_path +'/Core_Legacy_Module/#set-led');
+        this.setHelpUrl(documentationPath +'/Core_Legacy_Module/#set-led');
     }
 };
 
@@ -2326,7 +2389,7 @@ Blockly.Blocks['CoreControl_clm_analogRead'] = {
 		Blockly.HSV_VALUE = 0.65;
 		this.setInputsInline(true);
         this.setTooltip('Read the value of a port 0 - 1023.');
-        this.setHelpUrl(origin + doc_path +'/Blk_Core_Legacy_Module/#analog-read');
+        this.setHelpUrl(documentationPath +'/Blk_Core_Legacy_Module/#analog-read');
         this.setOutput(true, "Number");
     },
 	
@@ -2374,7 +2437,7 @@ Blockly.Blocks['CoreControl_clm_i2cRead'] = {
 		Blockly.HSV_VALUE = 0.65;
 		this.setInputsInline(true);
         this.setTooltip('Read a value(s) from a connected I2C device.');
-        this.setHelpUrl(origin + doc_path +'/Blk_Core_Legacy_Module/#i2c-read');
+        this.setHelpUrl(documentationPath +'/Blk_Core_Legacy_Module/#i2c-read');
     },
 
     getBlockType: function () {
@@ -2408,7 +2471,7 @@ Blockly.Blocks['CoreControl_clm_i2cWrite'] = {
 		this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip('Write a value to a connected I2C device.');
-        this.setHelpUrl(origin + doc_path +'/Blk_Core_Legacy_Module/#i2c-write');
+        this.setHelpUrl(documentationPath +'/Blk_Core_Legacy_Module/#i2c-write');
     },
 
     getBlockType: function () {
@@ -2426,7 +2489,7 @@ Blockly.Blocks['Open_File'] = {
       this.setOutput(true, "File");
       this.setColour(65);
    this.setTooltip("Returns a file object and sets to append or overwrite mode");
-   this.setHelpUrl(origin + doc_path +'/Blk_File_Handling/#open-file');
+   this.setHelpUrl(documentationPath +'/Blk_File_Handling/#open-file');
     }
 };
 
@@ -2443,7 +2506,7 @@ Blockly.Blocks['Write_To_File'] = {
       this.setNextStatement(true, null);
       this.setColour(65);
         this.setTooltip("Writes string to file object");
-        this.setHelpUrl(origin + doc_path +'/Blk_File_Handling/#write-to-file');
+        this.setHelpUrl(documentationPath +'/Blk_File_Handling/#write-to-file');
     }
 };
 
@@ -2457,7 +2520,7 @@ Blockly.Blocks['Close_File'] = {
       this.setNextStatement(true, null);
       this.setColour(65);
     this.setTooltip("Closes the file object");
-    this.setHelpUrl(origin + doc_path +'/Blk_File_Handling/#close-file');
+    this.setHelpUrl(documentationPath +'/Blk_File_Handling/#close-file');
     }
 };
 
@@ -2472,7 +2535,7 @@ Blockly.Blocks['fusion_display_color'] = {
         this.setNextStatement(true, null);
 		this.setColour(240);
         this.setTooltip('Select a color to illuminate.');
-        this.setHelpUrl(origin + doc_path + '/Int_Display-Robot/#display-color');
+        this.setHelpUrl(documentationPath +  '/Int_Display-Robot/#display-color');
     }
 };
 
@@ -2481,18 +2544,23 @@ Blockly.Blocks['fusion_display_emoji'] = {
         this.appendDummyInput()
             .appendField("Display emoji:")
             .appendField(new Blockly.FieldDropdown([
-                [{"src": "assets/img/fusion/emojis/StraightAhead.png", "width": 50, "height": 50}, "eyes_straight"],                
-                [{"src": "assets/img/fusion/emojis/EyesLeft.png", "width": 50, "height": 50}, "eyes_left"],
-                [{"src": "assets/img/fusion/emojis/EyesRight.png", "width": 50, "height": 50}, "eyes_right"],
-                [{"src": "assets/img/fusion/emojis/EyesClosed.png", "width": 50, "height": 50}, "eyes_closed"],                
-                [{"src": "assets/img/fusion/emojis/Crash.png", "width": 50, "height": 50}, "crash"],
-                [{"src": "assets/img/fusion/emojis/Snooze.png", "width": 50, "height": 50}, "snooze"],
+                [{"src": "assets/img/fusion/emojis/StraightAhead.png", "width": imageW, "height": imageH}, "eyes_straight"],                
+                [{"src": "assets/img/fusion/emojis/EyesLeft.png", "width": imageW, "height": imageH}, "eyes_left"],
+                [{"src": "assets/img/fusion/emojis/EyesRight.png", "width": imageW, "height": imageH}, "eyes_right"],
+                [{"src": "assets/img/fusion/emojis/EyesClosed.png", "width": imageW, "height": imageH}, "eyes_closed"],                
+                [{"src": "assets/img/fusion/emojis/Crash.png", "width": imageW, "height": imageH}, "crash"],
+                [{"src": "assets/img/fusion/emojis/Snooze.png", "width": imageW, "height": imageH}, "snooze"],
+                [{"src": "assets/img/fusion/emojis/Glasses.png", "width": imageW, "height": imageH}, "glasses"],
+                [{"src": "assets/img/fusion/emojis/OhNo.png", "width": imageW, "height": imageH}, "on_no"],
+                [{"src": "assets/img/fusion/emojis/Sunglasses.png", "width": imageW, "height": imageH}, "sunglasses"],                
+                [{"src": "assets/img/fusion/emojis/ThumbsUp.png", "width": imageW, "height": imageH}, "thumbs_up"],
+                [{"src": "assets/img/fusion/emojis/ThumbsDown.png", "width": imageW, "height": imageH}, "thumbs_down"],
             ]), "Emoji");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setColour(240);
-        this.setTooltip('Displays selected emoji on lcd.');
-        this.setHelpUrl(origin + doc_path + '/Int_Display-Robot/#display-emoji');
+        this.setTooltip('Displays selected emoji.');
+        this.setHelpUrl(documentationPath +  '/Int_Display-Robot/#display-emoji');
     }
 };
 
@@ -2501,22 +2569,17 @@ Blockly.Blocks['fusion_display_face'] = {
         this.appendDummyInput()
             .appendField("Display face:")
             .appendField(new Blockly.FieldDropdown([
-                [{"src": "assets/img/fusion/faces/straight.jpg", "width": 50, "height": 50}, "straight"],                
-                [{"src": "assets/img/fusion/faces/left.jpg", "width": 50, "height": 50}, "left"],
-                [{"src": "assets/img/fusion/faces/right.jpg", "width": 50, "height": 50}, "right"],
-                [{"src": "assets/img/fusion/faces/crash.jpg", "width": 50, "height": 50}, "crash"],
-                [{"src": "assets/img/fusion/faces/snooze.jpg", "width": 50, "height": 50}, "snooze"],
-                [{"src": "assets/img/fusion/faces/straight-2.jpg", "width": 50, "height": 50}, "straight-2"],
-                [{"src": "assets/img/fusion/faces/left-2.jpg", "width": 50, "height": 50}, "left-2"],
-                [{"src": "assets/img/fusion/faces/right-2.jpg", "width": 50, "height": 50}, "right-2"],
-                [{"src": "assets/img/fusion/faces/crash-2.jpg", "width": 50, "height": 50}, "crash-2"],
-                [{"src": "assets/img/fusion/faces/snooze-2.jpg", "width": 50, "height": 50}, "snooze-2"],
+                [{"src": "assets/img/fusion/faces/straight.png", "width": imageW, "height": imageH}, "straight"],                
+                [{"src": "assets/img/fusion/faces/left.png", "width": imageW, "height": imageH}, "left"],
+                [{"src": "assets/img/fusion/faces/right.png", "width": imageW, "height": imageH}, "right"],
+                [{"src": "assets/img/fusion/faces/crash.png", "width": imageW, "height": imageH}, "crash"],
+                [{"src": "assets/img/fusion/faces/snooze.png", "width": imageW, "height": imageH}, "snooze"],
             ]), "Face");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setColour(240);
-        this.setTooltip('Displays selected face on lcd.');
-        //this.setHelpUrl(origin + doc_path + '/Int_Display-Robot/#display-emoji');
+        this.setTooltip('Displays selected face.');
+        this.setHelpUrl(documentationPath + '/Int_Display-Robot/#display-face');
     }
 };
 
@@ -2527,8 +2590,8 @@ Blockly.Blocks['fusion_display_clear'] = {
     	this.setPreviousStatement(true, null);
 	    this.setNextStatement(true, null);
 	    this.setColour(240);
-		this.setTooltip("Clears LCD display");
-        this.setHelpUrl(origin + doc_path + '/Int_Display-Robot/#clear-display');
+		this.setTooltip("Clears display.");
+        this.setHelpUrl(documentationPath +  '/Int_Display-Robot/#clear-display');
  	}
 };
 
@@ -2540,8 +2603,8 @@ Blockly.Blocks['fusion_display_text'] = {
     	this.setPreviousStatement(true, null);
 	    this.setNextStatement(true, null);
 	    this.setColour(240);
-		this.setTooltip("Display text in lcd.");
-		this.setHelpUrl(origin + doc_path + '/Int_Display-Robot/#display-text');
+		this.setTooltip("Display text.");
+		this.setHelpUrl(documentationPath +  '/Int_Display-Robot/#display-text');
  	}
 };
 

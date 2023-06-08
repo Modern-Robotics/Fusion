@@ -167,6 +167,46 @@ Blockly.Python['mybot_display_eyes_crashed'] = function(block) {
 
 };
 
+Blockly.Python['mybot_display_emoji_glasses'] = function(block) {
+
+    Blockly.Python.definitions_['mybot_display_libraries'] = displayLibraryReference;
+	let code = `Display.show_emoji("glasses")\n`;
+	return code;
+
+};
+
+Blockly.Python['mybot_display_emoji_oh_no'] = function(block) {
+
+    Blockly.Python.definitions_['mybot_display_libraries'] = displayLibraryReference;
+	let code = `Display.show_emoji("on_no")\n`;
+	return code;
+
+};
+
+Blockly.Python['mybot_display_emoji_sunglasses'] = function(block) {
+
+    Blockly.Python.definitions_['mybot_display_libraries'] = displayLibraryReference;
+	let code = `Display.show_emoji("sunglasses")\n`;
+	return code;
+
+};
+
+Blockly.Python['mybot_display_emoji_thumbs_up'] = function(block) {
+
+    Blockly.Python.definitions_['mybot_display_libraries'] = displayLibraryReference;
+	let code = `Display.show_emoji("thumbs_up")\n`;
+	return code;
+
+};
+
+Blockly.Python['mybot_display_emoji_thumbs_down'] = function(block) {
+
+    Blockly.Python.definitions_['mybot_display_libraries'] = displayLibraryReference;
+	let code = `Display.show_emoji("thumbs_down")\n`;
+	return code;
+
+};
+
 Blockly.Python['mybot_display_clear'] = function(block) {
 
     Blockly.Python.definitions_['mybot_display_libraries'] = displayLibraryReference;
