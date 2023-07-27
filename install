@@ -237,6 +237,7 @@ sudo sed -i "s|^print('Hello from the pygame community. https://www.pygame.org/c
 
 # Installs DHCPCD config
 if ! cmp -s /etc/dhcpcd.conf /usr/Fusion/config/dhcpcd/dhcpcd.conf; then
+	sudo systemctl enable dhcpcd
 	sudo mv /etc/dhcpcd.conf /etc/dhcpcd.conf.orig
 	sudo cp /usr/Fusion/config/dhcpcd/dhcpcd.conf /etc/dhcpcd.conf
 	sudo systemctl restart dhcpcd
