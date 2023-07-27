@@ -1,19 +1,25 @@
 #!/bin/bash
 
-# Fix root ttyS0
-if [[ $(ps aux | grep ttyS0 | grep root | grep -v 'grep' | awk '{print $11}') == '/sbin/agetty' ]]
-then
+for i in {1..10}
+do
+   # Fix root ttyS0
+   if [[ $(ps aux | grep ttyS0 | grep root | grep -v 'grep' | awk '{print $11}') == '/sbin/agetty' ]]
+   then
 	echo "Killing root process"
 	sudo kill $(ps aux | grep ttyS0 | grep root | grep -v 'grep' | awk '{print $2}')
 	sleep 10
-fi
+   fi
 
-# Fix pi ttyS0
-if [[ $(w | grep ttyS0 | awk '{print $5}' | grep s) ]]
-then
+   # Fix pi ttyS0
+   if [[ $(w | grep ttyS0 | awk '{print $5}' | grep s) ]]
+   then
 	if [[ $(w | grep ttyS0 | awk '{print $5}' | awk -F '.' '{print $1}') -lt 9 ]]
 	then
 		echo "board idle time less than 9 seconds - killing"
 		kill $(ps aux | grep ttyS0 | grep pi | grep bash | awk '{print $2}')
 	fi
-fi
+   fi
+
+   # Sleep for 1 second before the next iteration
+   sleep 1
+done

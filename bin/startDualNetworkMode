@@ -1,73 +1,113 @@
-#!/bin/bash
+#!/bin/bash -e
+
+# File paths
+HOSTAPD_CONF="/etc/hostapd/hostapd.conf"
+ETH0_ADDRESS="/sys/class/net/eth0/address"
+
+# Default values
+DEFAULT_CHANNEL="1"
+DEFAULT_SSID="RecruitAP"
+DEFAULT_PASSPHRASE="bxlrecruit"
 
 # Sets the default access point settings on a fresh MyBot system
-function setDefaultAccessPointSettings {
-    
+setDefaultAccessPointSettings() {
     # Set default channel
-    if [[ $(awk -F '=' '/^channel=/ { print $2 }' /etc/hostapd/hostapd.conf) == '${channel}' ]]; then
+    local channel="${1:-$DEFAULT_CHANNEL}"
+    if [[ $(awk -F '=' '/^channel=/ { print $2 }' "$HOSTAPD_CONF") == "\${channel}" ]]; then
         echo 'Channel still set to default'
         channel=$((1 + $RANDOM % 11))
-        sudo sed -i 's|^channel=.*$|channel='"${channel}"'|g' /etc/hostapd/hostapd.conf
+        sed -i '/^[^#]/s|^channel=.*$|channel='$channel'|g' "$HOSTAPD_CONF"
     fi
 
     # Set default ssid
-    if [[ $(awk -F '=' '/^ssid=/ { print $2 }' /etc/hostapd/hostapd.conf) == '${ssid}' ]]; then
+    local ssid="${2:-$DEFAULT_SSID}"
+    if [[ $(awk -F '=' '/^ssid=/ { print $2 }' "$HOSTAPD_CONF") == "\${ssid}" ]]; then
         echo 'SSID still set to default'
-        ssid=RecruitAP_$(cat /sys/class/net/eth0/address | sed 's|:||g' | grep -o '.\{6\}$')
-        sudo sed -i 's|^ssid=.*$|ssid='"${ssid}"'|g' /etc/hostapd/hostapd.conf
+        ssid=RecruitAP_$(cat $ETH0_ADDRESS | sed 's|:||g' | grep -o '.\{6\}$')
+        sed -i '/^[^#]/s|^ssid=.*$|ssid='$ssid'|g' "$HOSTAPD_CONF"
     fi
 
     # Set default passphrase
-    if [[ $(awk -F '=' '/^wpa_passphrase=/ { print $2 }' /etc/hostapd/hostapd.conf) == '${wpa_passphrase}' ]]; then
+    local wpa_passphrase="${3:-$DEFAULT_PASSPHRASE}"
+    if [[ $(awk -F '=' '/^wpa_passphrase=/ { print $2 }' "$HOSTAPD_CONF") == "\${wpa_passphrase}" ]]; then
         echo 'WPA Passphrase still set to default'
         wpa_passphrase=mrirecruit
-        sudo sed -i 's|^wpa_passphrase=.*$|wpa_passphrase='"${wpa_passphrase}"'|g' /etc/hostapd/hostapd.conf
+        sed -i '/^[^#]/s|^wpa_passphrase=.*$|wpa_passphrase='$wpa_passphrase'|g' "$HOSTAPD_CONF"
     fi
-
 }
 
-# Redundant stops to make sure services are not running
-echo "Stopping network services (if running)..."
-systemctl stop hostapd.service
-systemctl stop dnsmasq.service
-systemctl stop dhcpcd.service
+# Starts the hostapd service and waits until the interface is assigned an IP address
+start_hostapd_and_wait() {
+    local service="hostapd"
+    systemctl start ${service}
+    local counter=0
+    while ! ifconfig ap0 | grep -q "inet "
+    do
+        sleep 1
+        counter=$((counter+1))
+        if [ $counter -ge 15 ]; then
+            echo "${service} service did not start within the expected time."
+            exit 1
+        fi
+    done
+    echo "${service} service is running"
+}
 
-# Make sure no uap0 interface exists (this generates an error; we could probably use an if statement to check if it exists first)
-echo "Removing uap0 interface..."
-iw dev uap0 del
+# Starts the dnsmasq service and waits until my.bot is reachable
+start_dnsmasq_and_wait() {
+    local service="dnsmasq"
+    systemctl start ${service}
+    local counter=0
+    while ! ping -c 1 my.bot &> /dev/null
+    do
+        sleep 1
+        counter=$((counter+1))
+        if [ $counter -ge 15 ]; then
+            echo "${service} service did not start within the expected time."
+            exit 1
+        fi
+    done
+    echo "${service} service is running"
+}
 
-# Add uap0 interface (this is dependent on the wireless interface being called wlan0, which it may not be in Stretch)
-echo "Adding uap0 interface..."
-iw dev wlan0 interface add uap0 type __ap
 
-# Modify iptables (these can probably be saved using iptables-persistent if desired)
-echo "IPV4 forwarding: setting..."
+# Stop any running network services
+systemctl stop hostapd.service dnsmasq.service
+
+# Add uap0 interface if it does not exist
+if ! iw dev | grep -q 'ap0'; then
+    iw phy phy0 interface add ap0 type __ap
+    #iw ap0 set power_save off
+fi
+
+# Set robot specific hostapd settings
+setDefaultAccessPointSettings $1 $2 $3
+
+# Start network services
+start_hostapd_and_wait
+start_dnsmasq_and_wait
+
+# Set ipv4 forwarding
 sysctl net.ipv4.ip_forward=1
 
-echo "Editing IP tables..."
-iptables -t nat -A POSTROUTING -s 192.168.50.0/24 ! -d 192.168.50.0/24 -j MASQUERADE
-iptables -t nat -I PREROUTING --src 0/0 --dst 192.168.50.1 -p tcp --dport 80 -j REDIRECT --to-port 8080
+# Forward traffic to a specific destination IP
+if ! iptables -t nat -C PREROUTING -p tcp -d 192.168.50.1 --dport 80 -j REDIRECT --to-port 8080 2>/dev/null; then
+    iptables -t nat -A PREROUTING -p tcp -d 192.168.50.1 --dport 80 -j REDIRECT --to-port 8080
+fi
 
-# Bring up uap0 interface. Commented out line may be a possible alternative to using dhcpcd.conf to set up the IP address.
-# ifconfig uap0 192.168.50.1 netmask 255.255.255.0 broadcast 192.168.50.255
-# Switched to ip tool since ifconfig is deprecated
-# ifconfig uap0 up
-ip link set uap0 up
+# Add eth0 ip tables rules if they don't exist
+if ! iptables -t nat -C POSTROUTING -o eth0 -j MASQUERADE 2>/dev/null; then
+    iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+fi
 
-# Setting robot specific hostapd settings
-setDefaultAccessPointSettings
+# Add wlan0 ip tables rules if they don't exist
+if ! iptables -t nat -C POSTROUTING -o wlan0 -j MASQUERADE 2>/dev/null; then
+    iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE
+fi
 
-# Start hostapd. 10-second sleep avoids some race condition, apparently. It may not need to be that long. (?) 
-echo "Starting hostapd service..."
-systemctl start hostapd.service
-sleep 10
+# Add rate limiting to ap0 interface if it does not exist
+if ! tc qdisc show dev ap0 | grep -q "tbf.*rate 5Mbit"; then
+    tc qdisc add dev ap0 root tbf rate 5mbit burst 32kbit latency 400ms
+fi
 
-# Start dhcpcd. Again, a 5-second sleep
-echo "Starting dhcpcd service..."
-systemctl start dhcpcd.service
-sleep 5
-
-# Start dnsmasq
-echo "Starting dnsmasq service..."
-systemctl start dnsmasq.service
-echo "Ap-STA mode STARTED"
+echo "AP-STA mode STARTED"
