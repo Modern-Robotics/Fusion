@@ -25,7 +25,55 @@ let displayEmojiBlockColor = 180;
 let displayFaceBlockColor = 10;
 let moveBlockColor = 180;
 let speedBlockColor = 90;
-let rotateBlockColor = 285
+let rotateBlockColor = 285;
+
+const blockColors = {};
+
+const assetPaths = {};
+
+const analogPorts = [
+    ["A0", "A0"],
+    ["A1", "A1"],
+    ["A2", "A2"],
+    ["A3", "A3"],
+    ["A4", "A4"],
+];
+
+const digitalPorts = [
+    ["D0", "D0"],
+    ["D1", "D1"],
+];
+
+const motorPorts = [];
+
+const servoPorts = [
+    ["S0", "S0"],
+    ["S1", "S1"],
+    ["S2", "S2"],
+    ["S3", "S3"]
+];
+
+const defaultPorts = {
+    magnetic: "A4",
+};
+
+function arrangePorts(defaultPort, ports) {
+    // Find the index of the default port
+    const index = ports.findIndex(port => port[0] === defaultPort);
+
+    // If not found, just return the ports as is
+    if (index === -1) {
+        return ports;
+    }
+
+    // Remove the default port from the array
+    const defaultPortArray = ports.splice(index, 1);
+
+    // Add it to the beginning of the array
+    ports.unshift(defaultPortArray[0]);
+
+    return ports;
+}
 
 ///////////////////////////////////
 // Define basic blocks
@@ -971,7 +1019,7 @@ Blockly.Blocks['fusion_analog_read'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Read from Analog Port")
-            .appendField(new Blockly.FieldDropdown([["A0", "A0"], ["A1", "A1"], ["A2", "A2"], ["A3", "A3"], ["A4", "A4"], ["A5", "A5"], ["A6", "A6"], ["A7", "A7"]]), "Port");
+            .appendField(new Blockly.FieldDropdown(analogPorts), "Port");
         Blockly.HSV_SATURATION = .10;
 		Blockly.HSV_VALUE = .70;
 		this.setColour(50);
@@ -991,7 +1039,7 @@ Blockly.Blocks['fusion_digital_read'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Read from Digital Port")
-            .appendField(new Blockly.FieldDropdown([["D0", "D0"], ["D1", "D1"], ["D2", "D2"], ["D3", "D3"], ["D4", "D4"], ["D5", "D5"], ["D6", "D6"], ["D7", "D7"]]), 'Port')
+            .appendField(new Blockly.FieldDropdown(digitalPorts), 'Port')
         this.setOutput(true, "Boolean");
         Blockly.HSV_SATURATION = .10;
 		Blockly.HSV_VALUE = .70;
@@ -1011,7 +1059,7 @@ Blockly.Blocks['fusion_digital_write'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Write to Digital Port")
-            .appendField(new Blockly.FieldDropdown([["D0", "D0"], ["D1", "D1"], ["D2", "D2"], ["D3", "D3"], ["D4", "D4"], ["D5", "D5"], ["D6", "D6"], ["D7", "D7"]]), "Port")
+            .appendField(new Blockly.FieldDropdown(digitalPorts), "Port")
             .appendField("a value of")
             .appendField(new Blockly.FieldDropdown([["0", "0"], ["1", "1"]]), "Value")
         Blockly.HSV_SATURATION = .10;
@@ -1040,7 +1088,7 @@ Blockly.Blocks['fusion_touch_read'] = {
 		Blockly.HSV_VALUE = 0.65;
         this.appendDummyInput()
             .appendField("Touch Sensor on Port")
-            .appendField(new Blockly.FieldDropdown([["D0", "D0"], ["D1", "D1"], ["D2", "D2"], ["D3", "D3"], ["D4", "D4"], ["D5", "D5"], ["D6", "D6"], ["D7", "D7"]]), 'Port')
+            .appendField(new Blockly.FieldDropdown(digitalPorts), 'Port')
             .appendField("is")
             .appendField(new Blockly.FieldDropdown([["Pressed", "Pressed"], ["Not Pressed", "Not Pressed"]]), "condition");
         this.setOutput(true, "Boolean");
@@ -1248,7 +1296,7 @@ Blockly.Blocks['fusion_rate_gyro_read'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Read Rate Gyro on Port")
-            .appendField(new Blockly.FieldDropdown([["A0", "A0"], ["A1", "A1"], ["A2", "A2"], ["A3", "A3"], ["A4", "A4"], ["A5", "A5"], ["A6", "A6"], ["A7", "A7"]]), "Port");
+            .appendField(new Blockly.FieldDropdown(analogPorts), "Port");
         this.setOutput(true, "Number");
         Blockly.HSV_SATURATION = .10;
 		Blockly.HSV_VALUE = .70;
@@ -1470,7 +1518,7 @@ Blockly.Blocks['fusion_light_read'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Read Light Sensor on Port")
-            .appendField(new Blockly.FieldDropdown([["A0", "A0"], ["A1", "A1"], ["A2", "A2"], ["A3", "A3"], ["A4", "A4"], ["A5", "A5"], ["A6", "A6"], ["A7", "A7"]]), "Port");
+            .appendField(new Blockly.FieldDropdown(analogPorts), "Port");
         this.setOutput(true, "Number");
         Blockly.HSV_SATURATION = .10;
 		Blockly.HSV_VALUE = .70;
@@ -1527,7 +1575,27 @@ Blockly.Blocks['fusion_ods_read'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Read Optical Distance Sensor on Port")
-            .appendField(new Blockly.FieldDropdown([["A0", "A0"], ["A1", "A1"], ["A2", "A2"], ["A3", "A3"], ["A4", "A4"], ["A5", "A5"], ["A6", "A6"], ["A7", "A7"]]), "Port");
+            .appendField(new Blockly.FieldDropdown(analogPorts), "Port");
+        this.setOutput(true, "Number");
+        Blockly.HSV_SATURATION = .10;
+		Blockly.HSV_VALUE = .70;
+		this.setColour(50);
+		Blockly.HSV_SATURATION = 0.45;
+		Blockly.HSV_VALUE = 0.65;
+        this.setTooltip('Detect proximity using infrared light. Returns a value 0 - 1023.');
+        this.setHelpUrl(documentationPath +'/Blk_Optical_Distance_Sensor/#read');
+    },
+
+    getBlockType: function () {
+        return Blockly.Types.NUMBER;
+    }
+};
+
+Blockly.Blocks['recruit_eopd_read'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField("Read Optical Distance Sensor Facing")
+            .appendField(new Blockly.FieldDropdown([["Forward", "Forward"], ["Downward", "Downward"]]), "Facing");
         this.setOutput(true, "Number");
         Blockly.HSV_SATURATION = .10;
 		Blockly.HSV_VALUE = .70;
@@ -1547,7 +1615,7 @@ Blockly.Blocks['fusion_magnetic_read'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Read Magnetic Sensor on Port")
-            .appendField(new Blockly.FieldDropdown([["A0", "A0"], ["A1", "A1"], ["A2", "A2"], ["A3", "A3"], ["A4", "A4"], ["A5", "A5"], ["A6", "A6"], ["A7", "A7"]]), "Port");
+            .appendField(new Blockly.FieldDropdown(arrangePorts(defaultPorts.magnetic, analogPorts)), "Port");
         this.setOutput(true, "Number");
         Blockly.HSV_SATURATION = .10;
 		Blockly.HSV_VALUE = .70;
@@ -2111,7 +2179,7 @@ Blockly.Blocks['CoreControl_analogRead'] = {
             .appendField(new Blockly.FieldTextInput(''), 'name');
         this.appendDummyInput()
             .appendField("Read from Analog Port")
-            .appendField(new Blockly.FieldDropdown([["A0", "A0"], ["A1", "A1"], ["A2", "A2"], ["A3", "A3"], ["A4", "A4"], ["A5", "A5"], ["A6", "A6"], ["A7", "A7"]]), "Port");
+            .appendField(new Blockly.FieldDropdown(analogPorts), "Port");
         Blockly.HSV_SATURATION = .10;
 		Blockly.HSV_VALUE = .70;
 		this.setColour(50);
@@ -2195,7 +2263,7 @@ Blockly.Blocks['CoreControl_digitalRead'] = {
             .appendField(new Blockly.FieldTextInput(''), 'name');
         this.appendDummyInput()
             .appendField("Read from Digital Port")
-            .appendField(new Blockly.FieldDropdown([["D0", "D0"], ["D1", "D1"], ["D2", "D2"], ["D3", "D3"], ["D4", "D4"], ["D5", "D5"], ["D6", "D6"], ["D7", "D7"]]), 'Port')
+            .appendField(new Blockly.FieldDropdown(digitalPorts), 'Port')
         this.setOutput(true, "Boolean");
         Blockly.HSV_SATURATION = .10;
 		Blockly.HSV_VALUE = .70;
@@ -2219,7 +2287,7 @@ Blockly.Blocks['CoreControl_digitalWrite'] = {
             .appendField(new Blockly.FieldTextInput(''), 'name');
         this.appendDummyInput()
             .appendField("Write to Digital Port")
-            .appendField(new Blockly.FieldDropdown([["D0", "D0"], ["D1", "D1"], ["D2", "D2"], ["D3", "D3"], ["D4", "D4"], ["D5", "D5"], ["D6", "D6"], ["D7", "D7"]]), "Port")
+            .appendField(new Blockly.FieldDropdown(digitalPorts), "Port")
             .appendField("a value of")
             .appendField(new Blockly.FieldDropdown([["0", "0"], ["1", "1"]]), "Value")
         Blockly.HSV_SATURATION = .10;
@@ -2524,7 +2592,7 @@ Blockly.Blocks['Close_File'] = {
     }
 };
 
-Blockly.Blocks['fusion_display_color'] = {
+Blockly.Blocks['mybot_display_color'] = {
     init: function () {
         var colour = new Blockly.FieldColour('#ff0000');
         colour.setColours(['#000000', '#ff0000', '#00ff00', '#ffff00', '#0000ff', '#ff00ff', '#00ffff', '#ffffff']).setColumns(4);
@@ -2539,7 +2607,7 @@ Blockly.Blocks['fusion_display_color'] = {
     }
 };
 
-Blockly.Blocks['fusion_display_emoji'] = {
+Blockly.Blocks['mybot_display_emoji'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Display emoji:")
@@ -2564,7 +2632,7 @@ Blockly.Blocks['fusion_display_emoji'] = {
     }
 };
 
-Blockly.Blocks['fusion_display_face'] = {
+Blockly.Blocks['mybot_display_face'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Display face:")
@@ -2583,7 +2651,7 @@ Blockly.Blocks['fusion_display_face'] = {
     }
 };
 
-Blockly.Blocks['fusion_display_clear'] = {
+Blockly.Blocks['mybot_display_clear'] = {
     init: function() {
 		this.appendDummyInput()
         	.appendField("Clear display");
@@ -2595,7 +2663,7 @@ Blockly.Blocks['fusion_display_clear'] = {
  	}
 };
 
-Blockly.Blocks['fusion_display_text'] = {
+Blockly.Blocks['mybot_display_text'] = {
   init: function() {
 		this.appendValueInput("Text")
         	.setCheck("String")
@@ -2607,71 +2675,3 @@ Blockly.Blocks['fusion_display_text'] = {
 		this.setHelpUrl(documentationPath +  '/Int_Display-Robot/#display-text');
  	}
 };
-
-Blockly.Blocks['fusion_basic_display_straight_ahead'] = {
-    init: function () {
-        this.appendDummyInput()
-            .appendField(new Blockly.FieldImage("assets/img/fusion/emojis/StraightAhead.png", imageW, imageH, "Straight"));
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setColour(180);
-        this.setTooltip('Display straight ahead emoji on lcd');
-    }
-};
-
-
-Blockly.Blocks['fusion_basic_display_snooze'] = {
-    init: function () {
-        this.appendDummyInput()
-            .appendField(new Blockly.FieldImage("assets/img/fusion/emojis/Snooze.png", imageW, imageH, "Snooze"));
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setColour(180);
-        this.setTooltip('Display snooze emoji on lcd.');
-    }
-};
-
-Blockly.Blocks['fusion_basic_display_eyes_closed'] = {
-    init: function () {
-        this.appendDummyInput()
-            .appendField(new Blockly.FieldImage("assets/img/fusion/emojis/EyesClosed.png", imageW, imageH, "Eyes Closed"));
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setColour(180);
-        this.setTooltip('Display eyes closed emoji on lcd.');
-    }
-};
-
-Blockly.Blocks['fusion_basic_display_eyes_left'] = {
-    init: function () {
-        this.appendDummyInput()
-            .appendField(new Blockly.FieldImage("assets/img/fusion/emojis/EyesLeft.png", imageW, imageH, "Eyes Left"));
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setColour(180);
-        this.setTooltip('Display eyes left emoji on lcd.');
-	}
-};
-
-Blockly.Blocks['fusion_basic_display_eyes_right'] = {
-    init: function () {
-        this.appendDummyInput()
-            .appendField(new Blockly.FieldImage("assets/img/fusion/emojis/EyesRight.png", imageW, imageH, "Eyes Right"));
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setColour(180);
-        this.setTooltip('Display eyes right emoji on lcd.');
-    }
-};
-
-Blockly.Blocks['fusion_basic_display_crash'] = {
-    init: function () {
-        this.appendDummyInput()
-            .appendField(new Blockly.FieldImage("assets/img/fusion/emojis/Crash.png", imageW, imageH, "Crash"));
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setColour(180);
-        this.setTooltip('Display crash emoji on display');
-    }
-};
-

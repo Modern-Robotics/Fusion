@@ -1,6 +1,6 @@
 [Unit]
 Description=Service that starts the MyBot splash screen
-Before=local-fs.target
+After=local-fs.target
 DefaultDependencies=no
 
 [Service]

@@ -176,6 +176,7 @@ pip_packages["pylibftdi"]=0.17.0
 pip_packages["RPi.GPIO"]=0.7.0
 pip_packages["spidev"]=3.5
 pip_packages["diskcache"]=4.1.0
+pip_packages["posix_ipc"]=1.0.5
 
 # Loop through package list, install specified version
 for package in ${!pip_packages[@]}; do
