@@ -57,17 +57,21 @@ fi
 
 branch=Recruit
 version=HEAD
+reset=0
+testing=0
 
 
 ########################################
 # Overide Variables Values If Supplied
 ########################################
 
-while getopts b:v: flag
+while getopts b:v:rt flag
 do
     case "${flag}" in
         b) branch=${OPTARG};;
         v) version=${OPTARG};;
+        r) reset=1;;
+        t) testing=1;;
     esac
 done
 
@@ -99,6 +103,7 @@ apt_packages["libftdi1-dev"]=1.4-1+b2							# Not Installed
 apt_packages["hostapd"]=2:2.7+git20190128+0c1e29f-6+deb10u3		# Not Installed
 apt_packages["dnsmasq"]=2.80-1+rpt1+deb10u1						# Not Installed
 apt_packages["mongodb"]=1:2.4.14-4								# Not Installed
+apt_packages["nginx"]=1.14.2-2+deb10u5							# Not Installed
 
 # Loop through package list, install specified version, and lock to prevent accidental upgrades
 apt_update_needed=false
@@ -141,16 +146,23 @@ fi
 # 1.C: MyBot Software
 ########################################
 
-if [ ! -d "/usr/Fusion" ]; then
-	# Install software
-	sudo git clone --depth 1 https://github.com/Modern-Robotics/Fusion.git /usr/Fusion --branch ${branch}
-	sudo npm --prefix /usr/Fusion/FusionServer/Build install --production
+# Check for testing flag
+if [[ $testing -eq 1 ]]; then
+	# Set proper directory ownership since files manually placed
+	sudo chown -R root:root /usr/Fusion
 else
-	# Update software
-	sudo git --git-dir /usr/Fusion/.git --work-tree=/usr/Fusion reset --hard HEAD
-	sudo git --git-dir /usr/Fusion/.git --work-tree=/usr/Fusion pull
-	sudo npm --prefix /usr/Fusion/FusionServer/Build install --omit=dev
+	if [ ! -d "/usr/Fusion" ]; then
+		# Clone software
+		sudo git clone --depth 1 https://github.com/Modern-Robotics/Fusion.git /usr/Fusion --branch ${branch}
+	else
+		# Update software
+		sudo git --git-dir /usr/Fusion/.git --work-tree=/usr/Fusion reset --hard HEAD
+		sudo git --git-dir /usr/Fusion/.git --work-tree=/usr/Fusion pull
+	fi
 fi
+
+# Install npm dependencies
+sudo npm --prefix /usr/Fusion/FusionServer/Build install --omit=dev
 
 
 ########################################
@@ -238,10 +250,10 @@ sudo sed -i "s|^print('Hello from the pygame community. https://www.pygame.org/c
 
 # Installs DHCPCD config
 if ! cmp -s /etc/dhcpcd.conf /usr/Fusion/config/dhcpcd/dhcpcd.conf; then
-	sudo systemctl enable dhcpcd
 	sudo mv /etc/dhcpcd.conf /etc/dhcpcd.conf.orig
 	sudo cp /usr/Fusion/config/dhcpcd/dhcpcd.conf /etc/dhcpcd.conf
-	sudo systemctl restart dhcpcd
+	sudo systemctl stop dhcpcd
+	sudo systemctl disable dhcpcd
 fi
 
 
@@ -270,10 +282,38 @@ fi
 
 # Installs HOSTAPD config
 if ! cmp -s /etc/hostapd/hostapd.conf /usr/Fusion/config/hostapd/hostapd.conf; then
+	sudo mv /etc/hostapd/hostapd.conf /etc/hostapd/hostapd.orig
 	sudo cp /usr/Fusion/config/hostapd/hostapd.conf /etc/hostapd/hostapd.conf
 	sudo systemctl unmask hostapd.service
 	sudo systemctl stop hostapd
 	sudo systemctl disable hostapd
+fi
+
+
+########################################
+# 2.D: NGINX
+########################################
+
+# Unlinks the default nginx configuration
+if [ -e "/etc/nginx/sites-enabled/default" ]; then
+    sudo unlink /etc/nginx/sites-enabled/default
+fi
+
+# Installs a reverse proxy on nginx pointing to the mybot server
+if ! cmp -s /etc/nginx/sites-available/mybot-interface /usr/Fusion/config/nginx/mybot-interface; then
+	sudo cp /usr/Fusion/config/nginx/mybot-interface /etc/nginx/sites-available/mybot-interface
+	sudo ln -sfn /etc/nginx/sites-available/mybot-interface /etc/nginx/sites-enabled/
+	sudo systemctl reload nginx
+fi
+
+
+########################################
+# 2.D: MyBot Hostnames
+########################################
+
+# Installs MyBot hostnames for domain resolution
+if ! cmp -s /etc/hosts /usr/Fusion/config/hosts; then
+	sudo cp /usr/Fusion/config/hosts /etc/hosts
 fi
 
 
@@ -290,6 +330,12 @@ fi
 if ! cmp -s /usr/local/bin/startDualNetworkMode /usr/Fusion/bin/startDualNetworkMode; then
 	sudo cp /usr/Fusion/bin/startDualNetworkMode /usr/local/bin/startDualNetworkMode
 	sudo chmod 755 /usr/local/bin/startDualNetworkMode
+fi
+
+# Installs bash script
+if ! cmp -s /usr/local/bin/setup_networking /usr/Fusion/bin/setup_networking; then
+	sudo cp /usr/Fusion/bin/setup_networking /usr/local/bin/setup_networking
+	sudo chmod 755 /usr/local/bin/setup_networking
 fi
 
 # Installs unit file
@@ -328,7 +374,7 @@ fi
 
 
 ########################################
-# 3.C: Sync Serial Service
+# 3.D: Sync Serial Service
 ########################################
 
 # Installs bash script
@@ -347,13 +393,13 @@ fi
 
 
 ########################################
-# 3.C: Power off Board Service
+# 3.E: Power off Board Service
 ########################################
 
 # Installs bash script
-if ! cmp -s /usr/local/bin/powerOffBoard /usr/Fusion/bin/powerOffBoard; then
-	sudo cp /usr/Fusion/bin/powerOffBoard /usr/local/bin/powerOffBoard
-	sudo chmod 755 /usr/local/bin/powerOffBoard
+if ! cmp -s /usr/local/bin/transmit_to_board /usr/Fusion/bin/transmit_to_board; then
+	sudo cp /usr/Fusion/bin/transmit_to_board /usr/local/bin/transmit_to_board
+	sudo chmod 755 /usr/local/bin/transmit_to_board
 fi
 
 # Installs unit file
@@ -366,8 +412,59 @@ if ! cmp -s /lib/systemd/system/poweroffboard.service /usr/Fusion/config/powerof
 fi
 
 
+########################################
+# 3.F: Restart Board Service
+########################################
+
+# Installs unit file
+if ! cmp -s /lib/systemd/system/restartboard.service /usr/Fusion/config/restartboard.service; then
+	sudo cp /usr/Fusion/config/restartboard.service /lib/systemd/system/restartboard.service
+	sudo chmod 644 /lib/systemd/system/restartboard.service
+	sudo systemctl daemon-reload
+	sudo systemctl enable restartboard.service
+	sudo systemctl start restartboard.service
+fi
+
+
 ################################################################################
 # Step 4: Poweroff
 ################################################################################
+
+
+########################################
+# 4.A: Reset any developer mods
+########################################
+
+# Check if the reset flag was set
+if [[ $reset -eq 1 ]]; then
+
+    # Modify the keyboard layout
+	defaultLayout="us"
+    sudo sed -i "s/^XKBLAYOUT=.*/XKBLAYOUT=$defaultLayout/" /etc/default/keyboard
+    sudo sed -i 's/^XKBVARIANT=.*/XKBVARIANT=/' /etc/default/keyboard
+    setxkbmap $defaultLayout  # Uncomment if using a graphical environment
+
+    # Remove network configurations from wpa_supplicant.conf
+    sudo sed -i '/network={/,/}/d' /etc/wpa_supplicant/wpa_supplicant.conf
+
+	# Remove log except mongodb and nginx ones (since causes crash)
+	for item in /var/log/*; do
+		# If the item is NOT the mongodb or nginx directory
+		if [[ "$item" != "/var/log/mongodb" ]] && [[ "$item" != "/var/log/nginx" ]]; then
+			# Remove it
+			sudo rm -rf "$item"
+		fi
+	done
+
+	# Remove bash history
+	cat /dev/null > ~/.bash_history && history -c
+	poweroff
+
+fi
+
+
+########################################
+# 4.B: Turn off device
+########################################
 
 reboot

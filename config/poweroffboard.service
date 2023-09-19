@@ -1,12 +1,17 @@
 [Unit]
-Description=Shuts down the MyBot board when the Pi powers down
-Before=shutdown.target
+Description=Detects power down sequence and notifies board
+DefaultDependencies=no
+After=multi-user.target
+Before=poweroff.target
+Conflicts=poweroff.target
 
 [Service]
 Type=oneshot
 RemainAfterExit=true
 ExecStart=/bin/true
-ExecStop=bash powerOffBoard
+ExecStop=python -u -B -c "import Display; Display.show_end_screen()"
+ExecStop=sleep 3
+ExecStop=transmit_to_board "Power down"
 
 [Install]
 WantedBy=multi-user.target

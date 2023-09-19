@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Device nave variable
+DEVICE="/dev/ttyS0"
+
+# Check if a parameter was provided
+if [ -z "$1" ]; then
+        echo "Usage: $0 <data_to_send>"
+        exit 1
+fi
+
+# Send the paramater to the device
+echo -n "$1" > $DEVICE
+
+# Log the action
+echo "Sent '$1' to $DEVICE"
+
+exit 0

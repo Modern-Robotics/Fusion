@@ -3,7 +3,8 @@ Description=AP STA mode service
 
 [Service]
 Type=oneshot
-ExecStart=startDualNetworkMode
+RemainAfterExit=true
+ExecStart=setup_networking
 
 [Install]
-WantedBy=sysinit.target
+WantedBy=multi-user.target

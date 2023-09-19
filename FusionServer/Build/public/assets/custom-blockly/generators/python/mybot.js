@@ -286,7 +286,7 @@ Blockly.Python['mybot_basic_backward'] = function(block) {
     }
 
     else if(gyro_drive == 1) {
-        ode = 'for i in range(0, 100):\n    gyro_val = int_gyro.getAbsolute()\n    M0_speed = -(speed+gyro_val)\n    M1_speed = -(speed-gyro_val)\n    if (M0_speed > 100): M0_speed = 100\n    if (M0_speed < -100): M0_speed = -100\n    if (M1_speed > 100): M1_speed = 100\n    if (M1_speed < -100): M1_speed = -100\n    if (gyro_val > current_gyro):\n        f.motorSpeed(f.M0, M0_speed)\n        f.motorSpeed(f.M1, M1_speed)\n    elif (gyro_val < current_gyro):\n        f.motorSpeed(f.M0, M0_speed)\n        f.motorSpeed(f.M1, M1_speed)\n    else:\n        f.motorSpeed(f.M0+f.M1, -speed)\n    time.sleep(.01)\n';
+        code = 'for i in range(0, 100):\n    gyro_val = int_gyro.getAbsolute()\n    M0_speed = -(speed+gyro_val)\n    M1_speed = -(speed-gyro_val)\n    if (M0_speed > 100): M0_speed = 100\n    if (M0_speed < -100): M0_speed = -100\n    if (M1_speed > 100): M1_speed = 100\n    if (M1_speed < -100): M1_speed = -100\n    if (gyro_val > current_gyro):\n        f.motorSpeed(f.M0, M0_speed)\n        f.motorSpeed(f.M1, M1_speed)\n    elif (gyro_val < current_gyro):\n        f.motorSpeed(f.M0, M0_speed)\n        f.motorSpeed(f.M1, M1_speed)\n    else:\n        f.motorSpeed(f.M0+f.M1, -speed)\n    time.sleep(.01)\n';
     }
 
     return code;

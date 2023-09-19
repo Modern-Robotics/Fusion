@@ -1,14 +1,25 @@
-127.0.0.1	localhost
-::1		localhost ip6-localhost ip6-loopback
-ff02::1		ip6-allnodes
-ff02::2		ip6-allrouters
+#=================================
+# Raspberry Pi Default hosts     # 
+#=================================
 
 # IP Address		Hostname
-127.0.1.1		raspberrypi
-192.168.50.1		my.bot
-192.168.50.1		m.ybot
-192.168.50.1		m.ybot
-192.168.50.1		myb.ot
-192.168.50.1		my.butt
-192.168.50.1		my.fusion
-192.168.50.1		fusion.bot
+#--------------     --------------
+127.0.0.1           localhost
+::1                 localhost ip6-localhost ip6-loopback
+ff02::1             ip6-allnodes
+ff02::2             ip6-allrouters
+127.0.1.1		    raspberrypi
+
+#=================================
+# MyBot custom hostnames         # 
+#=================================
+
+# IP Address		Hostname
+#--------------     --------------
+192.168.50.1        my.bot
+192.168.50.1        m.ybot
+192.168.50.1        myb.ot
+192.168.50.1        mybo.t
+192.168.50.1        my.butt
+192.168.50.1        my.fusion
+192.168.50.1        fusion.bot

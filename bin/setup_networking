@@ -1,0 +1,211 @@
+#!/bin/bash
+
+# Default values
+DHCPCD_CONF="/etc/dhcpcd.conf"
+HOSTAPD_CONF="/etc/hostapd/hostapd.conf"
+DNSMASQ_CONF="/etc/dnsmasq.conf"
+ETH0_ADDRESS="/sys/class/net/eth0/address"
+
+# Configurable variables
+AP_INTERFACE="wlan0"
+WLAN_INTERFACE="wlan0"
+SSID="RecruitAP"
+PASSPHRASE="bxlrecruit"
+STATIC_IP="192.168.50.1/24"
+DHCP_RANGE_START="192.168.50.2"
+DHCP_RANGE_END="192.168.50.20"
+SUBNET_MASK="255.255.255.0"
+LEASE_TIME="24h"
+
+# Override default values with passed arguments
+while [[ "$#" -gt 0 ]]; do
+  case $1 in
+    -ai|--ap-interface) AP_INTERFACE="$2"; shift ;;
+    -wi|--wlan-interface) WLAN_INTERFACE="$2"; shift ;;
+    -s|--ssid) SSID="$2"; shift ;;
+    -p|--passphrase) PASSPHRASE="$2"; shift ;;
+    -ip|--ip-address) STATIC_IP="$2"; shift ;;
+    -ds|--dhcp-start) DHCP_RANGE_START="$2"; shift ;;
+    -de|--dhcp-end) DHCP_RANGE_END="$2"; shift ;;
+    -sm|--subnet-mask) SUBNET_MASK="$2"; shift ;;
+    -lt|--lease-time) LEASE_TIME="$2"; shift ;;
+    *) echo "Unknown parameter passed: $1"; exit 1 ;;
+  esac
+  shift
+done
+
+# Scans for a good wifi channel to use
+find_best_channel() {
+  
+  # Declare an associative array to hold channel count
+  declare -A channel_count
+  for i in {1..14}; do
+    channel_count[$i]=0
+  done
+  
+  # Scan and parse output to get frequencies and increment their count
+  local scan_results=$(sudo iwlist $WLAN_INTERFACE scan)
+  while IFS= read -r line; do
+    channel=$(echo $line | grep -oP 'Channel \K[0-9]+')
+    if [[ ! -z $channel ]]; then
+      ((channel_count[$channel]++))
+    fi
+  done <<< "$scan_results"
+
+  # Find the least used channel
+  local best_channel=1
+  local min_count=${channel_count[1]}
+  for i in {2..14}; do
+    if (( ${channel_count[$i]} < $min_count )); then
+      min_count=${channel_count[$i]}
+      best_channel=$i
+    fi
+  done
+
+  echo $best_channel
+}
+
+# Sets the default dhcpcd settings on a fresh MyBot system
+setDhcpcdSettings() {
+
+  # Set default interface
+  if [[ $(awk '/^denyinterfaces / { print $2 }' "$DHCPCD_CONF") == "\${interface}" ]]; then
+    echo "denyinterfaces still set to default. Updating to $AP_INTERFACE."
+    sed -i "/^denyinterfaces /c\denyinterfaces $AP_INTERFACE" "$DHCPCD_CONF"
+  fi
+}
+
+# Sets the default access point settings on a fresh MyBot system
+setAccessPointSettings() {
+    
+  # Set default interface
+  if [[ $(awk -F '=' '/^interface=/ { print $2 }' "$HOSTAPD_CONF") == "\${interface}" ]]; then
+    echo 'Hostapd interface still set to default'
+    # Here, set your new default interface. For example, you might set it to wlan0, wlan1, etc.
+    sed -i '/^[^#]/s|^interface=.*$|interface='$AP_INTERFACE'|g' "$HOSTAPD_CONF"
+  fi
+
+  # Set default channel
+  if [[ $(awk -F '=' '/^channel=/ { print $2 }' "$HOSTAPD_CONF") == "\${channel}" ]]; then
+    echo 'Channel still set to default'
+    # Find the best channel
+    local channel=$(find_best_channel)
+    sed -i '/^[^#]/s|^channel=.*$|channel='$channel'|g' "$HOSTAPD_CONF"
+  fi
+
+  # Set default ssid
+  if [[ $(awk -F '=' '/^ssid=/ { print $2 }' "$HOSTAPD_CONF") == "\${ssid}" ]]; then
+    echo 'SSID still set to default'
+    local ssid=RecruitAP_$(cat $ETH0_ADDRESS | sed 's|:||g' | grep -o '.\{6\}$')
+    sed -i '/^[^#]/s|^ssid=.*$|ssid='$ssid'|g' "$HOSTAPD_CONF"
+  fi
+
+  # Set default passphrase
+  if [[ $(awk -F '=' '/^wpa_passphrase=/ { print $2 }' "$HOSTAPD_CONF") == "\${wpa_passphrase}" ]]; then
+    echo 'WPA Passphrase still set to default'
+    sed -i '/^[^#]/s|^wpa_passphrase=.*$|wpa_passphrase='$PASSPHRASE'|g' "$HOSTAPD_CONF"
+  fi
+}
+
+# Sets the default dnsmasq settings on a fresh MyBot system
+setDnsmasqSettings() {
+
+  # Set default interface
+  if [[ $(awk -F '=' '/^interface=/ { print $2 }' "$DNSMASQ_CONF") == "\${interface}" ]]; then
+    echo 'Dnsmasq Interface still set to default'
+    local interface="lo,$AP_INTERFACE"
+    sed -i '/^[^#]/s|^interface=.*$|interface='$interface'|g' "$DNSMASQ_CONF"
+  fi
+
+  # Set default DHCP range
+  if [[ $(awk -F '=' '/^dhcp-range=/ { print $2 }' "$DNSMASQ_CONF") == "\${dhcp_range}" ]]; then
+    echo 'DHCP range still set to default'
+    local dhcp_range="${DHCP_RANGE_START},${DHCP_RANGE_END},${SUBNET_MASK},${LEASE_TIME}"
+    sed -i '/^[^#]/s|^dhcp-range=.*$|dhcp-range='$dhcp_range'|g' "$DNSMASQ_CONF"
+  fi
+}
+
+# Starts the dhcpcd service and waits until it is active
+start_dhcpcd_and_wait() {
+
+  # Set robot specific dhcpcd settings
+  setDhcpcdSettings
+
+  local service="dhcpcd"
+  systemctl start ${service}
+  local counter=0
+
+  while ! systemctl is-active --quiet ${service}; do
+    sleep 1
+    counter=$((counter+1))
+    if [ $counter -ge 15 ]; then
+      echo "${service} service did not start within the expected time."
+      exit 1
+    fi
+  done
+  echo "${service} service is running"  
+}
+
+# Starts the hostapd service and waits until the interface is assigned an IP address
+start_hostapd_and_wait() {
+
+  # Set robot specific hostapd settings
+  setAccessPointSettings
+
+  local service="hostapd"
+  systemctl start ${service}
+  local counter=0
+  while ! ifconfig $AP_INTERFACE | grep -q "inet "
+  do
+    sleep 1
+    counter=$((counter+1))
+    if [ $counter -ge 15 ]; then
+      echo "${service} service did not start within the expected time."
+      exit 1
+    fi
+  done
+  echo "${service} service is running"
+}
+
+# Starts the dnsmasq service and waits until my.bot is reachable
+start_dnsmasq_and_wait() {
+
+  # Sets robot specific dnsmasq settings
+  setDnsmasqSettings
+
+  local service="dnsmasq"
+  systemctl start ${service}
+  local counter=0
+  while ! ping -c 1 my.bot &> /dev/null
+  do
+      sleep 1
+      counter=$((counter+1))
+      if [ $counter -ge 15 ]; then
+          echo "${service} service did not start within the expected time."
+          exit 1
+      fi
+  done
+  echo "${service} service is running"
+}
+
+echo "Turning hotspot ON..."
+
+# Stop any running network services
+systemctl stop dhcpcd hostapd dnsmasq
+
+# Set static IP
+sudo ip link set $AP_INTERFACE up
+sudo ip addr add $STATIC_IP dev $AP_INTERFACE
+
+# Enable IP forwarding
+sudo sysctl net.ipv4.ip_forward=1
+
+# Start network services
+start_dhcpcd_and_wait
+start_hostapd_and_wait
+start_dnsmasq_and_wait
+
+# Add eth0 ip tables rules if they don't exist
+if ! iptables -t nat -C POSTROUTING -o eth0 -j MASQUERADE 2>/dev/null; then
+  iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+fi

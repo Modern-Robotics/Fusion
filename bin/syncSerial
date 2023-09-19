@@ -1,25 +1,107 @@
 #!/bin/bash
 
-for i in {1..10}
-do
-   # Fix root ttyS0
-   if [[ $(ps aux | grep ttyS0 | grep root | grep -v 'grep' | awk '{print $11}') == '/sbin/agetty' ]]
-   then
-	echo "Killing root process"
-	sudo kill $(ps aux | grep ttyS0 | grep root | grep -v 'grep' | awk '{print $2}')
-	sleep 10
-   fi
+# Set threshold and tty as variables for easy future adjustments
+IDLE_TIME_THRESHOLD=9
+ROOT_PROCESS_LINGER_THRESHOLD=10
+TTY="ttyS0"
 
-   # Fix pi ttyS0
-   if [[ $(w | grep ttyS0 | awk '{print $5}' | grep s) ]]
-   then
-	if [[ $(w | grep ttyS0 | awk '{print $5}' | awk -F '.' '{print $1}') -lt 9 ]]
-	then
-		echo "board idle time less than 9 seconds - killing"
-		kill $(ps aux | grep ttyS0 | grep pi | grep bash | awk '{print $2}')
-	fi
-   fi
+# Initialize variable to track first time /sbin/agetty is detected
+first_agetty_time=0
 
-   # Sleep for 1 second before the next iteration
-   sleep 1
+# Function to log messages
+log() {
+   echo "$(date '+%Y-%m-%d %H:%M:%S') - $1"
+}
+
+# Function to get idle time
+get_idle_time() {
+  idle_str=$(w -hs | awk -v tty="$TTY" '$2==tty && $1=="pi" {print $4}')
+  
+  if [[ -z "$idle_str" ]]; then
+    echo "0"
+    return
+  fi
+
+  # Handle '4:04m' format (hours and minutes)
+  if [[ $idle_str == *m ]]; then
+    idle_str="${idle_str%m}"
+    IFS=":" read -r hour min <<< "$idle_str"
+    hour=$((10#$hour))
+    min=$((10#$min))
+    echo "$(( hour * 3600 + min * 60 ))"
+
+  # Handle '1:28' format (minutes and seconds)
+  elif [[ $idle_str =~ ^[0-9]+:[0-9]+$ ]]; then
+    IFS=":" read -r min sec <<< "$idle_str"
+    min=$((10#$min))
+    sec=$((10#$sec))
+    echo "$(( min * 60 + sec ))"
+
+  # Handle '2.89s' format (seconds)
+  elif [[ $idle_str == *s ]]; then
+    idle_str="${idle_str%s}"
+    echo "${idle_str%.*}"  # Truncate to integer if it's a floating-point number
+
+  # Catch-all
+  else
+    echo "0"
+  fi
+}
+
+# Function to kill lingering root process
+kill_root_process() {
+  root_process=$(ps aux | grep "$TTY" | grep root | grep -v 'grep' | awk '{print $11}')
+  user_exists=$(w -hs | awk -v tty="$TTY" '$2==tty && $1=="pi" {print $1}')
+  current_time=$(date +%s)
+
+  if [[ $root_process == '/sbin/agetty' && -z "$user_exists" ]]; then
+    log "Detected lingering /sbin/agetty process with no logged-in user."
+    if [[ $first_agetty_time -eq 0 ]]; then
+      first_agetty_time=$current_time
+      log "Setting first detected time of /sbin/agetty to $first_agetty_time."
+    fi
+
+    if [[ $(($current_time - $first_agetty_time)) -ge $ROOT_PROCESS_LINGER_THRESHOLD ]]; then
+      log "Killing lingering root process after $ROOT_PROCESS_LINGER_THRESHOLD seconds."
+      sudo kill $(ps aux | grep "$TTY" | grep root | grep -v 'grep' | awk '{print $2}')
+      first_agetty_time=0  # Reset the timer
+    fi
+  else
+    if [[ $first_agetty_time -ne 0 ]]; then
+      log "Resetting first detected time of /sbin/agetty."
+    fi
+    first_agetty_time=0  # Reset the timer if condition is not met
+  fi
+}
+
+# Fetch initial idle time
+previous_idle_time=$(get_idle_time)
+log "Initial idle time: ${previous_idle_time} seconds."
+
+# Watchdog loop
+while true; do
+  # Attempt to kill a bad root process
+  kill_root_process
+
+  # Fetch current idle time
+  idle_time=$(get_idle_time)
+
+  if [[ $idle_time -ge $IDLE_TIME_THRESHOLD ]]; then
+    log "Idle time reached $IDLE_TIME_THRESHOLD seconds or more. Everything is fine."
+    break  # Exit the loop
+  else
+    log "Current idle time: ${idle_time} seconds."
+
+    # Check if the idle time has reset before reaching threshold
+    if [[ $idle_time -lt $previous_idle_time ]]; then
+      log "Idle time reset before reaching $IDLE_TIME_THRESHOLD seconds. Killing pi bash process."
+      kill $(ps aux | grep "$TTY" | grep pi | grep bash | awk '{print $2}')
+      sleep $IDLE_TIME_THRESHOLD
+    fi
+    
+    # Update previous idle time to the most recent idle time reading
+    previous_idle_time=$idle_time
+  fi
+
+  sleep 1  # Sleep for 1 second before the next iteration
 done
