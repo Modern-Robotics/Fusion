@@ -531,7 +531,7 @@ Blockly.Blocks['mybot_basic_left180'] = {
 
 Blockly.Blocks.fusion.HUE = 240;
 
-Blockly.Blocks['fusion_motor'] = {
+Blockly.Blocks['mybot_motor'] = {
     init: function () {
         this.setHelpUrl(documentationPath +'/Int_Motors/#motor-speed');
         this.setColour(0);
@@ -554,7 +554,7 @@ Blockly.Blocks['fusion_motor'] = {
     }
 };
 
-Blockly.Blocks['fusion_drive'] = {
+Blockly.Blocks['mybot_drive'] = {
     init: function () {
         this.setHelpUrl(documentationPath +'/Int_Motors/#drive-at-speed');
         this.setColour(0);
@@ -576,7 +576,7 @@ Blockly.Blocks['fusion_drive'] = {
     }
 };
 
-Blockly.Blocks['fusion_drive_time'] = {
+Blockly.Blocks['mybot_drive_time'] = {
     init: function () {
         this.setHelpUrl(documentationPath +'/Int_Motors/#drive-at-speed-for-time');
         this.setColour(0);
@@ -612,7 +612,7 @@ Blockly.Blocks['fusion_drive_time'] = {
     }
 };
 
-Blockly.Blocks['fusion_rotate'] = {
+Blockly.Blocks['mybot_rotate'] = {
     init: function () {
         this.setHelpUrl(documentationPath +'/Int_Motors/#rotate-at-speed-for-time');
         this.setColour(0);
@@ -650,7 +650,7 @@ Blockly.Blocks['fusion_rotate'] = {
     }
 };
 
-Blockly.Blocks['fusion_servo_target'] = {
+Blockly.Blocks['mybot_servo_target'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Set Servo")
@@ -679,7 +679,7 @@ Blockly.Blocks['fusion_servo_target'] = {
     }
 };
 
-Blockly.Blocks['fusion_led'] = {
+Blockly.Blocks['mybot_led'] = {
     init: function () {
         var colour = new Blockly.FieldColour('#ffff00');
         colour.setColours(['#ffff00', '#0000ff']).setColumns(2);
@@ -695,7 +695,7 @@ Blockly.Blocks['fusion_led'] = {
     }
 };
 
-Blockly.Blocks['fusion_end'] = {
+Blockly.Blocks['mybot_end'] = {
     init: function () {
         this.appendDummyInput()
             .appendField('End Program');
@@ -710,23 +710,7 @@ Blockly.Blocks['fusion_end'] = {
     }
 };
 
-Blockly.Blocks['fusion_start'] = {
-    init: function () {
-        Blockly.BlockSvg.START_HAT = true;
-        this.appendDummyInput()
-            .appendField(new Blockly.FieldImage("assets/img/fusion/FusionStart.png", imageW * 3, imageH * 1.5, "START"));
-        this.setNextStatement(true, null);
-        Blockly.HSV_SATURATION = 1;
-		Blockly.HSV_VALUE = .71;
-		this.setColour(135);
-		Blockly.HSV_SATURATION = 0.45;
-		Blockly.HSV_VALUE = 0.65;
-        this.setTooltip('Initialize the MyBot Robot.');
-        this.setHelpUrl(documentationPath +'/Int_MyBot-Control/#start-block');
-    }
-};
-
-Blockly.Blocks['fusion_comment'] = {
+Blockly.Blocks['mybot_comment'] = {
     init: function () {
         this.setHelpUrl(documentationPath +'/Int_MyBot-Control/#comment');
         this.setColour(160);
@@ -737,248 +721,6 @@ Blockly.Blocks['fusion_comment'] = {
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
         this.setTooltip('Insert comment into program.');
-    }
-};
-
-Blockly.Blocks['drive_with_gyro'] = {
-    init: function () {
-        this.appendDummyInput()
-            .appendField(new Blockly.FieldImage("assets/img/fusion/gyro.png", imageW*2.5, imageH*2, "Gyro"));
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        Blockly.HSV_SATURATION = 1;
-        Blockly.HSV_VALUE = 1;
-        this.setColour(30);
-        Blockly.HSV_SATURATION = 0.45;
-        Blockly.HSV_VALUE = 0.65;
-        this.setTooltip('Drive with the Integrating Gyro. This block modifies the Move Robot and Rotate Robot blocks in Basic Blockly for more accurate turning. Refer to the documentation for a further instruction with this block.');
-        this.setHelpUrl(documentationPath +'/Basic_Move-Robot/#drive-with-gyro');
-    }
-};
-
-Blockly.Blocks['fusion_basic_select_motor_1'] = {
-    init: function () {
-        this.appendDummyInput()
-            .appendField(new Blockly.FieldImage("assets/img/fusion/motor-1.png", imageW*2.5, imageH*2, "Forward"));
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setColour(135);
-        Blockly.HSV_SATURATION = 1;
-		Blockly.HSV_VALUE = .71;
-		this.setColour(135);
-		Blockly.HSV_SATURATION = 0.45;
-		Blockly.HSV_VALUE = 0.65;
-        this.setTooltip('Selects motor for use with move commands.');
-        this.setHelpUrl(documentationPath +'/Basic_MyBot-Control/#motor-selection-blocks');
-    }
-}
-
-Blockly.Blocks['fusion_basic_select_motor_2'] = {
-    init: function () {
-        this.appendDummyInput()
-            .appendField(new Blockly.FieldImage("assets/img/fusion/motor-2.png", imageW*2.5, imageH*2, "Forward"));
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setColour(135);
-        Blockly.HSV_SATURATION = 1;
-		Blockly.HSV_VALUE = .71;
-		this.setColour(135);
-		Blockly.HSV_SATURATION = 0.45;
-		Blockly.HSV_VALUE = 0.65;
-        this.setTooltip('Selects motor for use with move commands.');
-        this.setHelpUrl(documentationPath +'/Basic_MyBot-Control/#motor-selection-blocks');
-    }
-}
-
-Blockly.Blocks['fusion_basic_forward'] = {
-    init: function () {
-        this.appendDummyInput()
-            .appendField(new Blockly.FieldImage("assets/img/fusion/fwd.png", imageW, imageH, "Forward"));
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setColour(180);
-        this.setTooltip('Drive forward for 1 second then stop.');
-        this.setHelpUrl(documentationPath +'/Basic_Move-Robot/#forward');
-    }
-};
-
-Blockly.Blocks['fusion_basic_backward'] = {
-    init: function () {
-        this.appendDummyInput()
-            .appendField(new Blockly.FieldImage("assets/img/fusion/back.png", imageW, imageH, "Backwards"));
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setColour(180);
-        this.setTooltip('Drive reverse for 1 second then stop.');
-        this.setHelpUrl(documentationPath +'/Basic_Move-Robot/#backwards');
-    }
-};
-
-Blockly.Blocks['fusion_basic_fast'] = {
-    init: function () {
-        this.appendDummyInput()
-            .appendField(new Blockly.FieldImage("assets/img/fusion/hare.png", imageW, imageH, "Fast"));
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setColour(90);
-        this.setTooltip('Drive Fast Speed.');
-        this.setHelpUrl(documentationPath +'/Basic_Move-Robot/#fast');
-    }
-};
-
-Blockly.Blocks['fusion_basic_medium'] = {
-    init: function () {
-        this.appendDummyInput()
-            .appendField(new Blockly.FieldImage("assets/img/fusion/turtle.png", imageW, imageH, "Medium"));
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setColour(90);
-        this.setTooltip('Drive Medium Speed.');
-        this.setHelpUrl(documentationPath +'/Basic_Move-Robot/#medium');
-    }
-};
-
-Blockly.Blocks['fusion_basic_slow'] = {
-    init: function () {
-        this.appendDummyInput()
-            .appendField(new Blockly.FieldImage("assets/img/fusion/snail.png", imageW, imageH, "Slow"));
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setColour(90);
-        this.setTooltip('Drive Slow Speed.');
-        this.setHelpUrl(documentationPath +'/Basic_Move-Robot/#slow');
-    }
-};
-
-Blockly.Blocks['fusion_basic_right45'] = {
-    init: function () {
-        this.appendDummyInput()
-            .appendField(new Blockly.FieldImage("assets/img/fusion/TSR.png", imageW, imageH, "Right 45"));
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setColour(285);
-        this.setTooltip('Turn right 45 degrees.');
-        this.setHelpUrl(documentationPath +'/Basic_Rotate-Robot/#rotate-right-45');
-    }
-};
-
-Blockly.Blocks['fusion_basic_right90'] = {
-    init: function () {
-        this.appendDummyInput()
-            .appendField(new Blockly.FieldImage("assets/img/fusion/TR.png", imageW, imageH, "Right 90"));
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setColour(285);
-        this.setTooltip('Turn right 90 degrees.');
-        this.setHelpUrl(documentationPath +'/Basic_Rotate-Robot/#rotate-right-90');
-    }
-};
-
-Blockly.Blocks['fusion_basic_right180'] = {
-    init: function () {
-        this.appendDummyInput()
-            .appendField(new Blockly.FieldImage("assets/img/fusion/TUR.png", imageW, imageH, "Right 180"));
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setColour(285);
-        this.setTooltip('Turn right 180 degrees.');
-        this.setHelpUrl(documentationPath +'/Basic_Rotate-Robot/#rotate-right-180');
-    }
-};
-
-Blockly.Blocks['fusion_basic_left45'] = {
-    init: function () {
-        this.appendDummyInput()
-            .appendField(new Blockly.FieldImage("assets/img/fusion/TSL.png", imageW, imageH, "Left 45"));
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setColour(285);
-        this.setTooltip('Turn left 45 degrees.');
-        this.setHelpUrl(documentationPath +'/Basic_Rotate-Robot/#rotate-left-45');
-    }
-};
-
-Blockly.Blocks['fusion_basic_left90'] = {
-    init: function () {
-        this.appendDummyInput()
-            .appendField(new Blockly.FieldImage("assets/img/fusion/TL.png", imageW, imageH, "Left 90"));
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setColour(285);
-        this.setTooltip('Turn left 90 degrees.');
-        this.setHelpUrl(documentationPath +'/Basic_Rotate-Robot/#rotate-left-90');
-    }
-};
-
-Blockly.Blocks['fusion_basic_left180'] = {
-    init: function () {
-        this.appendDummyInput()
-            .appendField(new Blockly.FieldImage("assets/img/fusion/TUL.png", imageW, imageH, "Left 180"));
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setColour(285);
-        this.setTooltip('Turn left 180 degrees.');
-        this.setHelpUrl(documentationPath +'/Basic_Rotate-Robot/#rotate-left-180');
-    }
-};
-
-Blockly.Blocks['fusion_basic_wait'] = {
-    init: function () {
-        this.appendDummyInput()
-            .appendField(new Blockly.FieldImage("assets/img/fusion/wait.png", imageW, imageH, "Wait"));
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setColour(60);
-        this.setTooltip('Wait 1 second.');
-        this.setHelpUrl(documentationPath +'/Basic_MyBot-Control/#wait');
-    }
-};
-
-Blockly.Blocks['fusion_basic_ledB'] = {
-    init: function () {
-        this.appendDummyInput()
-            .appendField(new Blockly.FieldImage("assets/img/fusion/lightB.png", imageW, imageH, "Blue LED"));
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setColour(30);
-        this.setTooltip('Turn on Blue LED. Turn off Yellow LED.');
-        this.setHelpUrl(documentationPath +'/Basic_MyBot-Control/#blue-led-on');
-    }
-};
-
-Blockly.Blocks['fusion_basic_ledY'] = {
-    init: function () {
-        this.appendDummyInput()
-            .appendField(new Blockly.FieldImage("assets/img/fusion/lightY.png", imageW, imageH, "Yellow LED"));
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setColour(30);
-        this.setTooltip('Turn on Yellow LED. Turn off Blue LED.');
-        this.setHelpUrl(documentationPath +'/Basic_MyBot-Control/#yellow-led-on');
-    }
-};
-
-Blockly.Blocks['fusion_basic_ledBY'] = {
-    init: function () {
-        this.appendDummyInput()
-            .appendField(new Blockly.FieldImage("assets/img/fusion/lightBY.png", imageW, imageH, "Blue & Yellow LED"));
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setColour(30);
-        this.setTooltip('Turn on Blue and Yellow LED.');
-        this.setHelpUrl(documentationPath +'/Basic_MyBot-Control/#both-leds-on');
-    }
-};
-
-Blockly.Blocks['fusion_basic_ledoff'] = {
-    init: function () {
-        this.appendDummyInput()
-            .appendField(new Blockly.FieldImage("assets/img/fusion/light.png", imageW, imageH, "LED Off"));
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setColour(30);
-        this.setTooltip('Turn off Blue and Yellow LED.');
-        this.setHelpUrl(documentationPath +'/Basic_MyBot-Control/#both-leds-off');
     }
 };
 
@@ -1015,7 +757,7 @@ Blockly.Blocks['time_get'] = {
     }
 };
 
-Blockly.Blocks['fusion_analog_read'] = {
+Blockly.Blocks['mybot_analog_read'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Read from Analog Port")
@@ -1035,7 +777,7 @@ Blockly.Blocks['fusion_analog_read'] = {
     }
 };
 
-Blockly.Blocks['fusion_digital_read'] = {
+Blockly.Blocks['mybot_digital_read'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Read from Digital Port")
@@ -1055,7 +797,7 @@ Blockly.Blocks['fusion_digital_read'] = {
     }
 };
 
-Blockly.Blocks['fusion_digital_write'] = {
+Blockly.Blocks['mybot_digital_write'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Write to Digital Port")
@@ -1078,7 +820,7 @@ Blockly.Blocks['fusion_digital_write'] = {
     }
 };
 
-Blockly.Blocks['fusion_touch_read'] = {
+Blockly.Blocks['mybot_touch_read'] = {
     init: function () {
         this.setHelpUrl(documentationPath +'/Blk_Touch_Sensor/#pressed');
         Blockly.HSV_SATURATION = .10;
@@ -1100,7 +842,7 @@ Blockly.Blocks['fusion_touch_read'] = {
     }
 };
 
-Blockly.Blocks['fusion_compass_heading'] = {
+Blockly.Blocks['mybot_compass_heading'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Get Compass Heading");
@@ -1119,7 +861,7 @@ Blockly.Blocks['fusion_compass_heading'] = {
     }
 };
 
-Blockly.Blocks['fusion_compass_hardIronCalibration'] = {
+Blockly.Blocks['mybot_compass_hardIronCalibration'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Compass Hard Iron Calibration");
@@ -1135,7 +877,7 @@ Blockly.Blocks['fusion_compass_hardIronCalibration'] = {
     }
 };
 
-Blockly.Blocks['fusion_compass_tiltUp'] = {
+Blockly.Blocks['mybot_compass_tiltUp'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Compass Tilt Up Calibration");
@@ -1151,7 +893,7 @@ Blockly.Blocks['fusion_compass_tiltUp'] = {
     }
 };
 
-Blockly.Blocks['fusion_compass_tiltDown'] = {
+Blockly.Blocks['mybot_compass_tiltDown'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Compass Tilt Down Calibration");
@@ -1167,7 +909,7 @@ Blockly.Blocks['fusion_compass_tiltDown'] = {
     }
 };
 
-Blockly.Blocks['fusion_compass_nullAccelerometer'] = {
+Blockly.Blocks['mybot_compass_nullAccelerometer'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Compass Accelerometer Calibration on axis: ")
@@ -1184,7 +926,7 @@ Blockly.Blocks['fusion_compass_nullAccelerometer'] = {
     }
 };
 
-Blockly.Blocks['fusion_compass_getAccelerometer'] = {
+Blockly.Blocks['mybot_compass_getAccelerometer'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Get Compass Accelerometer on axis: ")
@@ -1204,7 +946,7 @@ Blockly.Blocks['fusion_compass_getAccelerometer'] = {
     }
 };
 
-Blockly.Blocks['fusion_compass_getMagnetometer'] = {
+Blockly.Blocks['mybot_compass_getMagnetometer'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Get Compass Magnetometer on axis: ")
@@ -1224,7 +966,7 @@ Blockly.Blocks['fusion_compass_getMagnetometer'] = {
     }
 };
 
-Blockly.Blocks['fusion_compass_scaleAccelerometer'] = {
+Blockly.Blocks['mybot_compass_scaleAccelerometer'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Compass Scale Accelerometer");
@@ -1240,7 +982,7 @@ Blockly.Blocks['fusion_compass_scaleAccelerometer'] = {
     }
 };
 
-Blockly.Blocks['fusion_intGyro_heading'] = {
+Blockly.Blocks['mybot_intGyro_heading'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Get Integrating Gyro Heading")
@@ -1260,7 +1002,7 @@ Blockly.Blocks['fusion_intGyro_heading'] = {
     }
 };
 
-Blockly.Blocks['fusion_intGyro_calibrate'] = {
+Blockly.Blocks['mybot_intGyro_calibrate'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Calibrate Integrating Gyro");
@@ -1276,7 +1018,7 @@ Blockly.Blocks['fusion_intGyro_calibrate'] = {
     }
 };
 
-Blockly.Blocks['fusion_intGyro_zero'] = {
+Blockly.Blocks['mybot_intGyro_zero'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Zero Integrating Gyro");
@@ -1292,7 +1034,7 @@ Blockly.Blocks['fusion_intGyro_zero'] = {
     }
 };
 
-Blockly.Blocks['fusion_rate_gyro_read'] = {
+Blockly.Blocks['mybot_rate_gyro_read'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Read Rate Gyro on Port")
@@ -1311,7 +1053,7 @@ Blockly.Blocks['fusion_rate_gyro_read'] = {
     }
 };
 
-Blockly.Blocks['fusion_seeker_heading'] = {
+Blockly.Blocks['mybot_seeker_heading'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Get IR Seeker Heading @")
@@ -1331,7 +1073,7 @@ Blockly.Blocks['fusion_seeker_heading'] = {
     }
 };
 
-Blockly.Blocks['fusion_seeker_intensity'] = {
+Blockly.Blocks['mybot_seeker_intensity'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Get IR Seeker Intensity @")
@@ -1351,7 +1093,7 @@ Blockly.Blocks['fusion_seeker_intensity'] = {
     }
 };
 
-Blockly.Blocks['fusion_locator_heading'] = {
+Blockly.Blocks['mybot_locator_heading'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Get IR Locator Heading @")
@@ -1371,7 +1113,7 @@ Blockly.Blocks['fusion_locator_heading'] = {
     }
 };
 
-Blockly.Blocks['fusion_locator_intensity'] = {
+Blockly.Blocks['mybot_locator_intensity'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Get IR Locator Intensity @")
@@ -1391,7 +1133,7 @@ Blockly.Blocks['fusion_locator_intensity'] = {
     }
 };
 
-Blockly.Blocks['fusion_color_beacon_set_color'] = {
+Blockly.Blocks['mybot_color_beacon_set_color'] = {
     init: function () {
         var colour = new Blockly.FieldColour('#ff0000');
         colour.setColours(['#000000', '#ff0000', '#00ff00', '#ffff00', '#0000ff', '#ff00ff', '#00ffff', '#ffffff']).setColumns(4);
@@ -1410,7 +1152,7 @@ Blockly.Blocks['fusion_color_beacon_set_color'] = {
     }
 };
 
-Blockly.Blocks['fusion_color_beacon_set_custom_color'] = {
+Blockly.Blocks['mybot_color_beacon_set_custom_color'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Set Color Beacon to:")
@@ -1461,7 +1203,7 @@ Blockly.Blocks['fusion_color_beacon_set_custom_color'] = {
     }
 };
 
-Blockly.Blocks['fusion_color_sensor_setup_init'] = {
+Blockly.Blocks['mybot_color_sensor_setup_init'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Set Color Sensor Mode:")
@@ -1479,7 +1221,7 @@ Blockly.Blocks['fusion_color_sensor_setup_init'] = {
     }
 };
 
-Blockly.Blocks['fusion_color_sensor_color_number'] = {
+Blockly.Blocks['mybot_color_sensor_color_number'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Get Color Number");
@@ -1494,7 +1236,7 @@ Blockly.Blocks['fusion_color_sensor_color_number'] = {
     }
 };
 
-Blockly.Blocks['fusion_color_sensor_color_rgb'] = {
+Blockly.Blocks['mybot_color_sensor_color_rgb'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Get RGB Value:")
@@ -1514,7 +1256,7 @@ Blockly.Blocks['fusion_color_sensor_color_rgb'] = {
     }
 };
 
-Blockly.Blocks['fusion_light_read'] = {
+Blockly.Blocks['mybot_light_read'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Read Light Sensor on Port")
@@ -1533,7 +1275,7 @@ Blockly.Blocks['fusion_light_read'] = {
     }
 };
 
-Blockly.Blocks['fusion_range_sensor_us'] = {
+Blockly.Blocks['mybot_range_sensor_us'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Get Range Sensor Ultrasonic (cm)");
@@ -1552,7 +1294,7 @@ Blockly.Blocks['fusion_range_sensor_us'] = {
     }
 };
 
-Blockly.Blocks['fusion_range_sensor_ods'] = {
+Blockly.Blocks['mybot_range_sensor_ods'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Get Range Sensor Optical");
@@ -1571,7 +1313,7 @@ Blockly.Blocks['fusion_range_sensor_ods'] = {
     }
 };
 
-Blockly.Blocks['fusion_ods_read'] = {
+Blockly.Blocks['mybot_ods_read'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Read Optical Distance Sensor on Port")
@@ -1611,7 +1353,7 @@ Blockly.Blocks['recruit_eopd_read'] = {
     }
 };
 
-Blockly.Blocks['fusion_magnetic_read'] = {
+Blockly.Blocks['mybot_magnetic_read'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Read Magnetic Sensor on Port")
@@ -1630,7 +1372,7 @@ Blockly.Blocks['fusion_magnetic_read'] = {
     }
 };
 
-Blockly.Blocks['fusion_sound_generator'] = {
+Blockly.Blocks['mybot_sound_generator'] = {
     init: function () {
         this.waitBoolRemoved = false;
         this.appendDummyInput()
@@ -1700,7 +1442,7 @@ Blockly.Blocks['fusion_sound_generator'] = {
     }
 };
 
-Blockly.Blocks['fusion_usbGamepad_readAxis'] = {
+Blockly.Blocks['mybot_usbGamepad_readAxis'] = {
     init: function () {
         this.appendDummyInput()
             .appendField('Read Axis: ')
@@ -1723,7 +1465,7 @@ Blockly.Blocks['fusion_usbGamepad_readAxis'] = {
     }
 };
 
-Blockly.Blocks['fusion_usbGamepad_readAxisFloat'] = {
+Blockly.Blocks['mybot_usbGamepad_readAxisFloat'] = {
     init: function () {
         this.appendDummyInput()
             .appendField('Read Axis Float: ')
@@ -1746,7 +1488,7 @@ Blockly.Blocks['fusion_usbGamepad_readAxisFloat'] = {
     }
 };
 
-Blockly.Blocks['fusion_usbGamepad_mixer'] = {
+Blockly.Blocks['mybot_usbGamepad_mixer'] = {
     init: function () {
         this.appendDummyInput()
             .appendField('Axis Mixer');
@@ -1778,7 +1520,7 @@ Blockly.Blocks['fusion_usbGamepad_mixer'] = {
     }
 };
 
-Blockly.Blocks['fusion_usbGamepad_readButton'] = {
+Blockly.Blocks['mybot_usbGamepad_readButton'] = {
     init: function () {
         this.appendDummyInput()
             .appendField('Read Button: ')
@@ -1798,7 +1540,7 @@ Blockly.Blocks['fusion_usbGamepad_readButton'] = {
     }
 };
 
-Blockly.Blocks['fusion_usbGamepad_readHat'] = {
+Blockly.Blocks['mybot_usbGamepad_readHat'] = {
     init: function () {
         this.appendDummyInput()
             .appendField('Read Hat');
@@ -1817,7 +1559,7 @@ Blockly.Blocks['fusion_usbGamepad_readHat'] = {
     }
 };
 
-Blockly.Blocks['fusion_VirtualGamepad_Joystick'] = {
+Blockly.Blocks['mybot_VirtualGamepad_Joystick'] = {
      init: function () {
          this.appendDummyInput()
 			.appendField('Read ')
@@ -1848,7 +1590,7 @@ Blockly.Blocks['fusion_VirtualGamepad_Joystick'] = {
      }
  };
 
-Blockly.Blocks['fusion_VirtualGamepad_readButton'] = {
+Blockly.Blocks['mybot_VirtualGamepad_readButton'] = {
     init: function () {
 		this.appendDummyInput()
             .appendField('Read Button: ')
@@ -1868,7 +1610,7 @@ Blockly.Blocks['fusion_VirtualGamepad_readButton'] = {
     }
 };
 
-Blockly.Blocks['fusion_VirtualGamepad_telemetry'] = {
+Blockly.Blocks['mybot_VirtualGamepad_telemetry'] = {
     init: function () {
 		this.appendDummyInput()
             .appendField('Telemetry -');
@@ -1890,7 +1632,7 @@ Blockly.Blocks['fusion_VirtualGamepad_telemetry'] = {
     }
 };
 
-Blockly.Blocks['fusion_VirtualGamepad_camera'] = {
+Blockly.Blocks['mybot_VirtualGamepad_camera'] = {
     init: function () {
 		this.waitBoolRemoved = false;
 		this.appendDummyInput()
@@ -2612,17 +2354,17 @@ Blockly.Blocks['mybot_display_emoji'] = {
         this.appendDummyInput()
             .appendField("Display emoji:")
             .appendField(new Blockly.FieldDropdown([
-                [{"src": "assets/img/fusion/emojis/StraightAhead.png", "width": imageW, "height": imageH}, "eyes_straight"],                
-                [{"src": "assets/img/fusion/emojis/EyesLeft.png", "width": imageW, "height": imageH}, "eyes_left"],
-                [{"src": "assets/img/fusion/emojis/EyesRight.png", "width": imageW, "height": imageH}, "eyes_right"],
-                [{"src": "assets/img/fusion/emojis/EyesClosed.png", "width": imageW, "height": imageH}, "eyes_closed"],                
-                [{"src": "assets/img/fusion/emojis/Crash.png", "width": imageW, "height": imageH}, "crash"],
-                [{"src": "assets/img/fusion/emojis/Snooze.png", "width": imageW, "height": imageH}, "snooze"],
-                [{"src": "assets/img/fusion/emojis/Glasses.png", "width": imageW, "height": imageH}, "glasses"],
-                [{"src": "assets/img/fusion/emojis/OhNo.png", "width": imageW, "height": imageH}, "oh_no"],
-                [{"src": "assets/img/fusion/emojis/Sunglasses.png", "width": imageW, "height": imageH}, "sunglasses"],                
-                [{"src": "assets/img/fusion/emojis/ThumbsUp.png", "width": imageW, "height": imageH}, "thumbs_up"],
-                [{"src": "assets/img/fusion/emojis/ThumbsDown.png", "width": imageW, "height": imageH}, "thumbs_down"],
+                [{"src": "assets/img/fusion/display/emojis/eyes-straight.png", "width": 40, "height": 40}, "eyes-straight"],            
+                [{"src": "assets/img/fusion/display/emojis/eyes-left.png", "width": 40, "height": 40}, "eyes-left"],
+                [{"src": "assets/img/fusion/display/emojis/eyes-right.png", "width": 40, "height": 40}, "eyes-right"],
+                [{"src": "assets/img/fusion/display/emojis/eyes-closed.png", "width": 40, "height": 40}, "eyes-closed"],                
+                [{"src": "assets/img/fusion/display/emojis/crash.png", "width": 40, "height": 40}, "crash"],
+                [{"src": "assets/img/fusion/display/emojis/snooze.png", "width": 40, "height": 40}, "snooze"],
+                [{"src": "assets/img/fusion/display/emojis/glasses.png", "width": 40, "height": 40}, "glasses"],
+                [{"src": "assets/img/fusion/display/emojis/oh-no.png", "width": 40, "height": 40}, "oh-no"],
+                [{"src": "assets/img/fusion/display/emojis/sunglasses.png", "width": 40, "height": 40}, "sunglasses"],                
+                [{"src": "assets/img/fusion/display/emojis/thumbs-up.png", "width": 40, "height": 40}, "thumbs-up"],
+                [{"src": "assets/img/fusion/display/emojis/thumbs-up.png", "width": 40, "height": 40}, "thumbs-down"],
             ]), "Emoji");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
@@ -2637,11 +2379,16 @@ Blockly.Blocks['mybot_display_face'] = {
         this.appendDummyInput()
             .appendField("Display face:")
             .appendField(new Blockly.FieldDropdown([
-                [{"src": "assets/img/fusion/faces/straight.png", "width": imageW, "height": imageH}, "straight"],                
-                [{"src": "assets/img/fusion/faces/left.png", "width": imageW, "height": imageH}, "left"],
-                [{"src": "assets/img/fusion/faces/right.png", "width": imageW, "height": imageH}, "right"],
-                [{"src": "assets/img/fusion/faces/crash.png", "width": imageW, "height": imageH}, "crash"],
-                [{"src": "assets/img/fusion/faces/snooze.png", "width": imageW, "height": imageH}, "snooze"],
+                [{"src": "assets/img/fusion/display/faces/straight.jpg", "width": 48, "height": 32}, "straight"],                
+                [{"src": "assets/img/fusion/display/faces/left.jpg", "width": 48, "height": 32}, "left"],
+                [{"src": "assets/img/fusion/display/faces/right.jpg", "width": 48, "height": 32}, "right"],
+                [{"src": "assets/img/fusion/display/faces/crash.jpg", "width": 48, "height": 32}, "crash"],
+                [{"src": "assets/img/fusion/display/faces/snooze.jpg", "width": 48, "height": 32}, "snooze"],
+                [{"src": "assets/img/fusion/display/faces/blushing.jpg", "width": 48, "height": 32}, "blushing"],
+                [{"src": "assets/img/fusion/display/faces/excited.jpg", "width": 48, "height": 32}, "excited"],
+                [{"src": "assets/img/fusion/display/faces/sad.jpg", "width": 48, "height": 32}, "sad"],
+                [{"src": "assets/img/fusion/display/faces/scared.jpg", "width": 48, "height": 32}, "scared"],
+                [{"src": "assets/img/fusion/display/faces/silly.jpg", "width": 48, "height": 32}, "silly"],
             ]), "Face");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
@@ -2675,3 +2422,75 @@ Blockly.Blocks['mybot_display_text'] = {
 		this.setHelpUrl(documentationPath +  '/Int_Display-Robot/#display-text');
  	}
 };
+
+// Block Aliases for deprecated blocks
+Blockly.Blocks['fusion_start'] = Blockly.Blocks['mybot_start'];
+Blockly.Blocks['drive_with_gyro'] = Blockly.Blocks['mybot_drive_with_gyro'];
+Blockly.Blocks['fusion_basic_select_motor_1'] = Blockly.Blocks['mybot_basic_select_motor_1'];
+Blockly.Blocks['fusion_basic_select_motor_2'] = Blockly.Blocks['mybot_basic_select_motor_2'];
+Blockly.Blocks['fusion_basic_ledB'] = Blockly.Blocks['mybot_basic_ledb'];
+Blockly.Blocks['fusion_basic_ledY'] = Blockly.Blocks['mybot_basic_ledy'];
+Blockly.Blocks['fusion_basic_ledBY'] = Blockly.Blocks['mybot_basic_ledby'];
+Blockly.Blocks['fusion_basic_ledoff'] = Blockly.Blocks['mybot_basic_ledoff'];
+Blockly.Blocks['fusion_basic_wait'] = Blockly.Blocks['mybot_basic_wait'];
+Blockly.Blocks['fusion_basic_forward'] = Blockly.Blocks['mybot_basic_forward'];
+Blockly.Blocks['fusion_basic_backward'] = Blockly.Blocks['mybot_basic_backward'];
+Blockly.Blocks['fusion_basic_fast'] = Blockly.Blocks['mybot_basic_fast'];
+Blockly.Blocks['fusion_basic_medium'] = Blockly.Blocks['mybot_basic_medium'];
+Blockly.Blocks['fusion_basic_slow'] = Blockly.Blocks['mybot_basic_slow'];
+Blockly.Blocks['fusion_basic_right45'] = Blockly.Blocks['mybot_basic_right45'];
+Blockly.Blocks['fusion_basic_right90'] = Blockly.Blocks['mybot_basic_right90'];
+Blockly.Blocks['fusion_basic_right180'] = Blockly.Blocks['mybot_basic_right180'];
+Blockly.Blocks['fusion_basic_left45'] = Blockly.Blocks['mybot_basic_left45'];
+Blockly.Blocks['fusion_basic_left90'] = Blockly.Blocks['mybot_basic_left90'];
+Blockly.Blocks['fusion_basic_left180'] = Blockly.Blocks['mybot_basic_left180'];
+Blockly.Blocks['fusion_motor'] = Blockly.Blocks['mybot_motor'];
+Blockly.Blocks['fusion_drive'] = Blockly.Blocks['mybot_drive'];
+Blockly.Blocks['fusion_drive_time'] = Blockly.Blocks['mybot_drive_time'];
+Blockly.Blocks['fusion_rotate'] = Blockly.Blocks['mybot_rotate'];
+Blockly.Blocks['fusion_servo_target'] = Blockly.Blocks['mybot_servo_target'];
+Blockly.Blocks['fusion_led'] = Blockly.Blocks['mybot_led'];
+Blockly.Blocks['fusion_end'] = Blockly.Blocks['mybot_end'];
+Blockly.Blocks['fusion_comment'] = Blockly.Blocks['mybot_comment'];
+Blockly.Blocks['fusion_analog_read'] = Blockly.Blocks['mybot_analog_read'];
+Blockly.Blocks['fusion_digital_read'] = Blockly.Blocks['mybot_digital_read'];
+Blockly.Blocks['fusion_digital_write'] = Blockly.Blocks['mybot_digital_write'];
+Blockly.Blocks['fusion_touch_read'] = Blockly.Blocks['mybot_touch_read'];
+Blockly.Blocks['fusion_compass_heading'] = Blockly.Blocks['mybot_compass_heading'];
+Blockly.Blocks['fusion_compass_hardIronCalibration'] = Blockly.Blocks['mybot_compass_hardIronCalibration'];
+Blockly.Blocks['fusion_compass_tiltUp'] = Blockly.Blocks['mybot_compass_tiltUp'];
+Blockly.Blocks['fusion_compass_tiltDown'] = Blockly.Blocks['mybot_compass_tiltDown'];
+Blockly.Blocks['fusion_compass_nullAccelerometer'] = Blockly.Blocks['mybot_compass_nullAccelerometer'];
+Blockly.Blocks['fusion_compass_getAccelerometer'] = Blockly.Blocks['mybot_compass_getAccelerometer'];
+Blockly.Blocks['fusion_compass_getMagnetometer'] = Blockly.Blocks['mybot_compass_getMagnetometer'];
+Blockly.Blocks['fusion_compass_scaleAccelerometer'] = Blockly.Blocks['mybot_compass_scaleAccelerometer'];
+Blockly.Blocks['fusion_intGyro_heading'] = Blockly.Blocks['mybot_intGyro_heading'];
+Blockly.Blocks['fusion_intGyro_calibrate'] = Blockly.Blocks['mybot_intGyro_calibrate'];
+Blockly.Blocks['fusion_intGyro_zero'] = Blockly.Blocks['mybot_intGyro_zero'];
+Blockly.Blocks['fusion_rate_gyro_read'] = Blockly.Blocks['mybot_rate_gyro_read'];
+Blockly.Blocks['fusion_seeker_heading'] = Blockly.Blocks['mybot_seeker_heading'];
+Blockly.Blocks['fusion_seeker_intensity'] = Blockly.Blocks['mybot_seeker_intensity'];
+Blockly.Blocks['fusion_locator_heading'] = Blockly.Blocks['mybot_locator_heading'];
+Blockly.Blocks['fusion_locator_intensity'] = Blockly.Blocks['mybot_locator_intensity'];
+Blockly.Blocks['fusion_color_beacon_set_color'] = Blockly.Blocks['mybot_color_beacon_set_color'];
+Blockly.Blocks['fusion_color_beacon_set_custom_color'] = Blockly.Blocks['mybot_color_beacon_set_custom_color'];
+Blockly.Blocks['fusion_color_sensor_setup_init'] = Blockly.Blocks['mybot_color_sensor_setup_init'];
+Blockly.Blocks['fusion_color_sensor_color_number'] = Blockly.Blocks['mybot_color_sensor_color_number'];
+Blockly.Blocks['fusion_color_sensor_color_rgb'] = Blockly.Blocks['mybot_color_sensor_color_rgb'];
+Blockly.Blocks['fusion_light_read'] = Blockly.Blocks['mybot_light_read'];
+Blockly.Blocks['fusion_range_sensor_us'] = Blockly.Blocks['mybot_range_sensor_us'];
+Blockly.Blocks['fusion_range_sensor_ods'] = Blockly.Blocks['mybot_range_sensor_ods'];
+Blockly.Blocks['fusion_ods_read'] = Blockly.Blocks['mybot_ods_read'];
+Blockly.Blocks['fusion_magnetic_read'] = Blockly.Blocks['mybot_magnetic_read'];
+Blockly.Blocks['fusion_sound_generator'] = Blockly.Blocks['mybot_sound_generator'];
+Blockly.Blocks['fusion_usbGamepad_readAxis'] = Blockly.Blocks['mybot_usbGamepad_readAxis'];
+Blockly.Blocks['usion_usbGamepad_readAxisFloat'] = Blockly.Blocks['mybot_usbGamepad_readAxisFloat'];
+Blockly.Blocks['fusion_usbGamepad_mixer'] = Blockly.Blocks['mybot_usbGamepad_mixer'];
+Blockly.Blocks['fusion_usbGamepad_readButton'] = Blockly.Blocks['mybot_usbGamepad_readButton'];
+Blockly.Blocks['fusion_usbGamepad_readHat'] = Blockly.Blocks['mybot_usbGamepad_readHat'];
+Blockly.Blocks['fusion_VirtualGamepad_Joystick'] = Blockly.Blocks['mybot_VirtualGamepad_Joystick'];
+Blockly.Blocks['fusion_VirtualGamepad_readButton'] = Blockly.Blocks['mybot_VirtualGamepad_readButton'];
+Blockly.Blocks['fusion_VirtualGamepad_telemetry'] = Blockly.Blocks['mybot_VirtualGamepad_telemetry'];
+Blockly.Blocks['fusion_VirtualGamepad_camera'] = Blockly.Blocks['mybot_VirtualGamepad_camera'];
+Blockly.Blocks['fusion_display_color'] = Blockly.Blocks['mybot_display_color'];
+Blockly.Blocks['fusion_display_text'] = Blockly.Blocks['mybot_display_text'];

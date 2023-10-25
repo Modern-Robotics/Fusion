@@ -8,6 +8,7 @@
     "build": "gulp"
   },
   "dependencies": {
+    "@loofkid/wireless-tools": "^1.5.0",
     "agenda": "^2.1.0",
     "archiver": "^2.1.1",
     "bcrypt-nodejs": "0.0.3",

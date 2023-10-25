@@ -1,7 +1,0 @@
-#!/bin/bash
-
-python -u -B -c "import Display; Display.show_end_screen()"
-
-sleep 5
-
-echo "Power down" > /dev/ttyS0

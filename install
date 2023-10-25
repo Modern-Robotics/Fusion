@@ -112,17 +112,17 @@ for key in ${!apt_packages[@]}; do
 	if [[ $(apt-cache policy ${key} | awk '/Installed: /{ print $2 }') != ${apt_packages[${key}]} ]]; then
 		apt_update_needed=true
 		if [ $apt_update_needed == true ] && [ $apt_update_performed == false ]; then
-			sudo apt update
+			sudo apt-get update
 			apt_update_performed=true
 		fi
-		sudo apt install ${key}=${apt_packages[${key}]} -y --allow-downgrades
+		sudo apt-get install ${key}=${apt_packages[${key}]} -y --allow-downgrades
 	fi
 done
 
 # Clean orphaned dependencies and cache if update performed
 if [ $apt_update_performed == true ]; then
-	sudo apt autoremove -y
-	sudo apt autoclean -y
+	sudo apt-get autoremove -y
+	sudo apt-get autoclean -y
 fi
 
 
@@ -343,6 +343,7 @@ if ! cmp -s /lib/systemd/system/apsta.service /usr/Fusion/config/apsta.service; 
 	sudo cp /usr/Fusion/config/apsta.service /lib/systemd/system/apsta.service
 	sudo chmod 644 /lib/systemd/system/apsta.service
 	sudo systemctl daemon-reload
+	sudo systemctl disable apsta.service
 	sudo systemctl enable apsta.service
 fi
 
@@ -356,6 +357,7 @@ if ! cmp -s /lib/systemd/system/splashscreen.service /usr/Fusion/config/splashsc
 	sudo cp /usr/Fusion/config/splashscreen.service /lib/systemd/system/splashscreen.service
 	sudo chmod 644 /lib/systemd/system/splashscreen.service
 	sudo systemctl daemon-reload
+	sudo systemctl disable splashscreen.service
 	sudo systemctl enable splashscreen.service
 fi
 
@@ -369,6 +371,7 @@ if ! cmp -s /lib/systemd/system/mybot.service /usr/Fusion/config/mybot.service; 
 	sudo cp /usr/Fusion/config/mybot.service /lib/systemd/system/mybot.service
 	sudo chmod 644 /lib/systemd/system/mybot.service
 	sudo systemctl daemon-reload
+	sudo systemctl disable mybot.service
 	sudo systemctl enable mybot.service
 fi
 
@@ -388,6 +391,7 @@ if ! cmp -s /lib/systemd/system/syncserial.service /usr/Fusion/config/syncserial
 	sudo cp /usr/Fusion/config/syncserial.service /lib/systemd/system/syncserial.service
 	sudo chmod 644 /lib/systemd/system/syncserial.service
 	sudo systemctl daemon-reload
+	sudo systemctl disable syncserial.service
 	sudo systemctl enable syncserial.service
 fi
 
@@ -407,6 +411,7 @@ if ! cmp -s /lib/systemd/system/poweroffboard.service /usr/Fusion/config/powerof
 	sudo cp /usr/Fusion/config/poweroffboard.service /lib/systemd/system/poweroffboard.service
 	sudo chmod 644 /lib/systemd/system/poweroffboard.service
 	sudo systemctl daemon-reload
+	sudo systemctl disable poweroffboard.service
 	sudo systemctl enable poweroffboard.service
 	sudo systemctl start poweroffboard.service
 fi
@@ -421,6 +426,7 @@ if ! cmp -s /lib/systemd/system/restartboard.service /usr/Fusion/config/restartb
 	sudo cp /usr/Fusion/config/restartboard.service /lib/systemd/system/restartboard.service
 	sudo chmod 644 /lib/systemd/system/restartboard.service
 	sudo systemctl daemon-reload
+	sudo systemctl disable restartboard.service
 	sudo systemctl enable restartboard.service
 	sudo systemctl start restartboard.service
 fi

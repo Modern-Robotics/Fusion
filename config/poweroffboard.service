@@ -9,7 +9,7 @@ Conflicts=poweroff.target
 Type=oneshot
 RemainAfterExit=true
 ExecStart=/bin/true
-ExecStop=python -u -B -c "import Display; Display.show_end_screen()"
+ExecStop=python -u -B -c "from Display import RecruitLCD; lcd = RecruitLCD(); lcd.show_end_screen()"
 ExecStop=sleep 3
 ExecStop=transmit_to_board "Power down"
 
