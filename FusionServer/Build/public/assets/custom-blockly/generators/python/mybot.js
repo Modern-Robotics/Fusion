@@ -61,13 +61,8 @@ let selectedMotor = 'm1';
 // Define basic blocks
 ///////////////////////////////////
 
-Blockly.Python['mybot_start'] = function(block) {
-
-    let code = '';
+Blockly.Python['mybot_start'] = function (block) {
     Blockly.Python.definitions_['fusion_setup'] = fusionLibraryReference;
-    Blockly.Python.definitions_['fusion_gyro_init_' + "0x20"] = 'int_gyro = Fusion.intGyro(f)\nint_gyro.setZero()';
-    Blockly.Python.definitions_['fusion_gyro_current_' + "0x20"] = 'current_gyro = 0';
-
     if(virtualGamepad == 1) {
 		if(virtual_camera == 0){
 			fusionImport = fusionImport + '\nimport VirtualGamepad\nv = VirtualGamepad.service()\n';
@@ -85,8 +80,8 @@ Blockly.Python['mybot_start'] = function(block) {
 		coreControl = 0;
 	}
 	fusionImport = fusionLibraryReference;
-	gyro_drive = 1;
-    
+	gyro_drive=0;
+    var code = '';
     return code;
 };
 
@@ -264,6 +259,10 @@ Blockly.Python['mybot_display_face_crash'] = function (block) {
   
 Blockly.Python['mybot_basic_forward'] = function(block) {
 
+    Blockly.Python.definitions_['fusion_gyro_init_' + "0x20"] = 'int_gyro = Fusion.intGyro(f)\nint_gyro.setZero()';
+    Blockly.Python.definitions_['fusion_gyro_current_' + "0x20"] = 'current_gyro = 0';
+	gyro_drive = 1;
+
     var code = '';
     var time = Blockly.Python.valueToCode(block, 'TIME', Blockly.Python.ORDER_ATOMIC);
 
@@ -304,6 +303,10 @@ Blockly.Python['mybot_basic_forward'] = function(block) {
 };
   
 Blockly.Python['mybot_basic_backward'] = function(block) {
+
+    Blockly.Python.definitions_['fusion_gyro_init_' + "0x20"] = 'int_gyro = Fusion.intGyro(f)\nint_gyro.setZero()';
+    Blockly.Python.definitions_['fusion_gyro_current_' + "0x20"] = 'current_gyro = 0';
+	gyro_drive = 1;
 
     var code = '';
     var time = Blockly.Python.valueToCode(block, 'TIME', Blockly.Python.ORDER_ATOMIC);
@@ -346,6 +349,18 @@ Blockly.Python['mybot_basic_backward'] = function(block) {
 
     return code;
 };
+
+Blockly.Python['mybot_basic_select_motor_1'] = function (block) {
+    selectedMotor = 'm1';
+    let code = '# Select motor 1\n';
+	return code;
+};
+
+Blockly.Python['mybot_basic_select_motor_2'] = function (block) {
+    selectedMotor = 'm2';
+    let code = '# Select motor 2\n';
+	return code;
+};
   
 Blockly.Python['mybot_basic_fast'] = function(block) {
     var code = `speed = ${calculateSpeed('fast')}\n`;
@@ -363,6 +378,10 @@ Blockly.Python['mybot_basic_slow'] = function(block) {
 };
   
 Blockly.Python['mybot_basic_right45'] = function(block) {
+
+    Blockly.Python.definitions_['fusion_gyro_init_' + "0x20"] = 'int_gyro = Fusion.intGyro(f)\nint_gyro.setZero()';
+    Blockly.Python.definitions_['fusion_gyro_current_' + "0x20"] = 'current_gyro = 0';
+	gyro_drive = 1;
 
     let code = '';
     Blockly.Python.definitions_['fusion_time_setup'] = pythonTimeLibraryReference;
@@ -395,6 +414,10 @@ Blockly.Python['mybot_basic_right45'] = function(block) {
   
 Blockly.Python['mybot_basic_right90'] = function(block) {
 
+    Blockly.Python.definitions_['fusion_gyro_init_' + "0x20"] = 'int_gyro = Fusion.intGyro(f)\nint_gyro.setZero()';
+    Blockly.Python.definitions_['fusion_gyro_current_' + "0x20"] = 'current_gyro = 0';
+	gyro_drive = 1;
+
     let code = '';
     Blockly.Python.definitions_['fusion_time_setup'] = pythonTimeLibraryReference;
 
@@ -425,6 +448,10 @@ Blockly.Python['mybot_basic_right90'] = function(block) {
 };
   
 Blockly.Python['mybot_basic_right180'] = function(block) {
+
+    Blockly.Python.definitions_['fusion_gyro_init_' + "0x20"] = 'int_gyro = Fusion.intGyro(f)\nint_gyro.setZero()';
+    Blockly.Python.definitions_['fusion_gyro_current_' + "0x20"] = 'current_gyro = 0';
+	gyro_drive = 1;
 
     let code = '';
     Blockly.Python.definitions_['fusion_time_setup'] = pythonTimeLibraryReference;
@@ -457,6 +484,10 @@ Blockly.Python['mybot_basic_right180'] = function(block) {
 
 Blockly.Python['mybot_basic_left45'] = function(block) {
 
+    Blockly.Python.definitions_['fusion_gyro_init_' + "0x20"] = 'int_gyro = Fusion.intGyro(f)\nint_gyro.setZero()';
+    Blockly.Python.definitions_['fusion_gyro_current_' + "0x20"] = 'current_gyro = 0';
+	gyro_drive = 1;
+
     let code = '';
     Blockly.Python.definitions_['fusion_time_setup'] = pythonTimeLibraryReference;
 
@@ -488,6 +519,10 @@ Blockly.Python['mybot_basic_left45'] = function(block) {
 
 Blockly.Python['mybot_basic_left90'] = function(block) {
 
+    Blockly.Python.definitions_['fusion_gyro_init_' + "0x20"] = 'int_gyro = Fusion.intGyro(f)\nint_gyro.setZero()';
+    Blockly.Python.definitions_['fusion_gyro_current_' + "0x20"] = 'current_gyro = 0';
+	gyro_drive = 1;
+
     let code = '';
     Blockly.Python.definitions_['fusion_time_setup'] = pythonTimeLibraryReference;
 
@@ -518,6 +553,10 @@ Blockly.Python['mybot_basic_left90'] = function(block) {
 };
 
 Blockly.Python['mybot_basic_left180'] = function(block) {
+
+    Blockly.Python.definitions_['fusion_gyro_init_' + "0x20"] = 'int_gyro = Fusion.intGyro(f)\nint_gyro.setZero()';
+    Blockly.Python.definitions_['fusion_gyro_current_' + "0x20"] = 'current_gyro = 0';
+	gyro_drive = 1;
 
     let code = '';
     Blockly.Python.definitions_['fusion_time_setup'] = pythonTimeLibraryReference;
@@ -670,163 +709,9 @@ Blockly.Python['mybot_end'] = function (block) {
     return code;
 };
 
-Blockly.Python['mybot_start'] = function (block) {
-    Blockly.Python.definitions_['fusion_setup'] = fusionLibraryReference;
-    if(virtualGamepad == 1) {
-		if(virtual_camera == 0){
-			fusionImport = fusionImport + '\nimport VirtualGamepad\nv = VirtualGamepad.service()\n';
-		}
-		else if(virtual_camera == 1){
-			fusionImport = fusionImport + '\nimport VirtualGamepad\nv = VirtualGamepad.service(True, ('+ res_w +','+ res_h +'), '+ fps +', '+ drop_cam_mode +')\n';
-			virtual_camera = 0;
-		}
-		Blockly.Python.definitions_['fusion_setup'] = fusionImport;
-		virtualGamepad=0;
-	}
-	if(coreControl == 1){
-		fusionImport = fusionImport + '\nimport CoreControl\nc = CoreControl.driver()';
-		Blockly.Python.definitions_['fusion_setup'] = fusionImport;
-		coreControl = 0;
-	}
-	fusionImport = fusionLibraryReference;
-	gyro_drive=0;
-    var code = '';
-    return code;
-};
-
 Blockly.Python['mybot_comment'] = function (block) {
     var statement = block.getFieldValue('Statement');
     var code = '# ' + statement + '\n';
-    return code;
-};
-
-Blockly.Python['drive_with_gyro'] = function (block) {
-    Blockly.Python.definitions_['fusion_gyro_init_' + "0x20"] = 'int_gyro = Fusion.intGyro(f)\nint_gyro.setZero()';
-    Blockly.Python.definitions_['fusion_gyro_current_' + "0x20"] = 'current_gyro = 0';
-	gyro_drive = 1;
-    return '';
-};
-
-Blockly.Python['mybot_basic_select_motor_1'] = function (block) {
-    selectedMotor = 'm1';
-    let code = '# Select motor 1\n';
-	return code;
-};
-
-Blockly.Python['mybot_basic_select_motor_2'] = function (block) {
-    selectedMotor = 'm2';
-    let code = '# Select motor 2\n';
-	return code;
-};
-
-Blockly.Python['mybot_basic_forward'] = function (block) {
-	Blockly.Python.definitions_['fusion_time_setup'] = pythonTimeLibraryReference;
-    Blockly.Python.definitions_['fusion_speed'] = 'speed = ' + calculateSpeed('medium');
-	if(gyro_drive == 0) var code = 'f.motorSpeed(f.M0+f.M1, speed)\ntime.sleep(1)\nf.motorSpeed(f.M0+f.M1, 0)\n';
-	else if(gyro_drive ==1) var code = 'for i in range(0, 100):\n    gyro_val = int_gyro.getAbsolute()\n    M0_speed = speed-gyro_val\n    M1_speed = speed+gyro_val\n    if (M0_speed > 100): M0_speed = 100\n    if (M0_speed < -100): M0_speed = -100\n    if (M1_speed > 100): M1_speed = 100\n    if (M1_speed < -100): M1_speed = -100\n    if (gyro_val > current_gyro):\n        f.motorSpeed(f.M0, M0_speed)\n        f.motorSpeed(f.M1, M1_speed)\n    elif (gyro_val < current_gyro):\n        f.motorSpeed(f.M0, M0_speed)\n        f.motorSpeed(f.M1, M1_speed)\n    else:\n        f.motorSpeed(f.M0+f.M1, speed)\n    time.sleep(.01)\n';
-	return code;
-};
-
-Blockly.Python['mybot_basic_backward'] = function (block) {
-    Blockly.Python.definitions_['fusion_time_setup'] = pythonTimeLibraryReference;
-    Blockly.Python.definitions_['fusion_speed'] = 'speed = ' + calculateSpeed('medium');
-	if(gyro_drive == 0) var code = 'f.motorSpeed(f.M0+f.M1, -speed)\ntime.sleep(1)\nf.motorSpeed(f.M0+f.M1, 0)\n';
-	else if(gyro_drive ==1) var code = 'for i in range(0, 100):\n    gyro_val = int_gyro.getAbsolute()\n    M0_speed = -(speed+gyro_val)\n    M1_speed = -(speed-gyro_val)\n    if (M0_speed > 100): M0_speed = 100\n    if (M0_speed < -100): M0_speed = -100\n    if (M1_speed > 100): M1_speed = 100\n    if (M1_speed < -100): M1_speed = -100\n    if (gyro_val > current_gyro):\n        f.motorSpeed(f.M0, M0_speed)\n        f.motorSpeed(f.M1, M1_speed)\n    elif (gyro_val < current_gyro):\n        f.motorSpeed(f.M0, M0_speed)\n        f.motorSpeed(f.M1, M1_speed)\n    else:\n        f.motorSpeed(f.M0+f.M1, -speed)\n    time.sleep(.01)\n';
-    return code;
-};
-
-Blockly.Python['mybot_basic_fast'] = function (block) {
-    var code = 'speed = ' + calculateSpeed('fast') + '\n';
-    return code;
-};
-
-Blockly.Python['mybot_basic_medium'] = function (block) {
-    var code = 'speed = ' + calculateSpeed('medium') + '\n';
-    return code;
-};
-
-Blockly.Python['mybot_basic_slow'] = function (block) {
-    var code = 'speed = ' + calculateSpeed('slow') + '\n';
-    return code;
-};
-
-Blockly.Python['mybot_basic_right45'] = function (block) {
-    Blockly.Python.definitions_['fusion_time_setup'] = pythonTimeLibraryReference;
-    let speed = calculateSpeed('turn');
-    let time = calculateTurnTime(45);
-    if(gyro_drive == 0) var code = 'f.motorSpeed(f.M0, -' + speed + ')\nf.motorSpeed(f.M1, ' + speed + ')\ntime.sleep(' + time + ')\nf.motorSpeed(f.M0+f.M1, 0)\n';
-    else if(gyro_drive ==1) var code = 'current_gyro = (current_gyro - 45)\nwhile ((int_gyro.getAbsolute() != current_gyro)):\n    turn_speed = int_gyro.getAbsolute() - current_gyro\n    if (turn_speed < 15): turn_speed = 15\n    if (turn_speed > 100): turn_speed = 100\n    f.motorSpeed(f.M0, -turn_speed)\n    f.motorSpeed(f.M1, turn_speed)\nf.motorSpeed(f.M0+f.M1, 0)\n';
-	return code;
-};
-
-Blockly.Python['mybot_basic_right90'] = function (block) {
-    Blockly.Python.definitions_['fusion_time_setup'] = pythonTimeLibraryReference;
-    let speed = calculateSpeed('turn');
-    let time = calculateTurnTime(90);
-    if(gyro_drive == 0) var code = 'f.motorSpeed(f.M0, -' + speed + ')\nf.motorSpeed(f.M1, ' + speed + ')\ntime.sleep(' + time + ')\nf.motorSpeed(f.M0+f.M1, 0)\n';
-    else if(gyro_drive ==1) var code = 'current_gyro = (current_gyro - 90)\nwhile ((int_gyro.getAbsolute() != current_gyro)):\n    turn_speed = int_gyro.getAbsolute() - current_gyro\n    if (turn_speed < 15): turn_speed = 15\n    if (turn_speed > 100): turn_speed = 100\n    f.motorSpeed(f.M0, -turn_speed)\n    f.motorSpeed(f.M1, turn_speed)\nf.motorSpeed(f.M0+f.M1, 0)\n';
-	return code;
-};
-
-Blockly.Python['mybot_basic_right180'] = function (block) {
-    Blockly.Python.definitions_['fusion_time_setup'] = pythonTimeLibraryReference;
-    let speed = calculateSpeed('turn');
-    let time = calculateTurnTime(180);
-    if(gyro_drive == 0) var code = 'f.motorSpeed(f.M0, -' + speed + ')\nf.motorSpeed(f.M1, ' + speed + ')\ntime.sleep(' + time + ')\nf.motorSpeed(f.M0+f.M1, 0)\n';
-	else if(gyro_drive ==1) var code = 'current_gyro = (current_gyro - 180)\nwhile ((int_gyro.getAbsolute() != current_gyro)):\n    turn_speed = int_gyro.getAbsolute() - current_gyro\n    if (turn_speed < 15): turn_speed = 15\n    if (turn_speed > 100): turn_speed = 100\n    f.motorSpeed(f.M0, -turn_speed)\n    f.motorSpeed(f.M1, turn_speed)\nf.motorSpeed(f.M0+f.M1, 0)\n';
-    return code;
-};
-
-Blockly.Python['mybot_basic_left45'] = function (block) {
-    Blockly.Python.definitions_['fusion_time_setup'] = pythonTimeLibraryReference;
-    let speed = calculateSpeed('turn');
-    let time = calculateTurnTime(45);
-    if(gyro_drive == 0) var code = 'f.motorSpeed(f.M0, ' + speed + ')\nf.motorSpeed(f.M1, -' + speed + ')\ntime.sleep(' + time + ')\nf.motorSpeed(f.M0+f.M1, 0)\n';
-    else if(gyro_drive ==1) var code = 'current_gyro = (current_gyro + 45)\nwhile ((int_gyro.getAbsolute() != current_gyro)):\n    turn_speed = current_gyro - int_gyro.getAbsolute()\n    if (turn_speed < 15): turn_speed = 15\n    if (turn_speed > 100): turn_speed = 100\n    f.motorSpeed(f.M0, turn_speed)\n    f.motorSpeed(f.M1, -turn_speed)\nf.motorSpeed(f.M0+f.M1, 0)\n';
-	return code;
-};
-
-Blockly.Python['mybot_basic_left90'] = function (block) {
-    Blockly.Python.definitions_['fusion_time_setup'] = pythonTimeLibraryReference;
-    let speed = calculateSpeed('turn');
-    let time = calculateTurnTime(90);
-    if(gyro_drive == 0) var code = 'f.motorSpeed(f.M0, ' + speed + ')\nf.motorSpeed(f.M1, -' + speed + ')\ntime.sleep(' + time + ')\nf.motorSpeed(f.M0+f.M1, 0)\n';
-	else if(gyro_drive ==1) var code = 'current_gyro = (current_gyro + 90)\nwhile ((int_gyro.getAbsolute() != current_gyro)):\n    turn_speed = current_gyro - int_gyro.getAbsolute()\n    if (turn_speed < 15): turn_speed = 15\n    if (turn_speed > 100): turn_speed = 100\n    f.motorSpeed(f.M0, turn_speed)\n    f.motorSpeed(f.M1, -turn_speed)\nf.motorSpeed(f.M0+f.M1, 0)\n';
-    return code;
-};
-
-Blockly.Python['mybot_basic_left180'] = function (block) {
-    Blockly.Python.definitions_['fusion_time_setup'] = pythonTimeLibraryReference;
-    let speed = calculateSpeed('turn');
-    let time = calculateTurnTime(180);
-    if(gyro_drive == 0) var code = 'f.motorSpeed(f.M0, ' + speed + ')\nf.motorSpeed(f.M1, -' + speed + ')\ntime.sleep(' + time + ')\nf.motorSpeed(f.M0+f.M1, 0)\n';
-	else if(gyro_drive ==1) var code = 'current_gyro = (current_gyro + 180)\nwhile ((int_gyro.getAbsolute() != current_gyro)):\n    turn_speed = current_gyro - int_gyro.getAbsolute()\n    if (turn_speed < 15): turn_speed = 15\n    if (turn_speed > 100): turn_speed = 100\n    f.motorSpeed(f.M0, turn_speed)\n    f.motorSpeed(f.M1, -turn_speed)\nf.motorSpeed(f.M0+f.M1, 0)\n';
-    return code;
-};
-
-Blockly.Python['mybot_basic_wait'] = function (block) {
-    Blockly.Python.definitions_['fusion_time_setup'] = pythonTimeLibraryReference;
-    var code = 'time.sleep(1)\n'
-    return code;
-};
-
-Blockly.Python['mybot_basic_ledB'] = function (block) {
-    var code = 'f.setLED(f.YELLOW, 0)\nf.setLED(f.BLUE, 1)\n';
-    return code;
-};
-
-Blockly.Python['mybot_basic_ledY'] = function (block) {
-    var code = 'f.setLED(f.YELLOW, 1)\nf.setLED(f.BLUE, 0)\n';
-    return code;
-};
-
-Blockly.Python['mybot_basic_ledBY'] = function (block) {
-    var code = 'f.setLED(f.YELLOW, 1)\nf.setLED(f.BLUE, 1)\n';
-    return code;
-};
-
-Blockly.Python['mybot_basic_ledoff'] = function (block) {
-    var code = 'f.setLED(f.YELLOW, 0)\nf.setLED(f.BLUE, 0)\n';
     return code;
 };
 
