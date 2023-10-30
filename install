@@ -473,4 +473,4 @@ fi
 # 4.B: Turn off device
 ########################################
 
-reboot
+sudo reboot
