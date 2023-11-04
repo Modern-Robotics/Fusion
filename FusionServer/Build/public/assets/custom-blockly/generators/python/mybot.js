@@ -1466,6 +1466,9 @@ Blockly.Python['mybot_display_emoji'] = function (block) {
 
     let emoji = block.getFieldValue('Emoji');
 
+    // Change "_" to '-' for old emoji values
+    emoji = emoji.replace('_', '-');
+
     Blockly.Python.definitions_['mybot_display_libraries'] = displayLibraryReference;
 	let code = `lcd.show_emoji("${emoji}")\n`;
 	return code;

@@ -2354,10 +2354,10 @@ Blockly.Blocks['mybot_display_emoji'] = {
         this.appendDummyInput()
             .appendField("Display emoji:")
             .appendField(new Blockly.FieldDropdown([
-                [{"src": "assets/img/fusion/display/emojis/eyes-straight.png", "width": 40, "height": 40}, "eyes-straight"],            
+                [{"src": "assets/img/fusion/display/emojis/eyes-straight.png", "width": 40, "height": 40}, "eyes-straight"],
                 [{"src": "assets/img/fusion/display/emojis/eyes-left.png", "width": 40, "height": 40}, "eyes-left"],
                 [{"src": "assets/img/fusion/display/emojis/eyes-right.png", "width": 40, "height": 40}, "eyes-right"],
-                [{"src": "assets/img/fusion/display/emojis/eyes-closed.png", "width": 40, "height": 40}, "eyes-closed"],                
+                [{"src": "assets/img/fusion/display/emojis/eyes-closed.png", "width": 40, "height": 40}, "eyes-closed"],        
                 [{"src": "assets/img/fusion/display/emojis/crash.png", "width": 40, "height": 40}, "crash"],
                 [{"src": "assets/img/fusion/display/emojis/snooze.png", "width": 40, "height": 40}, "snooze"],
                 [{"src": "assets/img/fusion/display/emojis/glasses.png", "width": 40, "height": 40}, "glasses"],
