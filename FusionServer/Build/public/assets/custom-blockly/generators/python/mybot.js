@@ -398,14 +398,16 @@ Blockly.Python['mybot_basic_right45'] = function(block) {
 
     } else if (gyro_drive == 1) {
 
-        code += `current_gyro = (current_gyro - 45)\n`;
-        code += `while ((int_gyro.getAbsolute() != current_gyro)):\n`;
-        code += `    turn_speed = int_gyro.getAbsolute() - current_gyro\n`;
-        code += `    if (turn_speed < 15): turn_speed = 15\n`;
-        code += `    if (turn_speed > 100): turn_speed = 100\n`;
-        code += `    f.motorSpeed(f.M0, -turn_speed)\n`;
-        code += `    f.motorSpeed(f.M1, turn_speed)\n`;
-        code += `f.motorSpeed(f.M0+f.M1, 0)\n`;
+        code += `int_gyro.setZero()\n`
+        code += `current_gyro = 0\n`
+        code += `current_gyro = (current_gyro + 38)\n`
+        code += `while ((int_gyro.getAbsolute() < current_gyro)):\n`
+        code += `    turn_speed = (current_gyro - int_gyro.getAbsolute())\n`
+        code += `    if (turn_speed < 20): turn_speed = 20\n`
+        code += `    if (turn_speed > 50): turn_speed = 50\n`
+        code += `    f.motorSpeed(f.M0, turn_speed)\n`
+        code += `    f.motorSpeed(f.M1, -turn_speed)\n`
+        code += `f.motorSpeed(f.M0+f.M1, 0)\n`
 
     }
 
@@ -433,14 +435,16 @@ Blockly.Python['mybot_basic_right90'] = function(block) {
 
     } else if (gyro_drive == 1) {
 
-        code += `current_gyro = (current_gyro - 90)\n`;
-        code += `while ((int_gyro.getAbsolute() != current_gyro)):\n`;
-        code += `    turn_speed = int_gyro.getAbsolute() - current_gyro\n`;
-        code += `    if (turn_speed < 15): turn_speed = 15\n`;
-        code += `    if (turn_speed > 100): turn_speed = 100\n`;
-        code += `    f.motorSpeed(f.M0, -turn_speed)\n`;
-        code += `    f.motorSpeed(f.M1, turn_speed)\n`;
-        code += `f.motorSpeed(f.M0+f.M1, 0)\n`;
+        code += `int_gyro.setZero()\n`
+        code += `current_gyro = 0\n`
+        code += `current_gyro = (current_gyro + 75)\n`
+        code += `while ((int_gyro.getAbsolute() < current_gyro)):\n`
+        code += `    turn_speed = (current_gyro - int_gyro.getAbsolute())\n`
+        code += `    if (turn_speed < 40): turn_speed = 40\n`
+        code += `    if (turn_speed > 75): turn_speed = 75\n`
+        code += `    f.motorSpeed(f.M0, turn_speed)\n`
+        code += `    f.motorSpeed(f.M1, -turn_speed)\n`
+        code += `f.motorSpeed(f.M0+f.M1, 0)\n`
 
     }
 
@@ -468,14 +472,16 @@ Blockly.Python['mybot_basic_right180'] = function(block) {
 
     } else if (gyro_drive == 1) {
 
-        code += `current_gyro = (current_gyro - 180)\n`;
-        code += `while ((int_gyro.getAbsolute() != current_gyro)):\n`;
-        code += `    turn_speed = int_gyro.getAbsolute() - current_gyro\n`;
-        code += `    if (turn_speed < 15): turn_speed = 15\n`;
-        code += `    if (turn_speed > 100): turn_speed = 100\n`;
-        code += `    f.motorSpeed(f.M0, -turn_speed)\n`;
-        code += `    f.motorSpeed(f.M1, turn_speed)\n`;
-        code += `f.motorSpeed(f.M0+f.M1, 0)\n`;
+        code += `int_gyro.setZero()\n`
+        code += `current_gyro = 0\n`
+        code += `current_gyro = (current_gyro + 162)\n`
+        code += `while ((int_gyro.getAbsolute() < current_gyro)):\n`
+        code += `    turn_speed = (current_gyro - int_gyro.getAbsolute())\n`
+        code += `    if (turn_speed < 35): turn_speed = 35\n`
+        code += `    if (turn_speed > 75): turn_speed = 75\n`
+        code += `    f.motorSpeed(f.M0, turn_speed)\n`
+        code += `    f.motorSpeed(f.M1, -turn_speed)\n`
+        code += `f.motorSpeed(f.M0+f.M1, 0)\n`
 
     }
 
@@ -503,14 +509,16 @@ Blockly.Python['mybot_basic_left45'] = function(block) {
 
     } else if (gyro_drive == 1) {
 
-        code += `current_gyro = (current_gyro + 45)\n`;
-        code += `while ((int_gyro.getAbsolute() != current_gyro)):\n`;
-        code += `    turn_speed = current_gyro - int_gyro.getAbsolute()\n`;
-        code += `    if (turn_speed < 15): turn_speed = 15\n`;
-        code += `    if (turn_speed > 100): turn_speed = 100\n`;
-        code += `    f.motorSpeed(f.M0, turn_speed)\n`;
-        code += `    f.motorSpeed(f.M1, -turn_speed)\n`;
-        code += `f.motorSpeed(f.M0+f.M1, 0)\n`;
+        code += `int_gyro.setZero()\n`
+        code += `current_gyro = 0\n`
+        code += `current_gyro = (current_gyro - 38)\n`
+        code += `while ((int_gyro.getAbsolute() > current_gyro)):\n`
+        code += `    turn_speed = (int_gyro.getAbsolute() - current_gyro)\n`
+        code += `    if (turn_speed < 20): turn_speed = 20\n`
+        code += `    if (turn_speed > 50): turn_speed = 50\n`
+        code += `    f.motorSpeed(f.M0, -turn_speed)\n`
+        code += `    f.motorSpeed(f.M1, turn_speed)\n`
+        code += `f.motorSpeed(f.M0+f.M1, 0)\n`
 
     }
     
@@ -538,14 +546,16 @@ Blockly.Python['mybot_basic_left90'] = function(block) {
 
     } else if (gyro_drive == 1) {
 
-        code += `current_gyro = (current_gyro + 90)\n`;
-        code += `while ((int_gyro.getAbsolute() != current_gyro)):\n`;
-        code += `    turn_speed = current_gyro - int_gyro.getAbsolute()\n`;
-        code += `    if (turn_speed < 15): turn_speed = 15\n`;
-        code += `    if (turn_speed > 100): turn_speed = 100\n`;
-        code += `    f.motorSpeed(f.M0, turn_speed)\n`;
-        code += `    f.motorSpeed(f.M1, -turn_speed)\n`;
-        code += `f.motorSpeed(f.M0+f.M1, 0)\n`;
+        code += `int_gyro.setZero()\n`
+        code += `current_gyro = 0\n`
+        code += `current_gyro = (current_gyro - 75)\n`
+        code += `while ((int_gyro.getAbsolute() > current_gyro)):\n`
+        code += `    turn_speed = (int_gyro.getAbsolute() - current_gyro)\n`
+        code += `    if (turn_speed < 40): turn_speed = 40\n`
+        code += `    if (turn_speed > 75): turn_speed = 75\n`
+        code += `    f.motorSpeed(f.M0, -turn_speed)\n`
+        code += `    f.motorSpeed(f.M1, turn_speed)\n`
+        code += `f.motorSpeed(f.M0+f.M1, 0)\n`
 
     }
     
@@ -573,14 +583,16 @@ Blockly.Python['mybot_basic_left180'] = function(block) {
 
     } else if (gyro_drive == 1) {
 
-        code += `current_gyro = (current_gyro + 180)\n`;
-        code += `while ((int_gyro.getAbsolute() != current_gyro)):\n`;
-        code += `    turn_speed = current_gyro - int_gyro.getAbsolute()\n`;
-        code += `    if (turn_speed < 15): turn_speed = 15\n`;
-        code += `    if (turn_speed > 100): turn_speed = 100\n`;
-        code += `    f.motorSpeed(f.M0, turn_speed)\n`;
-        code += `    f.motorSpeed(f.M1, -turn_speed)\n`;
-        code += `f.motorSpeed(f.M0+f.M1, 0)\n`;
+        code += `int_gyro.setZero()\n`
+        code += `current_gyro = 0\n`
+        code += `current_gyro = (current_gyro - 162)\n`
+        code += `while ((int_gyro.getAbsolute() > current_gyro)):\n`
+        code += `    turn_speed = (int_gyro.getAbsolute() - current_gyro)\n`
+        code += `    if (turn_speed < 35): turn_speed = 35\n`
+        code += `    if (turn_speed > 75): turn_speed = 75\n`
+        code += `    f.motorSpeed(f.M0, -turn_speed)\n`
+        code += `    f.motorSpeed(f.M1, turn_speed)\n`
+        code += `f.motorSpeed(f.M0+f.M1, 0)\n`
         
     }
     
@@ -966,6 +978,18 @@ Blockly.Python['mybot_color_sensor_setup_init'] = function (block) {
         dropdown_frequency = 'FIFTY_HZ';
     }
     var code = 'colour.colorSetup(colour.' + dropdown_mode + ', colour.' + dropdown_frequency + ')\n';
+    return code;
+};
+
+Blockly.Python['mybot_color_sensor_calibrate_black_balance'] = function (block) {
+    Blockly.Python.definitions_['fusion_color_sensor_init_' + "0x3C"] = 'colour = Fusion.color(f)';
+    let code = 'colour.blackBalance()\n';
+    return code;
+};
+
+Blockly.Python['mybot_color_sensor_calibrate_white_balance'] = function (block) {
+    Blockly.Python.definitions_['fusion_color_sensor_init_' + "0x3C"] = 'colour = Fusion.color(f)';
+    let code = 'colour.whiteBalance()\n';
     return code;
 };
 

@@ -1256,6 +1256,38 @@ Blockly.Blocks['mybot_color_sensor_color_rgb'] = {
     }
 };
 
+Blockly.Blocks['mybot_color_sensor_calibrate_black_balance'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField("Calibrate Black Balance");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        Blockly.HSV_SATURATION = .10;
+		Blockly.HSV_VALUE = .70;
+        this.setColour(50);
+        Blockly.HSV_SATURATION = 0.45;
+		Blockly.HSV_VALUE = 0.65;
+        this.setTooltip('Some tool tip');
+        this.setHelpUrl(documentationPath + '/helpUrl');
+    },
+};
+
+Blockly.Blocks['mybot_color_sensor_calibrate_white_balance'] = {
+    init: function() {
+        this.appendDummyInput()
+            .appendField("Calibrate White Balance");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        Blockly.HSV_SATURATION = .10;
+		Blockly.HSV_VALUE = .70;
+        this.setColour(50);
+        Blockly.HSV_SATURATION = 0.45;
+		Blockly.HSV_VALUE = 0.65;
+        this.setTooltip('Some tool tip');
+        this.setHelpUrl(documentationPath + '/helpUrl');
+    },
+};
+
 Blockly.Blocks['mybot_light_read'] = {
     init: function () {
         this.appendDummyInput()
@@ -2413,7 +2445,7 @@ Blockly.Blocks['mybot_display_clear'] = {
 Blockly.Blocks['mybot_display_text'] = {
   init: function() {
 		this.appendValueInput("Text")
-        	.setCheck("String")
+        	.setCheck(["String", "Number"])
         	.appendField("Display text:");
     	this.setPreviousStatement(true, null);
 	    this.setNextStatement(true, null);
