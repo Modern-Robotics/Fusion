@@ -72,6 +72,10 @@
               <ul class="nav flex-column">
               </ul>
             </li>
+            <li class="nav-item" data-level="2"><a href="#read-selected-ods" class="nav-link">Read Selected ODS</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
             <li class="nav-item" data-level="2"><a href="#questions" class="nav-link">Questions?</a>
               <ul class="nav flex-column">
               </ul>
@@ -95,6 +99,7 @@
 <p><strong>List of available blocks:</strong>  </p>
 <ul>
 <li><a href="./#read"><strong>Read</strong></a></li>
+<li><a href="./#read-selected-ods"><strong>Read Selected ODS</strong></a></li>
 </ul>
 <p><img alt="" src="../img/Sensor_Diagrams/ODS.png" /></p>
 <h2 id="read"><strong>Read</strong></h2>
@@ -133,6 +138,47 @@ f = Fusion.driver()
 my_ods = None
 ods_A2 = Fusion.analog(f, f.A2)   
 my_ods = ods_A2.read()
+</code></pre>
+</blockquote>
+</blockquote>
+</blockquote>
+<h2 id="read-selected-ods"><strong>Read Selected ODS</strong></h2>
+<blockquote>
+<p>Read the proximity of an object using pulsed visible light with the selected ODS sensor.</p>
+<ul>
+<li>The returned reading ranges from <strong>0</strong> - <strong>1023</strong>.</li>
+<li>Detectable proximity ranges from <strong>1</strong> cm to <strong>15</strong> cm.</li>
+<li>Returned reading is an exponential decay.<ul>
+<li>Value increases as the object approached the sensor.</li>
+</ul>
+</li>
+</ul>
+<h3 id="block_1">Block:</h3>
+<p><img src="../img/Intermediate_Blocks/Optical_Distance_Sensor/ReadSelectedOpticalDistanceSensor.png" width="400"></p>
+<h3 id="code-produced_1">Code Produced:</h3>
+<blockquote>
+<p>Setup:</p>
+<blockquote>
+<pre><code>my_ods = None
+ods_Forward = Fusion.analog(f, f.A2)
+</code></pre>
+</blockquote>
+<p>Code:</p>
+<blockquote>
+<pre><code>my_ods = ods_Forward.read()
+</code></pre>
+</blockquote>
+</blockquote>
+<h3 id="example_1">Example:</h3>
+<p><img src="../img/Intermediate_Blocks/Optical_Distance_Sensor/ReadSelectedOpticalDistanceSensor_Example.png" width="550"></p>
+<blockquote>
+<p>Code:</p>
+<blockquote>
+<pre><code>import Fusion
+f = Fusion.driver()
+my_ods = None
+ods_Forward = Fusion.analog(f, f.A2)
+my_ods = ods_Forward.read()
 </code></pre>
 </blockquote>
 </blockquote>

@@ -1,0 +1,11 @@
+[Unit]
+Description=Service that checks for the recovery reset
+After=mybot-splash.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+ExecStart=python /usr/Fusion/FusionServer/Build/scripts/RecoveryReset.py
+
+[Install]
+WantedBy=multi-user.target

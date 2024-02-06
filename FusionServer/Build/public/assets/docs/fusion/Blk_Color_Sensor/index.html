@@ -80,6 +80,14 @@
               <ul class="nav flex-column">
               </ul>
             </li>
+            <li class="nav-item" data-level="2"><a href="#calibrate-black-balance" class="nav-link">Calibrate Black Balance</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#calibrate-white-balance" class="nav-link">Calibrate White Balance</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
             <li class="nav-item" data-level="2"><a href="#questions" class="nav-link">Questions?</a>
               <ul class="nav flex-column">
               </ul>
@@ -105,6 +113,8 @@
 <li><a href="./#set-mode"><strong>Set Mode</strong></a></li>
 <li><a href="./#get-color-number"><strong>Get Color Number</strong></a></li>
 <li><a href="./#get-rgb"><strong>Get RGB</strong></a></li>
+<li><a href="./#calibrate-black-balance"><strong>Calibrate Black Balance</strong></a></li>
+<li><a href="./#calibrate-white-balance"><strong>Calibrate White Balance</strong></a></li>
 </ul>
 <p><img alt="" src="../img/Sensor_Diagrams/ColorSensor.png" /></p>
 <h2 id="set-mode"><strong>Set Mode</strong></h2>
@@ -207,6 +217,44 @@ colour = Fusion.color(f)
 my_red = colour.getRGBIndex()[0]
 my_green = colour.getRGBIndex()[1]
 my_blue = colour.getRGBIndex()[2]
+</code></pre>
+</blockquote>
+</blockquote>
+</blockquote>
+<h2 id="calibrate-black-balance"><strong>Calibrate Black Balance</strong></h2>
+<blockquote>
+<p>Adjusts the sensor to recognize complete absence of light or color as black, setting a baseline for color detection in low-light conditions.</p>
+<h3 id="block_3">Block:</h3>
+<p><img src="../img/Intermediate_Blocks/Color_Sensor/CalibrateBlackBalance.png" width="340"></p>
+<h3 id="code-produced_3">Code Produced:</h3>
+<blockquote>
+<p>Setup:</p>
+<blockquote>
+<pre><code>colour = Fusion.color(f)
+</code></pre>
+</blockquote>
+<p>Code:</p>
+<blockquote>
+<pre><code>colour.blackBalance()
+</code></pre>
+</blockquote>
+</blockquote>
+</blockquote>
+<h2 id="calibrate-white-balance"><strong>Calibrate White Balance</strong></h2>
+<blockquote>
+<p>Sets the sensor to accurately identify white by exposing it to a white surface or bright light, ensuring correct interpretation of all colors against this reference.</p>
+<h3 id="block_4">Block:</h3>
+<p><img src="../img/Intermediate_Blocks/Color_Sensor/CalibrateWhiteBalance.png" width="340"></p>
+<h3 id="code-produced_4">Code Produced:</h3>
+<blockquote>
+<p>Setup:</p>
+<blockquote>
+<pre><code>colour = Fusion.color(f)
+</code></pre>
+</blockquote>
+<p>Code:</p>
+<blockquote>
+<pre><code>colour.whiteBalance()
 </code></pre>
 </blockquote>
 </blockquote>
