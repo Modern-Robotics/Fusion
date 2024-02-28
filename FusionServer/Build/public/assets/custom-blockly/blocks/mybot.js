@@ -112,7 +112,7 @@ Blockly.Blocks['mybot_start'] = {
         this.appendDummyInput()
             .appendField(new Blockly.FieldImage("assets/img/fusion/RecruitStart.png", imageW * 3, imageH * 1.5, { alt: "*", flipRtl: "FALSE" }));
         this.setNextStatement(true, null);
-        this.setColour(startBlockColor);
+        this.setColour(BLOCK_COLORS.MATH);
         this.setTooltip("Initialize the MyBot Robot.");
         this.setHelpUrl(documentationPath + "/Int_MyBot-Control/#start-block");
     }
@@ -2524,50 +2524,25 @@ Blockly.Blocks['mybot_display_trafficSigns'] = {
     }
 };
 
-Blockly.Blocks['mybot_display_emoji'] = {
-    init: function () {
-        this.appendDummyInput()
-            .appendField("Display emoji:")
-            .appendField(new Blockly.FieldDropdown([
-                [{"src": "assets/img/fusion/display/emojis/eyes-straight.png", "width": 40, "height": 40}, "eyes-straight"],
-                [{"src": "assets/img/fusion/display/emojis/eyes-left.png", "width": 40, "height": 40}, "eyes-left"],
-                [{"src": "assets/img/fusion/display/emojis/eyes-right.png", "width": 40, "height": 40}, "eyes-right"],
-                [{"src": "assets/img/fusion/display/emojis/eyes-closed.png", "width": 40, "height": 40}, "eyes-closed"],        
-                [{"src": "assets/img/fusion/display/emojis/crash.png", "width": 40, "height": 40}, "crash"],
-                [{"src": "assets/img/fusion/display/emojis/snooze.png", "width": 40, "height": 40}, "snooze"],
-                [{"src": "assets/img/fusion/display/emojis/glasses.png", "width": 40, "height": 40}, "glasses"],
-                [{"src": "assets/img/fusion/display/emojis/oh-no.png", "width": 40, "height": 40}, "oh-no"],
-                [{"src": "assets/img/fusion/display/emojis/sunglasses.png", "width": 40, "height": 40}, "sunglasses"],                
-                [{"src": "assets/img/fusion/display/emojis/thumbs-up.png", "width": 40, "height": 40}, "thumbs-up"],
-                [{"src": "assets/img/fusion/display/emojis/thumbs-up.png", "width": 40, "height": 40}, "thumbs-down"],
-            ]), "Emoji");
-        this.setPreviousStatement(true, null);
-        this.setNextStatement(true, null);
-        this.setColour(BLOCK_COLORS.DISPLAY);
-        this.setTooltip('Displays selected emoji.');
-        this.setHelpUrl(documentationPath +  '/Int_Display-Robot/#display-emoji');
-    }
-};
-
 Blockly.Blocks['mybot_display_face'] = {
     init: function () {
         this.appendDummyInput()
             .appendField("Display face:")
             .appendField(new Blockly.FieldDropdown([                
-                [{"src": "assets/img/fusion/display/faces/straight.jpg", "width": 48, "height": 32}, "straight"],
-                [{"src": "assets/img/fusion/display/faces/left.jpg", "width": 48, "height": 32}, "left"],
-                [{"src": "assets/img/fusion/display/faces/right.jpg", "width": 48, "height": 32}, "right"],
-                [{"src": "assets/img/fusion/display/faces/crash.jpg", "width": 48, "height": 32}, "crash"],
-                [{"src": "assets/img/fusion/display/faces/snooze.jpg", "width": 48, "height": 32}, "snooze"],
-                [{"src": "assets/img/fusion/display/faces/blushing.jpg", "width": 48, "height": 32}, "blushing"],
-                [{"src": "assets/img/fusion/display/faces/excited.jpg", "width": 48, "height": 32}, "excited"],
-                [{"src": "assets/img/fusion/display/faces/sad.jpg", "width": 48, "height": 32}, "sad"],
-                [{"src": "assets/img/fusion/display/faces/scared.jpg", "width": 48, "height": 32}, "scared"],
-                [{"src": "assets/img/fusion/display/faces/silly.jpg", "width": 48, "height": 32}, "silly"],
-                [{"src": "assets/img/fusion/display/faces/happy.jpg", "width": 48, "height": 32}, "happy"],
-                [{"src": "assets/img/fusion/display/faces/angry.jpg", "width": 48, "height": 32}, "angry"],
-                [{"src": "assets/img/fusion/display/faces/laughing.jpg", "width": 48, "height": 32}, "laughing"],
-                [{"src": "assets/img/fusion/display/faces/sunglasses.jpg", "width": 48, "height": 32}, "sunglasses"],
+                [{"src": "assets/img/fusion/display/images/faces/straight.jpg", "width": 48, "height": 32}, "straight"],
+                [{"src": "assets/img/fusion/display/images/faces/left.jpg", "width": 48, "height": 32}, "left"],
+                [{"src": "assets/img/fusion/display/images/faces/right.jpg", "width": 48, "height": 32}, "right"],
+                [{"src": "assets/img/fusion/display/images/faces/crash.jpg", "width": 48, "height": 32}, "crash"],
+                [{"src": "assets/img/fusion/display/images/faces/snooze.jpg", "width": 48, "height": 32}, "snooze"],
+                [{"src": "assets/img/fusion/display/images/faces/blushing.jpg", "width": 48, "height": 32}, "blushing"],
+                [{"src": "assets/img/fusion/display/images/faces/excited.jpg", "width": 48, "height": 32}, "excited"],
+                [{"src": "assets/img/fusion/display/images/faces/sad.jpg", "width": 48, "height": 32}, "sad"],
+                [{"src": "assets/img/fusion/display/images/faces/scared.jpg", "width": 48, "height": 32}, "scared"],
+                [{"src": "assets/img/fusion/display/images/faces/silly.jpg", "width": 48, "height": 32}, "silly"],
+                [{"src": "assets/img/fusion/display/images/faces/happy.jpg", "width": 48, "height": 32}, "happy"],
+                [{"src": "assets/img/fusion/display/images/faces/angry.jpg", "width": 48, "height": 32}, "angry"],
+                [{"src": "assets/img/fusion/display/images/faces/laughing.jpg", "width": 48, "height": 32}, "laughing"],
+                [{"src": "assets/img/fusion/display/images/faces/sunglasses.jpg", "width": 48, "height": 32}, "sunglasses"],
             ]), "Face");
         this.setPreviousStatement(true, null);
         this.setNextStatement(true, null);
@@ -2673,3 +2648,4 @@ Blockly.Blocks['fusion_VirtualGamepad_telemetry'] = Blockly.Blocks['mybot_Virtua
 Blockly.Blocks['fusion_VirtualGamepad_camera'] = Blockly.Blocks['mybot_VirtualGamepad_camera'];
 Blockly.Blocks['fusion_display_color'] = Blockly.Blocks['mybot_display_color'];
 Blockly.Blocks['fusion_display_text'] = Blockly.Blocks['mybot_display_text'];
+Blockly.Blocks['mybot_display_emoji'] = Blockly.Blocks['mybot_display_emojis'];

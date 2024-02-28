@@ -1499,6 +1499,62 @@ Blockly.Python['mybot_display_emoji'] = function (block) {
 
 };
 
+Blockly.Python['mybot_display_emojis'] = function (block) {
+    let emoji = block.getFieldValue('Emojis');
+    Blockly.Python.definitions_['mybot_display_libraries'] = displayLibraryReference;
+    let code = `lcd.show_emoji("${emoji}")\n`;
+    return code;
+};
+
+Blockly.Python['mybot_display_animals'] = function (block) {
+    let animal = block.getFieldValue('Animals');
+    Blockly.Python.definitions_['mybot_display_libraries'] = displayLibraryReference;
+    let code = `lcd.show_animal("${animal}")\n`;
+    return code;
+};
+
+Blockly.Python['mybot_display_nature'] = function (block) {
+    let nature = block.getFieldValue('Nature');
+    Blockly.Python.definitions_['mybot_display_libraries'] = displayLibraryReference;
+    let code = `lcd.show_nature("${nature}")\n`;
+    return code;
+};
+
+Blockly.Python['mybot_display_buildings'] = function (block) {
+    let building = block.getFieldValue('Buildings');
+    Blockly.Python.definitions_['mybot_display_libraries'] = displayLibraryReference;
+    let code = `lcd.show_building("${building}")\n`;
+    return code;
+};
+
+Blockly.Python['mybot_display_shapes'] = function (block) {
+    let shape = block.getFieldValue('Shapes');
+    Blockly.Python.definitions_['mybot_display_libraries'] = displayLibraryReference;
+    let code = `lcd.show_shape("${shape}")\n`;
+    return code;
+};
+
+Blockly.Python['mybot_display_transportation'] = function (block) {
+    let transportation = block.getFieldValue('Transportation');
+    Blockly.Python.definitions_['mybot_display_libraries'] = displayLibraryReference;
+    let code = `lcd.show_transportation("${transportation}")\n`;
+    return code;
+};
+
+Blockly.Python['mybot_display_miscellaneous'] = function (block) {
+    let misc = block.getFieldValue('Miscellaneous');
+    Blockly.Python.definitions_['mybot_display_libraries'] = displayLibraryReference;
+    let code = `lcd.show_misc("${misc}")\n`;
+    return code;
+};
+
+Blockly.Python['mybot_display_trafficSigns'] = function (block) {
+    let traffic_sign = block.getFieldValue('TrafficSigns');
+    Blockly.Python.definitions_['mybot_display_libraries'] = displayLibraryReference;
+    let code = `lcd.show_traffic_sign("${traffic_sign}")\n`;
+    return code;
+};
+
 Blockly.Python['mybot_display_face'] = function (block) {
 
     let face = block.getFieldValue('Face');
