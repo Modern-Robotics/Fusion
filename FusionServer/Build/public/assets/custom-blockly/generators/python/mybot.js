@@ -376,6 +376,36 @@ Blockly.Python['mybot_basic_slow'] = function(block) {
     var code = `speed = ${calculateSpeed('slow')}\n`;
     return code;
 };
+
+Blockly.Python['mybot_basic_right_for_x_seconds'] = function(block) {
+
+    Blockly.Python.definitions_['fusion_time_setup'] = pythonTimeLibraryReference;
+
+    var time = Blockly.Python.valueToCode(block, 'TIME', Blockly.Python.ORDER_ATOMIC);
+    let speed = calculateSpeed('turn');
+
+    var code = '';
+    code += `f.motorSpeed(f.M0, -${speed})\n`;
+    code += `f.motorSpeed(f.M1, ${speed})\n`;
+    code += `time.sleep(${time})\n`;
+    code += `f.motorSpeed(f.M0+f.M1, 0)\n`;
+    return code;
+};
+
+Blockly.Python['mybot_basic_left_for_x_seconds'] = function(block) {
+
+    Blockly.Python.definitions_['fusion_time_setup'] = pythonTimeLibraryReference;
+
+    var time = Blockly.Python.valueToCode(block, 'TIME', Blockly.Python.ORDER_ATOMIC);
+    let speed = calculateSpeed('turn');
+
+    var code = '';
+    code += `f.motorSpeed(f.M0, ${speed})\n`;
+    code += `f.motorSpeed(f.M1, -${speed})\n`;
+    code += `time.sleep(${time})\n`;
+    code += `f.motorSpeed(f.M0+f.M1, 0)\n`;
+    return code;
+};
   
 Blockly.Python['mybot_basic_right45'] = function(block) {
 

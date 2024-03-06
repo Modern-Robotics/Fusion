@@ -476,6 +476,34 @@ Blockly.Blocks['mybot_basic_slow'] = {
         this.setHelpUrl(documentationPath + "/Basic_Move-Robot/#slow");
     }
 };
+
+Blockly.Blocks['mybot_basic_right_for_x_seconds'] = {
+    init: function() {
+        this.appendValueInput("TIME")
+            .setCheck("Number")
+            .appendField(new Blockly.FieldImage("assets/img/fusion/turn-right.png", imageW, imageH, { alt: "*", flipRtl: "FALSE" }));
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(BLOCK_COLORS.MOVE);
+        this.setTooltip("Turn right for x seconds.");
+        //this.setHelpUrl(documentationPath + "/Basic_Rotate-Robot/#rotate-right-45");
+    }
+};
+
+Blockly.Blocks['mybot_basic_left_for_x_seconds'] = {
+    init: function() {
+        this.appendValueInput("TIME")
+            .setCheck("Number")
+            .appendField(new Blockly.FieldImage("assets/img/fusion/turn-left.png", imageW, imageH, { alt: "*", flipRtl: "FALSE" }));
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(BLOCK_COLORS.MOVE);
+        this.setTooltip("Turn left for x seconds.");
+        //this.setHelpUrl(documentationPath + "/Basic_Rotate-Robot/#rotate-right-45");
+    }
+};
   
 Blockly.Blocks['mybot_basic_right45'] = {
     init: function() {
