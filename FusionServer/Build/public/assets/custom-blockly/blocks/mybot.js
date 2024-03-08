@@ -426,8 +426,36 @@ Blockly.Blocks['mybot_basic_forward'] = {
         this.setHelpUrl(documentationPath + "/Basic_Move-Robot/#forward");
     }
 };
+
+Blockly.Blocks['mybot_basic_forward_for_x_seconds'] = {
+    init: function() {
+        this.appendValueInput("TIME")
+            .setCheck("Number")
+            .appendField(new Blockly.FieldImage("assets/img/fusion/fwd.png", imageW, imageH, { alt: "*", flipRtl: "FALSE" }));
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(BLOCK_COLORS.MOVE);
+        this.setTooltip("Drive forward for 1 second then stop.");
+        this.setHelpUrl(documentationPath + "/Basic_Move-Robot/#forward");
+    }
+};
   
 Blockly.Blocks['mybot_basic_backward'] = {
+    init: function() {
+        this.appendValueInput("TIME")
+            .setCheck("Number")
+            .appendField(new Blockly.FieldImage("assets/img/fusion/back.png", imageW, imageH, { alt: "*", flipRtl: "FALSE" }));
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(BLOCK_COLORS.MOVE);
+        this.setTooltip("Drive reverse for 1 second then stop.");
+        this.setHelpUrl(documentationPath + "/Basic_Move-Robot/#backward");
+    }
+};
+
+Blockly.Blocks['mybot_basic_backward_for_x_seconds'] = {
     init: function() {
         this.appendValueInput("TIME")
             .setCheck("Number")

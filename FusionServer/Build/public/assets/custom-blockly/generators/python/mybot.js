@@ -301,12 +301,105 @@ Blockly.Python['mybot_basic_forward'] = function(block) {
 
 	return code;
 };
+
+Blockly.Python['mybot_basic_forward_for_x_seconds'] = function(block) {
+
+    Blockly.Python.definitions_['fusion_gyro_init_' + "0x20"] = 'int_gyro = Fusion.intGyro(f)\nint_gyro.setZero()';
+    Blockly.Python.definitions_['fusion_gyro_current_' + "0x20"] = 'current_gyro = 0';
+	gyro_drive = 0;
+
+    var code = '';
+    var time = Blockly.Python.valueToCode(block, 'TIME', Blockly.Python.ORDER_ATOMIC);
+
+    Blockly.Python.definitions_['fusion_time_setup'] = pythonTimeLibraryReference;
+    Blockly.Python.definitions_['fusion_speed'] = 'speed = ' + calculateSpeed('medium');    
+    	
+	if(gyro_drive == 0) {
+
+        code += `f.motorSpeed(f.M0+f.M1, speed)\n`;
+        code += `time.sleep(${time})\n`;
+        code += `f.motorSpeed(f.M0+f.M1, 0)\n`;
+    } 
+	else if(gyro_drive == 1) {
+
+        let sleep = .01;
+        let gyroTime = time / sleep;
+
+        code += `for i in range(0, ${gyroTime}):\n`;
+        code += `    gyro_val = int_gyro.getAbsolute()\n`;
+        code += `    M0_speed = speed-gyro_val\n`;
+        code += `    M1_speed = speed+gyro_val\n`;
+        code += `    if (M0_speed > 100): M0_speed = 100\n`;
+        code += `    if (M0_speed < -100): M0_speed = -100\n`;
+        code += `    if (M1_speed > 100): M1_speed = 100\n`;
+        code += `    if (M1_speed < -100): M1_speed = -100\n`;
+        code += `    if (gyro_val > current_gyro):\n`;
+        code += `        f.motorSpeed(f.M0, M0_speed)\n`;
+        code += `        f.motorSpeed(f.M1, M1_speed)\n`;
+        code += `    elif (gyro_val < current_gyro):\n`;
+        code += `        f.motorSpeed(f.M0, M0_speed)\n`;
+        code += `        f.motorSpeed(f.M1, M1_speed)\n`;
+        code += `    else:\n`;
+        code += `        f.motorSpeed(f.M0+f.M1, speed)\n`;
+        code += `    time.sleep(${sleep})\n`;
+    }    
+
+	return code;
+};
   
 Blockly.Python['mybot_basic_backward'] = function(block) {
 
     Blockly.Python.definitions_['fusion_gyro_init_' + "0x20"] = 'int_gyro = Fusion.intGyro(f)\nint_gyro.setZero()';
     Blockly.Python.definitions_['fusion_gyro_current_' + "0x20"] = 'current_gyro = 0';
 	gyro_drive = 1;
+
+    var code = '';
+    var time = Blockly.Python.valueToCode(block, 'TIME', Blockly.Python.ORDER_ATOMIC);
+
+    Blockly.Python.definitions_['fusion_time_setup'] = pythonTimeLibraryReference;
+    Blockly.Python.definitions_['fusion_speed'] = 'speed = ' + calculateSpeed('medium');
+
+    if(gyro_drive == 0){
+
+        code += `f.motorSpeed(f.M0+f.M1, -speed)\n`;
+        code += `time.sleep(${time})\n`;
+        code += `f.motorSpeed(f.M0+f.M1, 0)\n`;
+
+    }
+
+    else if(gyro_drive == 1) {
+
+        let sleep = .01;
+        let gyroTime = time / sleep;
+
+        code += `for i in range(0, ${gyroTime}):\n`;
+        code += `    gyro_val = int_gyro.getAbsolute()\n`;
+        code += `    M0_speed = -(speed+gyro_val)\n`;
+        code += `    M1_speed = -(speed-gyro_val)\n`;
+        code += `    if (M0_speed > 100): M0_speed = 100\n`;
+        code += `    if (M0_speed < -100): M0_speed = -100\n`;
+        code += `    if (M1_speed > 100): M1_speed = 100\n`;
+        code += `    if (M1_speed < -100): M1_speed = -100\n`;
+        code += `    if (gyro_val > current_gyro):\n`;
+        code += `        f.motorSpeed(f.M0, M0_speed)\n`;
+        code += `        f.motorSpeed(f.M1, M1_speed)\n`;
+        code += `    elif (gyro_val < current_gyro):\n`;
+        code += `        f.motorSpeed(f.M0, M0_speed)\n`;
+        code += `        f.motorSpeed(f.M1, M1_speed)\n`;
+        code += `    else:\n`;
+        code += `        f.motorSpeed(f.M0+f.M1, -speed)\n`;
+        code += `    time.sleep(.01)\n`;
+
+    }
+
+    return code;
+};
+
+Blockly.Python['mybot_basic_backward_for_x_seconds'] = function(block) {
+
+    Blockly.Python.definitions_['fusion_gyro_init_' + "0x20"] = 'int_gyro = Fusion.intGyro(f)\nint_gyro.setZero()';
+    Blockly.Python.definitions_['fusion_gyro_current_' + "0x20"] = 'current_gyro = 0';
+	gyro_drive = 0;
 
     var code = '';
     var time = Blockly.Python.valueToCode(block, 'TIME', Blockly.Python.ORDER_ATOMIC);
